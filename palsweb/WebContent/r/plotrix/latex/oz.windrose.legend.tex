@@ -1,0 +1,39 @@
+\HeaderA{oz.windrose.legend}{Display an Australian wind rose legend.}{oz.windrose.legend}
+\keyword{misc}{oz.windrose.legend}
+\begin{Description}\relax
+Displays a wind rose legend in the style used by the Australian Bureau 
+of Meteorology.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+ oz.windrose.legend(speed.col=c("#dab286","#fe9a66","#ce6733","#986434"),
+  speed.width=c(0.2,0.4,0.6,0.8),legend.pos=27)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{speed.col}] Colors representing speed ranges.
+\item[\code{speed.width}] Half widths of the bars representing speed ranges.
+\item[\code{legend.pos}] The vertical position of the wind rose legend. The
+Australian Bureau of Meteorology displays the legend at the top of
+the plot
+\end{ldescription}
+\end{Arguments}
+\begin{Value}
+nil
+\end{Value}
+\begin{Author}\relax
+Jim Lemon (thanks to Anna in the Sydney BoM office)
+\end{Author}
+\begin{SeeAlso}\relax
+\samp{\LinkA{oz.windrose}{oz.windrose}}
+\end{SeeAlso}
+\begin{Examples}
+\begin{ExampleCode}
+ plot(0,xlim=c(-20,20),ylim=c(-20,20),type="n",axes=FALSE,xlab="",ylab="")
+ par(xpd=TRUE)
+ oz.windrose.legend()
+ par(xpd=FALSE)
+\end{ExampleCode}
+\end{Examples}
+

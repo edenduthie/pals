@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Plot a dendrite.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for furc {plotrix}"><tr><td>furc {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Plot a dendrite.</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Plot one level of a dendrogram displaying two or more mutually 
+exclusive attributes.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ furc(x,xpos,yrange,toplevel,cex=1)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+A <span class="samp">dendrite</span> object containing the counts of objects having
+combinations of mutually exclusive attributes.</td></tr>
+<tr valign="top"><td><code>xpos</code></td>
+<td>
+The horizontal position on the plot to display the current level
+of the dendrogram.</td></tr>
+<tr valign="top"><td><code>yrange</code></td>
+<td>
+The range of values in which the current level of the dendrogram
+will be displayed.</td></tr>
+<tr valign="top"><td><code>toplevel</code></td>
+<td>
+A flag for the function to know whether it is at the top level
+of the dendrogram or not. Do not change this argument.</td></tr>
+<tr valign="top"><td><code>cex</code></td>
+<td>
+The character expansion to use in the display.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+<span class="samp">furc</span> displays one <EM>furc</EM>ation of the dendrogram. A furcation is
+a single box displaying its label and count that may split into finer
+divisions. If so, <span class="samp">furc</span> calls itself for each furcation until there are
+no more splits.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+nil</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Jim Lemon
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<span class="samp"><a href="plot.dendrite.html">plot.dendrite</a></span>
+</p>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

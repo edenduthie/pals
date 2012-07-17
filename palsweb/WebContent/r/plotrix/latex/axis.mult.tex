@@ -1,0 +1,57 @@
+\HeaderA{axis.mult}{Display an axis with values having a multiplier}{axis.mult}
+\keyword{misc}{axis.mult}
+\begin{Description}\relax
+An axis is displayed on an existing plot where the tick values are divided
+by a multiplier and the multiplier is displayed next to the axis.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+ axis.mult(side=1,at=NULL,labels,mult=1,mult.label,mult.line,
+  mult.labelpos=NULL,...)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{side}] which side to display
+\item[\code{at}] where to place the tick marks - defaults to \samp{axTicks()}
+\item[\code{labels}] tick labels - defaults to at/mult
+\item[\code{mult}] the multiplier factor
+\item[\code{mult.label}] the label to show the multiplier - defaults to "x mult"
+\item[\code{mult.line}] the margin line upon which to show the multiplier
+\item[\code{mult.labelpos}] where to place \samp{mult.label} - defaults to centered
+and outside the axis tick labels
+\item[\code{...}] additional arguments passed to \samp{axis}.
+\end{ldescription}
+\end{Arguments}
+\begin{Details}\relax
+\samp{axis.mult} automates the process of displaying an axis with a 
+multiplier applied to the tick values. By default it will divide the
+default axis tick labels by \samp{mult} and place \samp{mult.label}
+where \samp{xlab} or \samp{ylab} would normally appear. Thus the plot
+call should set the relevant label to an empty string in such cases.
+It is simplest to call \samp{plot} with \samp{axes=FALSE} and then 
+display the box and any standard axes before calling \samp{axis.mult}.
+\end{Details}
+\begin{Value}
+nil
+\end{Value}
+\begin{Note}\relax
+While \samp{axis.mult} will try to display an axis on any side, the top
+and right margins will require adjustment using \samp{par} for
+\samp{axis.mult} to display properly.
+\end{Note}
+\begin{Author}\relax
+Jim Lemon
+\end{Author}
+\begin{SeeAlso}\relax
+\samp{\LinkA{axis}{axis}}, \samp{\LinkA{mtext}{mtext}}
+\end{SeeAlso}
+\begin{Examples}
+\begin{ExampleCode}
+ plot(1:10*0.001,1:10*100,axes=FALSE,xlab="",ylab="",main="Axis multipliers")
+ box()
+ axis.mult(1,mult=0.001)
+ axis.mult(2,mult=100)
+\end{ExampleCode}
+\end{Examples}
+

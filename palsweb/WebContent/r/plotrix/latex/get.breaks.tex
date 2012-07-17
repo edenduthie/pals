@@ -1,0 +1,32 @@
+\HeaderA{get.breaks}{Get the breakpoints for a weighted histogram}{get.breaks}
+\keyword{misc}{get.breaks}
+\begin{Description}\relax
+Gets the breakpoints for a weighted histogram.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+ get.breaks(x,breaks)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{x}] A numeric vector.
+\item[\code{breaks}] Either the name of the function to calculate breakpoints, the
+number of categories or a vector of breakpoints.
+\end{ldescription}
+\end{Arguments}
+\begin{Details}\relax
+\samp{get.breaks} either calls the same functions as \samp{hist} to get
+breakpoints or calculates a given number or just returns \samp{breaks}
+if they are already specified.
+\end{Details}
+\begin{Value}
+A vector of breakpoints.
+\end{Value}
+\begin{Author}\relax
+Jim Lemon
+\end{Author}
+\begin{SeeAlso}\relax
+\samp{\LinkA{hist}{hist}}
+\end{SeeAlso}
+

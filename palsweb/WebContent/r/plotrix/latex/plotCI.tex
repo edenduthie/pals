@@ -1,0 +1,83 @@
+\HeaderA{plotCI}{Plot confidence intervals/error bars}{plotCI}
+\keyword{hplot}{plotCI}
+\begin{Description}\relax
+Given a set of x and y values and upper and lower bounds,
+this function plots the points with error bars.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+ plotCI(x,y=NULL,uiw,liw=uiw,ui=NULL,li=NULL,err="y",
+  sfrac=0.01,gap=0,slty=par("lty"),add=FALSE,scol=NULL,pt.bg=par("bg"),...)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{x}] The x coordinates of points in the plot
+\item[\code{y}] The y coordinates of points in the plot
+\item[\code{uiw}] The width of the upper portion of the confidence region,
+or (if \samp{liw} is missing) the width of both halves of
+the confidence region
+\item[\code{liw}] The width of the lower portion of the confidence region (if
+missing, the function assumes symmetric confidence bounds)
+\item[\code{ui}] The absolute upper limit of the confidence region
+\item[\code{li}] The absolute lower limit of the confidence region
+\item[\code{err}] The direction of error bars: "x" for horizontal, "y"
+for vertical ("xy" would be nice but is not implemented yet; don't
+know quite how everything would be specified.  See examples for
+composing a plot with simultaneous horizontal and vertical error bars)
+\item[\code{gap}] Size of gap in error bars around points
+(default 0;gap=TRUE gives gap size of 0.01)
+\item[\code{sfrac}] Scaling factor for the size of the "serifs" (end bars) on
+the confidence bars, in x-axis units
+\item[\code{add}] If FALSE (default), create a new plot; if TRUE, add error
+bars to an existing plot.
+\item[\code{slty}] Line type of error bars
+\item[\code{scol}] Color of error bars: if \samp{col} is specified in the
+optional arguments, \samp{scol} is set the same; otherwise it's set
+to \samp{par(scol)}
+\item[\code{pt.bg}] Background color of points (use pch=21, pt.bg=par("bg")
+to get open points superimposed on error bars)
+\item[\code{...}] Any other parameters to be passed through to
+\samp{\LinkA{plot.default}{plot.default}}, \samp{\LinkA{points}{points}},
+\samp{\LinkA{arrows}{arrows}}, etc. (e.g. \samp{lwd}, \samp{col}, \samp{pch},
+\samp{axes}, \samp{xlim}, \samp{ylim}).  \samp{xlim} and
+\samp{ylim} are set by default to include all of the data points and
+error bars.  \samp{xlab} and \samp{ylab} are set to the names of
+\samp{x} and \samp{y}.  If \samp{pch==NA}, no points are drawn
+(e.g. leaving room for text labels instead)
+\end{ldescription}
+\end{Arguments}
+\begin{Value}
+invisible(x,y); creates a plot on the current device.
+\end{Value}
+\begin{Author}\relax
+Ben Bolker (documentation and tweaking of a function provided by
+Bill Venables, additional feature ideas from Gregory Warnes)
+\end{Author}
+\begin{SeeAlso}\relax
+\samp{\LinkA{boxplot}{boxplot}}
+\end{SeeAlso}
+\begin{Examples}
+\begin{ExampleCode}
+ y<-runif(10)
+ err<-runif(10)
+ plotCI(1:10,y,err)
+ plotCI(1:10,y,err,2*err,lwd=2,col="red",scol="blue")
+ err.x<-runif(10)
+ err.y<-runif(10)
+ plotCI(1:10,y,err.y,pt.bg=par("bg"),pch=21)
+ plotCI(1:10,y,err.x,pt.bg=par("bg"),pch=21,err="x",add=TRUE)
+ data(warpbreaks)
+ attach(warpbreaks)
+ wmeans<-by(breaks,tension,mean)
+ wsd<-by(breaks,tension,sd)
+ ## note that barplot() returns the midpoints of the bars, which plotCI
+ ##  uses as x-coordinates
+ plotCI(barplot(wmeans,col="gray",ylim=c(0,max(wmeans+wsd))),wmeans,wsd,add=TRUE)
+ ## using labels instead of points
+ labs<-sample(LETTERS,replace=TRUE,size=10)
+ plotCI(1:10,y,err,pch=NA,gap=0.02)
+ text(1:10,y,labs)
+\end{ExampleCode}
+\end{Examples}
+

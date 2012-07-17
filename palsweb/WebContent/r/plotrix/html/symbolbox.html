@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Draw a box filled with symbols</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for symbolbox {plotrix}"><tr><td>symbolbox {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Draw a box filled with symbols</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Draws a box on the current figure that is filled with symbols
+representing individual counts
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ symbolbox(x1,y1,x2,y2,tot,relw=0.5,fg=par("fg"),bg=par("bg"),box=TRUE,
+  debug = TRUE,...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x1</code></td>
+<td>
+left side of box</td></tr>
+<tr valign="top"><td><code>y1</code></td>
+<td>
+bottom side of box</td></tr>
+<tr valign="top"><td><code>x2</code></td>
+<td>
+right side of box</td></tr>
+<tr valign="top"><td><code>y2</code></td>
+<td>
+top side of box</td></tr>
+<tr valign="top"><td><code>tot</code></td>
+<td>
+total number of symbols to put in the box</td></tr>
+<tr valign="top"><td><code>relw</code></td>
+<td>
+relative width (relative to height) of symbols</td></tr>
+<tr valign="top"><td><code>fg</code></td>
+<td>
+foreground color</td></tr>
+<tr valign="top"><td><code>bg</code></td>
+<td>
+background color</td></tr>
+<tr valign="top"><td><code>box</code></td>
+<td>
+(logical) draw box border?</td></tr>
+<tr valign="top"><td><code>debug</code></td>
+<td>
+debug output?</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+additional arguments to polygon() for drawing box</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+tries to automatically figure out appropriate scaling to fit symbols
+into the box
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+none; draws on the current figure</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Ben Bolker
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<span class="samp"><a href="multsymbolbox.html">multsymbolbox</a></span>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+ plot(1:10,1:10,type="n")
+ symbolbox(2,5,3,7,tot=20)
+ symbolbox(6,2,10,6,tot=50,fg="blue",bg="magenta")
+</pre>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

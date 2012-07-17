@@ -1,0 +1,63 @@
+\HeaderA{color.scale.lines}{Line segments with scaled colors.}{color.scale.lines}
+\keyword{misc}{color.scale.lines}
+\begin{Description}\relax
+Display line segments with colors scaled to numeric values.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+ color.scale.lines(x,y,reds,greens,blues,col=NA,colvar=NA,...)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{x,y}] Numeric vectors or a list with at least two components,
+the first two of which must be named x and y.
+\item[\code{reds,greens,blues}] Color ranges into which to scale the
+numeric values.
+\item[\code{col}] One or more colors to use for the resultant lines. Will
+be recycled if necessary.
+\item[\code{colvar}] A numeric vector from which to scale the colors.
+\item[\code{...}] Additional arguments passed to \samp{segments}.
+\end{ldescription}
+\end{Arguments}
+\begin{Details}\relax
+\samp{color.scale.lines} displays line segments that can be individually
+colored according to a variety of methods. In order of precedence, if
+\samp{col} is not NA, the color values passed will be used. If
+\samp{colvar} is not NA, the function will call \samp{color.scale} with
+the three color range arguments to determine the line colors. If
+\samp{colvar} is the same length as \samp{length(x)-1}, exactly enough 
+colors for the number of lines displayed will be calculated. If shorter,
+some colors will be recycled and if longer, some colors will not be used.
+Finally, the values in \samp{y} will be color-scaled if both of the above
+arguments are NA. Thus the user can pass predetermined colors, use colors
+scaled from an arbitrary vector of numerical values or use the \samp{y}
+values. See \samp{color.scale} for an explanation of specifying color
+ranges.
+\end{Details}
+\begin{Value}
+nil
+\end{Value}
+\begin{Note}\relax
+The function is useful for highlighting a numeric dimension or adding
+an extra "dimension" to a plot.
+\end{Note}
+\begin{Author}\relax
+Jim Lemon
+\end{Author}
+\begin{SeeAlso}\relax
+\samp{\LinkA{color.scale}{color.scale}}
+\end{SeeAlso}
+\begin{Examples}
+\begin{ExampleCode}
+ # color a random walk "hot" (red) to "cold" (blue) on its distance
+ # from the starting point
+ x<-c(0,cumsum(rnorm(99)))
+ y<-c(0,cumsum(rnorm(99)))
+ xydist<-sqrt(x*x+y*y)
+ plot(x,y,main="Random walk plot",xlab="X",ylab="Y",type="n")
+ color.scale.lines(x,y,c(1,1,0),0,c(0,1,1),colvar=xydist,lwd=2)
+ boxed.labels(x,y,labels=1:100,border=FALSE,cex=0.5)
+\end{ExampleCode}
+\end{Examples}
+

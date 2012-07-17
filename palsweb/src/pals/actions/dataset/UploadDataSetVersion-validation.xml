@@ -1,0 +1,22 @@
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+       "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+<validators>
+  <field name="versionName">
+      <field-validator type="stringlength">
+         <param name="maxLength">15</param>
+         <message key="versionName.tooLong" />
+     </field-validator>
+     <field-validator type="required">
+  		<message>Please enter a version name.</message>
+  	</field-validator>
+  	<field-validator type="regex">
+         <param name="expression">^[a-zA-Z0-9_.]*$</param>
+         <message>Name can only contain alphanumeric characters, underscores, or periods</message>
+     </field-validator>
+  </field>
+  <field name="description">
+  	 <field-validator type="required">
+  		<message>Please enter a description.</message>
+  	</field-validator>
+  </field>
+</validators>

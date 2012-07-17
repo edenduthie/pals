@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Display a 3D pie chart</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for pie3D {plotrix}"><tr><td>pie3D {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Display a 3D pie chart</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Displays a 3D pie chart with optional labels.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ pie3D(x,edges=100,radius=1,height=0.3,theta=pi/6,start=0,border=par("fg"),
+  col=NULL,labels=NULL,labelpos=NULL,labelcol=par("fg"),labelcex=1.5,
+  sector.order=NULL,explode=0,shade=0.8,...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+a numeric vector for which each value will be a sector</td></tr>
+<tr valign="top"><td><code>edges</code></td>
+<td>
+the number of lines forming an ellipse</td></tr>
+<tr valign="top"><td><code>radius</code></td>
+<td>
+the radius of the pie in user units</td></tr>
+<tr valign="top"><td><code>height</code></td>
+<td>
+the height of the pie in user units</td></tr>
+<tr valign="top"><td><code>theta</code></td>
+<td>
+The angle of viewing in radians</td></tr>
+<tr valign="top"><td><code>start</code></td>
+<td>
+The angle at which to start drawing sectors.</td></tr>
+<tr valign="top"><td><code>border</code></td>
+<td>
+The color of the sector border lines</td></tr>
+<tr valign="top"><td><code>col</code></td>
+<td>
+The colors of the sectors</td></tr>
+<tr valign="top"><td><code>labels</code></td>
+<td>
+Optional labels for each sector</td></tr>
+<tr valign="top"><td><code>labelpos</code></td>
+<td>
+Optional positions for the labels</td></tr>
+<tr valign="top"><td><code>labelcol</code></td>
+<td>
+The color of the labels</td></tr>
+<tr valign="top"><td><code>labelcex</code></td>
+<td>
+The character expansion factor for the labels</td></tr>
+<tr valign="top"><td><code>sector.order</code></td>
+<td>
+Allows the operator to specify the order in
+which the sectors are drawn.</td></tr>
+<tr valign="top"><td><code>explode</code></td>
+<td>
+The amount to "explode" the pie in user units</td></tr>
+<tr valign="top"><td><code>shade</code></td>
+<td>
+If &gt; 0 and &lt; 1, the proportion to reduce the
+brightness of the sector color to get a better 3D effect.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+graphical parameters passed to <span class="samp">plot</span></td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+<span class="samp">pie3D</span> scales the values in <span class="samp">x</span> so that they total 2*pi,
+dropping zeros and NAs. It then displays an empty plot, calculates
+the sequence for drawing the sectors and calls <span class="samp">draw.tilted.sector</span>
+to draw each sector. If labels are supplied, it will call <span class="samp">pie3D.label</span>
+to place a label for each sector. If supplied, the number of labels, label 
+positions and sector colors must be at least equal to the number of values 
+in <span class="samp">x</span>. If the labels are long, it may help to reduce the radius of
+the pie as in the example below.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+The bisecting angle of the sectors in radians.</p>
+
+<h3>Note</h3>
+
+<p>
+Due to the somewhat primitive method used to draw sectors, a sector that
+extends beyond both pi/2 and 3*pi/2 radians in either direction may not
+display properly. Setting <span class="samp">start</span> to pi/2 will often fix this, but
+the user may have to adjust <span class="samp">start</span> and the order of sectors in extreme
+cases. The argument <span class="samp">sector.order</span> allows the user to specify a vector
+of integers that will override the calculation of the order in which the
+sectors are drawn. This is usually necessary when a very large sector that 
+extends past 3*pi/2 is overlapped by a smaller sector next to it.
+</p>
+<p>
+While <span class="samp">pie3D</span> can be used to display a 2D pie chart by setting
+height=0 and theta=pi, the labels produced by <span class="samp">pie3D.labels</span> will
+not be well positioned. It is probably better to use <span class="samp">floating.pie</span>
+for this, or use <span class="samp">pie.labels</span> for the labels.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Jim Lemon
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<span class="samp"><a href="pie3D.labels.html">pie3D.labels</a></span>, <span class="samp"><a href="draw.tilted.sector.html">draw.tilted.sector</a></span>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+ pieval&lt;-c(2,4,6,8)
+ pielabels&lt;-
+  c("We hate\n pies","We oppose\n  pies","We don't\n  care","We just love pies")
+ pie3D(pieval,radius=0.9,labels=pielabels,explode=0.1,main="3D PIE OPINIONS")
+</pre>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

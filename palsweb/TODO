@@ -1,0 +1,10 @@
+'M1: Time step size differs between observed data set and model output: 3600 1800'
+'B4: Could not find benchmark variable "Qle_3km243" in benchmark netcdf file.' - Changed to 3km27 so should be fixed
+
+
+Error: package 'plotrix' was built before R 2.10.0: please re-install it
+DS2: Variable "SWnet" does not exist in data set HyytialaFluxnet
+DS2: Variable "SWnet" does not exist in data set AudubonFluxnet; file:ds995.2690_flux.nc
+...etc...
+DS2: Variable "Rnet" does not exist in data set KrugerFluxnet
+...etc...

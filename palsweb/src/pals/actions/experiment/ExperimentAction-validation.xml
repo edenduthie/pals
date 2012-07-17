@@ -1,0 +1,18 @@
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+       "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+<validators>
+  <field name="experiment.name">
+      <field-validator type="stringlength">
+         <param name="maxLength">20</param>
+         <param name="minLength">1</param>
+         <message>Please enter a name less than 20 characters long.</message>
+     </field-validator>
+     <field-validator type="requiredstring">
+     	<message>Please enter a name for your experiment.</message>
+     </field-validator>
+     <field-validator type="regex">
+         <param name="expression">^[a-zA-Z0-9_. ]*$</param>
+         <message>Name can only contain alphanumeric characters, spaces, underscores, or periods</message>
+     </field-validator>
+  </field>
+</validators>

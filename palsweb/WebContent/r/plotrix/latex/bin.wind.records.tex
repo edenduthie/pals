@@ -1,0 +1,46 @@
+\HeaderA{bin.wind.records}{Classify wind direction and speed records.}{bin.wind.records}
+\keyword{misc}{bin.wind.records}
+\begin{Description}\relax
+Classifies wind direction and speed records into a matrix of
+percentages of observations in speed and direction bins.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+ bin.wind.records(winddir,windspeed,ndir=8,radians=FALSE,
+  speed.breaks=c(0,10,20,30))
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{winddir}] A vector of wind directions.
+\item[\code{windspeed}] A vector of wind speeds corresponding to the above
+directions.
+\item[\code{ndir}] Number of direction bins in a compass circle.
+\item[\code{radians}] Whether wind directions are in radians.
+\item[\code{speed.breaks}] Minimum wind speed for each speed bin.
+\end{ldescription}
+\end{Arguments}
+\begin{Details}\relax
+\samp{bin.wind.records} bins a number of wind direction and speed
+records into a matrix of percentages of observations that can be used to
+display a cumulative wind rose with \samp{oz.windrose} The defaults are those
+used by the Australian Bureau of Meteorology.
+\end{Details}
+\begin{Value}
+A matrix of percentages in which the rows represent wind speed categories and 
+the columns represent wind direction categories.
+\end{Value}
+\begin{Author}\relax
+Jim Lemon
+\end{Author}
+\begin{SeeAlso}\relax
+\samp{\LinkA{oz.windrose}{oz.windrose}}
+\end{SeeAlso}
+\begin{Examples}
+\begin{ExampleCode}
+ winddir<-sample(0:360,100,TRUE)
+ windspeed<-sample(0:40,100,TRUE)
+ bin.wind.records(winddir,windspeed)
+\end{ExampleCode}
+\end{Examples}
+

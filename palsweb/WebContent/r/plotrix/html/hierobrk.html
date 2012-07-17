@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Perform a nested breakdown of numeric values.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for hierobrk {plotrix}"><tr><td>hierobrk {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Perform a nested breakdown of numeric values.</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Breaks down a numeric element of a data frame by one or more
+categorical elements.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ hierobrk(formula,data,maxlevels=10,mct=mean,lmd=NULL,umd=lmd)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>formula</code></td>
+<td>
+A formula with a numeric element of a data frame on the left and
+one or more categorical elements on the right.</td></tr>
+<tr valign="top"><td><code>data</code></td>
+<td>
+A data frame containing the elements in <span class="samp">formula</span>.</td></tr>
+<tr valign="top"><td><code>maxlevels</code></td>
+<td>
+The maximum number of levels in any categorical element. Mainly to
+prevent the mess caused by breaking down by a huge number of categories.</td></tr>
+<tr valign="top"><td><code>mct</code></td>
+<td>
+The measure of central tendency function to use - defaults to the
+normal standard error.</td></tr>
+<tr valign="top"><td><code>lmd</code></td>
+<td>
+The lower measure of dispersion function to use.</td></tr>
+<tr valign="top"><td><code>umd</code></td>
+<td>
+The upper measure of dispersion function to use.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+<span class="samp">hierobrk</span> performs the breakdown of a numeric element of a data frame by one
+or more categorical elements. For each category and optionally subcategories, the
+variable on the left of the formula is summarized as specified by the functions
+named in <span class="samp">num.desc</span>.
+</p>
+<p>
+The user should take care when specifying different summary functions.
+<span class="samp">hierobarp</span> expects a measure of central tendency as the first function and
+measures of dispersion as the second and third, if "error bars" are to be displayed.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+A list with four elements:
+</p>
+<table summary="R argblock">
+<tr valign="top"><td><code>mctlist</code></td>
+<td>
+The array produced by the function passed as the <span class="samp">mct</span> argument.</td></tr>
+<tr valign="top"><td><code>lcllist</code></td>
+<td>
+The array produced by the function passed as the <span class="samp">lmd</span> argument.</td></tr>
+<tr valign="top"><td><code>ucllist</code></td>
+<td>
+The array produced by the function passed as the <span class="samp">umd</span> argument.</td></tr>
+<tr valign="top"><td><code>barlabels</code></td>
+<td>
+A list containing the unique elements of the variables on the right
+side of the formula (or the levels if they are factors), in the order in which they appear in the formula. These will be the default labels for the <span class="samp">hierobarp</span> function.</td></tr>
+</table>
+<p>
+
+This function is similar to <span class="samp">brkdn</span> in the <span class="pkg">prettyR</span> package, but
+is structured to be used with the <span class="samp">hierobarp</span> function.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Jim Lemon
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<span class="samp"><a href="../../emu/html/by.trackdata.html">by</a></span>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+ test.df&lt;-data.frame(Age=rnorm(100,25,10),
+  Sex=sample(c("M","F"),100,TRUE),
+  Marital=sample(c("M","X","S","W"),100,TRUE),
+  Employ=sample(c("FT","PT","NO"),100,TRUE))
+ hierobrk(formula=Age~Sex+Marital+Employ,data=test.df)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

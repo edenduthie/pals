@@ -1,0 +1,40 @@
+\HeaderA{multsymbolbox}{Draw boxes filled with symbols}{multsymbolbox}
+\keyword{aplot}{multsymbolbox}
+\begin{Description}\relax
+Draw boxes on the current figure filled with symbols representing
+individual counts.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+ multsymbolbox(x1,y1,x2,y2,tot,relw=0.8,fg=par("fg"),bg=par("bg"),
+  box=TRUE,debug=FALSE,...)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{x1}] numeric vector: left sides of boxes
+\item[\code{y1}] numeric vector: bottom sides of boxes
+\item[\code{x2}] numeric vector: right sides of boxes
+\item[\code{y2}] numeric vector: top sides of boxes
+\item[\code{tot}] numeric vector: total numbers of symbols to put in each box
+\item[\code{relw}] relative width (relative to height) of symbols
+\item[\code{fg}] foreground color(s)
+\item[\code{bg}] background color(s)
+\item[\code{box}] (logical) draw box borders?
+\item[\code{debug}] debug output?
+\item[\code{...}] additional arguments to polygon() for drawing boxes
+\end{ldescription}
+\end{Arguments}
+\begin{Value}
+none
+\end{Value}
+\begin{Author}\relax
+Ben Bolker
+\end{Author}
+\begin{Examples}
+\begin{ExampleCode}
+ plot(1:10,1:10,type="n")
+ multsymbolbox(c(2,4),5,c(4,5),8,tot=c(10,8))
+\end{ExampleCode}
+\end{Examples}
+

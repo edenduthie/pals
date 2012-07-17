@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Build a list of the mutually exclusive attributes of objects.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for makeDendrite {plotrix}"><tr><td>makeDendrite {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Build a list of the mutually exclusive attributes of objects.</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Build a list of mutually exclusive attributes from a matrix of 
+category indicators.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ makeDendrite(x)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+A data frame or matrix where rows represent objects and columns
+mutually exclusive attributes of a given class.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+The values in <span class="samp">x</span> indicate which attribute of a particular class is
+possessed by the object. For instance, the attributes dead and alive are
+mutually exclusive. <span class="samp">makeDendrite</span> creates a nested list that contains
+the counts of successive combinations of the attributes. The top level
+attributes are taken from the first column, then those are combined with
+the attributes in the second column and so on.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+A list of the counts of objects for each combination of the attribute
+classes.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Jim Lemon
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<span class="samp"><a href="plot.dendrite.html">plot.dendrite</a></span>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+ sex&lt;-sample(c("M","F"),100,TRUE)
+ hair&lt;-sample(c("Blond","Black","Brown","Red"),100,TRUE)
+ eye&lt;-sample(c("Blue","Black","Brown","Green"),100,TRUE)
+ charac&lt;-data.frame(sex=sex,hair=hair,eye=eye)
+ characlist&lt;-makeDendrite(charac)
+ characlist
+</pre>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

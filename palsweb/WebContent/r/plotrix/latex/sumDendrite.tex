@@ -1,0 +1,32 @@
+\HeaderA{sumDendrite}{Sum the counts in the top level of a dendrite object.}{sumDendrite}
+\keyword{misc}{sumDendrite}
+\begin{Description}\relax
+Find the sum of the counts that are the first elements of each
+list in the top level of a dendrite object.
+\end{Description}
+\begin{Usage}
+\begin{verbatim} sumDendrite(x) \end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{x}] A list with a numeric value as the first element in each of its
+toplevel elements.
+\end{ldescription}
+\end{Arguments}
+\begin{Details}\relax
+A \samp{dendrite} object is a possibly nested list of lists that contain the
+counts and pointers to sublists in each list. Such an object describes the 
+attributes of objects that can take on mutually exclusive attributes (that is,
+belong to disjunct sets). \samp{sumDendrite} is a convenience function to get
+the total number of objects that are so classified.
+\end{Details}
+\begin{Value}
+The sum of the counts in the top level of lists.
+\end{Value}
+\begin{Author}\relax
+Jim Lemon
+\end{Author}
+\begin{SeeAlso}\relax
+\samp{\LinkA{plot.dendrite}{plot.dendrite}}
+\end{SeeAlso}
+

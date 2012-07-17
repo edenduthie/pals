@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN" "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+
+<validators>
+	<field name="userToCreate.fullName">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>Please enter your name</message>
+		</field-validator>
+	</field>
+	<field name="userToCreate.institution.name">
+      <field-validator type="stringlength">
+         <param name="maxLength">50</param>
+         <message>Institution name must be 50 characters or less</message>
+     </field-validator>
+     <field-validator type="regex">
+         <param name="expression">^[a-zA-Z0-9_. ]*$</param>
+         <message>Name can only contain alphanumeric characters, underscores, spaces, or periods</message>
+     </field-validator>
+  </field>
+	<field name="userToCreate.username">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>Please enter a username</message>
+		</field-validator>
+		<field-validator type="fieldexpression">
+			<param name="expression">
+			    userToCreate.username.length() > 2
+			</param>
+			<message>Username must be greater than 2 characters</message>
+		</field-validator>
+		<field-validator type="regex">
+		    <param name="expression">^[^\s]+$</param>
+		    <message>No whitespace is allowed in username</message>
+		</field-validator>
+	</field>
+	<field name="userToCreate.password">
+		<field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message>Please enter a password</message>
+		</field-validator>
+		<field-validator type="fieldexpression">
+			<param name="expression">
+			    userToCreate.password.length() > 5
+			</param>
+			<message>Password must be greater than 5 characters</message>
+		</field-validator>
+		<field-validator type="regex">
+		    <param name="expression">^[^\s]+$</param>
+		    <message>No whitespace is allowed in password</message>
+		</field-validator>
+	</field>
+	<field name="userToCreate.email">
+	    <field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message key="Please enter your email address" />
+		</field-validator>
+		<field-validator type="email">
+			<message>Invalid email address</message>
+		</field-validator>
+		<field-validator type="regex">
+		    <param name="expression">^[^\s]+$</param>
+		    <message>No whitespace is allowed in email</message>
+		</field-validator>
+	</field>
+</validators>

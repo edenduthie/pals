@@ -1,0 +1,40 @@
+\HeaderA{textbox}{Add text box}{textbox}
+\keyword{aplot}{textbox}
+\begin{Description}\relax
+Add text to plot, justified, in a box
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+ textbox(x,y,textlist,justify=TRUE,cex=1,leading=0.5,box=TRUE)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{x}] x position: a vector with min. and max. x position
+\item[\code{y}] y position: location of the top of the box
+\item[\code{textlist}] a vector of text strings
+\item[\code{justify}] justify text in box?
+\item[\code{cex}] character size
+\item[\code{leading}] inter-line spacing
+\item[\code{box}] draw a box around the text?
+\end{ldescription}
+\end{Arguments}
+\begin{Details}\relax
+Justifies text in the box by pasting the vector together,
+splitting it into words, and then adding words to the current
+line until the line is wide enough
+\end{Details}
+\begin{Value}
+nil
+\end{Value}
+\begin{Author}\relax
+Ben Bolker
+\end{Author}
+\begin{Examples}
+\begin{ExampleCode}
+ plot.new()
+ textbox(c(0,0.2),1,c("many words","more words","why not?",
+                      "keep going",rep("and going",10)))
+\end{ExampleCode}
+\end{Examples}
+

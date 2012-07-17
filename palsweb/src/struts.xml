@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <constant name="struts.action.excludePattern" value="/SchedulerServlet*"/>
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.objectFactory.spring.autoWire" value="name" />
+	<constant name="struts.objectFactory.spring.autoWire.alwaysRespect"
+		value="true" />
+	<constant name="struts.multipart.maxSize" value="100000000" />
+
+
+	<package name="default" namespace="/" extends="struts-default">
+
+		<action name="Welcome" class="pals.actions.Welcome">
+			<result>/Welcome.jsp</result>
+		</action>
+
+		<action name="Login" class="pals.actions.Login">
+			<result type="redirect">Welcome.action</result>
+			<result name="input">/Welcome.jsp</result>
+		</action>
+
+
+
+		<action name="DownloadDataSet_*" method="{1}" class="pals.actions.DownloadDataSet">
+			<result name="success" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">inputStream</param>
+				<param name="bufferSize">1024</param>
+			</result>
+		</action>
+		
+		<action name="DownloadFile" class="pals.actions.DownloadFile">
+			<result name="success" type="stream">
+				<param name="contentType">${contentType}</param>
+				<param name="inputName">inputStream</param>
+				<param name="bufferSize">1024</param>
+				<param name="contentDisposition">${downloadContentDisposition}</param>
+			</result>
+		</action>
+
+	</package>
+	
+	<package name="upload" namespace="/Upload" extends="struts-default">
+		
+	    <interceptors>
+	        <interceptor-stack name="uploadStack">
+               <interceptor-ref name="exception"/>
+               <interceptor-ref name="alias"/>
+               <interceptor-ref name="servletConfig"/>
+               <interceptor-ref name="i18n"/>
+               <interceptor-ref name="prepare"/>
+               <interceptor-ref name="chain"/>
+               <interceptor-ref name="debugging"/>
+               <interceptor-ref name="profiling"/>
+               <interceptor-ref name="scopedModelDriven"/>
+               <interceptor-ref name="modelDriven"/>
+               <interceptor-ref name="fileUpload"/>
+               <interceptor-ref name="checkbox"/>
+               <interceptor-ref name="staticParams"/>
+               <interceptor-ref name="actionMappingParams"/>
+               <interceptor-ref name="params">
+                 <param name="excludeParams">dojo\..*,^struts\..*</param>
+               </interceptor-ref>
+               <interceptor-ref name="conversionError"/>
+               <interceptor-ref name="validation">
+                   <param name="excludeMethods">input,back,cancel,browse</param>
+               </interceptor-ref>
+               <interceptor-ref name="workflow">
+                   <param name="excludeMethods">input,back,cancel,browse</param>
+               </interceptor-ref>
+           </interceptor-stack>
+        </interceptors>
+           
+        <default-interceptor-ref name="uploadStack"/>
+		
+		<action name="Upload" class="pals.actions.upload.Upload">
+		    <result>/Upload.jsp</result>
+		    <result name="error">/Upload.jsp</result>
+		</action>
+
+	</package>
+
+	<package name="user" namespace="/User" extends="struts-default">
+
+		<interceptors>
+			<interceptor name="authenticationInterceptor" class="pals.utils.AuthenticationInterceptor" />
+			<interceptor-stack name="secureStack">
+				<interceptor-ref name="authenticationInterceptor" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+			<interceptor name="fileUpload"
+				class="org.apache.struts2.interceptor.FileUploadInterceptor" />
+		</interceptors>
+
+		<default-interceptor-ref name="secureStack" />
+
+		<global-results>
+			<result name="login" type="redirect">/Login!input.action</result>
+			<result name="error">/Error.jsp</result>
+		</global-results>
+
+		<action name="Top" class="pals.actions.Top">
+			<result>/User/Top.jsp</result>
+		</action>
+
+		<action name="Test" class="pals.actions.user.TestAction">
+			<result>/User/Test.jsp</result>
+		</action>
+
+		<action name="Home" class="pals.actions.user.Home">
+			<result type="redirect">/User/ListModelOutputs.action</result>
+		</action>
+
+		<action name="Logout" class="pals.actions.user.Logout">
+			<result type="redirect">/Welcome.action</result>
+		</action>
+
+		<action name="NewModelAction_*" method="{1}" class="pals.actions.user.NewModel">
+		    <result name="show">/User/NewModel.jsp</result>
+		    <result name="list">/User/ListModels.jsp</result>
+		    <result name="input">/User/NewModel.jsp</result>
+		    <result name="my">/User/ListModels.jsp</result>
+		</action>
+		
+		<action name="ModelAction_*" method="{1}" class="pals.actions.user.ModelAction">
+		    <result name="view">/User/ViewModel.jsp</result>
+		    <result name="edit">/User/EditModel.jsp</result>
+		    <result name="input">/User/EditModel.jsp</result>
+		    <result name="update" type="redirect">/User/NewModelAction_list.action</result>
+		    <result name="delete">/User/ListModels.jsp</result>
+		</action>
+
+		<action name="ListModelOutputs" class="pals.actions.user.ListModelOutputs">
+			<result name="success">/User/ModelOutputs/ListModelOutputs.jsp</result>
+			<result name="input">/User/ModelOutputs/ListModelOutputs.jsp</result>
+		</action>
+		<action name="ListPublicModelOutputs" class="pals.actions.user.ListPublicModelOutputs">
+			<result name="success">/User/ModelOutputs/ListModelOutputs.jsp</result>
+			<result name="input">/User/ModelOutputs/ListModelOutputs.jsp</result>
+		</action>
+		<action name="ListDataSetOwnerModelOutputs" class="pals.actions.user.ListDataSetOwnerModelOutputs">
+			<result>/User/ModelOutputs/ListModelOutputs.jsp</result>
+		</action>
+		<action name="ModelOutputPlotsSplash" class="pals.actions.user.PlotsSplash">
+			<result>/User/ModelOutputs/PlotsSplash.jsp</result>
+		</action>
+		<action name="ListModelOutputPlots" class="pals.actions.user.ListPlots">
+			<result>/User/ModelOutputs/ListPlots.jsp</result>
+		</action>
+		<action name="ViewModelOutput" class="pals.actions.user.ViewModelOutput">
+			<result>/User/ModelOutputs/ViewModelOutput.jsp</result>
+		</action>
+		<action name="ViewModelOutputPlots" class="pals.actions.user.ViewPlots">
+			<result>/User/ModelOutputs/ViewPlots.jsp</result>
+		</action>
+
+		<action name="ViewAnalysisRun" class="pals.actions.user.ViewAnalysisRun">
+			<result>/User/ModelOutputs/ViewAnalysisRun.jsp</result>
+		</action>
+		<action name="AnalysisRunPDF" class="pals.actions.user.AnalysisRunPDF">
+			<result name="success" type="stream">
+				<param name="contentType">application/pdf</param>
+				<param name="inputName">inputStream</param>
+				<param name="bufferSize">1024</param>
+			</result>
+		</action>
+		<action name="AnalysisRunPNG" class="pals.actions.user.AnalysisRunPNG">
+			<result name="success" type="stream">
+				<param name="contentType">image/png</param>
+				<param name="inputName">inputStream</param>
+				<param name="bufferSize">1024</param>
+			</result>
+		</action>
+		
+		<action name="FileActionPNG" class="pals.actions.user.FileAction">
+			<result name="success" type="stream">
+				<param name="contentType">image/png</param>
+				<param name="inputName">inputStream</param>
+				<param name="bufferSize">1024</param>
+			</result>
+		</action>
+
+		<action name="UploadModelOutput" class="pals.actions.user.UploadModelOutput">
+			<result name="input">/User/ModelOutputs/UploadModelOutput.jsp</result>
+			<result type="redirectAction">
+			    <param name="actionName">ViewModelOutput.action</param>
+			    <param name="namespace">/User</param>
+			    <param name="parse">true</param>
+                <param name="modelOutputId">${modelOutput.id}</param>
+                <param name="message">${message}</param>
+			</result>
+		</action>
+		<action name="EditModelOutput" class="pals.actions.user.EditModelOutput">
+			<result type="redirect">/User/ListModelOutputs.action</result>
+			<result name="error">/User/ModelOutputs/EditModelOutputFail.jsp
+			</result>
+			<result name="input">/User/ModelOutputs/EditModelOutputForm.jsp</result>
+		</action>
+		<action name="EditModelOutputForm" class="pals.actions.user.EditModelOutputForm">
+			<result type="redirect">/User/ListModelOutputs.action</result>
+			<result name="error">/User/ModelOutputs/EditModelOutputFail.jsp
+			</result>
+			<result name="input">/User/ModelOutputs/EditModelOutputForm.jsp
+			</result>
+		</action>
+
+		<action name="ListModels" class="pals.actions.user.ListModels">
+			<result>/User/ListModels.jsp</result>
+		</action>
+		
+		<action name="PhotoDisplay" class="pals.actions.PhotoDisplay">
+			<result name="success" type="stream">
+				<param name="contentType">text/plain</param>
+				<param name="inputName">inputStream</param>
+				<param name="bufferSize">1024</param>
+			</result>
+		</action>
+		
+		<action name="ModelOutputAsFile" class="pals.actions.user.ModelOutputAsFile">
+		    <result name="success">/User/ModelOutputs/asfile.jsp</result>
+		</action>
+		
+		<action name="ModelOutputDynamicPlots" class="pals.actions.user.ModelOutputDynamicPlots">
+		    <result>/User/ModelOutputs/ModelOutputDynamicPlots.jsp</result>
+		</action>
+
+	</package>
+
+	<package name="account" namespace="/Account" extends="struts-default">
+		<interceptors>
+			<interceptor name="accountAuthenticationInterceptor"
+				class="pals.utils.AuthenticationInterceptor" />
+			<interceptor name="fileUpload"
+				class="org.apache.struts2.interceptor.FileUploadInterceptor" />
+			<interceptor-stack name="accountSecureStack">
+				<interceptor-ref name="accountAuthenticationInterceptor" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+
+		<default-interceptor-ref name="accountSecureStack" />
+
+		<global-results>
+			<result name="login" type="redirect">/Login!input.action</result>
+			<result name="error">/Error.jsp</result>
+		</global-results>
+
+		<action name="AccountForm" class="pals.actions.account.AccountForm">
+			<result name="input">/Account/Account.jsp</result>
+			<result>/Account/Account.jsp</result>
+		</action>
+
+		<action name="Account" class="pals.actions.account.Account">
+			<result name="input">/Account/Account.jsp</result>
+			<result name="error">/Account/Account.jsp</result>
+			<result>/Account/Account.jsp</result>
+		</action>
+		<action name="Register" class="pals.actions.account.Register">
+			<result name="input">/Account/Register.jsp</result>
+			<result name="error">/Account/Register.jsp</result>
+			<result type="redirect">/Welcome.action</result>
+		</action>
+		<action name="RegisterForm">
+			<result>/Account/Register.jsp</result>
+		</action>
+	    <action name="Profile" class="pals.actions.account.Profile">
+			<result>/Account/Profile.jsp</result>
+		</action>
+		<action name="ListUsers" class="pals.actions.account.ListUsers">
+			<result>/Account/ListUsers.jsp</result>
+		</action>
+		<action name="ForgotPassword_*" method="{1}" class="pals.actions.account.ForgotPassword">
+			<result name="form">/Account/ForgotPassword.jsp</result>
+			<result name="error">/Account/ForgotPassword.jsp</result>
+			<result name="reset">/Account/ForgotPasswordResult.jsp</result>
+		</action>
+	</package>
+	
+	<package name="dataset" namespace="/DataSet" extends="struts-default">
+		<interceptors>
+			<interceptor name="dataSetAuthenticationInterceptor"
+				class="pals.utils.AuthenticationInterceptor" />
+			<interceptor-stack name="dataSetSecureStack">
+			    <interceptor-ref name="dataSetAuthenticationInterceptor" />
+                <interceptor-ref name="exception"/>
+                <interceptor-ref name="alias"/>
+                <interceptor-ref name="i18n"/>
+                <interceptor-ref name="params">
+                    <param name="excludeParams">dojo\..*,^struts\..*</param>
+                </interceptor-ref>
+               <!-- We add in prepare before the servlet to load items for the select lists -->
+			    <interceptor-ref name="prepare"/>
+                <interceptor-ref name="servletConfig"/>
+                <interceptor-ref name="chain"/>
+                <interceptor-ref name="modelDriven"/>
+                <interceptor-ref name="fileUpload"/>
+                <interceptor-ref name="checkbox"/>
+                <interceptor-ref name="staticParams"/>
+                <interceptor-ref name="actionMappingParams"/>
+                <interceptor-ref name="params">
+                    <param name="excludeParams">dojo\..*,^struts\..*</param>
+                </interceptor-ref>
+                <interceptor-ref name="conversionError"/>
+                <interceptor-ref name="validation">
+                    <param name="excludeMethods">input,back,cancel</param>
+                </interceptor-ref>
+                <interceptor-ref name="workflow">
+                    <param name="excludeMethods">input,back,cancel</param>
+                </interceptor-ref>
+			</interceptor-stack>
+			<interceptor name="fileUpload"
+				class="org.apache.struts2.interceptor.FileUploadInterceptor" />
+		</interceptors>
+
+		<default-interceptor-ref name="dataSetSecureStack" />
+
+		<global-results>
+			<result name="login" type="redirect">/Login!input.action</result>
+			<result name="error">/Error.jsp</result>
+		</global-results>
+		
+		<action name="DataSetAction_*" method="{1}" class="pals.actions.dataset.DataSetAction">
+		    <result name="show">/DataSet/show.jsp</result>
+		    <result name="add">/DataSet/add.jsp</result>
+		    <result name="edit">/DataSet/edit.jsp</result>
+		    <result name="input">/DataSet/${{1}}.jsp</result>
+		    <result name="destroy">/DataSet/destroy.jsp</result>
+		    <result name="list">/DataSet/list.jsp</result>
+		    <result name="cancel">/DataSet/list.jsp</result>
+		    <result name="delete">/DataSet/list.jsp</result>
+		</action>
+		
+		<action name="ListPublicDataSets" class="pals.actions.dataset.ListDataSets">
+			<result>/DataSet/ListPublicDataSets.jsp</result>
+		</action>
+		<action name="ViewDataSet_*" method="{1}" class="pals.actions.dataset.ViewDataSet">
+			<result name="view">/DataSet/ViewDataSet.jsp</result>
+			<result name="latest">/DataSet/ViewDataSet.jsp</result>
+			<result name="experiment">/DataSet/ViewDataSet.jsp</result>
+		</action>
+		<action name="UploadDataSetVersion_*" method="{1}" class="pals.actions.dataset.UploadDataSetVersion">
+			<result name="upload">/DataSet/UploadDataSetVersion.jsp</result>
+			<result name="verify">/DataSet/VerifyDataSetVersion.jsp</result>
+			<result name="cancel" type="redirectAction">
+                <param name="actionName">DataSetAction_list</param>
+                <param name="namespace">/DataSet</param>
+            </result>
+            <result name="accept" type="redirectAction">
+                <param name="actionName">DataSetAction_list</param>
+                <param name="namespace">/DataSet</param>
+            </result>
+            <result name="input">/DataSet/UploadDataSetVersion.jsp</result>
+		</action>
+		<action name="ListDataSetTemplates" class="pals.actions.dataset.ListDataSetTemplates">
+			<result>/DataSet/ListDataSetTemplates.jsp</result>
+		</action>
+		<action name="ListDataSetPlots" class="pals.actions.dataset.DataSetPlotViewAction">
+			<result>/DataSet/DataSetPlots.jsp</result>
+		</action>
+		<action name="Import_*" method="{1}" class="pals.actions.dataset.Import">
+			<result name="form">/DataSet/ImportForm.jsp</result>
+			<result name="submit" type="redirectAction">
+                <param name="actionName">ListPublicDataSets</param>
+                <param name="namespace">/DataSet</param>
+            </result>
+		</action>
+		<action name="QCPlots" class="pals.actions.dataset.QCPlots">
+			<result>/DataSet/QCPlots.jsp</result>
+		</action>
+		
+		<action name="DynamicPlots" class="pals.actions.dataset.DynamicPlots">
+		    <result>/DataSet/DynamicPlots.jsp</result>
+		</action>
+		
+		<action name="DynamicPlotsSingleChart" class="pals.actions.dataset.DynamicPlotsSingleChart">
+		    <result>/DataSet/DynamicPlotsSingleChart.jsp</result>
+		</action>
+		
+		<action name="DataSetAsFile" class="pals.actions.dataset.DataSetAsFile">
+		    <result name="success">/DataSet/asfile.jsp</result>
+		</action>
+	</package>
+	
+	<package name="analysis" namespace="/Analysis" extends="struts-default">
+		<interceptors>
+			<interceptor name="analysisAuthenticationInterceptor"
+				class="pals.utils.AuthenticationInterceptor" />
+			<interceptor-stack name="analysisSecureStack">
+			    <interceptor-ref name="analysisAuthenticationInterceptor" />
+                <interceptor-ref name="exception"/>
+                <interceptor-ref name="alias"/>
+                <interceptor-ref name="i18n"/>
+                <interceptor-ref name="params">
+                    <param name="excludeParams">dojo\..*,^struts\..*</param>
+                </interceptor-ref>
+               <!-- We add in prepare before the servlet to load items for the select lists -->
+			    <interceptor-ref name="prepare"/>
+                <interceptor-ref name="servletConfig"/>
+                <interceptor-ref name="chain"/>
+                <interceptor-ref name="modelDriven"/>
+                <interceptor-ref name="fileUpload"/>
+                <interceptor-ref name="checkbox"/>
+                <interceptor-ref name="staticParams"/>
+                <interceptor-ref name="actionMappingParams"/>
+                <interceptor-ref name="params">
+                    <param name="excludeParams">dojo\..*,^struts\..*</param>
+                </interceptor-ref>
+                <interceptor-ref name="conversionError"/>
+                <interceptor-ref name="validation">
+                    <param name="excludeMethods">input,back,cancel</param>
+                </interceptor-ref>
+                <interceptor-ref name="workflow">
+                    <param name="excludeMethods">input,back,cancel</param>
+                </interceptor-ref>
+			</interceptor-stack>
+			<interceptor name="fileUpload"
+				class="org.apache.struts2.interceptor.FileUploadInterceptor" />
+		</interceptors>
+
+		<default-interceptor-ref name="analysisSecureStack" />
+
+		<global-results>
+			<result name="login" type="redirect">/Login!input.action</result>
+			<result name="error">/Error.jsp</result>
+		</global-results>
+		
+		<action name="DefaultPlots" class="pals.actions.analysis.DefaultPlots">
+		    <result>/Analysis/defaultPlots.jsp</result>
+		</action>
+		
+		<action name="DynamicPlots" class="pals.actions.analysis.DynamicPlots">
+		    <result>/Analysis/DynamicPlots.jsp</result>
+		</action>
+	</package>
+	
+	<package name="experiment" namespace="/Experiment" extends="struts-default">
+		<interceptors>
+			<interceptor name="experimentAuthenticationInterceptor"
+				class="pals.utils.AuthenticationInterceptor" />
+			<interceptor-stack name="experimentSecureStack">
+			    <interceptor-ref name="experimentAuthenticationInterceptor" />
+                <interceptor-ref name="exception"/>
+                <interceptor-ref name="alias"/>
+                <interceptor-ref name="i18n"/>
+                <interceptor-ref name="params">
+                    <param name="excludeParams">dojo\..*,^struts\..*</param>
+                </interceptor-ref>
+               <!-- We add in prepare before the servlet to load items for the select lists -->
+			    <interceptor-ref name="prepare"/>
+                <interceptor-ref name="servletConfig"/>
+                <interceptor-ref name="chain"/>
+                <interceptor-ref name="modelDriven"/>
+                <interceptor-ref name="fileUpload"/>
+                <interceptor-ref name="checkbox"/>
+                <interceptor-ref name="staticParams"/>
+                <interceptor-ref name="actionMappingParams"/>
+                <interceptor-ref name="params">
+                    <param name="excludeParams">dojo\..*,^struts\..*</param>
+                </interceptor-ref>
+                <interceptor-ref name="conversionError"/>
+                <interceptor-ref name="validation">
+                    <param name="excludeMethods">input,back,cancel</param>
+                </interceptor-ref>
+                <interceptor-ref name="workflow">
+                    <param name="excludeMethods">input,back,cancel</param>
+                </interceptor-ref>
+			</interceptor-stack>
+			<interceptor name="fileUpload"
+				class="org.apache.struts2.interceptor.FileUploadInterceptor" />
+		</interceptors>
+
+		<default-interceptor-ref name="experimentSecureStack" />
+
+		<global-results>
+			<result name="login" type="redirect">/Login!input.action</result>
+			<result name="error">/Error.jsp</result>
+		</global-results>
+		
+		<action name="Experiment_*" method="{1}" class="pals.actions.experiment.ExperimentAction">
+		    <result name="list">/Experiment/list.jsp</result>
+		    <result name="form">/Experiment/form.jsp</result>
+		    <result name="add">/Experiment/list.jsp</result>
+		    <result name="input">/Experiment/form.jsp</result>
+		    <result name="load">/Experiment/list.jsp</result>
+		    <result name="close">/Experiment/list.jsp</result>
+		    <result name="share">/Experiment/share.jsp</result>
+		    <result name="list_shared">/Experiment/list_shared.jsp</result>
+		    <result name="update">/Experiment/list.jsp</result>
+		    <result name="delete">/Experiment/list.jsp</result>
+		</action>
+		
+		<action name="ShareExperiment_*" method="{1}" class="pals.actions.experiment.ShareExperiment">
+		    <result name="list">/Experiment/share.jsp</result>
+		    <result name="input" type="redirectAction">
+                <param name="actionName">Experiment_list</param>
+                <param name="namespace">/Experiment</param>
+            </result>
+		    <result name="denied">/Welcome.jsp</result>
+		</action>
+	</package>
+	
+	<package name="json" namespace="/JSON" extends="json-default">
+		<interceptors>
+			<interceptor name="authenticationInterceptor"
+				class="pals.utils.AuthenticationInterceptor" />
+			<interceptor-stack name="secureStack">
+				<interceptor-ref name="authenticationInterceptor" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+			<interceptor name="fileUpload"
+				class="org.apache.struts2.interceptor.FileUploadInterceptor" />
+		</interceptors>
+
+		<default-interceptor-ref name="secureStack" />
+
+		<global-results>
+			<result name="login" type="redirect">/Login!input.action</result>
+			<result name="error">/Error.jsp</result>
+		</global-results>
+
+		<action name="PlotDataAction" class="pals.actions.json.PlotDataAction">
+			<result name="success" type="json">
+			    <param name="root">analysisList</param>
+			    <param name="excludeNullProperties">true</param>
+            </result>
+		</action>
+		
+		<action name="ModelOutputPlotDataAction" class="pals.actions.json.ModelOutputPlotDataAction">
+			<result name="success" type="json">
+			    <param name="root">analysisList</param>
+			    <param name="excludeNullProperties">true</param>
+            </result>
+		</action>
+		
+		<action name="ModelDataAction" class="pals.actions.json.ModelDataAction">
+			<result name="success" type="json">
+			    <param name="root">modelList</param>
+			    <param name="excludeNullProperties">true</param>
+			</result>
+		</action>
+		
+		<action name="ValidationAction_*" method="{1}" class="pals.actions.json.ValidationAction">
+			<result name="modelOutputName" type="json">
+			    <param name="root">message</param>
+			    <param name="excludeNullProperties">true</param>
+			</result>
+			<result name="versionName" type="json">
+			    <param name="root">message</param>
+			    <param name="excludeNullProperties">true</param>
+			</result>
+		</action>
+		
+		<action name="AutocompleteAction_*" method="{1}" class="pals.actions.json.AutocompleteAction">
+			<result name="institution" type="json">
+			    <param name="root">institutionList</param>
+			    <param name="excludeNullProperties">true</param>
+			</result>
+		</action>
+	</package>
+
+	<package name="help" namespace="/User/Help" extends="user">
+		<action name="Help" class="pals.actions.Help">
+			<result>/User/Help/Help.jsp</result>
+		</action>
+	</package>
+
+	<package name="admin" namespace="/Admin" extends="struts-default">
+	
+		<interceptors>
+			<interceptor name="authenticationInterceptor" class="pals.utils.AuthenticationInterceptor" />
+			<interceptor-stack name="secureStack">
+				<interceptor-ref name="authenticationInterceptor" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+			<interceptor name="fileUpload"
+				class="org.apache.struts2.interceptor.FileUploadInterceptor" />
+		</interceptors>
+
+		<default-interceptor-ref name="secureStack" />
+
+		<global-results>
+			<result name="login" type="redirect">/Login!input.action</result>
+			<result name="error">/Error.jsp</result>
+		</global-results>
+	
+		<action name="StartScheduler" class="pals.actions.admin.StartScheduler">
+			<result>/Admin/StartSched.jsp</result>
+		</action>
+		<action name="StopScheduler" class="pals.actions.admin.StopScheduler">
+			<result>/Admin/StopSched.jsp</result>
+		</action>
+		<action name="ReRun" class="pals.actions.admin.ReRun">
+			<result>/Admin/ReRun.jsp</result>
+		</action>
+		<action name="GenerateBenchmarks" class="pals.actions.admin.GenerateBenchmarks">
+            <result>/Admin/GenerateBenchmarks.jsp</result>
+        </action>
+		<action name="Main" class="pals.actions.admin.Main">
+			<result>/Admin/Main.jsp</result>
+		</action>
+		<action name="NewUser" class="pals.actions.admin.NewUser">
+			<result type="redirect">/Admin/Main.action</result>
+			<result name="input">/Admin/NewUser.jsp</result>
+		</action>
+	</package>
+
+</struts>

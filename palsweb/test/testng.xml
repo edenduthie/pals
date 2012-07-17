@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+ 
+<suite name="PalsTestSuite" verbose="1" >
+  <test name="UnitTests"   >
+    <packages>
+      <package name="pals.service" />
+      <package name="pals.dao" />
+      <package name="pals.actions.user" />
+      <package name="pals.entity" />
+   </packages>
+ </test>
+</suite>
+

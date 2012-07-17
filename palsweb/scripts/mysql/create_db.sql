@@ -1,0 +1,13 @@
+INSERT INTO analysis (analysisid, analysisname, analysisvariablename, executablepath, analysistype) VALUES (1, 'Annual Cycle', 'NEE', '/home/stefan/pals/r/rWrapper -f /home/stefan/pals/r/NEEAnnualCycle.R', 'm');
+INSERT INTO analysis (analysisid, analysisname, analysisvariablename, executablepath, analysistype) VALUES (2, 'Annual Cycle', 'Qh', '/home/stefan/pals/r/rWrapper -f /home/stefan/pals/r/QhAnnualCycle.R', 'm');
+INSERT INTO analysis (analysisid, analysisname, analysisvariablename, executablepath, analysistype) VALUES (3, 'Annual Cycle', 'Qle', '/home/stefan/pals/r/rWrapper -f /home/stefan/pals/r/QleAnnualCycle.R', 'm');
+INSERT INTO analysis (analysisid, analysisname, analysisvariablename, executablepath, analysistype) VALUES (4, 'Smoothed Evaporative Fraction', 'Qle/(Qle+Qh)', '/home/stefan/pals/r/rWrapper -f /home/stefan/pals/r/SmoothEvapFrac.R', 'm');
+INSERT INTO analysis (analysisid, analysisname, analysisvariablename, executablepath, analysistype) VALUES (8, 'Diurnal Cycle', 'NEE', '/home/stefan/pals/r/rWrapper -f /home/stefan/pals/r/NEEDiurnalCycle.R', 'm');
+INSERT INTO analysis (analysisid, analysisname, analysisvariablename, executablepath, analysistype) VALUES (9, 'Diurnal Cycle', 'Qh', '/home/stefan/pals/r/rWrapper -f /home/stefan/pals/r/QhDiurnalCycle.R', 'm');
+INSERT INTO analysis (analysisid, analysisname, analysisvariablename, executablepath, analysistype) VALUES (10, 'Diurnal Cycle', 'Qle', '/home/stefan/pals/r/rWrapper -f /home/stefan/pals/r/QleDiurnalCycle.R', 'm');
+INSERT INTO analysis (analysisid, analysisname, analysisvariablename, executablepath, analysistype) VALUES (11, 'Taylor', 'NEE', '/home/stefan/pals/r/rWrapper -f /home/stefan/pals/r/NEETaylor.R', 'm');
+INSERT INTO analysis (analysisid, analysisname, analysisvariablename, executablepath, analysistype) VALUES (12, 'Taylor', 'Qh', '/home/stefan/pals/r/rWrapper -f /home/stefan/pals/r/QhTaylor.R', 'm');
+INSERT INTO analysis (analysisid, analysisname, analysisvariablename, executablepath, analysistype) VALUES (13, 'Taylor', 'Qle', '/home/stefan/pals/r/rWrapper -f /home/stefan/pals/r/QleTaylor.R', 'm');
+INSERT INTO analysis (analysisid, analysisname, analysisvariablename, executablepath, analysistype) VALUES (5, 'Averaging Window', 'NEE', '/home/stefan/pals/r/rWrapper -f /home/stefan/pals/r/NEEAvWindow.R', 'm');
+INSERT INTO analysis (analysisid, analysisname, analysisvariablename, executablepath, analysistype) VALUES (6, 'Averaging Window', 'Qh', '/home/stefan/pals/r/rWrapper -f /home/stefan/pals/r/QhAvWindow.R', 'm');
+INSERT INTO analysis (analysisid, analysisname, analysisvariablename, executablepath, analysistype) VALUES (7, 'Averaging Window', 'Qle', '/home/stefan/pals/r/rWrapper -f /home/stefan/pals/r/QleAvWindow.R', 'm');

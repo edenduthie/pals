@@ -1,0 +1,40 @@
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+       "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+<validators>
+  <field name="modelName">
+      <field-validator type="requiredstring">
+  		<message>Please type a name identifying this Model.</message>
+  	 </field-validator>
+      <field-validator type="stringlength">
+         <param name="maxLength">15</param>
+         <message key="The Model name must be 15 characters or less" />
+     </field-validator>
+     <field-validator type="regex">
+         <param name="expression">^[a-zA-Z0-9_.]*$</param>
+         <message>Name can only contain alphanumeric characters, underscores, or full stops</message>
+     </field-validator>
+  </field> 
+  <field name="version">
+      <field-validator type="requiredstring">
+  		<message>Please type a version for this Model</message>
+  	 </field-validator>
+      <field-validator type="stringlength">
+         <param name="maxLength">15</param>
+         <message key="The version must be 15 characters or less" />
+     </field-validator>
+     <field-validator type="regex">
+         <param name="expression">^[a-zA-Z0-9_.]*$</param>
+         <message>Version can only contain alphanumeric characters, underscores, or full stops</message>
+     </field-validator>
+  </field>
+  <field name="urlM">
+  	 <field-validator type="stringlength">
+         <param name="maxLength">255</param>
+         <param name="minLength">0</param>
+         <message>Please enter a URL less than 255 characters.</message>
+     </field-validator>
+     <field-validator type="url">
+     	<message>Please enter a valid URL including protocol, eg http://www.blah.com</message>
+     </field-validator>
+  </field>
+</validators>

@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Display a Piper diagram.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for piper.diagram {plotrix}"><tr><td>piper.diagram {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Display a Piper diagram.</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Displays a Piper diagram.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ piper.diagram(ca,mg,so4,cl,ions=data.frame(ca=ca,mg=mg,so4=so4,cl=cl),
+  sites=1:NROW(ions),new=FALSE,ppm=TRUE,chull=FALSE,tcsep=0.2,pch=3,
+  main="",cex.lab=0.7,cex.tck=0.6,cex.pch=1,grid=TRUE,col=NA,ticklength=0.03,
+  lwd.frame=1,pch.lwd=0.7,lwd.grid=lwd.frame,col.box="black",col.tck=col.box,
+  col.grid="grey")
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>ca,mg,so4,cl</code></td>
+<td>
+Concentrations of the ions.</td></tr>
+<tr valign="top"><td><code>ions</code></td>
+<td>
+data frame containing the above values.</td></tr>
+<tr valign="top"><td><code>sites</code></td>
+<td>
+Indices for the ions.</td></tr>
+<tr valign="top"><td><code>new</code></td>
+<td>
+Whether this is a new diagram.</td></tr>
+<tr valign="top"><td><code>ppm</code></td>
+<td>
+Whether the concentrations are in milligrams/liter (parts per
+million) or milliequivalents.</td></tr>
+<tr valign="top"><td><code>chull</code></td>
+<td>
+Whether to use the <span class="samp">chull</span> function.</td></tr>
+<tr valign="top"><td><code>tcsep</code></td>
+<td>
+Spacing for tick mark labels.</td></tr>
+<tr valign="top"><td><code>pch</code></td>
+<td>
+Symbol to use for ion values.</td></tr>
+<tr valign="top"><td><code>main</code></td>
+<td>
+Title for the diagram.</td></tr>
+<tr valign="top"><td><code>cex.lab</code></td>
+<td>
+Expansion for the label text.</td></tr>
+<tr valign="top"><td><code>cex.tck</code></td>
+<td>
+Expansion for the tick text.</td></tr>
+<tr valign="top"><td><code>cex.pch</code></td>
+<td>
+Expansion for the point text.</td></tr>
+<tr valign="top"><td><code>grid</code></td>
+<td>
+Whether to display a grid.</td></tr>
+<tr valign="top"><td><code>col</code></td>
+<td>
+Colors for the points.</td></tr>
+<tr valign="top"><td><code>ticklength</code></td>
+<td>
+Length for the ticks.</td></tr>
+<tr valign="top"><td><code>lwd.frame</code></td>
+<td>
+Line width for the frame.</td></tr>
+<tr valign="top"><td><code>pch.lwd</code></td>
+<td>
+Line width for the symbols.</td></tr>
+<tr valign="top"><td><code>lwd.grid</code></td>
+<td>
+Line width for the grid.</td></tr>
+<tr valign="top"><td><code>col.box</code></td>
+<td>
+Color for the box.</td></tr>
+<tr valign="top"><td><code>col.tck</code></td>
+<td>
+Color for the ticks.</td></tr>
+<tr valign="top"><td><code>col.grid</code></td>
+<td>
+Color for the grid.</td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+The return value from piper.points.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Mike Cheetham
+</p>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

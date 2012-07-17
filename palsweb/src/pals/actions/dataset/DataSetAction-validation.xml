@@ -1,0 +1,128 @@
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+       "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+<validators>
+  <field name="name">
+      <field-validator type="stringlength">
+         <param name="maxLength">15</param>
+         <param name="minLength">1</param>
+         <message>Please enter a name less than 16 characters long.</message>
+     </field-validator>
+     <field-validator type="requiredstring">
+     	<message>Please enter a name for your data set.</message>
+     </field-validator>
+     <field-validator type="regex">
+         <param name="expression">^[a-zA-Z0-9_.]*$</param>
+         <message>Name can only contain alphanumeric characters, underscores, or periods</message>
+     </field-validator>
+  </field>
+  <field name="url">
+  	 <field-validator type="stringlength">
+         <param name="maxLength">255</param>
+         <param name="minLength">0</param>
+         <message>Please enter a URL less than 255 characters.</message>
+     </field-validator>
+     <field-validator type="url">
+     	<message>Please enter a valid URL including protocol, eg http://www.blah.com</message>
+     </field-validator>
+  </field>
+  <field name="latString">
+  	<field-validator type="doublevalidator">
+  		<param name="minInclusive">-90</param>
+  		<param name="maxInclusive">90</param>
+  		<message>Latitude must be a decimal value between -90 and 90.</message>
+  	</field-validator>
+  </field>
+  <field name="latDeg">
+  	<field-validator type="integervalidator">
+  		<param name="minInclusive">-90</param>
+  		<param name="maxInclusive">90</param>
+  		<message>Latitude degrees must be an integer value between -90 and 90.</message>
+  	</field-validator>
+  </field>
+  <field name="latMin">
+  	<field-validator type="integervalidator">
+  		<param name="minInclusive">0</param>
+  		<param name="maxInclusive">60</param>
+  		<message>Latitude min must be an integer value between 0 amd 60.</message>
+  	</field-validator>
+  </field>
+  <field name="latSec">
+  	<field-validator type="doublevalidator">
+  		<param name="minInclusive">0</param>
+  		<param name="maxInclusive">60</param>
+  		<message>Latitude sec must be an decimal value between 0 amd 60.</message>
+  	</field-validator>
+  </field>
+  <field name="lonString">
+  	<field-validator type="doublevalidator">
+  		<param name="minInclusive">-180</param>
+  		<param name="maxInclusive">180</param>
+  		<message>Longitude must be a decimal value between -180 and 180.</message>
+  	</field-validator>
+  </field>
+  <field name="lonDeg">
+  	<field-validator type="integervalidator">
+  		<param name="minInclusive">-180</param>
+  		<param name="maxInclusive">180</param>
+  		<message>Longitude degrees must be an integer value between -90 and 90.</message>
+  	</field-validator>
+  </field>
+  <field name="lonMin">
+  	<field-validator type="integervalidator">
+  		<param name="minInclusive">0</param>
+  		<param name="maxInclusive">60</param>
+  		<message>Longitude min must be an integer value between 0 amd 60.</message>
+  	</field-validator>
+  </field>
+  <field name="lonSec">
+  	<field-validator type="doublevalidator">
+  		<param name="minInclusive">0</param>
+  		<param name="maxInclusive">60</param>
+  		<message>Longitude sec must be an decimal value between 0 amd 60.</message>
+  	</field-validator>
+  </field>
+  <field name="elevationString">
+  	 <field-validator type="requiredstring">
+  		<message>Please enter a elevation.</message>
+  	</field-validator>
+  	<field-validator type="doublevalidator">
+  		<param name="minInclusive">-420</param>
+  		<param name="maxInclusive">8849</param>
+  		<message>Elevation must be a decimal value between -420 and 8849.</message>
+  	</field-validator>
+  </field>
+  <field name="maxVegHeight">
+  	 <field-validator type="required">
+  		<message>Please describe the maximum vegetation height .</message>
+  	</field-validator>
+  </field>
+  <field name="towerHeight">
+  	 <field-validator type="required">
+  		<message>Please describe the tower height.</message>
+  	</field-validator>
+  </field>
+  <field name="utcOffsetHoursString">
+    <field-validator type="requiredstring">
+  		<message>Please enter the UTC offset.</message>
+  	</field-validator>
+  	<field-validator type="doublevalidator">
+  		<param name="minInclusive">-12</param>
+  		<param name="maxInclusive">14</param>
+  		<message>UTC offset must be a decimal value between -12 and 14</message>
+  	</field-validator>
+  </field>
+  <field name="dataSet.soilType">
+    <field-validator type="stringlength">
+       <param name="maxLength">50</param>
+       <param name="minLength">0</param>
+       <message>Soil Type must be 50 characters or less.</message>
+   </field-validator>
+  </field>
+  <field name="dataSet.siteContact">
+    <field-validator type="stringlength">
+       <param name="maxLength">50</param>
+       <param name="minLength">0</param>
+       <message>Site Contact must be 50 characters or less.</message>
+   </field-validator>
+  </field>
+</validators>

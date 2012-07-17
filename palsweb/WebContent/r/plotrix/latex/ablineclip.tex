@@ -1,0 +1,52 @@
+\HeaderA{ablineclip}{Add a straight line to a plot}{ablineclip}
+\keyword{aplot}{ablineclip}
+\begin{Description}\relax
+As \samp{abline}, but has arguments \samp{x1,x2,y1,y2} as in \samp{clip}.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+ ablineclip(a=NULL,b=NULL,h=NULL,v=NULL,reg=NULL,coef=NULL,untf=FALSE,
+  x1=NULL,x2=NULL,y1=NULL,y2=NULL,...)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{a}] Intercept.
+\item[\code{b}] Slope.
+\item[\code{h}] the x-value(s) for vertical line(s).
+\item[\code{v}] the y-value(s) for horizontal line(s).
+\item[\code{reg}] Fitted lm object. 
+\item[\code{coef}] Coefficients, typically intercept and slope.
+\item[\code{untf}] How to plot on log coordinates, see \samp{abline}.
+\item[\code{x1,x2,y1,y2}] Clipping limits, see \samp{clip}.
+\item[\code{...}] Further arguments passed to \samp{abline}.
+\end{ldescription}
+\end{Arguments}
+\begin{Details}\relax
+\samp{ablineclip} sets a new clipping region and then calls \samp{abline}.
+If any of the four clipping limits is NULL, the values from \samp{par("usr")}
+are substituted. After the call to \samp{abline}, the old clipping region
+is restored. In order to make \samp{clip} work, there is a call to \samp{abline}
+that draws a line off the plot.
+\end{Details}
+\begin{Value}
+None. Adds to the current plot.
+\end{Value}
+\begin{Author}\relax
+Remko Duursma
+\end{Author}
+\begin{SeeAlso}\relax
+\samp{\LinkA{abline}{abline}}
+\end{SeeAlso}
+\begin{Examples}
+\begin{ExampleCode}
+ x <- rnorm(100)
+ y <- x + rnorm(100)
+ lmfit <- lm(y~x)
+ plot(x,y,xlim=c(-3.5,3.5))
+ ablineclip(lmfit,x1=-2,x2=2,lty=2)
+ ablineclip(h=0,x1=-2,x2=2,lty=3,col="red")
+ ablineclip(v=0,y1=-2.5,y2=1.5,lty=4,col="green")
+\end{ExampleCode}
+\end{Examples}
+

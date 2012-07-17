@@ -1,0 +1,60 @@
+\HeaderA{symbolbarplot}{barplot filled with symbols}{symbolbarplot}
+\keyword{hplot}{symbolbarplot}
+\begin{Description}\relax
+Produces a barplot where each piece of the barplot is filled with the
+number of symbols equal to the size of the bar
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+ symbolbarplot(height,width=1,space=NULL,names.arg=NULL,
+  legend.text=NULL,beside=FALSE,horiz=FALSE,col=heat.colors(NR),
+  border=par("fg"),main=NULL,sub=NULL,xlab=NULL,ylab=NULL,xlim=NULL,
+  ylim=NULL,axes=TRUE,axisnames=TRUE,inside=TRUE,plot=TRUE,rel.width=0.8,
+  symbol="circles",symbbox=TRUE,debug=FALSE,...)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{height}] numeric vector or matrix of barplot heights
+\item[\code{width}] width of bars
+\item[\code{space}] space between bars
+\item[\code{names.arg}] vector of names
+\item[\code{legend.text}] vector of legend text
+\item[\code{beside}] (logical) plot bars beside each other?
+\item[\code{horiz}] (logical) horizontal barplot?
+\item[\code{col}] vector of colors
+\item[\code{border}] plot border?
+\item[\code{main}] main title
+\item[\code{sub}] subtitle
+\item[\code{xlab}] x axis label
+\item[\code{ylab}] y axis label
+\item[\code{xlim}] x limits
+\item[\code{ylim}] y limits
+\item[\code{axes}] draw axes?
+\item[\code{axisnames}] label horizontal axis?
+\item[\code{inside}] draw lines dividing adjacent bars?
+\item[\code{plot}] produce plot?
+\item[\code{rel.width}] relative width of symbols
+\item[\code{symbol}] which symbol to use
+\item[\code{symbbox}] draw boxes for symbol boxes?
+\item[\code{debug}] debug output?
+\item[\code{...}] further arguments to multsymbolbox
+\end{ldescription}
+\end{Arguments}
+\begin{Value}
+Nil
+\end{Value}
+\begin{Note}\relax
+This is a mostly a hack of barplot()
+\end{Note}
+\begin{Author}\relax
+Ben Bolker
+\end{Author}
+\begin{Examples}
+\begin{ExampleCode}
+ set.seed(1001)
+ bvals <- matrix(rpois(12,20),nrow=3)
+ b <- symbolbarplot(bvals)
+\end{ExampleCode}
+\end{Examples}
+

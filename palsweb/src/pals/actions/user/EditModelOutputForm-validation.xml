@@ -1,0 +1,44 @@
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+       "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+<validators>
+  <field name="modelOutputName">
+      <field-validator type="requiredstring">
+  		<message>Please type a name identifying this Model Output.</message>
+  	 </field-validator>
+      <field-validator type="stringlength">
+         <param name="maxLength">15</param>
+         <message key="modelOutputName.tooLong" />
+     </field-validator>
+     <field-validator type="regex">
+         <param name="expression">^[a-zA-Z0-9_.]*$</param>
+         <message>Name can only contain alphanumeric characters, underscores, or periods</message>
+     </field-validator>
+  </field>
+  <field name="stateSelection">
+    <field-validator type="requiredstring">
+      <message>You must provide information about State Selection</message>
+    </field-validator>
+    <field-validator type="stringlength">
+         <param name="maxLength">255</param>
+         <message>Please restrict your description to 255 characters.</message>
+     </field-validator>
+  </field>
+  <field name="parameterSelection">
+    <field-validator type="requiredstring">
+      <message>You must provide information about Parameter Selection</message>
+    </field-validator>
+    <field-validator type="stringlength">
+         <param name="maxLength">255</param>
+         <message>Please restrict your description to 255 characters.</message>
+     </field-validator>
+  </field>
+  <!--
+  <field name="userComments">
+    <field-validator type="stringlength">
+         <param name="maxLength">255</param>
+         <message>Please restrict your description to 255 characters.</message>
+     </field-validator>
+  </field>
+  -->
+  
+</validators>

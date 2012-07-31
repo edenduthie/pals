@@ -45,21 +45,22 @@ public class AnalysisService
 			generatePlot(analysis,OUTPUT_TYPE_PDF);
 			generatePlot(analysis,OUTPUT_TYPE_PNG);
 			generateThumbnail(analysis);
-			generateBenchmark(analysis,OUTPUT_TYPE_PNG);
-			generateBenchmark(analysis,OUTPUT_TYPE_PDF);
 			analysis.setStatus(Analysis.STATUS_COMPLETE);
 		} catch (AnalysisException e) {
 			e.printStackTrace();
+			log.error(e.getMessage());
 			analysis.setStatus(Analysis.STATUS_ERROR);
-			analysis.setErrorMessage(e.getMessage());
+			analysis.setErrorMessage("R script failure");
 		} catch (IOException e) {
 			e.printStackTrace();
+			log.error(e.getMessage());
 			analysis.setStatus(Analysis.STATUS_ERROR);
-			analysis.setErrorMessage(e.getMessage());
+			analysis.setErrorMessage("Failed to locate data");
 		} catch (InterruptedException e) {
 			e.printStackTrace();
+			log.error(e.getMessage());
 			analysis.setStatus(Analysis.STATUS_ERROR);
-			analysis.setErrorMessage(e.getMessage());
+			analysis.setErrorMessage("Processing interrupted");
 		} 
 		analysis.setEndTime(new Date());
 		dao.update(analysis);

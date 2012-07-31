@@ -62,7 +62,22 @@ public class AnalysisService
 			analysis.setErrorMessage(e.getMessage());
 		} 
 		analysis.setEndTime(new Date());
-		dao.update(analysis);    	
+		dao.update(analysis);
+		
+		// now run the benchmarks and don't complain if there is an error
+		try {
+			generateBenchmark(analysis,OUTPUT_TYPE_PNG);
+			generateBenchmark(analysis,OUTPUT_TYPE_PDF);
+		} catch (AnalysisException e) {
+			log.error(e);
+			e.printStackTrace();
+		} catch (IOException e) {
+			log.error(e);
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			log.error(e);
+			e.printStackTrace();
+		}
     }
     
 	public void generatePlot(Analysis analysis, String outType) throws AnalysisException, IOException, InterruptedException

@@ -59,7 +59,7 @@ AnnualCycle = function(obslabel,acdata,varname,ytext,legendtext,
 			pscore[p-1] = sum(abs(data_monthly[,p] - data_monthly[,1])) /
 				sum(abs(mean(data_monthly[,1]) - data_monthly[,1]))
 		}	
-	}	
+	}
 	axis(1,at=c(2,4,6,8,10,12),labels=c('2','4','6','8','10','12'),cex.axis=1.3)
 	if(modlabel=='no'){ # i.e. an obs analysis
 		title(paste('Average monthly ',varname[1],':   Obs - ',obslabel,

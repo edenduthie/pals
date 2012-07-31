@@ -146,13 +146,13 @@
 			<classpath refid="compile.classpath" />
 		</javac>
 		
-		<!-- switch to tornado properties -->
+		<!-- switch to prod properties -->
 		<move file="${src.home}/pals.properties" tofile="${src.home}/pals.properties.dev" />
-		<move file="${src.home}/pals.properties.tornado" tofile="${src.home}/pals.properties" />
+		<move file="${src.home}/pals.properties.prod" tofile="${src.home}/pals.properties" />
 		
-		<!-- switch to tornado log4j -->
+		<!-- switch to prod log4j -->
 		<move file="${src.home}/log4j.properties" tofile="${src.home}/log4j.properties.dev" />
-		<move file="${src.home}/log4j.properties.tornado" tofile="${src.home}/log4j.properties" />
+		<move file="${src.home}/log4j.properties.prod" tofile="${src.home}/log4j.properties" />
 
 		<!-- Copy application resources -->
 		<copy todir="${build.home}/WEB-INF/classes">
@@ -160,16 +160,16 @@
 		</copy>
 		
 		<!-- switch back to dev properties -->
-		<move file="${src.home}/pals.properties" tofile="${src.home}/pals.properties.tornado" />
+		<move file="${src.home}/pals.properties" tofile="${src.home}/pals.properties.prod" />
 		<move file="${src.home}/pals.properties.dev" tofile="${src.home}/pals.properties" />
 		
 		<!-- switch back to dev log4j -->
-		<move file="${src.home}/log4j.properties" tofile="${src.home}/log4j.properties.tornado" />
+		<move file="${src.home}/log4j.properties" tofile="${src.home}/log4j.properties.prod" />
 		<move file="${src.home}/log4j.properties.dev" tofile="${src.home}/log4j.properties" />
 
 	</target>
 	
-	<target name="compile-tornado" depends="prepare-tornado" description="Compile Java sources">
+	<target name="compile-prod" depends="prepare-prod" description="Compile Java sources">
 
 		<!-- Compile Java classes as necessary -->
 		<mkdir dir="${build.home}/WEB-INF/classes" />
@@ -179,9 +179,9 @@
 			<classpath refid="compile.classpath" />
 		</javac>
 		
-		<!-- switch to tornado properties -->
+		<!-- switch to prod properties -->
 		<move file="${src.home}/pals.properties" tofile="${src.home}/pals.properties.dev" />
-		<move file="${src.home}/pals.properties.tornado" tofile="${src.home}/pals.properties" />
+		<move file="${src.home}/pals.properties.prod" tofile="${src.home}/pals.properties" />
 
 		<!-- Copy application resources -->
 		<copy todir="${build.home}/WEB-INF/classes">
@@ -189,7 +189,7 @@
 		</copy>
 		
 		<!-- switch back to dev properties -->
-		<move file="${src.home}/pals.properties" tofile="${src.home}/pals.properties.tornado" />
+		<move file="${src.home}/pals.properties" tofile="${src.home}/pals.properties.prod" />
 		<move file="${src.home}/pals.properties.dev" tofile="${src.home}/pals.properties" />
 
 	</target>
@@ -208,13 +208,13 @@
 		<mkdir dir="${build.home}/WEB-INF" />
 		<mkdir dir="${build.home}/WEB-INF/classes" />
 		
-		<!-- switch to tornadouction applicationContext.xml -->
+		<!-- switch to production applicationContext.xml -->
 		<move file="${web.home}/WEB-INF/applicationContext.xml" tofile="${web.home}/WEB-INF/applicationContext.xml.dev" />
-		<move file="${web.home}/WEB-INF/applicationContext.xml.tornado" tofile="${web.home}/WEB-INF/applicationContext.xml" />
+		<move file="${web.home}/WEB-INF/applicationContext.xml.prod" tofile="${web.home}/WEB-INF/applicationContext.xml" />
 
-		<!-- switch to tornadouction rWrapper -->
+		<!-- switch to production rWrapper -->
 		<move file="${web.home}/r/rWrapper" tofile="${web.home}/r/rWrapper.dev" />
-		<move file="${web.home}/r/rWrapper.tornado" tofile="${web.home}/r/rWrapper" />
+		<move file="${web.home}/r/rWrapper.prod" tofile="${web.home}/r/rWrapper" />
 
 		<!-- Copy static content of this web application -->
 		<copy todir="${build.home}">
@@ -222,11 +222,11 @@
 		</copy>
 		
 		<!-- switch back to dev applicationContext.xml -->
-		<move file="${web.home}/WEB-INF/applicationContext.xml" tofile="${web.home}/WEB-INF/applicationContext.xml.tornado" />
+		<move file="${web.home}/WEB-INF/applicationContext.xml" tofile="${web.home}/WEB-INF/applicationContext.xml.prod" />
 		<move file="${web.home}/WEB-INF/applicationContext.xml.dev" tofile="${web.home}/WEB-INF/applicationContext.xml" />
 
 		<!-- switch back to dev rWrapper -->
-		<move file="${web.home}/r/rWrapper" tofile="${web.home}/r/rWrapper.tornado" />
+		<move file="${web.home}/r/rWrapper" tofile="${web.home}/r/rWrapper.prod" />
 		<move file="${web.home}/r/rWrapper.dev" tofile="${web.home}/r/rWrapper" />
 		
 		<!-- Copy external dependencies as required -->
@@ -287,20 +287,20 @@
 
 	</target>
 	
-    <target name="prepare-tornado">
+    <target name="prepare-prod">
 
         <!-- Create build directories as needed -->
         <mkdir dir="${build.home}" />
         <mkdir dir="${build.home}/WEB-INF" />
         <mkdir dir="${build.home}/WEB-INF/classes" />
         
-        <!-- switch to tornadouction applicationContext.xml -->
+        <!-- switch to production applicationContext.xml -->
         <move file="${web.home}/WEB-INF/applicationContext.xml" tofile="${web.home}/WEB-INF/applicationContext.xml.dev" />
-        <move file="${web.home}/WEB-INF/applicationContext.xml.tornado" tofile="${web.home}/WEB-INF/applicationContext.xml" />
+        <move file="${web.home}/WEB-INF/applicationContext.xml.prod" tofile="${web.home}/WEB-INF/applicationContext.xml" />
 
-        <!-- switch to tornadouction rWrapper -->
+        <!-- switch to production rWrapper -->
         <move file="${web.home}/r/rWrapper" tofile="${web.home}/r/rWrapper.dev" />
-        <move file="${web.home}/r/rWrapper.tornado" tofile="${web.home}/r/rWrapper" />
+        <move file="${web.home}/r/rWrapper.prod" tofile="${web.home}/r/rWrapper" />
 
         <!-- Copy static content of this web application -->
         <copy todir="${build.home}">
@@ -308,11 +308,11 @@
         </copy>
         
         <!-- switch back to dev applicationContext.xml -->
-        <move file="${web.home}/WEB-INF/applicationContext.xml" tofile="${web.home}/WEB-INF/applicationContext.xml.tornado" />
+        <move file="${web.home}/WEB-INF/applicationContext.xml" tofile="${web.home}/WEB-INF/applicationContext.xml.prod" />
         <move file="${web.home}/WEB-INF/applicationContext.xml.dev" tofile="${web.home}/WEB-INF/applicationContext.xml" />
 
         <!-- switch back to dev rWrapper -->
-        <move file="${web.home}/r/rWrapper" tofile="${web.home}/r/rWrapper.tornado" />
+        <move file="${web.home}/r/rWrapper" tofile="${web.home}/r/rWrapper.prod" />
         <move file="${web.home}/r/rWrapper.dev" tofile="${web.home}/r/rWrapper" />
         
         <!-- Copy external dependencies as required -->
@@ -383,7 +383,7 @@
 
 	</target>
 	
-	<target name="dist-tornado" depends="clean,compile-tornado,javadoc" description="Create binary distribution">
+	<target name="dist-prod" depends="clean,compile-prod,javadoc" description="Create binary distribution">
 
 		<!-- Create application JAR file -->
 		<jar jarfile="${dist.home}/${app.name}.war"

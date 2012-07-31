@@ -68,13 +68,13 @@ public class PalsFileUtils {
         }
         catch( IOException e )
         {
-        	throw new AnalysisException(parseOutputForError(stdout));
+        	throw new AnalysisException(parseOutputForError(stdout,exStr));
         }
 	}
 	
-	public static String parseOutputForError(ByteArrayOutputStream output) throws IOException
+	public static String parseOutputForError(ByteArrayOutputStream output, String command) throws IOException
 	{	
-		String error = "R script failure";
+		String error = "R script failure script: " + command;
 		ByteArrayInputStream in = new ByteArrayInputStream(output.toByteArray());
 		BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 		String line;

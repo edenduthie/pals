@@ -187,7 +187,7 @@
 		
 		<td class="mo"><a class="moLarge" href='ViewModelOutput.action?modelOutputId=<s:property value="id" />'><s:property value="name"/></a></td>
 		
-		<td class="mo"><a class="moItalic" href='ListModelOutputPlots.action?filterModelOutputId=<s:property value="id" />&filterModelId=<s:property value="model.id" />'>View Plots</a></td>
+		<td class="mo"><a class="moItalic" href='../Analysis/DefaultPlots.action?filterModelOutputId=<s:property value="id" />&filterModelId=<s:property value="model.id" />'>View Plots</a></td>
 		
 		<s:if test="#fullAccessLevel != 'PRIVATE'">
 		    <td class="mo"><a href='../Account/Profile.action?username=<s:property value="owner.username"/>'><s:property value="owner.fullName"></s:property></a></td>

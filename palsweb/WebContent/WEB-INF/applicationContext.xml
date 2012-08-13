@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+	
+	<bean id="userDAO" class="pals.dao.UserDAO"/>
+	<bean id="countryDAO" class="pals.dao.CountryDAO"/>
+	<bean id="vegetationTypeDAO" class="pals.dao.VegetationTypeDAO"/>
+	<bean id="dataSetDAO" class="pals.dao.DataSetDAO"/>
+	<bean id="analysisDAO" class="pals.dao.AnalysisDAO"/>
+	<bean id="modelDAO" class="pals.dao.ModelDAO"/>
+	<bean id="dao" class="pals.dao.DAO"></bean>
+	
+	<bean id="userService" class="pals.service.UserServiceJPAImpl">
+	    <property name="fileService" ref="fileService" />
+	</bean>
+	<bean id="publicService" class="pals.service.PublicServiceJPAImpl"/>
+	<bean id="analysisService" class="pals.service.AnalysisServiceJPAImpl">
+	    <property name="analysableService" ref="analysableService" />
+	    <property name="analysisEntityService" ref="analysisEntityService" />
+	</bean>
+	<bean id="analysableService" class="pals.service.AnalysableService">
+	    <property name="dao" ref="dao" />
+	</bean>
+	<bean id="analysisEntityService" class="pals.service.AnalysisService">
+	    <property name="dao" ref="dao" />
+	</bean>
+	<bean id="dataSetVersionService" class="pals.service.DataSetVersionService">
+	    <property name="dao" ref="dao" />
+	    <property name="analysisEntityService" ref="analysisEntityService" />
+	</bean>
+	<bean id="dataSetService" class="pals.service.DataSetService">
+	    <property name="dao" ref="dao" />
+	    <property name="dataSetVersionService" ref="dataSetVersionService" />
+	    <property name="modelOutputService" ref="modelOutputService" />
+	</bean>
+	<bean id="modelOutputService" class="pals.service.ModelOutputService">
+	    <property name="dao" ref="dao" />
+	    <property name="analysisEntityService" ref="analysisEntityService" />
+	    <property name="fileService" ref="fileService" />
+	</bean>
+    <bean id="experimentService" class="pals.service.ExperimentService">
+	    <property name="dao" ref="dao" />
+	    <property name="userDAO" ref="userDAO" />
+	    <property name="dataSetService" ref="dataSetService" />
+	    <property name="modelOutputService" ref="modelOutputService" />
+	    <property name="modelService" ref="modelService" />
+	</bean>
+	<bean id="modelService" class="pals.service.ModelService">
+	    <property name="dao" ref="dao" />
+	    <property name="modelOutputService" ref="modelOutputService" />
+	    <property name="fileService" ref="fileService" />
+	</bean>
+	<bean id="photoService" class="pals.service.PhotoService">
+	    <property name="dao" ref="dao" />
+	</bean>
+	<bean id="fileService" class="pals.service.FileService">
+	    <property name="dao" ref="dao" />
+	</bean>
+	<bean id="mailService" class="pals.service.MailService">
+	</bean>
+	<bean id="accountService" class="pals.service.AccountService">
+	    <property name="dao" ref="dao" />
+	    <property name="userDAO" ref="userDAO" />
+	    <property name="mailService" ref="mailService" />
+	</bean>
+	
+	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+     
+   <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                <property name="databasePlatform" value="org.hibernate.dialect.PostgreSQLDialect"/>
+                <property name="showSql" value="false" />
+            </bean>
+        </property>
+        <property name="persistenceUnitName" value="productionPU" />
+    </bean>
+    
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="org.postgresql.Driver" />
+        <property name="url" value="jdbc:postgresql://127.0.0.1:5432/pals" />
+        <property name="username" value="pals" />
+        <property name="password" value="****" />
+    </bean>
+    
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+
+    <tx:annotation-driven transaction-manager="transactionManager" />
+	
+	
+</beans>

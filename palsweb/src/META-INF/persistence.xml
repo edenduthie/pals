@@ -8,7 +8,7 @@
    </persistence-unit>
    <persistence-unit name="testPU">
        <properties>
-          <property name="hibernate.hbm2ddl.auto" value="create"/>
+          <!-- <property name="hibernate.hbm2ddl.auto" value="create"/>  -->
        </properties>
    </persistence-unit>
   

@@ -592,7 +592,8 @@ public class DataSetVersionService
 	public void generateBenchmarks(User user) 
 	{
 		// retrieve all data set versions for this experiment
-		List<DataSetVersion> dsvs = getAllDataSetVersions(user.getCurrentExperiment());
+		//List<DataSetVersion> dsvs = getAllDataSetVersions(user.getCurrentExperiment());
+		List<DataSetVersion> dsvs = getAllDataSetVersions();
 		
 		// run empirical benchmarks on them
 		for( DataSetVersion dsv : dsvs )
@@ -656,4 +657,31 @@ public class DataSetVersionService
 			}
 			return dsvs;
 		}
+	
+	/**
+	 * Retrieves every single data set version in the database
+	 * @return
+	 */
+	public List<DataSetVersion> getAllDataSetVersions() 
+	{
+		String queryString = "from DataSetVersion dsv";
+		Query query = dao.getEntityManager().createQuery(queryString);
+		List<Object> results = query.getResultList();
+		List<DataSetVersion> dsvs = new ArrayList<DataSetVersion>();
+		for( Object result : results )
+		{
+			DataSetVersion dsv = null;
+			if( result instanceof DataSetVersion )
+			{
+				dsv = (DataSetVersion) result;
+			}
+			else
+			{
+				Object[] resultObjectArray = (Object[]) result;
+				dsv = (DataSetVersion) resultObjectArray[0];
+			}
+			dsvs.add(dsv);
+		}
+		return dsvs;
+	}
 }

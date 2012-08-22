@@ -447,13 +447,15 @@ a.actbar:hover {
 
 .pbut {
 	font-size: 12px;
-	line-height: 24px; !important;
-	height: 24px;
+	/*line-height: 24px; !important;*/
+	/*height: 24px;*/
 	text-decoration: none;
 	border: 1px solid #999;
-	padding: 3px 10px 4px 10px;
+	/*padding: 3px 10px 4px 10px;*/
 	font-family: "Helvetica";
 	cursor: pointer;
+	padding: 3px 10px;
+	background-color: #F0F0F0;
 }
 
 .pbut-link {

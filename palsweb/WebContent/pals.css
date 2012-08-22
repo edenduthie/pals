@@ -1712,3 +1712,19 @@ table.mo th.mo b
 {
 	width: 150px;
 	float: right;
+}
+
+.workspace-table-actions
+{
+    width: 130px;	
+}
+
+.workspace-table-name
+{
+    width: 150px;   
+}
+
+.workspace-table-owner
+{
+    width: 110px;   
+}

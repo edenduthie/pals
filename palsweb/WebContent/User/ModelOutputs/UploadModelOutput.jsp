@@ -109,8 +109,8 @@
 	<input type="hidden" id="filename" name="filename" />
 	<s:textfield name="modelOutputName" label="Name"/>
 	<div id="modelOutputNameValidation" class="error-text"></div>
-	<s:select name="modelId" label="Model" list="models" listKey="id" listValue="identifier"/>
-	<s:select name="dataSetVersionId" label="DataSet" list="dataSetVersions" listKey="id" listValue="displayName"/>
+	<s:select name="modelId" label="Model" list="models" listKey="id" listValue="identifier" headerKey="-1" headerValue=""/>
+	<s:select name="dataSetVersionId" label="DataSet" list="dataSetVersions" listKey="id" listValue="displayName" headerKey="-1" headerValue=""/>
 	<s:select name="stateSelection" list="stateSelections" emptyOption="true"
 	    label="State Selection"/>
 	<div id="stateSelectionValidation" class="error-text"></div>

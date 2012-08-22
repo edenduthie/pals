@@ -32,6 +32,18 @@
          <message>Please restrict your description to 255 characters.</message>
      </field-validator>
   </field>
+  <field name="modelId">
+      <field-validator type="int">
+          <param name="min">1</param>
+          <message>Please select a model</message>
+      </field-validator>
+  </field>
+  <field name="dataSetVersionId">
+      <field-validator type="int">
+          <param name="min">1</param>
+          <message>Please select a data set version</message>
+      </field-validator>
+  </field>
   <!--  
   <field name="userComments">
     <field-validator type="stringlength">

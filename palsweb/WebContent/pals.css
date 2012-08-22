@@ -1197,6 +1197,16 @@ tr#experiment-row td a strong
     padding: 0;	
 }
 
+.experiments-list 
+{
+	width: 1056px;
+}
+
+.experiments-list table
+{
+	width: 1058px;
+}
+
 .experiments-list th
 {
     background-color: #DDD9D1;

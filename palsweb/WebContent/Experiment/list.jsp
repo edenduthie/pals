@@ -48,9 +48,9 @@
 	                <div class="experiment-name" id='experiment-name-<s:property value="id"/>'><div class="experiment-edit-button"><a href="javascript:void(0)" onclick="editName(<s:property value="id"/>,'<s:property value="name"/>')"><img alt="Edit" title="Edit" src="../images/edit.jpg"></img></a></div><s:property value="name"/></div>
 	            </td>
 	            <td><!--actions-->
-	                    <a href="Experiment_load?experimentId=<s:property value="id"/>" title="Load"><img src="../images/load.png" alt="Load" title="Load"></img></a>
-                        <a href="ShareExperiment_list?experimentId=<s:property value="id"/>" title="Share"><img src="../images/share.png" alt="Share" title="Share"></img></a>
-                        <a href="javascript:void(0)" onclick="deleteExp(<s:property value="id"/>,'<s:property value="name"/>')" title="Delete"><img src="../images/delete.png" alt="Delete" title="Delete"></img></a>
+	                    <a href="Experiment_load?experimentId=<s:property value="id"/>" title="Load">Enter</a>, 
+                        <a href="ShareExperiment_list?experimentId=<s:property value="id"/>" title="Share">Share</a>, 
+                        <a href="javascript:void(0)" onclick="deleteExp(<s:property value="id"/>,'<s:property value="name"/>')" title="Delete">Delete</a>
 	            </td>
 	            <td>
 	                <a href="<%=request.getContextPath()%>/Account/Profile.action?username=<s:property value='owner.username' />"><s:property value="owner.fullName" /></a>
@@ -88,7 +88,7 @@
 	                <div class="experiment-name" id='experiment-name-<s:property value="id"/>'><s:property value="name"/></div>
 	            </td>
 	            <td><!--actions-->
-	                    <a href="Experiment_load?experimentId=<s:property value="id"/>" title="Load"><img src="../images/load.png" alt="Load" title="Load"></img></a>
+	                    <a href="Experiment_load?experimentId=<s:property value="id"/>" title="Load">Enter</a>
 	            </td>
 	            <td>
 	                <a href="<%=request.getContextPath()%>/Account/Profile.action?username=<s:property value='owner.username' />"><s:property value="owner.fullName" /></a>

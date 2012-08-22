@@ -35,7 +35,7 @@
 	<table>
 	    <tr>
 	        <th>Name</th>
-	        <th>Actions</th>
+	        <th class="workspace-table-actions">Actions</th>
 	        <th>Owner</th>
 	        <th>Users</th>
 	        <th>Data Sets</th>
@@ -47,7 +47,7 @@
 	            <td><!--name-->
 	                <div class="experiment-name" id='experiment-name-<s:property value="id"/>'><div class="experiment-edit-button"><a href="javascript:void(0)" onclick="editName(<s:property value="id"/>,'<s:property value="name"/>')"><img alt="Edit" title="Edit" src="../images/edit.jpg"></img></a></div><s:property value="name"/></div>
 	            </td>
-	            <td><!--actions-->
+	            <td class="workspace-table-actions"><!--actions-->
 	                    <a href="Experiment_load?experimentId=<s:property value="id"/>" title="Load">Enter</a>, 
                         <a href="ShareExperiment_list?experimentId=<s:property value="id"/>" title="Share">Share</a>, 
                         <a href="javascript:void(0)" onclick="deleteExp(<s:property value="id"/>,'<s:property value="name"/>')" title="Delete">Delete</a>
@@ -75,7 +75,7 @@
 	<table>
 	    <tr>
 	        <th>Name</th>
-	        <th>Actions</th>
+	        <th class="workspace-table-actions">Actions</th>
 	        <th>Owner</th>
 	        <th>Users</th>
 	        <th>Data Sets</th>
@@ -87,7 +87,7 @@
 	            <td><!--name-->
 	                <div class="experiment-name" id='experiment-name-<s:property value="id"/>'><s:property value="name"/></div>
 	            </td>
-	            <td><!--actions-->
+	            <td class="workspace-table-actions"><!--actions-->
 	                    <a href="Experiment_load?experimentId=<s:property value="id"/>" title="Load">Enter</a>
 	            </td>
 	            <td>

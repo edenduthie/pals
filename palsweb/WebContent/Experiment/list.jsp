@@ -25,7 +25,7 @@
     <div class="experiments-list">
 
 	<a id="create-experiment-link" class="pbut-link" href="/pals/Experiment/Experiment_form.action">
-	    Create an Workspace   
+	    Create a new workspace   
 	</a>	
 	<h2 id="my-experiments-title">My Workspaces</h2>
 	

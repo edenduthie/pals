@@ -864,7 +864,7 @@ public class DataSetServiceTest extends BaseTest{
 		String sortString = "";
 		String result = dataSetService.addSortItem(sortString,DataSetService.COLUMN_NAME,
 		    Globals.SORT_ASC,null,null);
-		Assert.assertEquals(result," ds.dataSetType ASC,");
+		Assert.assertEquals(result," ds.name ASC,");
 	}
 	
 	@Test
@@ -887,7 +887,7 @@ public class DataSetServiceTest extends BaseTest{
 		String queryString = "";
 		Assert.assertEquals(dataSetService.addSort(queryString,Globals.SORT_ASC,
 				Globals.SORT_ASC,Globals.SORT_ASC,null,null),
-		    " order by  ds.name ASC, ds.country.name ASC, ds.vegetationType.vegetationType ASC");
+		    " order by  ds.name ASC, ds.country.name ASC, ds.vegType.vegetationType ASC");
 	}
 	
 	@Test
@@ -896,7 +896,7 @@ public class DataSetServiceTest extends BaseTest{
 		String queryString = "";
 		Assert.assertEquals(dataSetService.addSort(queryString,Globals.SORT_ASC,
 				Globals.SORT_ASC,Globals.SORT_ASC,DataSetService.COLUMN_VEG_TYPE,DataSetService.COLUMN_COUNTRY),
-		    " order by  ds.vegetationType.vegetationType ASC, ds.country.name ASC, ds.name ASC");
+		    " order by  ds.vegType.vegetationType ASC, ds.country.name ASC, ds.name ASC");
 	}
 	
 	@Test

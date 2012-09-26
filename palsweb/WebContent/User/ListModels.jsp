@@ -46,7 +46,7 @@
 	<s:iterator value="models">
 		<tr>
 		<td class="mo"><a href='<%=request.getContextPath()%>/User/ModelAction_view.action?modelId=<s:property value="id" />'><s:property value="modelName"/></a></td>
-		<td class="mo"><a class="moItalic" href='ListModelOutputPlots.action?filterModelId=<s:property value="id" />'>View Model Output Plots</a></td>
+		<td class="mo"><a class="moItalic" href='<%=request.getContextPath()%>/Analysis/DefaultPlots.action?filterModelId=<s:property value="id" />'>View Model Output Plots</a></td>
 		<td class="mo"><s:property value="version"/></td>
 		<td class="mo"><s:property value="user.fullName"/></td>
 		<td class="mo"><s:date name="createdDate" format="dd MMM yyyy hh:mm"/></td>

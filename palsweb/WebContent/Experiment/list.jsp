@@ -25,7 +25,7 @@
     <div class="experiments-list">
 
 	<a id="create-experiment-link" class="pbut-link" href="/pals/Experiment/Experiment_form.action">
-	    Create an Workspace   
+	    Create a new workspace   
 	</a>	
 	<h2 id="my-experiments-title">My Workspaces</h2>
 	
@@ -34,9 +34,9 @@
 	
 	<table>
 	    <tr>
-	        <th>Name</th>
-	        <th>Actions</th>
-	        <th>Owner</th>
+	        <th class="workspace-table-name">Name</th>
+	        <th class="workspace-table-actions">Actions</th>
+	        <th class="workspace-table-owner">Owner</th>
 	        <th>Users</th>
 	        <th>Data Sets</th>
 	        <th>Created</th>
@@ -44,15 +44,15 @@
 	    </tr>
 	    <s:iterator value="myExperiments">
 	        <tr class="experiment-item <s:if test="(user.currentExperiment != null) && (user.currentExperiment.id==id)">selected-experiment</s:if>">
-	            <td><!--name-->
+	            <td class="workspace-table-name"><!--name-->
 	                <div class="experiment-name" id='experiment-name-<s:property value="id"/>'><div class="experiment-edit-button"><a href="javascript:void(0)" onclick="editName(<s:property value="id"/>,'<s:property value="name"/>')"><img alt="Edit" title="Edit" src="../images/edit.jpg"></img></a></div><s:property value="name"/></div>
 	            </td>
-	            <td><!--actions-->
-	                    <a href="Experiment_load?experimentId=<s:property value="id"/>" title="Load"><img src="../images/load.png" alt="Load" title="Load"></img></a>
-                        <a href="ShareExperiment_list?experimentId=<s:property value="id"/>" title="Share"><img src="../images/share.png" alt="Share" title="Share"></img></a>
-                        <a href="javascript:void(0)" onclick="deleteExp(<s:property value="id"/>,'<s:property value="name"/>')" title="Delete"><img src="../images/delete.png" alt="Delete" title="Delete"></img></a>
+	            <td class="workspace-table-actions"><!--actions-->
+	                    <a href="Experiment_load?experimentId=<s:property value="id"/>" title="Load">Enter</a>, 
+                        <a href="ShareExperiment_list?experimentId=<s:property value="id"/>" title="Share">Share</a>, 
+                        <a href="javascript:void(0)" onclick="deleteExp(<s:property value="id"/>,'<s:property value="name"/>')" title="Delete">Delete</a>
 	            </td>
-	            <td>
+	            <td class="workspace-table-owner">
 	                <a href="<%=request.getContextPath()%>/Account/Profile.action?username=<s:property value='owner.username' />"><s:property value="owner.fullName" /></a>
 	            </td>
 	            <td><s:property value="sharedList.size()" /></td>
@@ -74,9 +74,9 @@
 	
 	<table>
 	    <tr>
-	        <th>Name</th>
-	        <th>Actions</th>
-	        <th>Owner</th>
+	        <th class="workspace-table-name">Name</th>
+	        <th class="workspace-table-actions">Actions</th>
+	        <th class="workspace-table-owner">Owner</th>
 	        <th>Users</th>
 	        <th>Data Sets</th>
 	        <th>Created</th>
@@ -84,13 +84,13 @@
 	    </tr>
 	    <s:iterator value="sharedExperiments">
 	        <tr class="experiment-item <s:if test="(user.currentExperiment != null) && (user.currentExperiment.id==id)">selected-experiment</s:if>">
-	            <td><!--name-->
+	            <td class="workspace-table-name"><!--name-->
 	                <div class="experiment-name" id='experiment-name-<s:property value="id"/>'><s:property value="name"/></div>
 	            </td>
-	            <td><!--actions-->
-	                    <a href="Experiment_load?experimentId=<s:property value="id"/>" title="Load"><img src="../images/load.png" alt="Load" title="Load"></img></a>
+	            <td class="workspace-table-actions"><!--actions-->
+	                    <a href="Experiment_load?experimentId=<s:property value="id"/>" title="Load">Enter</a>
 	            </td>
-	            <td>
+	            <td class="workspace-table-owner">
 	                <a href="<%=request.getContextPath()%>/Account/Profile.action?username=<s:property value='owner.username' />"><s:property value="owner.fullName" /></a>
 	            </td>
 	            <td><s:property value="sharedList.size()" /></td>

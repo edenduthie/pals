@@ -62,6 +62,8 @@ public class DataSetVersionService
     	qcPlotsFile.delete();
     	File uploadedFile = new File(dsv.uploadedFilePath());
     	uploadedFile.delete();
+    	File benchFile = new File(dsv.retrieveBenchFilePath());
+    	benchFile.delete();
     	dao.delete(DataSetVersion.class.getName(), "id", dsv.getId());
     }
     

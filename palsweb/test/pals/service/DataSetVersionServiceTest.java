@@ -101,6 +101,8 @@ public class DataSetVersionServiceTest extends BaseTest
 	    uploadedFile.createNewFile();
 	    File qcFile = new File(entity.retrieveQCPlotsFilePath());
 	    qcFile.createNewFile();
+	    File benchFile = new File(entity.retrieveBenchFilePath());
+	    benchFile.createNewFile();
 	    
 	    // create analysis to be deleted
 		String cwd = System.getProperty("user.dir");
@@ -145,6 +147,7 @@ public class DataSetVersionServiceTest extends BaseTest
 	    	Assert.assertFalse(fluxFile.exists());
 	    	Assert.assertFalse(uploadedFile.exists());
 	    	Assert.assertFalse(qcFile.exists());
+	    	Assert.assertFalse(benchFile.exists());
 	    }
 	    
     	@SuppressWarnings("unchecked")

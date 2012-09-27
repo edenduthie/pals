@@ -88,7 +88,7 @@
 	<pre><s:property value="topOfFile"/></pre>
 	</td></tr>
 	
-	<s:if test="modelOutput.owner.username == user.username">
+	
 	
 	<tr><td colspan="2">
 	<hr size=1 />
@@ -102,7 +102,7 @@
 	<br>
 	</td></tr>
 	
-	</s:if>
+	
 	
 	<tr><td colspan="2">
     <hr size=1 />

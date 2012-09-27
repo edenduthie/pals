@@ -44,7 +44,14 @@ $(document).ready(function(){
     	        analysisTypeFilterId = data[0].analysisType.analysisTypeName;
     	        variableFilterId = data[0].analysisType.variableName;
     	    }
-    	    displaySelectOptions();
+    	    if( strutsDataSetId != -1 || strutsDataSetVersionId != -1 )
+    	    {
+    	    	displaySelectOptionsDataSetChanged(false);
+    	    }
+    	    else
+    	    {
+    	    	displaySelectOptions();
+    	    }
     	    refilterDisplay();
     	    $("#wait").hide();
     	}

@@ -37,7 +37,7 @@
 
 	<table cellpadding="1" width="100%">
 
-	<a class="pbut-link" href='ListModelOutputPlots.action?filterModelOutputId=<s:property value="modelOutputId" />&filterModelId=<s:property value="modelOutput.model.id" />'>View Plots</a>
+	<a class="pbut-link" href='<%=request.getContextPath()%>/Analysis/DefaultPlots.action?filterModelOutputId=<s:property value="modelOutputId" />&filterModelId=<s:property value="modelOutput.model.id" />'>View Plots</a>
 	
 	</td>
 	</tr>

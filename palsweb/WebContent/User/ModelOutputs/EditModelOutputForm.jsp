@@ -29,7 +29,7 @@
 	<s:hidden name="editTask" value="modify" id="editTaskInput" />
 	<s:hidden name="modelOutputId" value="%{modelOutput.id}" />
 	<s:textfield name="modelOutputName" label="Name" value="%{modelOutput.name}"/>
-	<s:select name="modelId" label="Model" list="models" listKey="id" listValue="identifier"/>
+	<s:select name="modelId" label="Model" list="models" listKey="id" listValue="identifier" value="%{modelOutput.modelId}"/>
 	<s:select name="dataSetVersionId" label="DataSet" list="dataSetVersions" listKey="id" listValue="displayName" value="modelOutput.dataSetVersionId"/>
 	<s:select name="stateSelection" list="stateSelections" emptyOption="true"
 	    label="State Selection" value="modelOutput.stateSelection"/>

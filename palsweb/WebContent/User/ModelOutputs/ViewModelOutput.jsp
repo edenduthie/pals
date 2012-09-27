@@ -104,6 +104,16 @@
 	
 	</s:if>
 	
+	<tr><td colspan="2">
+    <hr size=1 />
+    </td></tr>
+    
+    <tr><td  colspan="2">
+    <b>Download NetCDF</b><br>
+    <div><a href="../DownloadModelOutput.action?modelOutputId=<s:property value="modelOutputId" />">.nc</a></div>
+    <br>
+    </td></tr>
+	
 	&nbsp<br />
 	</table>
 	

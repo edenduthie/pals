@@ -142,6 +142,12 @@ public class ModelOutput extends Analysable {
 	        id + Globals.NETCDF_FILE_SUFFIX;
 	}
 	
+	public String retrieveOutputFileName()
+	{
+	    return Globals.MODEL_OUTPUT_FILE_PREFIX + 
+	        id + Globals.NETCDF_FILE_SUFFIX;
+	}
+	
 	public String retrieveOutputFilePathBench() 
 	{
 	    return getOwner().retrieveFilePath() + File.separator + Globals.BENCH_FILE_PREFIX + 

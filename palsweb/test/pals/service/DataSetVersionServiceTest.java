@@ -562,6 +562,8 @@ public class DataSetVersionServiceTest extends BaseTest
 	    uploadedFile.createNewFile();
 	    File qcFile = new File(entity.retrieveQCPlotsFilePath());
 	    qcFile.createNewFile();
+	    File benchFile = new File(entity.retrieveBenchFilePath());
+	    benchFile.createNewFile();
 	    
 	    DataSetVersion copy = service.copy(entity,entity.getDataSet());
 	    Assert.assertNotNull(copy.getId());
@@ -585,6 +587,7 @@ public class DataSetVersionServiceTest extends BaseTest
 	    checkDifferentFile(copy.retrieveMetFilePath(),entity.retrieveMetFilePath());
 	    checkDifferentFile(copy.retrieveOutputFilePath(),entity.retrieveOutputFilePath());
 	    checkDifferentFile(copy.retrieveQCPlotsFilePath(),entity.retrieveQCPlotsFilePath());
+	    checkDifferentFile(copy.retrieveBenchFilePath(),entity.retrieveBenchFilePath());
 		
 	    service.delete(copy.getId());
 		tearDown();
@@ -592,6 +595,7 @@ public class DataSetVersionServiceTest extends BaseTest
 		fluxFile.delete();
 		uploadedFile.delete();
 		qcFile.delete();
+		benchFile.delete();
 	}
 	
 	@Test

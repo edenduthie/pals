@@ -225,7 +225,12 @@
 		</td>
 		
 		<td class="mo">
-             <a href="../DownloadModelOutput.action?modelOutputId=<s:property value="id" />">.nc</a>
+		     <s:if test="mainAccessLevel == 'PUBLIC' && !allowDownload">
+		         <div class="grey">.nc</div>
+		     </s:if>
+		     <s:else>
+                 <a href="../DownloadModelOutput.action?modelOutputId=<s:property value="id" />">.nc</a>
+             </s:else>
         </td>
 		
 		</tr>

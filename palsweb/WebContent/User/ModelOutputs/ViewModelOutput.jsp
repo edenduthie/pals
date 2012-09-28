@@ -104,6 +104,7 @@
 	
 	
 	
+	<!--  
 	<tr><td colspan="2">
     <hr size=1 />
     </td></tr>
@@ -113,6 +114,7 @@
     <div><a href="../DownloadModelOutput.action?modelOutputId=<s:property value="modelOutputId" />">.nc</a></div>
     <br>
     </td></tr>
+    -->
 	
 	&nbsp<br />
 	</table>

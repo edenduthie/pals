@@ -36,7 +36,8 @@
 	<s:select name="parameterSelection" list="parameterSelections" emptyOption="true"
 	    label="Parameter Selection" value="modelOutput.parameterSelection"/>
 	<s:textarea name="userComments" label="Please add any comments that would aid reproducing this simulation" rows="5" cols="50" />
-		<br>
+	<s:checkbox name="allowDownload" value="modelOutput.allowDownload">Allow public users to download the uploaded model output file</s:checkbox>
+	<br>
     <s:if test="modelOutput.files.size() > 0" >
 	<i>Existing Ancillary Files:</i>
 	<table class="existing-files-table">

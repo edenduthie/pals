@@ -49,6 +49,7 @@ public class EditModelOutputForm extends UserAwareAction {
 	String stateSelection;
 	String parameterSelection;
 	String userComments;
+	Boolean allowDownload;
 	
 	ModelOutputService modelOutputService;
 	ModelService modelService;
@@ -282,7 +283,7 @@ public class EditModelOutputForm extends UserAwareAction {
 	private String executeModify() throws SecurityException, IOException {
 		try {
 			removeFiles();
-			getModelOutputService().updateModelOutput(getUser(), getModelOutput(), getModelOutputName(), getModelId(), getDataSetVersionId(), getStateSelection(), getParameterSelection(), getUserComments(),getUpload(),getUploadFileName(),getUploadContentType());
+			getModelOutputService().updateModelOutput(getUser(), getModelOutput(), getModelOutputName(), getModelId(), getDataSetVersionId(), getStateSelection(), getParameterSelection(), getUserComments(),getUpload(),getUploadFileName(),getUploadContentType(),getAllowDownload());
 		} catch (InvalidInputException e) {
 			addFieldError("modelOutputName","That name already exists, please select a different name");
 			return INPUT;
@@ -398,5 +399,13 @@ public class EditModelOutputForm extends UserAwareAction {
     public void setUploadContentType(List<String> contentTypes) {
         this.uploadContentTypes = contentTypes;
     }
+
+	public Boolean getAllowDownload() {
+		return allowDownload;
+	}
+
+	public void setAllowDownload(Boolean allowDownload) {
+		this.allowDownload = allowDownload;
+	}
 	
 }

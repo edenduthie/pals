@@ -99,6 +99,11 @@ public class ListModelOutputs extends ListModelOutputsBase
 	public String getAccessLevel() {
 		return ModelOutput.ACCESS_LEVEL_PRIVATE;
 	}
+	
+	public String getMainAccessLevel()
+	{
+		return getAccessLevel();
+	}
 
 	public List<Model> getModels() {
 		return models;

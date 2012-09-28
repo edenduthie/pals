@@ -30,6 +30,7 @@ public class UploadModelOutput extends UserAwareAction {
 	String stateSelection;
 	String parameterSelection;
 	String userComments;
+	Boolean allowDownload;
 	
 	List<String> stateSelections;
 	List<String> parameterSelections;
@@ -141,7 +142,7 @@ public class UploadModelOutput extends UserAwareAction {
 			}
 		    DataSetVersion dsv = dataSetVersionService.get(getDataSetVersionId());
 		    modelOutput = modelOutputService.newModelOutput(getUser(), getModelOutputRaw(), getModelOutputName(), getModelId(), dsv, getStateSelection(), getParameterSelection(), getUserComments(),
-		        getUpload(),getUploadFileName(),getUploadContentType());
+		        getUpload(),getUploadFileName(),getUploadContentType(),getAllowDownload());
 		    message = "Model Output Created. Analysis scripts are now running on your data and plots will be available shortly.";
 		}
 		catch( IOException ioe )
@@ -270,5 +271,13 @@ public class UploadModelOutput extends UserAwareAction {
 
 	public void setFilename(String filename) {
 		this.filename = filename;
+	}
+
+	public Boolean getAllowDownload() {
+		return allowDownload;
+	}
+
+	public void setAllowDownload(Boolean allowDownload) {
+		this.allowDownload = allowDownload;
 	}
 }

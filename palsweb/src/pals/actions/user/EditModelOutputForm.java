@@ -153,8 +153,25 @@ public class EditModelOutputForm extends UserAwareAction {
 		return modelService.getModels(getUser());
 	}
 	
-	public Collection<DataSetVersion> getDataSetVersions() {
-		return getDataSetService().getDataSetVersions(getUser());
+	public Collection<DataSetVersion> getDataSetVersions() throws SecurityException {
+		Collection<DataSetVersion> versions = 
+			getDataSetService().getDataSetVersions(getUser());
+		if( getModelOutput() != null && getModelOutput().getDataSetVersionId() != null )
+		{
+			boolean have = false;
+			for( DataSetVersion version : versions )
+			{
+				if( version.getId().equals(getModelOutput().getDataSetVersionId()) )
+				{
+					have = true;
+				}
+			}
+			if( !have )
+			{
+				versions.add(getModelOutput().getDataSetVersion());
+			}
+		}
+		return versions;
 	}
 	
 	public String execute() {

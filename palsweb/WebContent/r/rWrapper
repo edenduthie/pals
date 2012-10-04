@@ -1,6 +1,6 @@
 #!/bin/bash
-export DISPLAY=:9.0
-source /etc/profile.d/modules.sh 
-module add R
-export R_LIBS_USER=/opt/tomcat/6.0.20/sites/pals.unsw.edu.au/pals/r/workspace
+#export DISPLAY=:9.0
+#source /etc/profile.d/modules.sh 
+#module add R
+export R_LIBS_USER=/root/pals/palsweb/WebContent/r/workspace
 R $@

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
+import javax.persistence.NonUniqueResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -63,6 +64,11 @@ public class DAO {
     	catch( NoResultException e )
     	{
     		log.debug(e.getMessage());
+    		return null;
+    	}
+    	catch( NonUniqueResultException nure )
+    	{
+    		log.debug(nure);
     		return null;
     	}
     }

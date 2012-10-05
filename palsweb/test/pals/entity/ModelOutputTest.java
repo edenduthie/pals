@@ -13,6 +13,6 @@ public class ModelOutputTest
     	ModelOutput modelOutput = TestEntityFactory.modelOutput();
     	modelOutput.setId(1);
     	String filePath = modelOutput.retrieveOutputFilePath();
-    	Assert.assertEquals(filePath,Configuration.getInstance().PATH_TO_APP_DATA + "\\username\\mo1.nc");
+    	Assert.assertEquals(filePath,Configuration.getInstance().PATH_TO_APP_DATA + "/username/mo1.nc");
     }
 }

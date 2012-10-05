@@ -13,7 +13,7 @@ import pals.entity.Photo;
 
 public class PhotoServiceTest extends BaseTest
 {
-	String srcFilename = "testdata/largerimage.png";
+	String srcFilename = "testdata/largerImage.png";
 	String srcFilenameGif = "testdata/gif_test.gif";
 	String srcFilenameJpeg = "testdata/jpeg_test.jpg";
 	String destFilename = "testdata/largerimage_temp.png";

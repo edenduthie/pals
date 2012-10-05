@@ -56,6 +56,8 @@ public class ModelOutput extends Analysable {
 	@JoinColumn(name="dataSetVersionId",referencedColumnName="id",insertable=false,updatable=false)
 	private DataSetVersion		dataSetVersion;
 	
+	private Boolean allowDownload;
+	
 	public ModelOutput()
 	{
 		setStatus(Analysable.STATUS_NEW);
@@ -142,6 +144,12 @@ public class ModelOutput extends Analysable {
 	        id + Globals.NETCDF_FILE_SUFFIX;
 	}
 	
+	public String retrieveOutputFileName()
+	{
+	    return Globals.MODEL_OUTPUT_FILE_PREFIX + 
+	        id + Globals.NETCDF_FILE_SUFFIX;
+	}
+	
 	public String retrieveOutputFilePathBench() 
 	{
 	    return getOwner().retrieveFilePath() + File.separator + Globals.BENCH_FILE_PREFIX + 
@@ -183,5 +191,13 @@ public class ModelOutput extends Analysable {
 		{
 			return false;
 		}
+	}
+
+	public Boolean getAllowDownload() {
+		return allowDownload;
+	}
+
+	public void setAllowDownload(Boolean allowDownload) {
+		this.allowDownload = allowDownload;
 	}
 }

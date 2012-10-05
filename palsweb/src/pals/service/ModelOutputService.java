@@ -74,6 +74,20 @@ public class ModelOutputService
 	public ModelOutput newModelOutput(User user, File uploadedFile,
 			String name, Integer modelId, DataSetVersion dataSetVersion,
 			String stateSelection, String parameterSelection,
+			String userComments, Boolean allowDownload) 
+	    throws IOException, InvalidInputException 
+	{
+		return newModelOutput(user, uploadedFile,
+				name, modelId, dataSetVersion,
+				stateSelection, parameterSelection,
+				userComments,
+				null,null,null,allowDownload);
+	}
+	
+	@Transactional(rollbackFor = { IOException.class } )
+	public ModelOutput newModelOutput(User user, File uploadedFile,
+			String name, Integer modelId, DataSetVersion dataSetVersion,
+			String stateSelection, String parameterSelection,
 			String userComments) 
 	    throws IOException, InvalidInputException 
 	{
@@ -81,7 +95,7 @@ public class ModelOutputService
 				name, modelId, dataSetVersion,
 				stateSelection, parameterSelection,
 				userComments,
-				null,null,null);
+				null,null,null,true);
 	}
 	
 	@Transactional(rollbackFor = { IOException.class } )
@@ -89,7 +103,8 @@ public class ModelOutputService
 			String name, Integer modelId, DataSetVersion dataSetVersion,
 			String stateSelection, String parameterSelection,
 			String userComments,
-			List<File> uploads, List<String> uploadFileNames, List<String> uploadContentTypes) 
+			List<File> uploads, List<String> uploadFileNames, List<String> uploadContentTypes,
+			Boolean allowDownload) 
 	    throws IOException, InvalidInputException 
 	{
 	    checkNameNotTaken(name);
@@ -111,6 +126,7 @@ public class ModelOutputService
 		modelOutput.setParameterSelection(parameterSelection);
 		modelOutput.setUserComments(userComments);
 		modelOutput.setStatus(ModelOutput.STATUS_PREPARED);
+		modelOutput.setAllowDownload(allowDownload);
 		
 		Experiment e = user.getCurrentExperiment();
 		if( e != null )
@@ -219,6 +235,19 @@ public class ModelOutputService
 		}
 	}
 	
+	public void updateModelOutput(User user, ModelOutput modelOutput,
+			String modelOutputName, Integer modelId, Integer dataSetId,
+			String stateSelection, String parameterSelection,
+			String userComments,
+			List<File> uploads, List<String> uploadFileNames, List<String> uploadContentTypes
+			) throws SecurityException, InvalidInputException, IOException 
+			{
+		updateModelOutput(user, modelOutput, modelOutputName, modelId, dataSetId,
+				stateSelection, parameterSelection, userComments,
+				uploads, uploadFileNames, uploadContentTypes,
+				true);
+	}
+	
 	/***
 	 * Update attributes for a Model Output. If any of the attribute variables
 	 * passed through are null, they are not updated. If DataSet changes we need
@@ -232,8 +261,8 @@ public class ModelOutputService
 			String modelOutputName, Integer modelId, Integer dataSetId,
 			String stateSelection, String parameterSelection,
 			String userComments,
-			List<File> uploads, List<String> uploadFileNames, List<String> uploadContentTypes
-			) throws SecurityException, InvalidInputException, IOException {
+			List<File> uploads, List<String> uploadFileNames, List<String> uploadContentTypes,
+			Boolean allowDownload) throws SecurityException, InvalidInputException, IOException {
 		checkUserCanEditModelOutput(user, modelOutput);
 		modelOutput = get(modelOutput.getId());
 		if( modelOutputName != null && !modelOutputName.equals(modelOutput.getName()) )
@@ -288,6 +317,12 @@ public class ModelOutputService
 		    	isModified = true;
 		    }
 		    modelOutput.setFiles(fileList);
+		}
+		
+		if( allowDownload != null )
+		{
+			modelOutput.setAllowDownload(allowDownload);
+			isModified = true;
 		}
 		
 		if (isModified) {

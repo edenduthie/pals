@@ -66,7 +66,7 @@ For more information contact <a href="mailto:palshelp@gmail.com">palshelp@gmail.
 	<br />
 	
 	<div class="small">
-	Last updated 4 July 2012.
+	Last updated 26 September 2012.
 	</div>
 	
 	<p>&nbsp;</p>

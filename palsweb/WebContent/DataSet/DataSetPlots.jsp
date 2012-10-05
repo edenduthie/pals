@@ -44,7 +44,14 @@ $(document).ready(function(){
     	        analysisTypeFilterId = data[0].analysisType.analysisTypeName;
     	        variableFilterId = data[0].analysisType.variableName;
     	    }
-    	    displaySelectOptions();
+    	    if( strutsDataSetId != -1 || strutsDataSetVersionId != -1 )
+    	    {
+    	    	displaySelectOptionsDataSetChanged(false);
+    	    }
+    	    else
+    	    {
+        	    displaySelectOptions();
+    	    }
     	    refilterDisplay();
     	    $("#wait").hide();
     	}
@@ -346,8 +353,9 @@ function fillSelectOptions(elementId,arrayWithNames,valueToFill,idValue,emptyVal
 </s:include>
 
 <script>
-document.getElementById("mbDataSets").setAttribute("class","mbON");
-document.getElementById("smbPublicDataSets").setAttribute("class","smbON");
+document.getElementById("mbAnalysis").setAttribute("class","mbON");
+//document.getElementById("mbDataSets").setAttribute("class","mbON");
+//document.getElementById("smbPublicDataSets").setAttribute("class","smbON");
 </script>
 
 <div id="wait"><img src="../images/wait28.gif""/></div>

@@ -77,8 +77,7 @@ public class AnalysisServiceTestModelOutput extends BaseTest
     	
 		analysisType = TestEntityFactory.analysisType();
 		String cwd = System.getProperty("user.dir");
-		executablePath = "R -f " + cwd + "\\" + "WebContent" +
-		    "\\" + "r" + "\\" + "ModelAnnualCycleNEE.R";
+		executablePath = cwd + "/WebContent/r/rWrapper -f " + cwd + "/WebContent/r/ModelAnnualCycleNEE.R";
 		analysisType.setExecutablePath(executablePath);
 		analysisType.setId(1);
 		analysisType.setType(AnalysisType.MODEL_OUTPUT_ANALYSIS_TYPE);

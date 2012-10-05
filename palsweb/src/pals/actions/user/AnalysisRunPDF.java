@@ -40,7 +40,9 @@ public class AnalysisRunPDF extends UserAwareAction {
 
 	public String getContentDisposition() {
 		Analysis analRun = getAnalysisRun();
-		String fileName = analRun.getAnalysable().getName() + ":" + analRun.getAnalysisType().getName() + Globals.PDF_FILE_SUFFIX;
+		String fileName = analRun.getAnalysable().getName() + ":" + analRun.getAnalysisType().getName();
+		if( bench ) fileName += "_bench";
+		fileName += Globals.PDF_FILE_SUFFIX;
 		return "filename=\"" + fileName + "\"";
 	}
 	

@@ -12,6 +12,7 @@ import org.testng.annotations.Test;
 import pals.BaseTest;
 import pals.Configuration;
 import pals.dao.UserDAO;
+import pals.entity.Institution;
 import pals.entity.TestEntityFactory;
 import pals.entity.User;
 
@@ -47,5 +48,6 @@ public class AccountServiceTest extends BaseTest
     	userDAO.persist(user);
     	accountService.resetPassword(user.getUsername());
     	userDAO.delete(user);
+    	userDAO.deleteAll(Institution.class.getName());
     }
 }

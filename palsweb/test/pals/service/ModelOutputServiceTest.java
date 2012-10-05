@@ -105,12 +105,13 @@ public class ModelOutputServiceTest extends BaseTest
 		ModelOutput modelOutput = 
 			modelOutputService.newModelOutput(
 			    user, uploadedFile, "Model Output Name",
-			    model.getId(), entity, "SS", "PS", "UC");
+			    model.getId(), entity, "SS", "PS", "UC", false);
 		Assert.assertNotNull(modelOutput.getId());
 		ModelOutput result = (ModelOutput) 
 		    dao.get(ModelOutput.class.getName(), "id", modelOutput.getId());
 		Assert.assertEquals(result.getDataSetVersionId(), modelOutput.getDataSetVersionId());
 		Assert.assertEquals(result.getDataSetVersion().getId(), modelOutput.getDataSetVersion().getId());
+		Assert.assertFalse(result.getAllowDownload());
 		
 		// we also check that we cannot create another model output with the same name
 		try
@@ -639,7 +640,7 @@ public class ModelOutputServiceTest extends BaseTest
 			modelOutputService.newModelOutput(
 			    user, uploadedFile, "Model Output Name",
 			    model.getId(), entity, "SS", "PS", "UC",
-			    fileList,fileNames,contentTypes);
+			    fileList,fileNames,contentTypes,true);
 		Assert.assertNotNull(modelOutput.getId());
 		ModelOutput result = (ModelOutput) 
 		    dao.get(ModelOutput.class.getName(), "id", modelOutput.getId());
@@ -1096,7 +1097,7 @@ public class ModelOutputServiceTest extends BaseTest
 			modelOutputService.newModelOutput(
 			    user, uploadedFile, "Model Output Name",
 			    model.getId(), entity, "SS", "PS", "UC",
-			    fileList,fileNames,contentTypes);
+			    fileList,fileNames,contentTypes,true);
 		Assert.assertNotNull(modelOutput.getId());
 		ModelOutput result = (ModelOutput) 
 		    dao.get(ModelOutput.class.getName(), "id", modelOutput.getId());
@@ -1148,7 +1149,7 @@ public class ModelOutputServiceTest extends BaseTest
 			modelOutputService.newModelOutput(
 			    user, uploadedFile, "Model Output Name",
 			    model.getId(), entity, "SS", "PS", "UC",
-			    fileList,fileNames,contentTypes);
+			    fileList,fileNames,contentTypes,true);
 
     	copy = new File(copyFilename);
     	FileUtils.copyFile(ancillaryFile, copy);
@@ -1692,6 +1693,34 @@ public class ModelOutputServiceTest extends BaseTest
 		Assert.assertEquals(count,10);
 
         tearDown(experiment);
+	}
+	
+	@Test
+	public void testUpdateModelOutputAllowDownload() throws IOException, InvalidInputException, SecurityException
+	{
+		setUp();
+		
+		// we make sure the files will not interfere with the real data sets
+		Configuration.getInstance().PATH_TO_APP_DATA = "testdata";
+		
+		model.getId();
+		ModelOutput modelOutput = 
+			modelOutputService.newModelOutput(
+			    user, uploadedFile, "Model Output Name",
+			    model.getId(), entity, "SS", "PS", "UC");
+		
+		ModelOutput result = (ModelOutput) 
+	       dao.get(ModelOutput.class.getName(), "id", modelOutput.getId());
+		Assert.assertTrue(result.getAllowDownload());
+    	
+    	modelOutputService.updateModelOutput(user,modelOutput,null,null,null,null,null,null,
+    			null,null,null,false);
+    	
+		result = (ModelOutput) 
+	       dao.get(ModelOutput.class.getName(), "id", modelOutput.getId());
+		Assert.assertFalse(result.getAllowDownload());
+    	
+		tearDown();
 	}
 
 }

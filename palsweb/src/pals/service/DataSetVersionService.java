@@ -62,6 +62,8 @@ public class DataSetVersionService
     	qcPlotsFile.delete();
     	File uploadedFile = new File(dsv.uploadedFilePath());
     	uploadedFile.delete();
+    	File benchFile = new File(dsv.retrieveBenchFilePath());
+    	benchFile.delete();
     	dao.delete(DataSetVersion.class.getName(), "id", dsv.getId());
     }
     
@@ -241,6 +243,9 @@ public class DataSetVersionService
     	    FileUtils.copyFile(new File(old.retrieveMetFilePath()), new File(copy.retrieveMetFilePath()));
     	    FileUtils.copyFile(new File(old.retrieveOutputFilePath()), new File(copy.retrieveOutputFilePath()));
     	    FileUtils.copyFile(new File(old.retrieveQCPlotsFilePath()), new File(copy.retrieveQCPlotsFilePath()));
+    	    
+    	    // copy across benchmark file as well
+    	    FileUtils.copyFile(new File(old.retrieveBenchFilePath()), new File(copy.retrieveBenchFilePath()));
     	}
     	catch( FileNotFoundException e )
     	{

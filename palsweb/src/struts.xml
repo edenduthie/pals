@@ -33,6 +33,14 @@
 			</result>
 		</action>
 		
+		<action name="DownloadModelOutput" class="pals.actions.DownloadModelOutput">
+            <result name="success" type="stream">
+                <param name="contentType">text/plain</param>
+                <param name="inputName">inputStream</param>
+                <param name="bufferSize">1024</param>
+            </result>
+        </action>
+		
 		<action name="DownloadFile" class="pals.actions.DownloadFile">
 			<result name="success" type="stream">
 				<param name="contentType">${contentType}</param>

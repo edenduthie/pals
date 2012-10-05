@@ -177,6 +177,10 @@
 		    <a id="accessASC" class="sort-arrow" href="javascript:void(0)" onclick="sort('access','ASC');return false;"><img src="<%=request.getContextPath()%>/images/ASC_<s:if test="accessSort == 'ASC'">active</s:if><s:else>inactive</s:else>.png" alt="sort asc" title ="sort asc"></img></a>
 		    <a id="accessDESC" class="sort-arrow" href="javascript:void(0)" onclick="sort('access','DESC');return false;"><img src="<%=request.getContextPath()%>/images/DESC_<s:if test="accessSort == 'DESC'">active</s:if><s:else>inactive</s:else>.png" alt="sort desc" title ="sort desc"></img></a>
 		 </th>
+		 
+		 <th class="mo">
+		     ncdf
+		 </th>
 	</tr>
 	
 	<s:iterator value="modelOutputs">
@@ -219,6 +223,15 @@
 		<font class="private">Private</font>
 		</s:else>
 		</td>
+		
+		<td class="mo">
+		     <s:if test="mainAccessLevel == 'PUBLIC' && !allowDownload">
+		         <div class="grey">.nc</div>
+		     </s:if>
+		     <s:else>
+                 <a href="../DownloadModelOutput.action?modelOutputId=<s:property value="id" />">.nc</a>
+             </s:else>
+        </td>
 		
 		</tr>
 		

@@ -1,0 +1,1 @@
+alter table modeloutput add column allowdownload boolean;

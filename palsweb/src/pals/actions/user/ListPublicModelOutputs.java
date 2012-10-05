@@ -128,4 +128,9 @@ public class ListPublicModelOutputs extends ListModelOutputsBase {
 	{
 		return offset - getLimit();
 	}
+	
+	public String getMainAccessLevel()
+	{
+		return getAccessLevel();
+	}
 }

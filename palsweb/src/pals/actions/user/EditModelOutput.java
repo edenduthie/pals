@@ -203,10 +203,15 @@ public class EditModelOutput extends UserAwareAction {
 		{
 			List<ModelOutput> moSameModelDataSet = modelOutputService.getModelOutputsForModelDataSet(
 		        mo.getModel(),mo.getDataSetVersion().getDataSet(),getUser());
-			if( moSameModelDataSet.size() <= 1 )
+			if( moSameModelDataSet.size() < 1 )
 			{
 				setUserErrorMessage("You must have at least one non-private Model Output for each Model and Data Set combination");
 				return ERROR;
+			}
+			else if( moSameModelDataSet.size() == 1 && moSameModelDataSet.get(0).getId() == mo.getId() )
+			{
+				setUserErrorMessage("This Model Output is the only public one for the Model and Data Set combination, there must be at least one");
+			    return ERROR;
 			}
 			getModelOutputService().deleteModelOutput(getUser(),mo);
 		}

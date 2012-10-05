@@ -109,8 +109,8 @@
 	<input type="hidden" id="filename" name="filename" />
 	<s:textfield name="modelOutputName" label="Name"/>
 	<div id="modelOutputNameValidation" class="error-text"></div>
-	<s:select name="modelId" label="Model" list="models" listKey="id" listValue="identifier"/>
-	<s:select name="dataSetVersionId" label="DataSet" list="dataSetVersions" listKey="id" listValue="displayName"/>
+	<s:select name="modelId" label="Model" list="models" listKey="id" listValue="identifier" headerKey="-1" headerValue=""/>
+	<s:select name="dataSetVersionId" label="DataSet" list="dataSetVersions" listKey="id" listValue="displayName" headerKey="-1" headerValue=""/>
 	<s:select name="stateSelection" list="stateSelections" emptyOption="true"
 	    label="State Selection"/>
 	<div id="stateSelectionValidation" class="error-text"></div>
@@ -118,6 +118,7 @@
 	    label="Parameter Selection" />
 	<div id="parameterSelectionValidation" class="error-text"></div>
 	<s:textarea name="userComments" label="Please add any comments that would aid reproducing this simulation" rows="5" cols="50" />
+	<s:checkbox name="allowDownload">Allow public users to download the uploaded model output file</s:checkbox>
 	<div id="ancillary-files">
 	    <a href="javascript:void(0)" onclick="addFile()" class="pbut-link">Add an Ancillary File</a> (50MB limit per file)
 	    <!--<s:file name="upload" label="file1"/>-->

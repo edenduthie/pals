@@ -75,11 +75,10 @@ public class AnalysisServiceJPAImplTest extends BaseTest
     {
         // create an executable	
 		String cwd = System.getProperty("user.dir");
-		executablePath = "R -f " + cwd + "\\" + "WebContent" +
-		    "\\" + "r" + "\\" + "ObsAnnualCycleNEE.R";
+		executablePath = cwd + "/WebContent/r/rWrapper -f " + cwd + "/WebContent/r/ObsAnnualCycleNEE.R";
 		
 		// set the path to the application data to come from the test data directory
-		Configuration.getInstance().PATH_TO_APP_DATA = cwd + "\\" + "testdata";
+		Configuration.getInstance().PATH_TO_APP_DATA = cwd + "/" + "testdata";
 		
     	dataSetVersion = TestEntityFactory.dataSetVersion();
     	dao.persist(dataSetVersion.getDataSet().getCountry());

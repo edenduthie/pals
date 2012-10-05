@@ -29,14 +29,15 @@
 	<s:hidden name="editTask" value="modify" id="editTaskInput" />
 	<s:hidden name="modelOutputId" value="%{modelOutput.id}" />
 	<s:textfield name="modelOutputName" label="Name" value="%{modelOutput.name}"/>
-	<s:select name="modelId" label="Model" list="models" listKey="id" listValue="identifier"/>
+	<s:select name="modelId" label="Model" list="models" listKey="id" listValue="identifier" value="%{modelOutput.modelId}"/>
 	<s:select name="dataSetVersionId" label="DataSet" list="dataSetVersions" listKey="id" listValue="displayName" value="modelOutput.dataSetVersionId"/>
 	<s:select name="stateSelection" list="stateSelections" emptyOption="true"
 	    label="State Selection" value="modelOutput.stateSelection"/>
 	<s:select name="parameterSelection" list="parameterSelections" emptyOption="true"
 	    label="Parameter Selection" value="modelOutput.parameterSelection"/>
 	<s:textarea name="userComments" label="Please add any comments that would aid reproducing this simulation" rows="5" cols="50" />
-		<br>
+	<s:checkbox name="allowDownload" value="modelOutput.allowDownload">Allow public users to download the uploaded model output file</s:checkbox>
+	<br>
     <s:if test="modelOutput.files.size() > 0" >
 	<i>Existing Ancillary Files:</i>
 	<table class="existing-files-table">

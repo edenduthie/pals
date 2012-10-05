@@ -2,7 +2,7 @@
 
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
  
-<suite name="PalsTestSuite" verbose="1" >
+<suite name="PalsTestSuite" verbose="1" parallel="tests" >
   <test name="UnitTests"   >
     <packages>
       <package name="pals.service" />

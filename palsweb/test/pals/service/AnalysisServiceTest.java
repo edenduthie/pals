@@ -57,8 +57,7 @@ public class AnalysisServiceTest extends BaseTest
     public void setUp() throws IOException
     {    	
 		String cwd = System.getProperty("user.dir");
-		executablePath = "R -f " + cwd + "\\" + "WebContent" +
-		"\\" + "r" + "\\" + "ObsAnnualCycleNEE.R";
+		executablePath = cwd + "/WebContent/r/rWrapper -f " + cwd + "/WebContent/r/ObsAnnualCycleNEE.R";
 		setUp(executablePath,filename);
     }
     

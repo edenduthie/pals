@@ -574,12 +574,14 @@ This plot is a smoothed time series of evaporative fraction - latent heat flux d
 <p>
 <b>Interpretation</b>: this plot is commonly interpreted as a proxy for soil moisture - it gives an indication of how closely model soil moisture dynamics track those of the site. In very wet densely forested sites, it may also provide information about a model's canopy interception parametrisation. Both top layer (through evaporation) and below surface soil moisture (through transpiration) contribute to Qle, as well as direct canopy evaporation in the time immediately following rainfall events.
 </p>
+<!--
 <p>
 <b>Temporal Requirements</b>: latent (Qle) and sensible heat flux (Qh) time series
 </p>
 <p>
 <b>Spatial Requirements</b>: single site.
 </p>
+-->
 </div>
 <div id="infoDiurnalCycle">
 <h3>Diurnal Cycle</h3>
@@ -589,12 +591,14 @@ This plot shows the average diurnal cycle of a particular variable. Four separat
 <p>
 <b>Interpretation</b>: this plot allows identification of the particular times of day that a model may under-perform. It may also allow consideration of model performance, for example, without reference to night time flux data, if this data is believed to be less reliable. By having four panels, it also allows the identification of errors associated with seasonal phenomena, such as vegetation growth phases or water availability.
 </p>
+<!--
 <p>
 <b>Requirements</b>: any variable which varies on hourly timescales 
 </p>
 <p>
 <b>Spatial Requirements</b>: single site.
 </p>
+-->
 </div>
 <div id="infoAnnualCycle">
 <h3>Annual Cycle</h3>
@@ -604,12 +608,14 @@ This graph shows a line plot of the twelve average monthly values of a variable,
 <p>
 <b>Interpretation</b>: by identifying which times of year a model may under-perform, this plot can point to seasonal issues such as representation of vegetation phenology or soil drying after wet seasons. 
 </p>
+<!--
 <p>
 <b>Requirements</b>: any variable which varies on monthly timescales 
 </p>
 <p>
 <b>Spatial Requirements</b>: single site.
 </p>
+-->
 </div>
 <div id="infoAvWindow">
 <h3>Averaging window</h3>
@@ -619,12 +625,14 @@ This plot has four panels corresponding to four performance measures for a singl
 <p>
 <b>Interpretation</b>: This plot gives some indication of frequency domain performance. It may indicate, for example, that a model has been fitted or calibrated to data at a particular temporal resolution at the expense of performance at other time scales.
 </p>
+<!--
 <p>
 <b>Requirements</b>: any variable which varies at each model time step 
 </p>
 <p>
 <b>Spatial Requirements</b>: single site.
 </p>
+-->
 </div>
 <div id="infoTaylor">
 <h3>Taylor diagram</h3>
@@ -632,12 +640,14 @@ This plot has four panels corresponding to four performance measures for a singl
 This plot shows RMSE, model-observed correlation and standard deviation of both model and observed data on a single diagram. Radial lines represent lines of constant correlation and arcs about the origin are lines of constant standard deviation. On the correlation 1 line (the horizontal axis), lies the value of the standard deviation of the observational dataset, marked by a small hollow blue circle. The solid black arc from this point is a line which shows all points on the diagram with the same standard deviation. The approximately circular arcs with this blue circle as its centre are lines of equal root mean square error. The model standard deviation, RMSE and correlation with observations is shown by the solid blue dot. The equivalent values of these performance measures for daily averages (rather than all time steps) are shown by red circles, and for monthly averages by green circles.</p>
 <p>
 <b>Interpretation</b>: This plot provides a way to see the relationship between these three performance measures, as well as how they change from per-time-step to daily to monthly averages, giving an indication of how performance is different at different time scales.</p>
+<!--
 <p>
 <b>Requirements</b>: any variable which varies at each model time step 
 </p>
 <p>
 <b>Spatial Requirements</b>: single site.
 </p>
+-->
 </div>
 <div id="infoConserve">
 <h3>Conserve</h3>
@@ -647,12 +657,14 @@ This shows two panels. Both show (latent heat flux + sensible heat flux) as the 
 <p>
 <b>Interpretation</b>: This is usually an indication that a model does not conserve energy and reveals the extent to which that is the case.
 </p>
+<!--
 <p>
 <b>Requirements</b>: latent (Qle), sensible (Qh) and ground heat fluxes (Qg) as well as net radiation (Rnet).
 </p>
 <p>
 <b>Spatial Requirements</b>: single site.
 </p>
+-->
 </div>
 <div id="infoPdf">
 <h3>Pdf</h3>
@@ -662,12 +674,14 @@ This shows the approximate density of values of a particular variable across its
 <p>
 <b>Interpretation</b>: gives an indication of which variable values are most common / likely in a particular environment, whether the distribution of modelled values is similar to observations and whether the range of modelled values is appropriate. In particular is useful for identifying cases where a model may be getting mean values correct for the wrong reasons.
 </p>
+<!--
 <p>
 <b>Requirements</b>: any variable which varies at each model time step 
 </p>
 <p>
 <b>Spatial Requirements</b>: single site.
 </p>
+-->
 </div>
 <div id="infoScatter">
 <h3>Scatter</h3>
@@ -677,12 +691,14 @@ Shows a scatter plot of modelled vs. observed values of a variable including reg
 <p>
 <b>Interpretation</b>: gives a general indication of significant model biases and prediction accuracy.
 </p>
+<!--
 <p>
 <b>Requirements</b>: any variable which varies at each model time step 
 </p>
 <p>
 <b>Spatial Requirements</b>: single site.
 </p>
+ -->
 </div>
 <div id="infoTimeseries">
 <h3>Timeseries</h3>
@@ -692,12 +708,14 @@ This simply shows a smoothed time series of a variable (14-day running mean) acr
 <p>
 <b>Interpretation</b>: gives an indication a model's temporal divergence from observations. Good, for example, for looking at dry-down after rainfall events (by looking at latent heat, Qle) or temporal variation in carbon uptake.
 </p>
+<!--
 <p>
 <b>Requirements</b>: any variable which varies at each model time step 
 </p>
 <p>
 <b>Spatial Requirements</b>: single site.
 </p>
+-->
 </div>
 </div><!-- info-content -->
 <s:include value="../Footer.jsp"></s:include>

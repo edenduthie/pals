@@ -28,12 +28,14 @@
 	<h2>Workspace Sharing Settings: <strong><s:property value="experiment.name" /></strong></h2>
 	
 	<div id="experiment-user-list">
+	<!-- 
 	<div id="share-with-all">
 	    <div class="user-checkbox">
 	        <s:checkbox name="shareWithAll" fieldValue="true" value="%{experiment.shareWithAll}"/>
 	    </div>
 	    Share With All
 	</div>
+	 -->
 	<div id="save-button-experiment-users">
 	    <s:submit value="Save" cssClass="pbut"></s:submit>
 	</div>

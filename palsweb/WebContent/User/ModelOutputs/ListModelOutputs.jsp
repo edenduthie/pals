@@ -38,6 +38,11 @@
 	<script language="Javascript1.2">
 	function submitEditAction(editAction) {
 		if (checkSomethingIsSelected(document.getElementById("editModelOutput"))) {
+			if (editAction == "delete")
+			{
+				var isConfirmed = confirm("Are you sure to delete?");
+				if (!isConfirmed) return false;
+			}
 			document.getElementById("editTaskInput").value = editAction;
 			if (editAction == "edit") document.getElementById("editModelOutput").action = "EditModelOutputForm!input.action";
 			$('#username').remove();

@@ -75,7 +75,7 @@ public class ShareExperiment extends UserAwareAction
     {
     	load();
     	experimentService.setTheseUsersAsShared(selected, experiment);
-    	if( shareWithAll.equals("true") ) experiment.setShareWithAll(true);
+    	if( shareWithAll != null && shareWithAll.equals("true") ) experiment.setShareWithAll(true);
     	else experiment.setShareWithAll(false);
     	experimentService.update(experiment);
     	//load();

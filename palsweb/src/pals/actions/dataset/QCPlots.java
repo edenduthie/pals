@@ -19,7 +19,7 @@ public class QCPlots extends UserAwareAction
 		this.dataSetVersion = dataSetVersionService.get(id);
 		File file = new File(dataSetVersion.retrieveQCPlotsFilePath());
 		imagePath = "../User/FileActionPNG.action?username=" +
-	        getUser().getUsername() + "&filename=" + file.getName();
+	        this.dataSetVersion.getOwner().getUsername() + "&filename=" + file.getName();
 		return SUCCESS;
 	}
 

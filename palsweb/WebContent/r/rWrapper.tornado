@@ -1,6 +1,6 @@
 #!/bin/bash
 export DISPLAY=:100.0
 source /etc/profile.d/modules.sh 
-module add R/2.9.2
+module add R/2.12.2
 export R_LIBS_USER=/share/apps/tomcat/pals/www/pals/r/workspace
 R $@

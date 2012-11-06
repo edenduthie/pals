@@ -49,20 +49,20 @@ PALSScatter = function(obslabel,y_data,x_data,varname,vtext,
 	graddetail = paste('Gradient:',signif(sline$coefficients[2],3))
 	yrange = max(ymax,xmax) - min(ymin,xmin)
 	text(x=min(ymin,xmin),y=max(ymax,xmax),labels=intdetail,pos=4)
-	text(x=min(ymin,xmin),y=(min(ymin,xmin)+0.95*yrange),labels=graddetail,pos=4)
+	text(x=min(ymin,xmin),y=(min(ymin,xmin)+0.955*yrange),labels=graddetail,pos=4)
 	if((vqcdata[1,1] != -1) & (!ebal)){
 		text(x=(max(xmax,ymax)-yrange*0.5),y=max(ymax,xmax),labels='Gap-filled data removed',pos=4)
 	}
 	# If this an energy balance plot, add cumulative total:
 	if(ebal){
-		allebal = sum(x_data-y_data)
-		avebal = signif(allebal / ntsteps, 3)
-		alltext = paste('Total imbalance: ',signif(allebal*timestepsize/3600,3),
-			' Wh/m2',sep='')
-		avtext = paste(' or ',avebal,' W/m2 per timestep',sep='')
-		text(x=min(ymin,xmin),y=(min(ymin,xmin)+0.88*yrange),
+		allebal = mean(x_data-y_data)
+		avebal = signif(mean(abs(x_data-y_data)) , 3)
+		alltext = paste('Total imbalance: ',signif(allebal,3),
+			' W/m2 per timestep',sep='')
+		avtext = paste('Mean deviation: ',avebal,' W/m2 per timestep',sep='')
+		text(x=min(ymin,xmin),y=(min(ymin,xmin)+0.895*yrange),
 			labels=alltext,pos=4)
-		text(x=min(ymin,xmin),y=(min(ymin,xmin)+0.83*yrange),
+		text(x=min(ymin,xmin),y=(min(ymin,xmin)+0.85*yrange),
 			labels=avtext,pos=4)
 	}
 	# Then plot scatter of daily averages:
@@ -77,7 +77,14 @@ PALSScatter = function(obslabel,y_data,x_data,varname,vtext,
 			xday[i] = mean(x_days[i,qc_days[i,]])
 			yday[i] = mean(y_days[i,qc_days[i,]])
 		}
-	}else{
+	}else if(ebal){
+          ebalday = c()
+          for(i in 1:ndays){
+            xday[i] = mean(x_days[i,])
+            yday[i] = mean(y_days[i,])
+            ebalday[i] = sum(x_days[i,]-y_days[i,])
+          }
+        }else{ # not not an energy balance plot and QC data are missing
 		for(i in 1:ndays){
 			xday[i] = mean(x_days[i,])
 			yday[i] = mean(y_days[i,])
@@ -101,17 +108,17 @@ PALSScatter = function(obslabel,y_data,x_data,varname,vtext,
 	graddetail = paste('Gradient:',signif(sline$coefficients[2],3))
 	yrange = max(ymax,xmax) - min(ymin,xmin)
 	text(x=min(ymin,xmin),y=max(ymax,xmax),labels=intdetail,pos=4)
-	text(x=min(ymin,xmin),y=(min(ymin,xmin)+0.95*yrange),labels=graddetail,pos=4)
+	text(x=min(ymin,xmin),y=(min(ymin,xmin)+0.955*yrange),labels=graddetail,pos=4)
 	# If this an energy balance plot, add cumulative total:
 	if(ebal){
-		allebal = sum(xday-yday)*tstepinday
-		avebal = signif(allebal / ndays, 3)
+		allebal = sum(ebalday)*timestepsize/3600/ndays # in Watt-hours
+		avebal = signif(mean(abs(ebalday))*24/tstepinday, 3) # also in Watt-hours
 		alltext = paste('Total imbalance: ',signif(allebal,3),
-			' Wh/m2',sep='')
-		avtext = paste(' or ',avebal,' Wh/m2 per day',sep='')
-		text(x=min(ymin,xmin),y=(min(ymin,xmin)+0.88*yrange),
+			' Wh/m2 per day',sep='')
+		avtext = paste('Mean daily deviation: ',avebal,' Wh/m2',sep='')
+		text(x=min(ymin,xmin),y=(min(ymin,xmin)+0.895*yrange),
 			labels=alltext,pos=4)
-		text(x=min(ymin,xmin),y=(min(ymin,xmin)+0.83*yrange),
+		text(x=min(ymin,xmin),y=(min(ymin,xmin)+0.85*yrange),
 			labels=avtext,pos=4)
 	}else if(vqcdata[1,1] != -1){
 		text(x=(max(xmax,ymax)-yrange*0.5),y=max(ymax,xmax),labels='Gap-filled data removed',pos=4)

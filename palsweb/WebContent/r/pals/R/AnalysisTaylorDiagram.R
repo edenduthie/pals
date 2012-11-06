@@ -75,12 +75,12 @@ TaylorDiagram = function(ObsLabel,mod_data,obs_data,varname,xtext,
 		taylor.diagram(ref=obs_monthly,model=obs_monthly,pcex=2,add=TRUE,
 		ref.sd=TRUE,show.gamma=TRUE,col='green',pch=1)
 		# Add legend:
-		lpos = 1.2*sd(obs_data)
+		lpos = 1.2*max(sd(obs_data),sd(mod_data))
 		legend(lpos,1.3*lpos,col=c('blue','red','green'),pch=19,
 			legend=c('per timestep','daily averages','monthly averages'))
 	}else{
 		# Add legend:
-		lpos = 1.2*sd(obs_data)
+		lpos = 1.2*max(sd(obs_data),sd(mod_data))
 		legend(lpos,1.3*lpos,col=c('blue','red'),pch=19,
 			legend=c('per timestep','daily averages'))
 	}

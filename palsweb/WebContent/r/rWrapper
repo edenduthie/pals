@@ -2,6 +2,6 @@
 #export DISPLAY=:9.0
 #source /etc/profile.d/modules.sh 
 #module add R
-export R_LIBS_USER=/root/pals/palsweb/WebContent/r/workspace
+export R_LIBS_USER=/home/yoichi/Development/pals/palsweb/WebContent/r/workspace
 export LD_LIBRARY_PATH=/usr/local/lib
 R $@

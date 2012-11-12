@@ -50,7 +50,7 @@ $(document).ready(function(){
     	    }
     	    else
     	    {
-        	    displaySelectOptions();
+    	    	displaySelectOptions();
     	    }
     	    refilterDisplay();
     	    $("#wait").hide();

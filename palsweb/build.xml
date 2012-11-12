@@ -20,7 +20,6 @@
 
 	<property name="antlr-2.7.6.jar" value="lib/antlr-2.7.6.jar" />
 	<property name="aopalliance-1.0.jar" value="lib/aopalliance-1.0.jar" />
-	<property name="applicationContext.xml" value="lib/applicationContext.xml" />
 	<property name="asm-3.3.jar" value="lib/asm-3.3.jar" />
 	<property name="cglib-2.2.jar" value="lib/cglib-2.2.jar" />
 	<property name="com.springsource.org.antlr-3.0.1.jar" value="lib/com.springsource.org.antlr-3.0.1.jar" />
@@ -72,7 +71,6 @@
 		<!-- Include all JAR files that will be included in /WEB-INF/lib -->
 		<pathelement location="${antlr-2.7.6.jar}"/>
 		<pathelement location="${aopalliance-1.0.jar}"/>
-		<pathelement location="${applicationContext.xml}"/>
 		<pathelement location="${asm-3.3.jar}"/>
 		<pathelement location="${cglib-2.2.jar}"/>
 		<pathelement location="${com.springsource.org.antlr-3.0.1.jar}"/>
@@ -234,7 +232,6 @@
 		<mkdir dir="${build.home}/WEB-INF/lib" />
 		<copy todir="${build.home}/WEB-INF/lib" file="${antlr-2.7.6.jar}"/>
 		<copy todir="${build.home}/WEB-INF/lib" file="${aopalliance-1.0.jar}"/>
-		<copy todir="${build.home}/WEB-INF/lib" file="${applicationContext.xml}"/>
 		<copy todir="${build.home}/WEB-INF/lib" file="${asm-3.3.jar}"/>
 		<copy todir="${build.home}/WEB-INF/lib" file="${cglib-2.2.jar}"/>
 		<copy todir="${build.home}/WEB-INF/lib" file="${com.springsource.org.antlr-3.0.1.jar}"/>
@@ -320,7 +317,6 @@
         <mkdir dir="${build.home}/WEB-INF/lib" />
         <copy todir="${build.home}/WEB-INF/lib" file="${antlr-2.7.6.jar}"/>
         <copy todir="${build.home}/WEB-INF/lib" file="${aopalliance-1.0.jar}"/>
-        <copy todir="${build.home}/WEB-INF/lib" file="${applicationContext.xml}"/>
         <copy todir="${build.home}/WEB-INF/lib" file="${asm-3.3.jar}"/>
         <copy todir="${build.home}/WEB-INF/lib" file="${cglib-2.2.jar}"/>
         <copy todir="${build.home}/WEB-INF/lib" file="${com.springsource.org.antlr-3.0.1.jar}"/>
@@ -403,7 +399,5 @@
 		</javadoc>
 
 	</target>
-
-
 
 </project>

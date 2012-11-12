@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Minitab style dotplots.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for dotplot.mtb {plotrix}"><tr><td>dotplot.mtb {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Minitab style dotplots.</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Create a dotplot of a data vector in the sense of ``dotplot'' as
+used in the Minitab<i> (copyright)</i> package.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+dotplot.mtb(x, xlim = NULL, main = NULL, xlab = NULL, ylab = NULL,
+            pch = 19, hist = FALSE, yaxis = FALSE, mtbstyle=TRUE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+A numeric vector. </td></tr>
+<tr valign="top"><td><code>xlim</code></td>
+<td>
+The x limits of the plot. </td></tr>
+<tr valign="top"><td><code>main</code></td>
+<td>
+A title for the plot; defaults to blank.</td></tr>
+<tr valign="top"><td><code>xlab</code></td>
+<td>
+A label for the x axis; defaults to blank.</td></tr>
+<tr valign="top"><td><code>ylab</code></td>
+<td>
+A label for the y axis; defaults to blank.</td></tr>
+<tr valign="top"><td><code>pch</code></td>
+<td>
+The plotting symbol for the dots in the plot;
+defaults to a solid disc. </td></tr>
+<tr valign="top"><td><code>hist</code></td>
+<td>
+Logical scalar; should the plot be done ``histogram
+style, i.e. using vertical lines rather than stacks
+of dots?</td></tr>
+<tr valign="top"><td><code>yaxis</code></td>
+<td>
+Logical scalar; should a y-axis be produced? </td></tr>
+<tr valign="top"><td><code>mtbstyle</code></td>
+<td>
+Logical scalar; should the dotplot be done in
+the ``Minitab'' style?  I.e. should the zero level
+be at the vertical midway point? </td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+The result of <code>hist=TRUE</code> looks less ugly than stacks of
+dots for very large data sets.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+Nothing.  A plot is produced as a side effect.</p>
+
+<h3>Warnings</h3>
+
+<p>
+This function does something toadally different from the <code>dotplot()</code>
+(now <code><a href="../../survey/html/barplot.svystat.html">dotchart</a>()</code>) function in the graphics package.
+</p>
+<p>
+The labelling of the <code>y</code>-axis is device dependent.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Barry Rowlingson
+<a href="mailto:B.Rowlingson@lancaster.ac.uk">B.Rowlingson@lancaster.ac.uk</a>
+and Rolf Turner
+<a href="mailto:r.turner@auckland.ac.nz">r.turner@auckland.ac.nz</a>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+## Not run: 
+set.seed(42)
+x &lt;- rpois(100,10)
+dotplot.mtb(x,main="No y-axis.")
+dotplot.mtb(x,yaxis=TRUE,main="With y-axis displayed.")
+dotplot.mtb(x,hist=TRUE,main="An \"h\" style plot.")
+dotplot.mtb(x,xlim=c(4,16),main="With the x-axis limited.")
+dotplot.mtb(x,yaxis=TRUE,mtbstyle=FALSE,main="Non-Minitab style.")
+dotplot.mtb(x,yaxis=TRUE,xlab="x",ylab="count",
+            main="With x and y axis labels.")
+## End(Not run)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

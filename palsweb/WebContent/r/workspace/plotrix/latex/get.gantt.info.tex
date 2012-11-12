@@ -1,0 +1,40 @@
+\HeaderA{get.gantt.info}{Gather the information to create a Gantt chart}{get.gantt.info}
+\keyword{misc}{get.gantt.info}
+\begin{Description}\relax
+Allows the user to enter the information for a Gantt chart.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+ get.gantt.info(format="%Y/%m/%d")
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{format}] the format to be used in entering dates/times. Defaults to
+YYYY/mm/dd. See \samp{\LinkA{strptime}{strptime}} for various date/time formats.
+\end{ldescription}
+\end{Arguments}
+\begin{Value}
+The list used to create the chart. Elements are:
+\begin{ldescription}
+\item[\code{labels}] The task labels to be displayed at the left of the chart.
+\item[\code{starts,ends}] The task starts/ends as POSIXct dates/times.
+\item[\code{priorities}] Task priorities as integers in the range 1 to 10.
+There can be less than 10 levels of priority, but if priorities do
+not start at 1 (assumed to be the highest), the default priority colors
+will be calculated from 1.
+\end{ldescription}
+\end{Value}
+\begin{Author}\relax
+Jim Lemon
+\end{Author}
+\begin{SeeAlso}\relax
+\samp{\LinkA{gantt.chart}{gantt.chart}}
+\end{SeeAlso}
+\begin{Examples}
+\begin{ExampleCode}
+ cat("Enter task times using HH:MM (hour:minute) format\n")
+ get.gantt.info("%H:%M")
+\end{ExampleCode}
+\end{Examples}
+

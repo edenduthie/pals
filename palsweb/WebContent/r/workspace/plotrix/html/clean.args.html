@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Remove inappropriate arguments from an argument list</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for clean.args {plotrix}"><tr><td>clean.args {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Remove inappropriate arguments from an argument list</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Takes a list of arguments and eliminates those that are not
+appropriate for passing to a particular function (and hence
+would produce an error if passed).
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ clean.args(argstr,fn,exclude.repeats=FALSE,exclude.other=NULL,dots.ok=TRUE)
+ remove.args(argstr,fn)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>argstr</code></td>
+<td>
+a named list of arguments, e.g. from <span class="samp">...</span></td></tr>
+<tr valign="top"><td><code>fn</code></td>
+<td>
+a function</td></tr>
+<tr valign="top"><td><code>exclude.repeats</code></td>
+<td>
+(logical) remove repeated arguments?</td></tr>
+<tr valign="top"><td><code>exclude.other</code></td>
+<td>
+a character vector of names of additional arguments to remove</td></tr>
+<tr valign="top"><td><code>dots.ok</code></td>
+<td>
+should "..." be allowed in the argument list?</td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+<span class="samp">clean.args</span> returns a list which is a copy of <span class="samp">argstr</span> with
+arguments inappropriate for <span class="samp">fn</span> removed; <span class="samp">remove.args</span>
+removes the arguments for <span class="samp">fn</span> from the list.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Ben Bolker
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+ tststr &lt;- list(n=2,mean=0,sd=1,foo=4,bar=6) 
+ clean.args(tststr,rnorm)
+ try(do.call("rnorm",tststr))
+ do.call("rnorm",clean.args(tststr,rnorm))
+ remove.args(tststr,rnorm)
+ ## add example of combining arg. lists?
+</pre>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

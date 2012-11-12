@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Enter three proportion data - usually soil textures.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for get.triprop {plotrix}"><tr><td>get.triprop {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Enter three proportion data - usually soil textures.</h2>
+
+
+<h3>Description</h3>
+
+<p>
+<span class="samp">get.triprop</span> allows the user to enter triplets of proportions
+or percentages of three components such as sand, silt and clay in soils.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ get.triprop(use.percentages=FALSE,cnames=c("1st","2nd","3rd"))
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>use.percentages</code></td>
+<td>
+Logical - whether to treat the entries as
+percentages and scale to proportions.</td></tr>
+<tr valign="top"><td><code>cnames</code></td>
+<td>
+column names for the resulting three column matrix.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+The three proportions of each row must sum to 100 or 1 within 1% or
+the function will warn the operator.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+A matrix of the components of one or more observations.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Jim Lemon
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<span class="samp"><a href="triax.plot.html">triax.plot</a></span>, <span class="samp"><a href="soil.texture.html">soil.texture</a></span>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+ if(dev.interactive()) {
+  # get some proportions
+  newsp&lt;-get.triprop()
+  # show the triangle
+  triax.frame(main="Test triax.plot")
+  # now plot the observations
+  triax.points(newsp)
+ }
+</pre>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

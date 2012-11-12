@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Enter the information for a set intersection display</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for getIntersectList {plotrix}"><tr><td>getIntersectList {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Enter the information for a set intersection display</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Enter the information for a set intersection display.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ getIntersectList(nelem,xnames=NULL)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>nelem</code></td>
+<td>
+The number of sets for which the intersections will be displayed.</td></tr>
+<tr valign="top"><td><code>xnames</code></td>
+<td>
+The labels for the set intersections. The function creates names
+from combinations of the first <span class="samp">nelem</span> capital letters if none are 
+given.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+<span class="samp">getIntersectList</span> allows the user to manually enter the counts of
+set intersections rather than build this information from a matrix of data.
+It is probably most useful for producing an intersection diagram when the
+counts of the intersections are already known.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+A list of the counts of elements in the set intersections.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Jim Lemon
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<span class="samp"><a href="makeIntersectList.html">makeIntersectList</a></span>, <span class="samp"><a href="intersectDiagram.html">intersectDiagram</a></span>
+</p>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

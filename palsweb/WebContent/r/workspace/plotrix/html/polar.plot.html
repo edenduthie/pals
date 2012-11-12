@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Plot values on a circular grid of 0 to 360 degrees.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for polar.plot {plotrix}"><tr><td>polar.plot {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Plot values on a circular grid of 0 to 360 degrees.</h2>
+
+
+<h3>Description</h3>
+
+<p>
+<span class="samp">polar.plot</span> displays a plot of radial lines, symbols or a polygon 
+centered at the midpoint of the plot frame on a 0:360 circle.
+Positions are interpreted as beginning at the right and moving
+counterclockwise unless <span class="samp">start</span> specifies another starting point or
+<span class="samp">clockwise</span> is TRUE.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ polar.plot(lengths,polar.pos=NULL,labels,label.pos=NULL,
+  start=0,clockwise=FALSE,rp.type="r",...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>lengths</code></td>
+<td>
+numeric data vector. Magnitudes will be represented as
+the radial positions of symbols, line ends or polygon vertices.</td></tr>
+<tr valign="top"><td><code>polar.pos</code></td>
+<td>
+numeric vector of positions on a 0:360 degree circle.
+These will be converted to radians when passed to <span class="samp">radial.plot</span>.</td></tr>
+<tr valign="top"><td><code>labels</code></td>
+<td>
+text labels to place on the periphery of the circle. This 
+defaults to labels every 20 degrees. For no labels, pass an empty string.</td></tr>
+<tr valign="top"><td><code>label.pos</code></td>
+<td>
+positions of the peripheral labels in degrees</td></tr>
+<tr valign="top"><td><code>start</code></td>
+<td>
+The position for zero degrees on the plot in degrees.</td></tr>
+<tr valign="top"><td><code>clockwise</code></td>
+<td>
+Whether to increase angles clockwise rather than the
+default counterclockwise.</td></tr>
+<tr valign="top"><td><code>rp.type</code></td>
+<td>
+Whether to plot radial lines, symbols or a polygon.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+additional arguments passed to <span class="samp">radial.plot</span> and
+then to <span class="samp">plot</span>.</td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+nil</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Jim Lemon
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<span class="samp"><a href="radial.plot.html">radial.plot</a></span>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+ testlen&lt;-c(rnorm(36)*2+5)
+ testpos&lt;-seq(0,350,by=10)
+ polar.plot(testlen,testpos,main="Test Polar Plot",lwd=3,line.col=4)
+ polar.plot(testlen,testpos,main="Test Clockwise Polar Plot",
+  start=90,clockwise=TRUE,lwd=3,line.col=4)
+ # reset the margins
+ par(mar=c(5,4,4,2))
+</pre>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

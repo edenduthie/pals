@@ -1,0 +1,58 @@
+\HeaderA{triax.points}{Triangle plot points}{triax.points}
+\keyword{misc}{triax.points}
+\begin{Description}\relax
+Display points on a triangle plot.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+ triax.points(x,show.legend=FALSE,label.points=FALSE,point.labels=NULL,
+ col.symbols=par("fg"),pch=par("pch"),bg.symbols=par("bg"),cc.axes=FALSE,...)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{x}] Matrix or data frame where each row is three proportions or 
+percentages that must sum to 1 or 100 respectively.
+\item[\code{show.legend}] Logical - whether to display a legend.
+\item[\code{label.points}] Logical - whether to call \samp{thigmophobe.labels}
+to label the points.
+\item[\code{point.labels}] Optional labels for the points and/or legend.
+\item[\code{col.symbols}] Color of the symbols representing each value.
+\item[\code{pch}] Symbols to use in plotting values.
+\item[\code{bg.symbols}] Background color for plotting symbols.
+\item[\code{cc.axes}] Clockwise or counterclockwise axes and ticks.
+\item[\code{...}] Additional arguments passed to \samp{points}.
+\end{ldescription}
+\end{Arguments}
+\begin{Details}\relax
+In order for \samp{triax.points} to add points to an existing plot,
+the argument \samp{no.add} in the initial call to \samp{triax.plot} 
+must be set to \samp{FALSE}. Failing to do this will result in the
+points being plotted in the wrong places. It is then up to the user
+to call \samp{par} as in the example below to restore plotting
+parameters altered during the triangle plot.
+
+\samp{triax.points} displays each triplet of proportions or percentages
+as a symbol on the triangle plot. Unless each triplet sums to 1 
+(or 100), they will not plot properly and \samp{triax.points} will 
+complain appropriately.
+\end{Details}
+\begin{Value}
+A list of the \samp{x,y} positions plotted.
+\end{Value}
+\begin{Author}\relax
+Jim Lemon
+\end{Author}
+\begin{SeeAlso}\relax
+\samp{\LinkA{triax.plot}{triax.plot}},\samp{\LinkA{thigmophobe.labels}{thigmophobe.labels}}
+\end{SeeAlso}
+\begin{Examples}
+\begin{ExampleCode}
+ data(soils)
+ triax.return<-triax.plot(soils[1:10,],
+  main="Adding points to a triangle plot",no.add=FALSE)
+ triax.points(soils[11:20,],col.symbols="green",pch=3)
+ par(triax.return$oldpar)
+\end{ExampleCode}
+\end{Examples}
+

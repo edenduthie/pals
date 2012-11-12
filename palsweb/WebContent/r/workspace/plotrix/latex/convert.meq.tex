@@ -1,0 +1,32 @@
+\HeaderA{convert.meq}{Convert milligrams/liter to milliequivalents/liter.}{convert.meq}
+\keyword{misc}{convert.meq}
+\begin{Description}\relax
+Convert milligrams/liter of ions used in the Piper diagram
+to milliequivalents/liter.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+ convert.meq(mgpl,parameter)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{mgpl}] A data frame containing the concentrations of ions used in the
+Piper diagram in milligrams/liter.
+\item[\code{parameter}] The names of the ions if necessary.
+\end{ldescription}
+\end{Arguments}
+\begin{Details}\relax
+\samp{convert.meq} does the conversion with a lookup table of molecular weights
+and valences.
+\end{Details}
+\begin{Value}
+The concentration of the ions in milliequivalents.
+\end{Value}
+\begin{Author}\relax
+Mike Cheetham
+\end{Author}
+\begin{SeeAlso}\relax
+\samp{\LinkA{piper.diagram}{piper.diagram}}
+\end{SeeAlso}
+

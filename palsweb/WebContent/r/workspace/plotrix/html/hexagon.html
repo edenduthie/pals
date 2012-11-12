@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Draw a hexagon</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for hexagon {plotrix}"><tr><td>hexagon {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Draw a hexagon</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Draws a hexagon on the current graphic device.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ hexagon(x,y,unitcell=1,col=NA,border="black")
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x,y</code></td>
+<td>
+x and y position of the bottom left corner of the square that
+would pack into the same space as the hexagon.</td></tr>
+<tr valign="top"><td><code>unitcell</code></td>
+<td>
+The dimension of the side of the abovementioned square.</td></tr>
+<tr valign="top"><td><code>col</code></td>
+<td>
+The color to fill the hexagon - default is no fill.</td></tr>
+<tr valign="top"><td><code>border</code></td>
+<td>
+The color of the perimeter of the hexagon.</td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+nil</p>
+
+<h3>Note</h3>
+
+<p>
+Draws a hexagon with the same center as a square that would pack into the
+same dimensions as the hexagon. That is, given a grid of squares with
+alternate rows shifted one half the length of the sides, the hexagons
+drawn would be close packed. Its use in the plotrix package is to provide
+an alternative unit cell for the <span class="samp">color2D.matplot</span> function.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Jim Lemon
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<span class="samp"><a href="color2D.matplot.html">color2D.matplot</a></span>
+</p>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Plot with two ordinates</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for twoord.plot {plotrix}"><tr><td>twoord.plot {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Plot with two ordinates</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Two sets of values are displayed on the same plot with different ordinate
+scales on the left and right.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ twoord.plot(lx,ly,rx,ry,data=NULL,xlim=NULL,lylim=NULL,rylim=NULL,
+ mar=c(5,4,4,4),lcol=1,rcol=2,xlab="",ylab="",rylab="",lpch=1,rpch=2,
+ type="b",halfwidth=0.4,...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>lx,ly,rx,ry</code></td>
+<td>
+y and optional x values for the plot</td></tr>
+<tr valign="top"><td><code>data</code></td>
+<td>
+an optional data frame from which to obtain the above values</td></tr>
+<tr valign="top"><td><code>xlim</code></td>
+<td>
+optional x limits as in <span class="samp">plot</span></td></tr>
+<tr valign="top"><td><code>lylim,rylim</code></td>
+<td>
+optional y limits for the left and right axes
+respectively</td></tr>
+<tr valign="top"><td><code>mar</code></td>
+<td>
+optional margin adjustment, defaults to <span class="samp">c(5,4,4,4)</span></td></tr>
+<tr valign="top"><td><code>lcol,rcol</code></td>
+<td>
+colors to distinguish the two sets of values</td></tr>
+<tr valign="top"><td><code>xlab,ylab</code></td>
+<td>
+axis labels as in <span class="samp">plot</span></td></tr>
+<tr valign="top"><td><code>rylab</code></td>
+<td>
+label for the right axis</td></tr>
+<tr valign="top"><td><code>lpch,rpch</code></td>
+<td>
+plot symbols to distinguish the two sets of values</td></tr>
+<tr valign="top"><td><code>type</code></td>
+<td>
+as in <span class="samp">plot</span></td></tr>
+<tr valign="top"><td><code>halfwidth</code></td>
+<td>
+Half the width of the bars in user units. The bars are
+centered on successive integers if no <span class="samp">x</span> values are supplied.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+additional arguments passed to <span class="samp">plot</span>.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+<span class="samp">twoord.plot</span> automates the process of displaying two sets of
+values that have different ranges on the same plot. It is principally
+useful in illustrating some relationship between the values across the
+observations. It is assumed that the <span class="samp">lx</span> and <span class="samp">rx</span> values
+are at least adjacent, and probably overlapping.
+</p>
+<p>
+It is best to pass all the arguments <span class="samp">lx, ly, rx, ry</span>, but the
+function will attempt to substitute sensible x values if one or two
+are missing.
+</p>
+<p>
+If at least one of the <span class="samp">type</span> arguments is "bar", bars will be plotted instead of
+points or lines. It is best to plot the bars first (i.e. relative to the left axis)
+if the other type is points or lines, as the bars will usually obscure at least some
+of the points or lines. Using NA for the color of the bars will partially correct
+this. If both types are to be bars, remember to pass somewhat different x values or
+the bars will be overlaid.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+nil</p>
+
+<h3>Note</h3>
+
+<p>
+There are many objections to the use of plots with two different 
+ordinate scales, and some of them are even sensible and supported by 
+controlled observation. Many of the objections rest on assertions that the 
+spatial arrangement of the values plotted will override all other 
+evidence. Here are two:
+</p>
+<p>
+The viewer will assume that the vertical position of the data points 
+indicates a quantitative relationship.
+</p>
+<p>
+To some extent. It is probably not a good idea to have the spatial 
+relationship of the points opposed to their numerical relationship. That 
+is to say, if one set of values is in the range of 0-10 and the other 
+20-100, it is best to arrange the plot so that the latter values are 
+not plotted below the former.
+</p>
+<p>
+The viewer will assume that an intersection of lines indicates an 
+intersection of values.
+</p>
+<p>
+If the visual elements representing values can be arranged to avoid 
+intersections, so much the better. Many people have no trouble 
+distinguishing which visual elements are linked to which axis as long as 
+they are both coded similarly, usually with colors and/or symbols. In the 
+special case where there is an underlying relationship between the two 
+such as the probability of that value occurring under some conditions, it 
+may help to mark the point(s) where this occurs.
+</p>
+<p>
+It may be useful to consider <span class="samp">gap.plot</span> as an alternative.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Jim Lemon (thanks to Christophe Dutang for the idea of using bars and lines
+in the same plot)
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<span class="samp"><a href="../../Zelig/html/plot.zelig.html">plot</a></span>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+ twoord.plot(2:10,seq(3,7,by=0.5)+rnorm(9),
+  1:15,rev(60:74)+rnorm(15),xlab="Sequence",
+  ylab="Ascending values",rylab="Descending values",
+  main="Plot with two ordinates - points and lines")
+ twoord.plot(2:10,seq(3,7,by=0.5)+rnorm(9),
+  1:15,rev(60:74)+rnorm(15),xlab="Sequence",
+  ylab="Ascending values",rylab="Descending values",
+  main="Plot with two ordinates - bars on the left",
+  type=c("bar","l"),lcol=3,rcol=4)
+ twoord.plot(2:10,seq(3,7,by=0.5)+rnorm(9),
+  1:15,rev(60:74)+rnorm(15),xlab="Sequence",
+  ylab="Ascending values",rylab="Descending values",
+  main="Plot with two ordinates - bars on the right",
+  type=c("b","bar"),lcol=2,rcol=NA,halfwidth=0.2)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

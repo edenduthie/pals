@@ -1,0 +1,9 @@
+Package: pals
+Version: 0.4.4
+Title: Protocol for the Analysis of Land Surface models
+Author: Gab Abramowitz <palshelp@gmail.com>
+Maintainer: Gab Abramowitz <palshelp@gmail.com>
+Description: R analysis scripts for PALS project
+License:
+Packaged: 2011-11-02 03:10:33 UTC; gab
+Built: R 2.15.1; ; 2012-10-04 07:04:02 UTC; unix

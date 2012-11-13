@@ -25,7 +25,7 @@
 	
 	<table class="shade upload-model-output" width="450"><tr><td class="shade">
 	
-	<s:form action="EditModelOutputForm" method="post" validate="true" method="post" enctype="multipart/form-data">
+	<s:form action="EditModelOutputForm" method="post" validate="true" enctype="multipart/form-data">
 	<s:hidden name="editTask" value="modify" id="editTaskInput" />
 	<s:hidden name="modelOutputId" value="%{modelOutput.id}" />
 	<s:textfield name="modelOutputName" label="Name" value="%{modelOutput.name}"/>

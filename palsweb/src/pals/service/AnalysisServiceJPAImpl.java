@@ -22,7 +22,7 @@ import pals.entity.ModelOutput;
 import pals.utils.ImageUtil;
 import pals.utils.PalsFileUtils;
 
-//@Transactional
+@Transactional
 public class AnalysisServiceJPAImpl implements AnalysisServiceInterface {
 
 	private static Logger logger = Logger.getLogger(AnalysisServiceJPAImpl.class);

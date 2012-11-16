@@ -104,7 +104,7 @@
 		    </div>
 	</form>
 	
-	<s:form id="uploadForm" action="UploadModelOutput" method="post" enctype="multipart/form-data">
+	<s:form id="uploadForm" action="UploadModelOutput" method="post" enctype="multipart/form-data" theme="xhtml">
 	<!--<s:file name="modelOutputRaw" key="upload.fileLabel"/>-->
 	<input type="hidden" id="filename" name="filename" />
 	<s:textfield name="modelOutputName" label="Name"/>
@@ -117,10 +117,10 @@
 	<s:select name="parameterSelection" list="parameterSelections" emptyOption="true"
 	    label="Parameter Selection" />
 	<div id="parameterSelectionValidation" class="error-text"></div>
-	<s:textarea name="userComments" label="Please add any comments that would aid reproducing this simulation" rows="5" cols="50" />
-	<s:checkbox name="allowDownload">Allow public users to download the uploaded model output file</s:checkbox>
+	<s:textarea name="userComments" label="Comments" placeholder="Please add any comments that would aid reproducing this simulation" rows="5" cols="50" />
+	<s:checkbox name="allowDownload" label="Allow other users to download this model output if public"/>
 	<div id="ancillary-files">
-	    <a href="javascript:void(0)" onclick="addFile()" class="pbut-link">Add an Ancillary File</a> (50MB limit per file)
+	    <a title="Add log files, namelist files, initialisation/restart files etc" href="javascript:void(0)" onclick="addFile()" class="pbut-link">Add an Ancillary File</a> (50MB limit per file)
 	    <!--<s:file name="upload" label="file1"/>-->
 	</div>
 	

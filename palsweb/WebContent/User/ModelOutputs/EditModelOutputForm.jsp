@@ -60,7 +60,12 @@
 	    <!--<s:file name="upload" label="file1"/>-->
 	</div>
 	<br>
-	<s:submit cssClass="pbut" value="Update Model Output Attributes"/>
+	<div style="position: relative">
+	<s:submit cssClass="pbut" value="Update Model Output Attributes" 
+	cssStyle="position: absolute; left: 180px" />
+	<s:submit cssClass="pbut" action="ListModelOutputs" onclick="form.onsubmit=null" value="Cancel" 
+	cssStyle="position: relative;"/>
+	</div>
 	</s:form>
 	
 	</td></tr></table>

@@ -34,11 +34,11 @@ AveragingWindow	= function(obslabel,modlabel,mod_data,obs_data,
 		# Reshape data:
 		mdat=matrix(mod_data[1:(tsteps-numdump)],windowsize,nwindows)
 		odat=matrix(obs_data[1:(tsteps-numdump)],windowsize,nwindows)
-		for(j in 1:nwindows){ # calculate average flux for each window
-			flav[j,1]=mean(mdat[,j])	# vector of averages
-			flav[j,2]=mean(odat[,j])	# vector of averages
-			sqerr[j]=(flav[j,1]-flav[j,2])^2
-		}
+                flav[,1] <- colMeans(mdat)
+                flav[,2] <- colMeans(odat)
+                flavCol1 <- flav[,1]
+                flavCol2 <- flav[,2]
+                sqerr <- (flavCol1 - flavCol2)^2
 		# Perform least squares regression (b/w model ad obs):
 		rgrs=lsfit(flav[,2],flav[,1])
 		mvals[i]=rgrs$coef[[2]] # store gradient values for plot
@@ -46,12 +46,10 @@ AveragingWindow	= function(obslabel,modlabel,mod_data,obs_data,
 		linval=c() # init
 		lindev=c() # init
 		moddev=c() # init
-		meanmod=mean(flav[j,1])
-		for(k in 1:nwindows){
-			linval[k]=rgrs$coef[[2]]*flav[k,1]+rgrs$coef[[1]]
-			lindev[k]=(linval[k]-flav[k,2])^2
-			moddev[k]=(flav[k,1]-meanmod)^2
-		}
+                meanmod=mean(flav[nwindows,1])
+                linval <- sapply(flavCol1,function(x) rgrs$coef[[2]]*x+rgrs$coef[[1]])
+                lindev <- (linval - flavCol2)^2
+                moddev <- sapply(flavCol1,function(x) (x-meanmod)^2)
 		# 95% confidence interval:
 		mwidth[i]=sqrt(sum(lindev)/nwindows)*1.96/sqrt(sum(moddev))
 		# Get correlation cofficient:

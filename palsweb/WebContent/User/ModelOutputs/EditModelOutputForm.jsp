@@ -25,7 +25,7 @@
 	
 	<table class="shade upload-model-output" width="450"><tr><td class="shade">
 	
-	<s:form action="EditModelOutputForm" method="post" validate="true" enctype="multipart/form-data">
+	<s:form action="EditModelOutputForm" method="post" validate="true" enctype="multipart/form-data" theme="xhtml">
 	<s:hidden name="editTask" value="modify" id="editTaskInput" />
 	<s:hidden name="modelOutputId" value="%{modelOutput.id}" />
 	<s:textfield name="modelOutputName" label="Name" value="%{modelOutput.name}"/>
@@ -35,8 +35,9 @@
 	    label="State Selection" value="modelOutput.stateSelection"/>
 	<s:select name="parameterSelection" list="parameterSelections" emptyOption="true"
 	    label="Parameter Selection" value="modelOutput.parameterSelection"/>
-	<s:textarea name="userComments" label="Please add any comments that would aid reproducing this simulation" rows="5" cols="50" />
-	<s:checkbox name="allowDownload" value="modelOutput.allowDownload">Allow public users to download the uploaded model output file</s:checkbox>
+	<s:textarea name="userComments" label="Comments" placeholder="Please add any comments that would aid reproducing this simulation" rows="5" cols="50" />
+	<s:checkbox name="allowDownload" value="modelOutput.allowDownload" 
+	label="Allow other users to download this model output if public"/>
 	<br>
     <s:if test="modelOutput.files.size() > 0" >
 	<i>Existing Ancillary Files:</i>
@@ -56,11 +57,16 @@
 	</s:if>
 	<s:hidden name="filesToRemove" id="files-to-remove" />
 	<div id="ancillary-files">
-	    <a href="javascript:void(0)" onclick="addFile()" class="pbut-link">Add an Ancillary File</a> (50MB limit per file)
+	    <a title="Add log files, namelist files, initialisation/restart files, etc."
+	    href="javascript:void(0)" onclick="addFile()"
+	    class="pbut-link">Add an Ancillary File</a> (50MB limit per file)
 	    <!--<s:file name="upload" label="file1"/>-->
 	</div>
 	<br>
-	<s:submit cssClass="pbut" value="Update Model Output Attributes"/>
+	<div style="position: relative">
+	<s:submit cssClass="pbut" cssStyle="position: absolute; left: 180px; bottom: 15px" value="Update Model Output Attributes"/>
+	<s:submit cssClass="pbut" cssStyle="position: relative; bottom: 0px" action="ListModelOutputs" onclick="form.onsubmit=null" value="Cancel"/>
+	</div>
 	</s:form>
 	
 	</td></tr></table>

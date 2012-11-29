@@ -26,3 +26,5 @@ chmod -R 777 workspace
 dos2unix rWrapper
 ./rWrapper CMD INSTALL pals
 ./rWrapper CMD INSTALL plotrix
+./rWrapper CMD INSTALL ncdf
+./rWrapper CMD INSTALL cairoDevice

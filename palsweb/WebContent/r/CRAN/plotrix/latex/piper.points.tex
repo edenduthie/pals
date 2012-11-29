@@ -1,0 +1,42 @@
+\HeaderA{piper.points}{Display the points on a Piper diagram.}{piper.points}
+\keyword{misc}{piper.points}
+\begin{Description}\relax
+Displays the points for the anions and cations in the Piper
+diagram.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+ piper.points(ca,mg,so4,cl,ions=data.frame(ca=ca,mg=mg,so4=so4,cl=cl),sites,
+  ppm=TRUE,chull=FALSE,pch=3,main="",cex.pch=1,col=NA,pch.lwd=0.7,plot.sep=0.15)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{ca,mg,so4,cl}] Concentrations of the ions.
+\item[\code{ions}] data frame containing the above values.
+\item[\code{sites}] indices for ions.
+\item[\code{ppm}] Whether the concentrations are in milligrams/liter (parts per
+million) or milliequivalents.
+\item[\code{chull}] Whether to display points or polygons for the concentrations.
+\item[\code{pch}] Symbol to use in plotting points.
+\item[\code{main}] title for the diagram
+\item[\code{cex.pch}] Expansion for the points.
+\item[\code{col}] Colors for the points/polygons.
+\item[\code{pch.lwd}] Line widths.
+\item[\code{plot.sep}] The offsets for the ions.
+\end{ldescription}
+\end{Arguments}
+\begin{Details}\relax
+\samp{piper.points} displays the points/polygons in the Piper diagram.
+\end{Details}
+\begin{Value}
+A list containing the coordinates of the points and optionally
+information about the indices and colors.
+\end{Value}
+\begin{Author}\relax
+Mike Cheetham
+\end{Author}
+\begin{SeeAlso}\relax
+\samp{\LinkA{piper.diagram}{piper.diagram}}
+\end{SeeAlso}
+

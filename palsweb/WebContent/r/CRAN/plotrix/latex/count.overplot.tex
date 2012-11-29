@@ -1,0 +1,42 @@
+\HeaderA{count.overplot}{Show overlying points as counts}{count.overplot}
+\keyword{misc}{count.overplot}
+\begin{Description}\relax
+\samp{count.overplot} checks for overlying points defined as points
+separated by a maximum of \samp{tol}, a two element numeric vector of
+the x and y tolerance.  Defaults to 1/2 of the width of a lower case 
+"o" in the x direction and 1/2 of the height of a lower case "o" in 
+the y direction.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+ count.overplot(x,y,tol=NULL,col=par("fg"),pch="1",...)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{x,y}] Two numeric data vectors or the first two columns of a matrix
+or data frame. Typically the x/y coordinates of points to be plotted.
+\item[\code{tol}] The largest distance between points that will be considered
+to be overlying.
+\item[\code{col}] Color(s) for the points (not the numbers).
+\item[\code{pch}] Symbol(s) to display.
+\item[\code{...}] additional arguments passed to \samp{plot}.
+\end{ldescription}
+\end{Arguments}
+\begin{Value}
+nil
+\end{Value}
+\begin{Author}\relax
+Jim Lemon
+\end{Author}
+\begin{SeeAlso}\relax
+\samp{\LinkA{cluster.overplot}{cluster.overplot}},\samp{\LinkA{sizeplot}{sizeplot}}
+\end{SeeAlso}
+\begin{Examples}
+\begin{ExampleCode}
+ xy.mat<-cbind(sample(1:10,200,TRUE),sample(1:10,200,TRUE))
+ count.overplot(xy.mat,main="count.overplot",
+  xlab="X values",ylab="Y values")
+\end{ExampleCode}
+\end{Examples}
+

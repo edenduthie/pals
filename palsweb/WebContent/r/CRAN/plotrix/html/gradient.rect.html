@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Display a rectangle filled with an arbitrary color gradient.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for gradient.rect {plotrix}"><tr><td>gradient.rect {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Display a rectangle filled with an arbitrary color gradient.</h2>
+
+
+<h3>Description</h3>
+
+<p>
+<span class="samp">gradient.rect</span> draws a rectangle consisting of <span class="samp">nslices</span>
+subrectangles of the colors in <span class="samp">col</span> or those returned by 
+<span class="samp">color.gradient</span> if <span class="samp">col</span> is NULL. The rectangle is
+'sliced' in the direction specified by <span class="samp">gradient</span>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ gradient.rect(xleft,ybottom,xright,ytop,reds,greens,blues,col=NULL,
+  nslices=50,gradient="x",border=par("fg"))
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>xleft,ybottom,xright,ytop</code></td>
+<td>
+Positions of the relevant corners
+of the desired rectangle, as in <span class="samp">rect</span>.</td></tr>
+<tr valign="top"><td><code>reds,greens,blues</code></td>
+<td>
+vectors of the values of the color components
+either as 0 to 1 or ,if any value is greater than 1, 0 to 255.</td></tr>
+<tr valign="top"><td><code>col</code></td>
+<td>
+Vector of colors. If supplied, this takes precedence over
+<span class="samp">reds, greens, blues</span> and <span class="samp">nslices</span> will be set to its length.</td></tr>
+<tr valign="top"><td><code>nslices</code></td>
+<td>
+The number of sub-rectangles that will be drawn.</td></tr>
+<tr valign="top"><td><code>gradient</code></td>
+<td>
+whether the gradient should be horizontal (x) or vertical.</td></tr>
+<tr valign="top"><td><code>border</code></td>
+<td>
+The color of the border around the rectangle (NA for none).</td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+the vector of hexadecimal color values from <span class="samp">color.gradient</span> or
+<span class="samp">col</span>.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Jim Lemon
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+ # get an empty box
+ plot(0:10,type="n",axes=FALSE)
+ # run across the three primaries
+ gradient.rect(1,0,3,6,reds=c(1,0),
+  greens=c(seq(0,1,length=10),seq(1,0,length=10)),
+  blues=c(0,1),gradient="y")
+ # now a "danger gradient"
+ gradient.rect(4,0,6,6,c(seq(0,1,length=10),rep(1,10)),
+  c(rep(1,10),seq(1,0,length=10)),c(0,0),gradient="y")
+ # now just a smooth gradient across the bar
+ gradient.rect(7,0,9,6,col=smoothColors("red",38,"blue"),border=NA)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

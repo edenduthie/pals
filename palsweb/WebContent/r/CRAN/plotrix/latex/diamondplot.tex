@@ -1,0 +1,39 @@
+\HeaderA{diamondplot}{Plot multiple variables as polygons on a radial grid.}{diamondplot}
+\keyword{misc}{diamondplot}
+\begin{Description}\relax
+\samp{diamondplot} displays a plot of polygons on a radial grid representing
+the relationships between one or more attributes of data objects. For a slightly
+different style of plot, see the "spiderweb plot" example in \samp{radial.plot}.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+ diamondplot(x, bg=gray(0.6), col=rainbow,name="", ...)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{x}] A data frame containing numeric values that represent attributes
+(possibly repeated observations) of data objects. See the example.
+\item[\code{bg}] The background color for the plot.
+\item[\code{col}] The colors for the polygons.
+\item[\code{name}] The title for the plot (i.e. \samp{main}).
+\item[\code{...}] additional arguments passed to \samp{plot}.
+\end{ldescription}
+\end{Arguments}
+\begin{Value}
+nil
+\end{Value}
+\begin{Author}\relax
+Elisa Biancotto
+\end{Author}
+\begin{SeeAlso}\relax
+\samp{\LinkA{plot}{plot}}, \samp{\LinkA{radial.plot}{radial.plot}}
+\end{SeeAlso}
+\begin{Examples}
+\begin{ExampleCode}
+ data(mtcars)
+ mysubset<-mtcars[substr(dimnames(mtcars)[[1]],1,1)=="M",c("mpg","hp","wt","disp")]
+ diamondplot(mysubset)
+\end{ExampleCode}
+\end{Examples}
+

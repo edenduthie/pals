@@ -1,0 +1,77 @@
+\HeaderA{pie3D}{Display a 3D pie chart}{pie3D}
+\keyword{misc}{pie3D}
+\begin{Description}\relax
+Displays a 3D pie chart with optional labels.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+ pie3D(x,edges=100,radius=1,height=0.3,theta=pi/6,start=0,border=par("fg"),
+  col=NULL,labels=NULL,labelpos=NULL,labelcol=par("fg"),labelcex=1.5,
+  sector.order=NULL,explode=0,shade=0.8,...)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{x}] a numeric vector for which each value will be a sector
+\item[\code{edges}] the number of lines forming an ellipse
+\item[\code{radius}] the radius of the pie in user units
+\item[\code{height}] the height of the pie in user units
+\item[\code{theta}] The angle of viewing in radians
+\item[\code{start}] The angle at which to start drawing sectors.
+\item[\code{border}] The color of the sector border lines
+\item[\code{col}] The colors of the sectors
+\item[\code{labels}] Optional labels for each sector
+\item[\code{labelpos}] Optional positions for the labels
+\item[\code{labelcol}] The color of the labels
+\item[\code{labelcex}] The character expansion factor for the labels
+\item[\code{sector.order}] Allows the operator to specify the order in
+which the sectors are drawn.
+\item[\code{explode}] The amount to "explode" the pie in user units
+\item[\code{shade}] If \textgreater{} 0 and \textless{} 1, the proportion to reduce the
+brightness of the sector color to get a better 3D effect.
+\item[\code{...}] graphical parameters passed to \samp{plot}
+\end{ldescription}
+\end{Arguments}
+\begin{Details}\relax
+\samp{pie3D} scales the values in \samp{x} so that they total 2*pi,
+dropping zeros and NAs. It then displays an empty plot, calculates
+the sequence for drawing the sectors and calls \samp{draw.tilted.sector}
+to draw each sector. If labels are supplied, it will call \samp{pie3D.label}
+to place a label for each sector. If supplied, the number of labels, label 
+positions and sector colors must be at least equal to the number of values 
+in \samp{x}. If the labels are long, it may help to reduce the radius of
+the pie as in the example below.
+\end{Details}
+\begin{Value}
+The bisecting angle of the sectors in radians.
+\end{Value}
+\begin{Note}\relax
+Due to the somewhat primitive method used to draw sectors, a sector that
+extends beyond both pi/2 and 3*pi/2 radians in either direction may not
+display properly. Setting \samp{start} to pi/2 will often fix this, but
+the user may have to adjust \samp{start} and the order of sectors in extreme
+cases. The argument \samp{sector.order} allows the user to specify a vector
+of integers that will override the calculation of the order in which the
+sectors are drawn. This is usually necessary when a very large sector that 
+extends past 3*pi/2 is overlapped by a smaller sector next to it.
+
+While \samp{pie3D} can be used to display a 2D pie chart by setting
+height=0 and theta=pi, the labels produced by \samp{pie3D.labels} will
+not be well positioned. It is probably better to use \samp{floating.pie}
+for this, or use \samp{pie.labels} for the labels.
+\end{Note}
+\begin{Author}\relax
+Jim Lemon
+\end{Author}
+\begin{SeeAlso}\relax
+\samp{\LinkA{pie3D.labels}{pie3D.labels}}, \samp{\LinkA{draw.tilted.sector}{draw.tilted.sector}}
+\end{SeeAlso}
+\begin{Examples}
+\begin{ExampleCode}
+ pieval<-c(2,4,6,8)
+ pielabels<-
+  c("We hate\n pies","We oppose\n  pies","We don't\n  care","We just love pies")
+ pie3D(pieval,radius=0.9,labels=pielabels,explode=0.1,main="3D PIE OPINIONS")
+\end{ExampleCode}
+\end{Examples}
+

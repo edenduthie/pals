@@ -1,0 +1,47 @@
+\HeaderA{pie.labels}{Place labels on a pie chart}{pie.labels}
+\keyword{misc}{pie.labels}
+\begin{Description}\relax
+Places labels on a pie chart
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+ pie.labels(x,y,angles,labels,radius=1,bg="white",border=TRUE,...)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{x,y}] x and y position of the center of the pie chart
+\item[\code{angles}] A numeric vector representing angles in radians. This is
+the return value of \samp{floating.pie}.
+\item[\code{labels}] Text strings to label each sector.
+\item[\code{radius}] The radius at which to place the labels in user units. The
+default is 1.
+\item[\code{bg}] The color of the rectangles on which the labels are displayed.
+\item[\code{border}] Whether to draw borders around the rectangles.
+\item[\code{...}] Arguments passed to \samp{boxed.labels}.
+\end{ldescription}
+\end{Arguments}
+\begin{Value}
+nil
+\end{Value}
+\begin{Note}\relax
+Remember that \samp{x} and \samp{y} specify the center of the pie chart and
+that the label positions are specified by angles and radii from that 
+center.
+\end{Note}
+\begin{Author}\relax
+Jim Lemon
+\end{Author}
+\begin{SeeAlso}\relax
+\samp{\LinkA{floating.pie}{floating.pie}}, \samp{\LinkA{boxed.labels}{boxed.labels}}
+\end{SeeAlso}
+\begin{Examples}
+\begin{ExampleCode}
+ pieval<-c(2,4,6,8)
+ plot(1:5,type="n",axes=FALSE)
+ box()
+ bisect.angles<-floating.pie(3,3,pieval)
+ pie.labels(3,3,bisect.angles,c("two","four","six","eight"))
+\end{ExampleCode}
+\end{Examples}
+

@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Add a table of values to a plot</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for addtable2plot {plotrix}"><tr><td>addtable2plot {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Add a table of values to a plot</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Displays a table of values at a user-specified position on an existing plot
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ addtable2plot(x,y=NULL,table,lwd=par("lwd"),bty="n",bg=par("bg"),
+  cex=1,xjust=0,yjust=1,box.col=par("fg"),text.col=par("fg"),
+  display.colnames=TRUE,display.rownames=FALSE,hlines=FALSE,title=NULL)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x,y</code></td>
+<td>
+Either x and y coordinates to locate the table or an
+<span class="samp">xy.coords</span> object.</td></tr>
+<tr valign="top"><td><code>table</code></td>
+<td>
+A data frame, matrix or similar object that will be displayed.</td></tr>
+<tr valign="top"><td><code>lwd</code></td>
+<td>
+The line width for the box and horizontal dividers.</td></tr>
+<tr valign="top"><td><code>bty</code></td>
+<td>
+Whether to draw a box around the table ("o") or not ("n").</td></tr>
+<tr valign="top"><td><code>bg</code></td>
+<td>
+The background color for the table.</td></tr>
+<tr valign="top"><td><code>cex</code></td>
+<td>
+Character expansion for the table.</td></tr>
+<tr valign="top"><td><code>xjust,yjust</code></td>
+<td>
+Positioning for the table relative to <span class="samp">x,y</span>.</td></tr>
+<tr valign="top"><td><code>box.col</code></td>
+<td>
+The color for the box and lines.</td></tr>
+<tr valign="top"><td><code>text.col</code></td>
+<td>
+The color for the text.</td></tr>
+<tr valign="top"><td><code>display.colnames</code></td>
+<td>
+Whether to display the column names in the table.</td></tr>
+<tr valign="top"><td><code>display.rownames</code></td>
+<td>
+Whether to display the row names in the table.</td></tr>
+<tr valign="top"><td><code>hlines</code></td>
+<td>
+Whether to draw horizontal lines between each row of the table.</td></tr>
+<tr valign="top"><td><code>title</code></td>
+<td>
+Optional title placed over the table.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+<span class="samp">addtable2plot</span> displays the values in <span class="samp">table</span> at a position in user
+coordinates specified by <span class="samp">x,y</span>. The two justification arguments,
+<span class="samp">xjust</span> and <span class="samp">yjust</span> are the same as in the <span class="samp">legend</span> function,
+and <span class="samp">addtable2plot</span> has been programmed to be as similar to <span class="samp">legend</span>
+as possible. The defaults are those that were most popular in scientific
+journals at the time of programming.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+nil</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Original by John Kane, mods by Jim Lemon and Brian Diggs
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<span class="samp"><a href="../../PerformanceAnalytics/html/PerformanceAnalytics-internal.html">legend</a></span>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+ testdf&lt;-data.frame(Before=c(10,7,5),During=c(8,6,2),After=c(5,3,4))
+ rownames(testdf)&lt;-c("Red","Green","Blue")
+ barp(testdf,main="Test addtable2plot",ylab="Value",
+  names.arg=colnames(testdf),col=2:4)
+ # show most of the options
+ addtable2plot(2,8,testdf,bty="o",display.rownames=TRUE,hlines=TRUE,
+  title="The table")
+</pre>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

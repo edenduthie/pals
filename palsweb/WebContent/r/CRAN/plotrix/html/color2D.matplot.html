@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Display a numeric matrix as color matrix</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for color2D.matplot {plotrix}"><tr><td>color2D.matplot {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Display a numeric matrix as color matrix</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Display the values of a numeric 2D matrix or data frame as colored
+rectangles or hexagons.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ color2D.matplot(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
+  extremes=NA,cellcolors=NA,show.legend=FALSE,nslices=10,xlab="Column",
+  ylab="Row",do.hex=FALSE,axes=TRUE,show.values=FALSE,vcol="white",vcex=1,
+  border="black",na.color=NA,...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+data values</td></tr>
+<tr valign="top"><td><code>redrange, greenrange, bluerange</code></td>
+<td>
+the ranges of red, green and blue
+that will be scaled to represent the range of numeric values</td></tr>
+<tr valign="top"><td><code>extremes</code></td>
+<td>
+The colors for the extreme values of <span class="samp">x</span>. Takes
+precedence over the color ranges.</td></tr>
+<tr valign="top"><td><code>cellcolors</code></td>
+<td>
+A precalculated vector of cell colors. This must have
+exactly the same number of colors as there are values in the matrix or
+it will be uninformative. Takes precedence over both <span class="samp">extremes</span>
+and color ranges.</td></tr>
+<tr valign="top"><td><code>show.legend</code></td>
+<td>
+whether to display a color legend with the
+extreme numeric values in the lower left corner of the plot. If the
+default is not suitable, call <span class="samp">color.legend</span> separately.</td></tr>
+<tr valign="top"><td><code>nslices</code></td>
+<td>
+The number of color "slices" in the legend.</td></tr>
+<tr valign="top"><td><code>xlab,ylab</code></td>
+<td>
+axis labels for the plot.</td></tr>
+<tr valign="top"><td><code>do.hex</code></td>
+<td>
+plot packed hexagons instead of rectangles.</td></tr>
+<tr valign="top"><td><code>axes</code></td>
+<td>
+Whether to suppress the default axis labelling.</td></tr>
+<tr valign="top"><td><code>show.values</code></td>
+<td>
+Whether to display the numeric values of <span class="samp">x</span>.
+This also controls the number of decimal places displayed.</td></tr>
+<tr valign="top"><td><code>vcol</code></td>
+<td>
+The color for the value display.</td></tr>
+<tr valign="top"><td><code>vcex</code></td>
+<td>
+The character expansion for the value display.</td></tr>
+<tr valign="top"><td><code>border</code></td>
+<td>
+The color(s) for the borders of the cells. Pass NA
+if no border is  wanted.</td></tr>
+<tr valign="top"><td><code>na.color</code></td>
+<td>
+The color to use for NA values of <span class="samp">x</span>.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+arguments passed to <span class="samp">plot</span>.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+Displays a plot with the same number of rectangular or hexagonal cells as
+there are numeric values in the matrix or data frame. Each rectangle is
+colored to represent its corresponding value. The rectangles are arranged
+in the conventional display of a 2D matrix with rows beginning at the top
+and columns at the left. The color scale defaults to black for the minimum
+value and white for the maximum.
+</p>
+<p>
+The user will have to adjust the plot device dimensions to get regular
+squares or hexagons, especially when the matrix is not square. As the
+margins are not equivalent for all display devices, this is currently
+a matter of trial and error. Drawing hexagons is quite slow.
+</p>
+<p>
+<span class="samp">show.values</span> is also used to control the number of decimal places
+displayed if the values are shown. <span class="samp">TRUE</span> will give one decimal
+place, <span class="samp">2</span> two, and so on.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+nil</p>
+
+<h3>Note</h3>
+
+<p>
+The function <span class="samp"><a href="../../SparseM/html/SparseM.image.html">image</a></span> performs almost the same when passed a
+matrix of values without grid positions, except that it assigns values to
+a specified list of colors rather than calculating a color for each distinct
+value.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Jim Lemon (thanks to Ashoka Polpitiya for <span class="samp">axes</span>)
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<span class="samp"><a href="color.scale.html">color.scale</a></span>, <span class="samp"><a href="../../SparseM/html/SparseM.image.html">image</a></span>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+ x&lt;-matrix(rnorm(1024)+sin(seq(0,2*pi,length=1024)),nrow=32)
+ color2D.matplot(x,c(1,0),c(0,0),c(0,1),show.legend=TRUE,
+  xlab="Columns",ylab="Rows",main="2D matrix plot")
+ # generate colors that show negative values in red and positive in green
+ cellcol&lt;-matrix(rep("#000000",1024),nrow=32)
+ cellcol[x&lt;0]&lt;-color.scale(x[x&lt;0],c(1,0.8),c(0,0.8),0)
+ cellcol[x&gt;0]&lt;-color.scale(x[x&gt;0],0,c(0.8,1),c(0.8,0))
+ # now do hexagons without borders
+ color2D.matplot(x,cellcolors=cellcol,xlab="Columns",ylab="Rows",
+  do.hex=TRUE,main="2D matrix plot (hexagons)",border=NA)
+ # for this one, we have to do the color legend separately
+ # because of the two part color scaling
+ legval&lt;-seq(min(x),max(x),length.out=6)
+ legcol&lt;-rep("#000000",6)
+ legcol[legval&lt;0]&lt;-color.scale(legval[legval&lt;0],c(1,0.8),c(0,0.8),0)
+ legcol[legval&gt;0]&lt;-color.scale(legval[legval&gt;0],0,c(0.8,1),c(0.8,0))
+ color.legend(0,-5,6,-4,round(c(min(x),0,max(x)),1),rect.col=legcol)
+ # do a color only association plot
+ xt&lt;-table(sample(1:10,100,TRUE),sample(1:10,100,TRUE))
+ observed&lt;-xt[,rev(1:dim(xt)[2])]
+ expected&lt;-outer(rowSums(observed),colSums(observed),"*")/sum(xt)
+ deviates&lt;-(observed-expected)/sqrt(expected)
+ cellcol&lt;-matrix(rep("#000000",100),nrow=10)
+ cellcol[deviates&lt;0]&lt;-
+  color.scale(deviates[deviates&lt;0],c(1,0.8),c(0,0.5),0)
+ cellcol[deviates&gt;0]&lt;-
+  color.scale(deviates[deviates&gt;0],0,c(0.7,0.8),c(0.5,0))
+ color2D.matplot(x=round(deviates,2),cellcolors=cellcol,
+  show.values=TRUE,main="Association plot")
+</pre>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

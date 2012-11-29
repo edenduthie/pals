@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Key for interpreting lengths in a plot</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for lengthKey {plotrix}"><tr><td>lengthKey {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Key for interpreting lengths in a plot</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Key for interpreting lengths in a plot
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ lengthKey(x,y,tickpos,scale)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x,y</code></td>
+<td>
+The position of the left end of the key in user units.</td></tr>
+<tr valign="top"><td><code>tickpos</code></td>
+<td>
+The labels that will appear above the key.</td></tr>
+<tr valign="top"><td><code>scale</code></td>
+<td>
+A value that will scale the length of the key.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+<span class="samp">lengthKey</span> displays a line with tick marks and the values in
+<span class="samp">tickpos</span> above those tickmarks. It is useful when line segments
+on a plot represent numeric values. Note that if the plot does not have
+a 1:1 aspect ratio, a length key is usually misleading.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+nil</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Jim Lemon
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<span class="samp"><a href="../../graphics/html/segments.html">segments</a></span>, <span class="samp"><a href="../../graphics/html/arrows.html">arrows</a></span>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+ # manufacture a matrix of orientations in radians
+ o&lt;-matrix(rep(pi*seq(0.1,0.8,by=0.1),7),ncol=8,byrow=TRUE)
+ m&lt;-matrix(rnorm(56)+4,ncol=8,byrow=TRUE)
+ # get an empty plot of approximately 1:1 aspect ratio
+ plot(0,xlim=c(0.7,8.3),ylim=c(0.7,7.3),type="n")
+ vectorField(o,m,vecspec="rad")
+ # the scaling usually has to be worked out by trial and error
+ lengthKey(0.3,-0.5,c(0,5,10),0.24)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

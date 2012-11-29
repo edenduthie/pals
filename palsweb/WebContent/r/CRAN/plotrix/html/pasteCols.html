@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Paste the columns of a matrix together.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for pasteCols {plotrix}"><tr><td>pasteCols {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Paste the columns of a matrix together.</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Paste the columns of a matrix together to form as
+many "words" as there are columns.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ pasteCols(x,sep="")
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+A matrix.</td></tr>
+<tr valign="top"><td><code>sep</code></td>
+<td>
+The separator to use in the <span class="samp">paste</span> command.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+<span class="samp">pasteCols</span> pastes the columns of a matrix together to form a vector in
+which each element is the concatenation of the elements in each of the columns
+of the matrix. It is intended for producing identifiers from a matrix returned
+by the <span class="samp">combn</span> function.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+A vector of character strings.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Jim Lemon
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<span class="samp"><a href="makeIntersectList.html">makeIntersectList</a></span>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+ # create a matrix of the combinations of the first five letters of the
+ # alphabet taken two at a time.
+ alpha5&lt;-combn(LETTERS[1:5],2,simplify=TRUE)
+ pasteCols(alpha5,sep="+")
+</pre>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

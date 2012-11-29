@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Display a plot with one or two gaps (missing ranges) on one axis</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for gap.plot {plotrix}"><tr><td>gap.plot {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Display a plot with one or two gaps (missing ranges) on one axis</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Displays a plot with one or two missing ranges on one of the axes.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ gap.plot(x,y,gap,gap.axis="y",bgcol="white",breakcol="black",brw=0.02,
+  xlim,ylim,xticlab,xtics=NA,yticlab,ytics=NA,lty=rep(1,length(x)),
+  col=rep(par("col"),length(x)),pch=rep(1,length(x)),add=FALSE,...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x,y</code></td>
+<td>
+data values</td></tr>
+<tr valign="top"><td><code>gap</code></td>
+<td>
+the range(s) of values to be left out</td></tr>
+<tr valign="top"><td><code>gap.axis</code></td>
+<td>
+whether the gaps are to be on the x or y axis</td></tr>
+<tr valign="top"><td><code>bgcol</code></td>
+<td>
+the color of the plot background</td></tr>
+<tr valign="top"><td><code>breakcol</code></td>
+<td>
+the color of the "break" marker</td></tr>
+<tr valign="top"><td><code>brw</code></td>
+<td>
+break width relative to plot width</td></tr>
+<tr valign="top"><td><code>xlim,ylim</code></td>
+<td>
+the plot limits.</td></tr>
+<tr valign="top"><td><code>xticlab</code></td>
+<td>
+labels for the x axis ticks</td></tr>
+<tr valign="top"><td><code>xtics</code></td>
+<td>
+position of the x axis ticks</td></tr>
+<tr valign="top"><td><code>yticlab</code></td>
+<td>
+labels for the y axis ticks</td></tr>
+<tr valign="top"><td><code>ytics</code></td>
+<td>
+position of the y axis ticks</td></tr>
+<tr valign="top"><td><code>lty</code></td>
+<td>
+line type(s) to use if there are lines</td></tr>
+<tr valign="top"><td><code>col</code></td>
+<td>
+color(s) in which to plot the values</td></tr>
+<tr valign="top"><td><code>pch</code></td>
+<td>
+symbols to use in plotting.</td></tr>
+<tr valign="top"><td><code>add</code></td>
+<td>
+whether to add values to an existing plot.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+arguments passed to <span class="samp">plot</span> and <span class="samp">points</span>.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+Displays a plot omitting one or two ranges of values on one axis. 
+Typically used when there is a relatively large gap or two in the overall 
+range of one set of values, often because of outliers. The function warns
+the user if any values have been omitted by being in the "gap". See 
+<span class="samp"><a href="axis.break.html">axis.break</a></span> for a brief discussion of plotting on 
+discontinuous coordinates.
+</p>
+<p>
+To add more data series to a gap plot, call <span class="samp">gap.plot</span> with
+<span class="samp">add = TRUE</span>. The same <span class="samp">gap</span> and <span class="samp">gap.axis</span> arguments as
+in the initial call must be passed or the data will not be displayed
+correctly. Remember to pass an explicit <span class="samp">xlim</span> or <span class="samp">ylim</span> to
+the initial call if the added data exceed the range of the data
+initially displayed. Also remember to subtract the width(s) of the gap(s)
+if you are passing an explicit <span class="samp">xlim</span> or <span class="samp">ylim</span>.
+</p>
+<p>
+Because the gaps take up some space, it is possible to have a data value
+that is just below a gap plotted in the gap. The answer is to make the lower
+gap limit a little higher if this is a problem.
+</p>
+<p>
+If at least four values are passed in <span class="samp">gap</span>, the first four will be
+used to calculate two "gaps" in the plot instead of one. The function does
+not check whether these values are sensible, so it is quite easy to
+ask for a very silly plot.
+</p>
+<p>
+The default ticks are usually not ideal, and most users will want to pass
+their own tick positions and perhaps labels. Note that <span class="samp">lines</span> appears
+to use only the first <span class="samp">col</span> and <span class="samp">lty</span> argument value, so if you
+must have lines with different colors and types, use <span class="samp">add=TRUE</span> and add
+them separately (see the third example for the problem and the solution).
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+nil</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Jim Lemon and Ben Bolker (thanks to Zheng Lu for the "add" idea,
+and Art Roberts for helping to get the gaps right.)
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<span class="samp"><a href="gap.barplot.html">gap.barplot</a></span>, <span class="samp"><a href="axis.break.html">axis.break</a></span>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+ twogrp&lt;-c(rnorm(5)+4,rnorm(5)+20,rnorm(5)+5,rnorm(5)+22)
+ gpcol&lt;-c(2,2,2,2,2,3,3,3,3,3,4,4,4,4,4,5,5,5,5,5)
+ gap.plot(twogrp,gap=c(8,16),xlab="Index",ylab="Group values",
+  main="Gap on Y axis",col=gpcol)
+ gap.plot(twogrp,rnorm(20),gap=c(8,16),gap.axis="x",xlab="X values",
+  xtics=c(4,7,17,20),ylab="Y values",main="Gap on X axis with added lines")
+ gap.plot(c(seq(3.5,7.5,by=0.5),seq(16.5,22.5,by=0.5)),
+  rnorm(22),gap=c(8,16),gap.axis="x",type="l",add=TRUE,col=2,)
+ gap.plot(twogrp,gap=c(8,16,25,35),
+ xlab="X values",ylab="Y values",xlim=c(1,30),ylim=c(0,25),
+ main="Test two gap plot with the lot",xtics=seq(0,30,by=5),
+ ytics=c(4,6,18,20,22,38,40,42),
+ lty=c(rep(1,10),rep(2,10)),
+ pch=c(rep(2,10),rep(3,10)),
+ col=c(rep(2,10),rep(3,10)),
+ type="b")
+ gap.plot(21:30,rnorm(10)+40,gap=c(8,16,25,35),add=TRUE,
+  lty=rep(3,10),col=rep(4,10),type="l")
+</pre>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

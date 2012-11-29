@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Display text on a circular arc.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for arctext {plotrix}"><tr><td>arctext {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Display text on a circular arc.</h2>
+
+
+<h3>Description</h3>
+
+<p>
+<span class="samp">arctext</span> displays a string along a circular arc, rotating each
+letter. This may not work on all devices, as not all graphic devices
+can rotate text to arbitrary angles. The output looks best on a 
+Postscript or similar device that can rotate text without distortion.
+Rotated text often looks very ragged on small bitmaps.
+</p>
+<p>
+If the user passes a value for
+<span class="samp">start</span>, this will override any value passed to <span class="samp">middle</span>.
+If the plot area is not square, see <span class="samp">par(pty="s")</span>, the arc will
+be somewhat elliptical.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ arctext(x,center=c(0,0),radius=1,start=NA,middle=pi/2,stretch=1,cex=1,...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+A character string.</td></tr>
+<tr valign="top"><td><code>center</code></td>
+<td>
+The center of the circular arc in x/y user units.</td></tr>
+<tr valign="top"><td><code>radius</code></td>
+<td>
+The radius of the arc in user units.</td></tr>
+<tr valign="top"><td><code>start</code></td>
+<td>
+The starting position of the string in radians.</td></tr>
+<tr valign="top"><td><code>middle</code></td>
+<td>
+The middle position of the string in radians.</td></tr>
+<tr valign="top"><td><code>stretch</code></td>
+<td>
+How much to stretch the string for appearance.</td></tr>
+<tr valign="top"><td><code>cex</code></td>
+<td>
+The character expansion factor.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+additional arguments passed to <span class="samp">text</span>.</td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+nil</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Jim Lemon - Thanks to Suhas Parandekar for the idea.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<span class="samp"><a href="../../graphics/html/text.html">text</a></span>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+ plot(0,xlim=c(1,5),ylim=c(1,5),main="Test of arctext",xlab="",ylab="",
+  type="n")
+ arctext("bendy like spaghetti",center=c(3,3),col="blue")
+ arctext("bendy like spaghetti",center=c(3,3),radius=1.5,start=pi,cex=2)
+ arctext("bendy like spaghetti",center=c(3,3),radius=0.5,
+  start=pi/2,stretch=1.2)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

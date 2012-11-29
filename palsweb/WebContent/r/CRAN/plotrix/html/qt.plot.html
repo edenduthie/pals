@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Quantity by interval plot</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for qt.plot {plotrix}"><tr><td>qt.plot {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Quantity by interval plot</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Display the counts of numeric quantities against the intervals between 
+quantities that are equal when rounded to integers.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ qt.plot(qnt,qtime=NA,col=NULL,border="lightgray",
+  main="Quantity x interval",xlab="Interval",ylab="Quantity",
+  mar=c(5,4,4,4),...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>qnt</code></td>
+<td>
+Numeric vector</td></tr>
+<tr valign="top"><td><code>qtime</code></td>
+<td>
+Numeric vector - may be a date as an integer.</td></tr>
+<tr valign="top"><td><code>col</code></td>
+<td>
+The colors to fill the strips. NA for none.</td></tr>
+<tr valign="top"><td><code>border</code></td>
+<td>
+border color for the polygons</td></tr>
+<tr valign="top"><td><code>main</code></td>
+<td>
+The title of the plot.</td></tr>
+<tr valign="top"><td><code>xlab,ylab</code></td>
+<td>
+Axis labels.</td></tr>
+<tr valign="top"><td><code>mar</code></td>
+<td>
+margins for the plot - defaults to leave space for scale</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+additional arguments passed to <span class="samp">plot</span>.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+The intervals calculated from <span class="samp">qtime</span> are the x values and the counts
+of values of <span class="samp">qnt</span> are the y values of the plot displayed as the widths
+of sections of polygons running across the time intervals. This plot was
+devised to display the distribution of drinking, but may be useful for any
+situation in which it is desired to display the distribution of numerically
+coded quantities against the intervals between their occurrence. Note that if
+there are many values and many intervals, the resulting plot will be mostly
+empty. Categorizing the values and intervals so that there are only three or
+four categories will often produce a more informative plot.
+</p>
+<p>
+<span class="samp">qt.plot</span> assumes that the values in <span class="samp">qtime</span> represent interpretable
+intervals like seconds or days. The default is to assume sequential time
+intervals. If <span class="samp">qtime</span> contains dates, they must be translated to
+numeric format. These values will be sorted by the function. If <span class="samp">qtime</span> is NA,
+it will be assigned <span class="samp">1:length(qnt)</span>.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+nil</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Jim Lemon
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<span class="samp"><a href="../../graphics/html/polygon.html">polygon</a></span>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+ # first a moderate drinker with frequent bigger sessions
+ qnt&lt;-sample(0:5,365,TRUE,prob=c(0.02,0.1,0.4,0.3,0.1,0.08))
+ qtdates&lt;-seq(as.Date("2007-01-01"),as.Date("2007-12-31"),by=1)
+ qt.plot(qnt,as.numeric(qtdates),xlab="Number of days interval",
+  ylab="Standard drinks per session")
+ # now add monthly bigger sessions and notice how this
+ qnt[c(30,60,90,120,150,180,210,240,270,300,330,360)]&lt;-rep(4:5,length.out=12)
+ qt.plot(qnt,as.numeric(qtdates),xlab="Number of days interval",
+  ylab="Standard drinks per session")
+</pre>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

@@ -16,6 +16,7 @@ rm -rf /usr/share/tomcat6/webapps/pals
 rm /usr/share/tomcat6/webapps/pals.war
 cp /root/code/pals/palsweb/dist/pals.war /usr/share/tomcat6/webapps
 service tomcat6 start
+sleep 1m
 
 cd /usr/share/tomcat6/webapps/pals
 chmod -R 777 r

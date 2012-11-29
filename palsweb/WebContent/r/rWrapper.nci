@@ -1,0 +1,4 @@
+#!/bin/bash
+export DISPLAY=:100.0
+export R_LIBS_USER=/usr/share/tomcat6/webapps/pals/r/workspace
+R $@

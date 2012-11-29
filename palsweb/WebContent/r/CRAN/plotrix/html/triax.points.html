@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Triangle plot points</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for triax.points {plotrix}"><tr><td>triax.points {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Triangle plot points</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Display points on a triangle plot.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ triax.points(x,show.legend=FALSE,label.points=FALSE,point.labels=NULL,
+ col.symbols=par("fg"),pch=par("pch"),bg.symbols=par("bg"),cc.axes=FALSE,...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+Matrix or data frame where each row is three proportions or 
+percentages that must sum to 1 or 100 respectively.</td></tr>
+<tr valign="top"><td><code>show.legend</code></td>
+<td>
+Logical - whether to display a legend.</td></tr>
+<tr valign="top"><td><code>label.points</code></td>
+<td>
+Logical - whether to call <span class="samp">thigmophobe.labels</span>
+to label the points.</td></tr>
+<tr valign="top"><td><code>point.labels</code></td>
+<td>
+Optional labels for the points and/or legend.</td></tr>
+<tr valign="top"><td><code>col.symbols</code></td>
+<td>
+Color of the symbols representing each value.</td></tr>
+<tr valign="top"><td><code>pch</code></td>
+<td>
+Symbols to use in plotting values.</td></tr>
+<tr valign="top"><td><code>bg.symbols</code></td>
+<td>
+Background color for plotting symbols.</td></tr>
+<tr valign="top"><td><code>cc.axes</code></td>
+<td>
+Clockwise or counterclockwise axes and ticks.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+Additional arguments passed to <span class="samp">points</span>.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+In order for <span class="samp">triax.points</span> to add points to an existing plot,
+the argument <span class="samp">no.add</span> in the initial call to <span class="samp">triax.plot</span> 
+must be set to <span class="samp">FALSE</span>. Failing to do this will result in the
+points being plotted in the wrong places. It is then up to the user
+to call <span class="samp">par</span> as in the example below to restore plotting
+parameters altered during the triangle plot.
+</p>
+<p>
+<span class="samp">triax.points</span> displays each triplet of proportions or percentages
+as a symbol on the triangle plot. Unless each triplet sums to 1 
+(or 100), they will not plot properly and <span class="samp">triax.points</span> will 
+complain appropriately.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+A list of the <span class="samp">x,y</span> positions plotted.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Jim Lemon
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<span class="samp"><a href="triax.plot.html">triax.plot</a></span>,<span class="samp"><a href="thigmophobe.labels.html">thigmophobe.labels</a></span>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+ data(soils)
+ triax.return&lt;-triax.plot(soils[1:10,],
+  main="Adding points to a triangle plot",no.add=FALSE)
+ triax.points(soils[11:20,],col.symbols="green",pch=3)
+ par(triax.return$oldpar)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

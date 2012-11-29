@@ -1,0 +1,45 @@
+\HeaderA{thigmophobe}{Find the direction away from the closest point}{thigmophobe}
+\keyword{misc}{thigmophobe}
+\begin{Description}\relax
+Find the direction away from the closest point
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+ thigmophobe(x,y)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{x,y}] Numeric data vectors. Typically the x/y coordinates of
+plotted points. If arrays are passed, they will be silently coerced to
+numeric vectors.
+\end{ldescription}
+\end{Arguments}
+\begin{Details}\relax
+\samp{thigmophobe} returns the direction (as 1\textbar{}2\textbar{}3\textbar{}4 - see pos= in 
+\samp{text}) away from the nearest point to each of the points 
+described by \samp{x} and \samp{y}.
+\end{Details}
+\begin{Value}
+A vector of directions away from the point nearest to each point.
+\end{Value}
+\begin{Note}\relax
+Typically used to get the offset to automatically place labels
+on a scatterplot or similar using \samp{thigmophobe.labels} to avoid 
+overlapping labels. The name means "one who fears being touched".
+\end{Note}
+\begin{Author}\relax
+Jim Lemon - thanks to Gustaf Rydevik for the "names" bug fix
+and to Steve Ellison for the suggestion about arrays.
+\end{Author}
+\begin{SeeAlso}\relax
+\samp{\LinkA{thigmophobe.labels}{thigmophobe.labels}}
+\end{SeeAlso}
+\begin{Examples}
+\begin{ExampleCode}
+ x<-rnorm(10)
+ y<-rnorm(10)
+ thigmophobe(x,y)
+\end{ExampleCode}
+\end{Examples}
+

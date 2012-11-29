@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Find the direction away from the closest point</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for thigmophobe {plotrix}"><tr><td>thigmophobe {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Find the direction away from the closest point</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Find the direction away from the closest point
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ thigmophobe(x,y)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x,y</code></td>
+<td>
+Numeric data vectors. Typically the x/y coordinates of
+plotted points. If arrays are passed, they will be silently coerced to
+numeric vectors.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+<span class="samp">thigmophobe</span> returns the direction (as 1|2|3|4 - see pos= in 
+<span class="samp">text</span>) away from the nearest point to each of the points 
+described by <span class="samp">x</span> and <span class="samp">y</span>.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+A vector of directions away from the point nearest to each point.</p>
+
+<h3>Note</h3>
+
+<p>
+Typically used to get the offset to automatically place labels
+on a scatterplot or similar using <span class="samp">thigmophobe.labels</span> to avoid 
+overlapping labels. The name means "one who fears being touched".
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Jim Lemon - thanks to Gustaf Rydevik for the "names" bug fix
+and to Steve Ellison for the suggestion about arrays.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<span class="samp"><a href="thigmophobe.labels.html">thigmophobe.labels</a></span>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+ x&lt;-rnorm(10)
+ y&lt;-rnorm(10)
+ thigmophobe(x,y)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

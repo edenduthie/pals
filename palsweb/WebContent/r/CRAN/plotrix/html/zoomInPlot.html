@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Display a plot with a rectangular section expanded in an adjacent plot.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for zoomInPlot {plotrix}"><tr><td>zoomInPlot {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Display a plot with a rectangular section expanded in an adjacent plot.</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Display one plot on the left half of a device and an expanded section of that
+plot on the right half of the device with connecting lines showing the expansion.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ zoomInPlot(x,y=NULL,xlim=NULL,ylim=NULL,rxlim=xlim,rylim=ylim,xend=NA,
+  zoomtitle=NULL,...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x,y</code></td>
+<td>
+numeric data vectors. If <span class="samp">y</span> is not specified, it is set equal
+to <span class="samp">x</span> and <span class="samp">x</span> is set to <span class="samp">1:length(y)</span>.</td></tr>
+<tr valign="top"><td><code>xlim,ylim</code></td>
+<td>
+Limits for the initial plot.</td></tr>
+<tr valign="top"><td><code>rxlim,rylim</code></td>
+<td>
+Limits for the expanded plot. These must be within the above.</td></tr>
+<tr valign="top"><td><code>xend</code></td>
+<td>
+Where to end the segments that indicate the expansion. Defaults to
+just left of the tick labels on the left ordinate.</td></tr>
+<tr valign="top"><td><code>zoomtitle</code></td>
+<td>
+The title of the plot, display in the top center.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+additional arguments passed to <span class="samp">plot</span>.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+<span class="samp">zoomInPlot</span> sets up a two column layout in the current device and calls
+<span class="samp">plot</span> to display a plot in the left column. It then draws a rectangle
+corresponding to the <span class="samp">rxlim</span> and <span class="samp">rylim</span> arguments and displays a
+second plot of that rectangle in the right column. It is currently very simple
+and will probably become more flexible in future versions.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+nil</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Jim Lemon
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<span class="samp"><a href="../../Zelig/html/plot.zelig.html">plot</a></span>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+ zoomInPlot(rnorm(100),rnorm(100),rxlim=c(-1,1),rylim=c(-1,1),
+  zoomtitle="Zoom In Plot")
+</pre>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

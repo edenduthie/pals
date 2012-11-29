@@ -1,0 +1,29 @@
+\HeaderA{std.error}{Calculate standard error of the mean}{std.error}
+\keyword{misc}{std.error}
+\begin{Description}\relax
+Calculates the standard error of the mean.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+ std.error(x,na.rm)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{x}] A vector of numerical observations.
+\item[\code{na.rm}] Dummy argument to match other functions.
+\end{ldescription}
+\end{Arguments}
+\begin{Details}\relax
+\samp{std.error} will accept a numeric vector.
+\end{Details}
+\begin{Value}
+The conventional standard error of the mean = sd(x)/sqrt(sum(!is.na(x)))
+\end{Value}
+\begin{Author}\relax
+Jim Lemon
+\end{Author}
+\begin{SeeAlso}\relax
+\samp{\LinkA{sd}{sd}}
+\end{SeeAlso}
+

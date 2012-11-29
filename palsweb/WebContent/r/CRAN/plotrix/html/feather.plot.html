@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Display vectors along a horizontal reference line.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for feather.plot {plotrix}"><tr><td>feather.plot {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Display vectors along a horizontal reference line.</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Displays vectors along a line usually representing time or position.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ feather.plot(r,theta,xpos,yref=0,use.arrows=TRUE,
+ col.refline="lightgray",fp.type="s",main="",xlab="",ylab="",
+ xlabels=NULL,...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>r</code></td>
+<td>
+radii of vectors</td></tr>
+<tr valign="top"><td><code>theta</code></td>
+<td>
+direction of vectors in radians</td></tr>
+<tr valign="top"><td><code>xpos</code></td>
+<td>
+where to start each vector along the reference line</td></tr>
+<tr valign="top"><td><code>yref</code></td>
+<td>
+vertical position to place the reference line</td></tr>
+<tr valign="top"><td><code>use.arrows</code></td>
+<td>
+whether to put arrow heads on the ends of the vectors</td></tr>
+<tr valign="top"><td><code>col.refline</code></td>
+<td>
+the color of the reference line</td></tr>
+<tr valign="top"><td><code>fp.type</code></td>
+<td>
+whether to use "standard" coordinates (begin at the
+right and move counterclockwise) or "meteorological" coordinates
+(begin at the top and move clockwise) when interpreting the values
+of <span class="samp">theta</span></td></tr>
+<tr valign="top"><td><code>main</code></td>
+<td>
+the title of the plot</td></tr>
+<tr valign="top"><td><code>xlab</code></td>
+<td>
+the label for the reference line</td></tr>
+<tr valign="top"><td><code>ylab</code></td>
+<td>
+the label for the vertical axis</td></tr>
+<tr valign="top"><td><code>xlabels</code></td>
+<td>
+optional labels for the reference line</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+additional arguments passed to <span class="samp">arrows</span> or <span class="samp">segments</span></td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+This function places vectors of length <span class="samp">r</span> and angle <span class="samp">theta</span> 
+along a reference line that may represent time or position or some other
+value. The user is responsible for spacing the vectors so that they do
+not overlap if this is desired.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+nil</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Jim Lemon, Eduardo Klein
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<span class="samp"><a href="spread.labels.html">spread.labels</a></span>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+ feather.plot(0.6+rnorm(8)/5,seq(0,7*pi/4,by=pi/4),1:8,
+  main="Standard Coordinates",xlab="Time",ylab="Value")
+ if(dev.interactive()) par(ask=TRUE)
+ feather.plot(0.6+rnorm(8)/5,seq(0,7*pi/4,by=pi/4),1:8,
+  main="Meteorological Coordinates",xlab="Time",ylab="Value",
+  fp.type="m",xlabels=TRUE)
+ par(ask=FALSE)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

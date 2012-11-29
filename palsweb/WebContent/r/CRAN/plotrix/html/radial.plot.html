@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Plot values on a circular grid of 0 to 2*pi radians.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for radial.plot {plotrix}"><tr><td>radial.plot {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Plot values on a circular grid of 0 to 2*pi radians.</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Plot numeric values as distances from the center of a circular field in the
+directions defined by angles in radians.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ radial.plot(lengths,radial.pos=NULL,labels,label.pos=NULL,radlab=FALSE,
+ start=0,clockwise=FALSE,rp.type="r",label.prop=1.1,main="",xlab="",ylab="",
+ line.col=par("fg"),lty=par("lty"),lwd=par("lwd"),mar=c(2,2,3,2),
+ show.grid=TRUE,show.grid.labels=TRUE,show.radial.grid=TRUE,
+ grid.col="gray",grid.bg="transparent",
+ grid.left=FALSE,grid.unit=NULL,point.symbols=NULL,point.col=NULL,
+ show.centroid=FALSE,radial.lim=NULL,radial.labels=NULL,poly.col=NULL,...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>lengths</code></td>
+<td>
+A numeric data vector or matrix. If <span class="samp">lengths</span>
+is a matrix, the rows will be considered separate data vectors.</td></tr>
+<tr valign="top"><td><code>radial.pos</code></td>
+<td>
+A numeric vector or matrix of positions in radians. 
+These are interpreted as beginning at the right (0 radians) and moving
+counterclockwise. If <span class="samp">radial.pos</span> is a matrix, the rows must 
+correspond to rows of <span class="samp">lengths</span>.</td></tr>
+<tr valign="top"><td><code>labels</code></td>
+<td>
+Character strings to be placed at the outer ends of
+the lines. If set to NA, will suppress printing of labels,
+but if missing, the radial positions will be used.</td></tr>
+<tr valign="top"><td><code>label.pos</code></td>
+<td>
+The positions of the labels around the plot in radians.</td></tr>
+<tr valign="top"><td><code>radlab</code></td>
+<td>
+Whether to rotate the outer labels to a radial orientation.</td></tr>
+<tr valign="top"><td><code>start</code></td>
+<td>
+Where to place the starting (zero) point. Defaults to the
+3 o'clock position.</td></tr>
+<tr valign="top"><td><code>clockwise</code></td>
+<td>
+Whether to interpret positive positions as clockwise from
+the starting point. The default is counterclockwise.</td></tr>
+<tr valign="top"><td><code>rp.type</code></td>
+<td>
+Whether to draw (r)adial lines, a (p)olygon, (s)ymbols
+or some combination of these. If <span class="samp">lengths</span> is a matrix and rp.type is
+a vector, each row of <span class="samp">lengths</span> can be displayed differently.</td></tr>
+<tr valign="top"><td><code>label.prop</code></td>
+<td>
+The label position radius as a proportion of the 
+maximum line length.</td></tr>
+<tr valign="top"><td><code>main</code></td>
+<td>
+The title for the plot.</td></tr>
+<tr valign="top"><td><code>xlab,ylab</code></td>
+<td>
+Normally x and y axis labels are suppressed.</td></tr>
+<tr valign="top"><td><code>line.col</code></td>
+<td>
+The color of the radial lines or polygons drawn.</td></tr>
+<tr valign="top"><td><code>lty</code></td>
+<td>
+The line type(s) to be used for polygons or radial lines.</td></tr>
+<tr valign="top"><td><code>lwd</code></td>
+<td>
+The line width(s) to be used for polygons or radial lines.</td></tr>
+<tr valign="top"><td><code>mar</code></td>
+<td>
+Margins for the plot. Allows the user to leave space for
+legends, long labels, etc.</td></tr>
+<tr valign="top"><td><code>show.grid</code></td>
+<td>
+Logical - whether to draw a circular grid.</td></tr>
+<tr valign="top"><td><code>show.grid.labels</code></td>
+<td>
+Logical - whether to display labels for the grid.</td></tr>
+<tr valign="top"><td><code>show.radial.grid</code></td>
+<td>
+Whether to draw radial lines to the plot labels.</td></tr>
+<tr valign="top"><td><code>grid.col</code></td>
+<td>
+Color of the circular grid.</td></tr>
+<tr valign="top"><td><code>grid.bg</code></td>
+<td>
+Fill color of above.</td></tr>
+<tr valign="top"><td><code>grid.left</code></td>
+<td>
+Whether to place the radial grid labels on the left side.</td></tr>
+<tr valign="top"><td><code>grid.unit</code></td>
+<td>
+Optional unit description for the grid.</td></tr>
+<tr valign="top"><td><code>point.symbols</code></td>
+<td>
+The symbols for plotting (as in pch).</td></tr>
+<tr valign="top"><td><code>point.col</code></td>
+<td>
+Colors for the symbols.</td></tr>
+<tr valign="top"><td><code>show.centroid</code></td>
+<td>
+Whether to display a centroid.</td></tr>
+<tr valign="top"><td><code>radial.lim</code></td>
+<td>
+The range of the grid circle. Defaults to
+<span class="samp">pretty(range(lengths))</span>, but if more than two values are passed, the
+exact values will be displayed.</td></tr>
+<tr valign="top"><td><code>radial.labels</code></td>
+<td>
+Optional labels for the radial grid. The default is
+the values of radial.lim.</td></tr>
+<tr valign="top"><td><code>poly.col</code></td>
+<td>
+Fill color if polygons are drawn. Use NA for no fill.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+Additional arguments are passed to <span class="samp">plot</span>.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+<span class="samp">radial.plot</span> displays a plot of radial lines, polygon(s),
+symbols or a combination of these centered at the midpoint of
+the plot frame, the lengths, vertices or positions corresponding
+to the numeric magnitudes of the data values. If <span class="samp">show.centroid</span>
+is TRUE, an enlarged point at the centroid of values is displayed. The
+centroid is calculated as the average of x and y values unless 
+<span class="samp">rp.type="p"</span>. In this case, the barycenter of the polygon is
+calculated. Make sure that these suit your purpose, otherwise calculate
+the centroid that you really want and add it with the <span class="samp">points</span> function.
+</p>
+<p>
+If the user wants to plot several sets of lines, points or symbols by
+passing matrices or data frames of <span class="samp">lengths</span> and <span class="samp">radial.pos</span>,
+remember that these will be grouped by row, so transpose if the data are
+grouped by columns.
+</p>
+<p>
+The size of the labels on the outside of the plot can be adjusted by 
+setting <span class="samp">par(cex.axis=)</span> and that of the labels inside by setting
+<span class="samp">par(cex.lab=)</span>. If <span class="samp">radlab</span> is TRUE, the labels will be rotated
+to a radial alignment. This may help when there are many values and labels.
+If some labels are still crowded, try running <span class="samp">label.pos</span> through the
+<span class="samp">spreadout</span> function.
+</p>
+<p>
+The radial.plot family of plots is useful for illustrating
+cyclic data such as wind direction or speed (but see <span class="samp">oz.windrose</span>
+for both), activity at different times of the day, and so on. While 
+<span class="samp">radial.plot</span> actually does the plotting, another function is usually 
+called for specific types of cyclic data. Note that if the observations
+are not taken at equal intervals around the circle, the centroid may not
+mean much.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+nil</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Jim Lemon - thanks to Jeremy Claisse and Antonio Hernandez Matias
+for the <span class="samp">lty</span> and <span class="samp">rp.type</span> suggestions respectively, Patrick
+Baker for the request that led to <span class="samp">radlab</span> and Thomas Steiner for
+the request for the <span class="samp">radial.lim</span> and <span class="samp">radial.labels</span> modifications.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<span class="samp"><a href="polar.plot.html">polar.plot</a></span>,<span class="samp"><a href="clock24.plot.html">clock24.plot</a></span>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+ testlen&lt;-rnorm(10)*2+5
+ testpos&lt;-seq(0,18*pi/10,length=10)
+ testlab&lt;-letters[1:10]
+ oldpar&lt;-radial.plot(testlen,testpos,main="Test Radial Lines",line.col="red",lwd=3)
+ testlen&lt;-c(sin(seq(0,1.98*pi,length=100))+2+rnorm(100)/10)
+ testpos&lt;-seq(0,1.98*pi,length=100)
+ radial.plot(testlen,testpos,rp.type="p",main="Test Polygon",line.col="blue")
+ # now do a 12 o'clock start with clockwise positive
+ radial.plot(testlen,testpos,start=pi/2,clockwise=TRUE,
+  rp.type="s",main="Test Symbols (clockwise)",
+  point.symbols=16,point.col="green",show.centroid=TRUE)
+ # one without the circular grid and multiple polygons
+ # see the "diamondplot" function for variation on this
+ posmat&lt;-matrix(sample(2:9,30,TRUE),nrow=3)
+ radial.plot(posmat,labels=paste("X",1:10,sep=""),rp.type="p",
+  main="Spiderweb plot",line.col=2:4,show.grid=FALSE,lwd=1:3,
+  radial.lim=c(0,10))
+ # dissolved ions in water
+ ions&lt;-c(3.2,5,1,3.1,2.1,4.5)
+ ion.names&lt;-c("Na","Ca","Mg","Cl","HCO3","SO4")
+ radial.plot(ions,labels=ion.names,rp.type="p",main="Dissolved ions in water",
+  grid.unit="meq/l",radial.lim=c(0,5),poly.col="yellow")
+ par(xpd=oldpar$xpd,mar=oldpar$mar,pty=oldpar$pty)
+ # reset the margins
+ par(mar=c(5,4,4,2))
+</pre>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

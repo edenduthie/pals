@@ -1,0 +1,47 @@
+\HeaderA{zoomInPlot}{Display a plot with a rectangular section expanded in an adjacent plot.}{zoomInPlot}
+\keyword{misc}{zoomInPlot}
+\begin{Description}\relax
+Display one plot on the left half of a device and an expanded section of that
+plot on the right half of the device with connecting lines showing the expansion.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+ zoomInPlot(x,y=NULL,xlim=NULL,ylim=NULL,rxlim=xlim,rylim=ylim,xend=NA,
+  zoomtitle=NULL,...)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{x,y}] numeric data vectors. If \samp{y} is not specified, it is set equal
+to \samp{x} and \samp{x} is set to \samp{1:length(y)}.
+\item[\code{xlim,ylim}] Limits for the initial plot.
+\item[\code{rxlim,rylim}] Limits for the expanded plot. These must be within the above.
+\item[\code{xend}] Where to end the segments that indicate the expansion. Defaults to
+just left of the tick labels on the left ordinate.
+\item[\code{zoomtitle}] The title of the plot, display in the top center.
+\item[\code{...}] additional arguments passed to \samp{plot}.
+\end{ldescription}
+\end{Arguments}
+\begin{Details}\relax
+\samp{zoomInPlot} sets up a two column layout in the current device and calls
+\samp{plot} to display a plot in the left column. It then draws a rectangle
+corresponding to the \samp{rxlim} and \samp{rylim} arguments and displays a
+second plot of that rectangle in the right column. It is currently very simple
+and will probably become more flexible in future versions.
+\end{Details}
+\begin{Value}
+nil
+\end{Value}
+\begin{Author}\relax
+Jim Lemon
+\end{Author}
+\begin{SeeAlso}\relax
+\samp{\LinkA{plot}{plot}}
+\end{SeeAlso}
+\begin{Examples}
+\begin{ExampleCode}
+ zoomInPlot(rnorm(100),rnorm(100),rxlim=c(-1,1),rylim=c(-1,1),
+  zoomtitle="Zoom In Plot")
+\end{ExampleCode}
+\end{Examples}
+

@@ -1,0 +1,40 @@
+\HeaderA{get.soil.texture}{Enter soil texture data.}{get.soil.texture}
+\keyword{misc}{get.soil.texture}
+\begin{Description}\relax
+\samp{get.soil.texture} calls \samp{get.triprop} to allow the user to 
+enter soil textures as the proportions or percentages of three 
+components, sand, silt and clay.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+ get.soil.texture(use.percentages=FALSE,cnames=c("sand","silt","clay"))
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{use.percentages}] Logical - whether to treat the entries as
+percentages and scale to proportions.
+\item[\code{cnames}] column names for the resulting three column matrix.
+\end{ldescription}
+\end{Arguments}
+\begin{Value}
+A matrix of the components of one or more soil samples.
+\end{Value}
+\begin{Author}\relax
+Sander Oom and Jim Lemon
+\end{Author}
+\begin{SeeAlso}\relax
+\samp{\LinkA{soil.texture}{soil.texture}},\samp{\LinkA{get.triprop}{get.triprop}}
+\end{SeeAlso}
+\begin{Examples}
+\begin{ExampleCode}
+ if(dev.interactive()) {
+  newsp<-get.soil.texture()
+  # show the soil triangle
+  soil.texture()
+  # now plot the observations
+  show.soil.texture(newsp)
+ }
+\end{ExampleCode}
+\end{Examples}
+

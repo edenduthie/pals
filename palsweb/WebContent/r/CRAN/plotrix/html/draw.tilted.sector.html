@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Display a 3D pie sector</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for draw.tilted.sector {plotrix}"><tr><td>draw.tilted.sector {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Display a 3D pie sector</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Displays a 3D pie sector.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ draw.tilted.sector(x=0,y=0,edges=100,radius=1,height=0.3,theta=pi/6,
+  start=0,end=pi*2,border=par("fg"),col=par("bg"),explode=0,shade=0.8)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x,y</code></td>
+<td>
+Position of the center of the pie sector in user units</td></tr>
+<tr valign="top"><td><code>edges</code></td>
+<td>
+Number of edges to draw a complete ellipse</td></tr>
+<tr valign="top"><td><code>radius</code></td>
+<td>
+the radius of the pie in user units</td></tr>
+<tr valign="top"><td><code>height</code></td>
+<td>
+the height of the pie in user units</td></tr>
+<tr valign="top"><td><code>theta</code></td>
+<td>
+The angle of viewing in radians</td></tr>
+<tr valign="top"><td><code>start</code></td>
+<td>
+Starting angle of the sector</td></tr>
+<tr valign="top"><td><code>end</code></td>
+<td>
+Ending angle of the sector</td></tr>
+<tr valign="top"><td><code>border</code></td>
+<td>
+The color of the sector border lines</td></tr>
+<tr valign="top"><td><code>col</code></td>
+<td>
+Color of the sector</td></tr>
+<tr valign="top"><td><code>explode</code></td>
+<td>
+How far to "explode" the sectors in user units</td></tr>
+<tr valign="top"><td><code>shade</code></td>
+<td>
+If &gt; 0 and &lt; 1, the proportion to reduce the
+brightness of the sector color to get a better 3D effect.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+<span class="samp">draw.tilted.sector</span> displays a single 3D pie sector. It is probably
+only useful when called from <span class="samp"><a href="pie3D.html">pie3D</a></span>. The <span class="samp">shade</span>
+argument proportionately reduces the brightness of the RGB color of
+the sector to produce a top lighted effect.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+The bisector of the pie sector in radians.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Jim Lemon
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<span class="samp"><a href="pie3D.html">pie3D</a></span>
+</p>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

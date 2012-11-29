@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Plot with repeated symbols by size</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for sizeplot {plotrix}"><tr><td>sizeplot {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Plot with repeated symbols by size</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Plots a set of (x,y) data with repeated points denoted by larger
+symbol sizes
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ sizeplot(x, y, scale=1, pow=0.5, powscale=TRUE, size=c(1,4), add=FALSE, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+x coordinates of data</td></tr>
+<tr valign="top"><td><code>y</code></td>
+<td>
+y coordinates of data</td></tr>
+<tr valign="top"><td><code>scale</code></td>
+<td>
+scaling factor for size of symbols</td></tr>
+<tr valign="top"><td><code>pow</code></td>
+<td>
+power exponent for size of symbols</td></tr>
+<tr valign="top"><td><code>powscale</code></td>
+<td>
+(logical) use power scaling for symbol size?</td></tr>
+<tr valign="top"><td><code>size</code></td>
+<td>
+(numeric vector) min and max size for scaling, if powscale=FALSE</td></tr>
+<tr valign="top"><td><code>add</code></td>
+<td>
+(logical) add to an existing plot?</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+other arguments to <span class="samp">plot()</span> or <span class="samp">points()</span></td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+Most useful for plotting (e.g.) discrete data, where repeats are
+likely.  If all points are repeated equally, gives a warning.  The
+size of a point is given by <i>scale*n^pow</i>, where n is the number of
+repeats, if powscale is TRUE, or it is scaled between size[1] and size[2],
+if powscale is FALSE.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+A plot is produced on the current device, or points are added to the
+current plot if <span class="samp">add=TRUE</span>.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Ben Bolker
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<span class="samp"><a href="../../graphics/html/symbols.html">symbols</a></span>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+ x &lt;- c(0.1,0.1,0.1,0.1,0.1,0.2,0.2,0.2,0.2,0.3,0.3)
+ y &lt;- c( 1,  1,  1,  1,  2,  2,  2,  3,  3,  4,  5 )
+ plot(x,y)
+ sizeplot(x,y)
+ sizeplot(x,y,pch=2)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

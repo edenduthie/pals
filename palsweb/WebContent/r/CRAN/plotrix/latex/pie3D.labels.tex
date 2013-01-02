@@ -1,0 +1,54 @@
+\HeaderA{pie3D.labels}{Display labels on a 3D pie chart}{pie3D.labels}
+\keyword{misc}{pie3D.labels}
+\begin{Description}\relax
+Displays labels on a 3D pie chart.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+ pie3D.labels(radialpos,radius=1,height=0.3,theta=pi/6,
+  labels,labelcol=par("fg"),labelcex=1.5,minsep=0.3)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{radialpos}] Position of the label in radians
+\item[\code{radius}] the radius of the pie in user units
+\item[\code{height}] the height of the pie in user units
+\item[\code{theta}] The angle of viewing in radians
+\item[\code{labels}] The label to display
+\item[\code{labelcol}] The color of the labels
+\item[\code{labelcex}] The character expansion factor for the labels
+\item[\code{minsep}] The minimum angular separation between label positions.
+\end{ldescription}
+\end{Arguments}
+\begin{Details}\relax
+\samp{pie3D.label} displays labels on a 3D pie chart. The positions
+of the labels are given as angles in radians (usually the bisector of the
+pie sectors). As the labels can be passed directly to \samp{\LinkA{pie3D}{pie3D}},
+this function would probably not be called by the user.
+
+\samp{pie3D.labels} tries to separate labels that are placed closer than
+\samp{minsep} radians. This simple system will handle minor crowding of
+labels. If labels are very crowded, capturing the return value of 
+\samp{pie3D} and editing the label positions may allow the user to avoid
+manually placing labels.
+\end{Details}
+\begin{Value}
+nil
+\end{Value}
+\begin{Author}\relax
+Jim Lemon
+\end{Author}
+\begin{SeeAlso}\relax
+\samp{\LinkA{pie3D}{pie3D}}, \samp{\LinkA{draw.tilted.sector}{draw.tilted.sector}}
+\end{SeeAlso}
+\begin{Examples}
+\begin{ExampleCode}
+ pieval<-c(2,4,6,8)
+ bisectors<-pie3D(pieval,explode=0.1,main="3D PIE OPINIONS")
+ pielabels<-
+  c("We hate\n pies","We oppose\n  pies","We don't\n  care","We just love pies")
+ pie3D.labels(bisectors,labels=pielabels)
+\end{ExampleCode}
+\end{Examples}
+

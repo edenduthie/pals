@@ -1,0 +1,49 @@
+\HeaderA{tab.title}{Display the title of a plot as a colored tab.}{tab.title}
+\keyword{misc}{tab.title}
+\begin{Description}\relax
+Display the title of a plot as a colored tab.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+ tab.title(label,text.col=par("fg"),tab.col=par("bg"),border=par("fg"),
+  lwd=par("lwd"),cex=1.5,pad.mult=1.6,radius=0)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{label}] The title for the plot.
+\item[\code{text.col}] The color for the title text.
+\item[\code{tab.col}] The color for the tab fill.
+\item[\code{border}] The color for the tab border.
+\item[\code{lwd}] The line width for the border.
+\item[\code{cex}] Character expansion for the title.
+\item[\code{pad.mult}] How much higher to make the tab relative to the label.
+\item[\code{radius}] What proportion of the tab corners to round off.
+\end{ldescription}
+\end{Arguments}
+\begin{Details}\relax
+\samp{tab.title} displays the plot title in a colored tab. The tab can be
+rounded at the upper corners by specifying the proportion of the tab
+height to be rounded as a number between 0 and 1. If the tab is too high
+to fit on the figure region, a warning will be displayed and the tab will
+still be shown.
+\end{Details}
+\begin{Value}
+nil
+\end{Value}
+\begin{Author}\relax
+Jim Lemon
+\end{Author}
+\begin{SeeAlso}\relax
+\samp{\LinkA{polygon}{polygon}}
+\end{SeeAlso}
+\begin{Examples}
+\begin{ExampleCode}
+ testx<-matrix(cumsum(rnorm(30)^2)+1,nrow=10)
+ stackpoly(testx,main="",
+  xaxlab=c("One","Two","Three","Four","Five",
+  "Six","Seven","Eight","Nine","Ten"),staxx=TRUE)
+ tab.title("Three Squiggly Lines",tab.col="yellow",radius=0.5)
+\end{ExampleCode}
+\end{Examples}
+

@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Legend matching categories or values to colors</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for color.legend {plotrix}"><tr><td>color.legend {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Legend matching categories or values to colors</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Display a color legend on a plot
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ color.legend(xl,yb,xr,yt,legend,rect.col,cex=1,align="lt",gradient="x",...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>xl,yb,xr,yt</code></td>
+<td>
+The lower left and upper right coordinates of the
+rectange of colors in user coordinates.</td></tr>
+<tr valign="top"><td><code>legend</code></td>
+<td>
+The labels that will appear next to some or all of the colors.</td></tr>
+<tr valign="top"><td><code>rect.col</code></td>
+<td>
+The colors that will fill the rectangle.</td></tr>
+<tr valign="top"><td><code>cex</code></td>
+<td>
+Character expansion factor for the labels.</td></tr>
+<tr valign="top"><td><code>align</code></td>
+<td>
+How to align the labels relative to the color rectangle.</td></tr>
+<tr valign="top"><td><code>gradient</code></td>
+<td>
+Whether to have a horizontal (x) or vertical (y) color
+gradient.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+Additional arguments passed to <span class="samp">text</span>.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+<span class="samp">color.legend</span> displays a rectangle defined by the first four arguments
+filled with smaller rectangles of color defined by the <span class="samp">rect.col</span> argument.
+Labels, defined by the <span class="samp">legend</span> argument, are placed next to the color
+rectangle. The position of the labels is determined by whether the color
+rectangle is horizontal or vertical and the <span class="samp">align</span> argument. The default
+value of <span class="samp">lt</span> places the labels at the left of a vertical rectangle or the
+top of a horizontal one. <span class="samp">rb</span> puts them on the other side. To have the
+labels in the same color as the rectangles, include a <span class="samp">col</span> argument that
+will be passed to <span class="samp">text</span> as in the example.
+</p>
+<p>
+There can be fewer labels than colors. The labels will be evenly spaced along
+the rectangle in this case. It is possible to use empty labels to get uneven
+spacing. The user can pass more labels than colors, but the labels will almost
+certainly be crowded and it is not obvious that this would be of any use. To
+have complete control over the labels, see <span class="samp"><a href="gradient.rect.html">gradient.rect</a></span> and 
+<span class="samp"><a href="../../graphics/html/text.html">text</a></span> or <span class="samp"><a href="../../graphics/html/mtext.html">mtext</a></span>.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+nil</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Jim Lemon
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<span class="samp"><a href="color.gradient.html">color.gradient</a></span>, <span class="samp"><a href="gradient.rect.html">gradient.rect</a></span>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+ # get some extra room
+ par(mar=c(7,4,4,6))
+ testcol&lt;-color.gradient(c(0,1),0,c(1,0),nslices=5)
+ col.labels&lt;-c("Cold","Warm","Hot")
+ color2D.matplot(matrix(rnorm(100),nrow=10),c(1,0),0,c(0,1),
+  main="Test color legends")
+ color.legend(11,6,11.8,9,col.labels,testcol,gradient="y")
+ color.legend(10.2,2,11,5,col.labels,testcol,align="rb",gradient="y")
+ color.legend(0.5,-2,3.5,-1.2,col.labels,testcol)
+ color.legend(7,-1.8,10,-1,col.labels,testcol,align="rb",col=testcol[c(1,3,5)])
+ par(mar=c(5,4,4,2))
+</pre>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

@@ -1,0 +1,48 @@
+\HeaderA{symbolbox}{Draw a box filled with symbols}{symbolbox}
+\keyword{aplot}{symbolbox}
+\begin{Description}\relax
+Draws a box on the current figure that is filled with symbols
+representing individual counts
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+ symbolbox(x1,y1,x2,y2,tot,relw=0.5,fg=par("fg"),bg=par("bg"),box=TRUE,
+  debug = TRUE,...)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{x1}] left side of box
+\item[\code{y1}] bottom side of box
+\item[\code{x2}] right side of box
+\item[\code{y2}] top side of box
+\item[\code{tot}] total number of symbols to put in the box
+\item[\code{relw}] relative width (relative to height) of symbols
+\item[\code{fg}] foreground color
+\item[\code{bg}] background color
+\item[\code{box}] (logical) draw box border?
+\item[\code{debug}] debug output?
+\item[\code{...}] additional arguments to polygon() for drawing box
+\end{ldescription}
+\end{Arguments}
+\begin{Details}\relax
+tries to automatically figure out appropriate scaling to fit symbols
+into the box
+\end{Details}
+\begin{Value}
+none; draws on the current figure
+\end{Value}
+\begin{Author}\relax
+Ben Bolker
+\end{Author}
+\begin{SeeAlso}\relax
+\samp{\LinkA{multsymbolbox}{multsymbolbox}}
+\end{SeeAlso}
+\begin{Examples}
+\begin{ExampleCode}
+ plot(1:10,1:10,type="n")
+ symbolbox(2,5,3,7,tot=20)
+ symbolbox(6,2,10,6,tot=50,fg="blue",bg="magenta")
+\end{ExampleCode}
+\end{Examples}
+

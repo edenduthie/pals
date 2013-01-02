@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Add a straight line to a plot</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for ablineclip {plotrix}"><tr><td>ablineclip {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Add a straight line to a plot</h2>
+
+
+<h3>Description</h3>
+
+<p>
+As <span class="samp">abline</span>, but has arguments <span class="samp">x1,x2,y1,y2</span> as in <span class="samp">clip</span>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ ablineclip(a=NULL,b=NULL,h=NULL,v=NULL,reg=NULL,coef=NULL,untf=FALSE,
+  x1=NULL,x2=NULL,y1=NULL,y2=NULL,...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>a</code></td>
+<td>
+Intercept.</td></tr>
+<tr valign="top"><td><code>b</code></td>
+<td>
+Slope.</td></tr>
+<tr valign="top"><td><code>h</code></td>
+<td>
+the x-value(s) for vertical line(s).</td></tr>
+<tr valign="top"><td><code>v</code></td>
+<td>
+the y-value(s) for horizontal line(s).</td></tr>
+<tr valign="top"><td><code>reg</code></td>
+<td>
+Fitted lm object. </td></tr>
+<tr valign="top"><td><code>coef</code></td>
+<td>
+Coefficients, typically intercept and slope.</td></tr>
+<tr valign="top"><td><code>untf</code></td>
+<td>
+How to plot on log coordinates, see <span class="samp">abline</span>.</td></tr>
+<tr valign="top"><td><code>x1,x2,y1,y2</code></td>
+<td>
+Clipping limits, see <span class="samp">clip</span>.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+Further arguments passed to <span class="samp">abline</span>.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+<span class="samp">ablineclip</span> sets a new clipping region and then calls <span class="samp">abline</span>.
+If any of the four clipping limits is NULL, the values from <span class="samp">par("usr")</span>
+are substituted. After the call to <span class="samp">abline</span>, the old clipping region
+is restored. In order to make <span class="samp">clip</span> work, there is a call to <span class="samp">abline</span>
+that draws a line off the plot.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+None. Adds to the current plot.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Remko Duursma
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<span class="samp"><a href="../../rv/html/abline.rv.html">abline</a></span>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+ x &lt;- rnorm(100)
+ y &lt;- x + rnorm(100)
+ lmfit &lt;- lm(y~x)
+ plot(x,y,xlim=c(-3.5,3.5))
+ ablineclip(lmfit,x1=-2,x2=2,lty=2)
+ ablineclip(h=0,x1=-2,x2=2,lty=3,col="red")
+ ablineclip(v=0,y1=-2.5,y2=1.5,lty=4,col="green")
+</pre>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

@@ -1,0 +1,47 @@
+\HeaderA{plot.dendrite}{Plot a dendrogram of a dendrite object.}{plot.dendrite}
+\keyword{misc}{plot.dendrite}
+\begin{Description}\relax
+Plot a dendrogram for two or more mutually exclusive attributes.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+ ## S3 method for class 'dendrite':
+ plot(x,xlabels=NULL,main="",mar=c(1,0,3,0),cex=1,...)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{x}] A \samp{dendrite} object containing the counts of objects having
+combinations of mutually exclusive attributes.
+\item[\code{xlabels}] The category labels that will be displayed beneath the
+dendrogram.
+\item[\code{main}] The title of the plot.
+\item[\code{mar}] Margins for the plot.
+\item[\code{cex}] Character expansion for the leaves of the dendrogram.
+\item[\code{...}] Additional arguments passed to \samp{plot}.
+\end{ldescription}
+\end{Arguments}
+\begin{Details}\relax
+\samp{plot.dendrite} sets up a plot for a dendrogram. The actual plotting of
+the dendrogram is done by \samp{furc}.
+\end{Details}
+\begin{Value}
+nil
+\end{Value}
+\begin{Author}\relax
+Jim Lemon
+\end{Author}
+\begin{SeeAlso}\relax
+\samp{\LinkA{furc}{furc}}
+\end{SeeAlso}
+\begin{Examples}
+\begin{ExampleCode}
+ sex<-sample(c("M","F"),100,TRUE)
+ hair<-sample(c("Blond","Black","Brown","Red"),100,TRUE)
+ eye<-sample(c("Blue","Black","Brown","Green"),100,TRUE)
+ charac<-data.frame(sex=sex,hair=hair,eye=eye)
+ characlist<-makeDendrite(charac)
+ plot.dendrite(characlist,names(charac),main="Test dendrogram",cex=0.8)
+\end{ExampleCode}
+\end{Examples}
+

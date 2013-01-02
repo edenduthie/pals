@@ -1,0 +1,41 @@
+\HeaderA{pasteCols}{Paste the columns of a matrix together.}{pasteCols}
+\keyword{misc}{pasteCols}
+\begin{Description}\relax
+Paste the columns of a matrix together to form as
+many "words" as there are columns.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+ pasteCols(x,sep="")
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{x}] A matrix.
+\item[\code{sep}] The separator to use in the \samp{paste} command.
+\end{ldescription}
+\end{Arguments}
+\begin{Details}\relax
+\samp{pasteCols} pastes the columns of a matrix together to form a vector in
+which each element is the concatenation of the elements in each of the columns
+of the matrix. It is intended for producing identifiers from a matrix returned
+by the \samp{combn} function.
+\end{Details}
+\begin{Value}
+A vector of character strings.
+\end{Value}
+\begin{Author}\relax
+Jim Lemon
+\end{Author}
+\begin{SeeAlso}\relax
+\samp{\LinkA{makeIntersectList}{makeIntersectList}}
+\end{SeeAlso}
+\begin{Examples}
+\begin{ExampleCode}
+ # create a matrix of the combinations of the first five letters of the
+ # alphabet taken two at a time.
+ alpha5<-combn(LETTERS[1:5],2,simplify=TRUE)
+ pasteCols(alpha5,sep="+")
+\end{ExampleCode}
+\end{Examples}
+

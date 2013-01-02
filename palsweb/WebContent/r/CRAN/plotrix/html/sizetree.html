@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Display a hierarchical breakdown of disjunct categories</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for sizetree {plotrix}"><tr><td>sizetree {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Display a hierarchical breakdown of disjunct categories</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Display a data frame in which the values in each successive
+column represent subcategories of the previous column as stacked
+rectangles.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ sizetree(x,left=0,top,right=1,lastcenter=NA,showval=TRUE,showcount=TRUE,
+  firstcall=TRUE,col=NA,colorindex=1,...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+A data frame in which each successive column represents
+subcategories of the previous column.</td></tr>
+<tr valign="top"><td><code>left</code></td>
+<td>
+The left edge of the current stack of rectangles in user units.</td></tr>
+<tr valign="top"><td><code>top</code></td>
+<td>
+The top of the current stack of rectangles in user units.</td></tr>
+<tr valign="top"><td><code>right</code></td>
+<td>
+The right edge of the current stack of rectangles in user units.</td></tr>
+<tr valign="top"><td><code>lastcenter</code></td>
+<td>
+The center of the previous rectangle from which the next
+breakdown of categories arises. There is almost no reason to change it.</td></tr>
+<tr valign="top"><td><code>showval</code></td>
+<td>
+Whether to display the values representing the categories.</td></tr>
+<tr valign="top"><td><code>showcount</code></td>
+<td>
+Whether to display the count for the categories.</td></tr>
+<tr valign="top"><td><code>firstcall</code></td>
+<td>
+A flag for the function - do not alter this.</td></tr>
+<tr valign="top"><td><code>col</code></td>
+<td>
+Optional fill colors for the rectangles. See Details</td></tr>
+<tr valign="top"><td><code>colorindex</code></td>
+<td>
+The index for <span class="samp">col</span> if it is a list of color vectors.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+additional arguments passed to <span class="samp">plot</span>.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+<span class="samp">sizetree</span> displays disjunct hierarchical categories as stacked rectangles.
+It accepts a data frame in which the values in the first column represent
+categories, the values in the second column represent subcategories of the
+first column, and so on. The first column will be displayed as a stack of
+rectangles, the height of each proportional to the count for each category.
+Each substack of rectangles in the second stack will represent the breakdown
+of counts for its superordinate category and so on through the columns.
+Empty categories are ignored and NAs will produce gaps.
+</p>
+<p>
+Typically, the user will simply pass the data frame, which should only
+contain columns that are hierarchical categories, set <span class="samp">showval</span> and
+<span class="samp">showcount</span> to the desired values, and pass colors for the top level
+categories if these are wanted. If colors are passed, it is best to have at
+least as many colors as there are categories in the first column or some will
+be recycled. If different colors are desired for different levels, as in the
+example, pass a list of colors.
+</p>
+<p>
+The <span class="samp">firstcall</span> argument is necessary for the function to initialize the
+plot, as each breakdown involves a recursive call. If it is changed, the best
+that can be expected is an uninformative plot.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+nil</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Jim Lemon
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<span class="samp"><a href="../../Zelig/html/plot.zelig.html">plot</a></span>,<span class="samp"><a href="smoothColors.html">smoothColors</a></span>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+ cat1&lt;-sample(c("None","Low","Medium","High"),40,TRUE)
+ cat2&lt;-sample(c("None","Low","Medium","High"),40,TRUE)
+ cat3&lt;-sample(c("None","Low","Medium","High"),40,TRUE)
+ hcats&lt;-data.frame(cat1,cat2,cat3)
+ bhcol&lt;-list(c("#ff8080","#dddd80","#80ff80","#8080ff"),
+  c("red","green","lightblue","yellow"),
+  c("#ffffff","#bbbbbb","#999999","#666666"))
+ sizetree(hcats,col=bhcol,main="Hierarchical count chart")
+</pre>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

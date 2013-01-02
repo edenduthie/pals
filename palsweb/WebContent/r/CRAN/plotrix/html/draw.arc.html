@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Draw arc</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for draw.arc {plotrix}"><tr><td>draw.arc {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Draw arc</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Draw one or more arcs using classic graphics.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ draw.arc(x=1,y=NULL,radius=1,angle1=deg1*pi/180,angle2=deg2*pi/180, 
+  deg1=0,deg2=45,n=35,col=1,...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+x coordinate of center.  Scalar or vector. </td></tr>
+<tr valign="top"><td><code>y</code></td>
+<td>
+y coordinate of center.  Scalar or vector. </td></tr>
+<tr valign="top"><td><code>radius</code></td>
+<td>
+radius.  Scalar or vector.  </td></tr>
+<tr valign="top"><td><code>angle1</code></td>
+<td>
+Starting angle in radians. Scalar or vector. </td></tr>
+<tr valign="top"><td><code>angle2</code></td>
+<td>
+Ending angle in radians. Scalar or vector. </td></tr>
+<tr valign="top"><td><code>deg1</code></td>
+<td>
+Starting angle in degrees. Scalar or vector. </td></tr>
+<tr valign="top"><td><code>deg2</code></td>
+<td>
+Ending angle in degrees. Scalar or vector. </td></tr>
+<tr valign="top"><td><code>n</code></td>
+<td>
+Number of polygons to use to approximate the arc. </td></tr>
+<tr valign="top"><td><code>col</code></td>
+<td>
+Arc colors. </td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+Other arguments passed to segments.  Vectorization 
+is not supported for these. </td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+Draws one or more arcs from <code>angle1</code> to <code>angle2</code>.
+If <code>angle1</code> is numerically greater than <code>angle2</code>,
+then the angles are swapped.
+</p>
+<p>
+Be sure to use an aspect ratio of 1 as shown in the example to avoid
+distortion.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+Returns a matrix of expanded arguments invisibly.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Gabor Grothendieck
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+   plot(1:10, asp = 1,main="Test draw.arc")
+   draw.arc(5, 5, 1:10/10, deg2 = 1:10*10, col = "blue")
+   draw.arc(8, 8, 1:10/10, deg2 = 1:10*10, col = 1:10)
+
+   # example taken from post by Hans Borcher:
+   # https://stat.ethz.ch/pipermail/r-help/2009-July/205728.html
+   # Note setting of aspect ratio to 1 first.
+   curve(sin(x), 0, pi, col="blue", asp=1)
+   draw.arc(pi/2, 0, 1, deg1=45, deg2=135, col="red")
+
+</pre>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

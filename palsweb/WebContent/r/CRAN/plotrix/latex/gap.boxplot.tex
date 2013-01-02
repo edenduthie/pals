@@ -1,0 +1,85 @@
+\HeaderA{gap.boxplot}{Display a boxplot with a gap (missing range)}{gap.boxplot}
+\keyword{misc}{gap.boxplot}
+\begin{Description}\relax
+Displays a boxplot with a missing range.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+ gap.boxplot(x,...,gap=list(top=c(NA,NA),bottom=c(NA,NA)),
+ range=1.5,width=NULL,varwidth=FALSE,notch=FALSE,outline=TRUE,
+ names,ylim=NA,plot=TRUE,border=par("fg"),col=NULL,log="",
+ axis.labels=NULL,pars=list(boxwex=0.8,staplewex=0.5,outwex=0.5),
+ horizontal=FALSE,add=FALSE,at=NULL,main=NULL)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{x}] numeric vector or a list of vectors
+\item[\code{...}] arguments passed to \samp{\LinkA{boxplot}{boxplot}}.
+\item[\code{gap}] the range(s) to be omitted - a list with two components,
+\samp{top} and \samp{bottom} each specifying a range to omit. The
+default range of \samp{c(NA,NA)} means no omitted range
+\item[\code{range}] how far to extend the whiskers, (see \samp{\LinkA{boxplot}{boxplot}})
+\item[\code{width}] the relative widths of the boxes
+\item[\code{varwidth}] if TRUE, box widths are proportional to the square roots
+of the number of observations
+\item[\code{notch}] whether to display the confidence intervals for the
+median as notches
+\item[\code{outline}] whether to display outliers
+\item[\code{names}] optional names to display beneath each boxplot
+\item[\code{ylim}] Optional y axis limits for the plot.
+\item[\code{boxwex}] scale factor for box widths
+\item[\code{staplewex}] staple width proportional to box width
+\item[\code{outwex}] outlier line width
+\item[\code{plot}] dummy argument for consistency with \samp{boxplot} - always
+plots
+\item[\code{border}] optional color(s) for the box lines
+\item[\code{col}] optional color(s) to fill the boxes
+\item[\code{log}] whether to use a log scale - currently does nothing
+\item[\code{axis.labels}] Optional axis labels.
+\item[\code{pars}] optional parameters for consistency with \samp{boxplot}
+\item[\code{horizontal}] whether to plot horizontal boxplots - currently
+does nothing
+\item[\code{add}] whether to add the boxplot(s) to a current plot - currently
+does nothing
+\item[\code{at}] optional horizontal locations for the boxplots - currently
+does nothing
+\item[\code{main}] a title for the plot
+\end{ldescription}
+\end{Arguments}
+\begin{Details}\relax
+Displays boxplot(s) omitting range(s) of values on the top and/or bottom
+of the plot. Typically used when there are outliers far from the boxes.
+See \samp{\LinkA{boxplot}{boxplot}} for more detailed descriptions of the
+arguments. If the gaps specified include any of the values in the \samp{stats}
+matrix returned from \samp{boxplot}, the function will exit with an
+error message. This prevents generation of NAs in indexing operations,
+which would fail anyway. A gap can include part of a box, but it is unlikely 
+that this would be intended by the user.
+
+See \samp{\LinkA{axis.break}{axis.break}} for a brief discussion 
+of plotting on discontinuous coordinates.
+\end{Details}
+\begin{Value}
+A list with the same structure as returned by \samp{boxplot}, except that
+the values of elements beyond the gap(s) have their true positions on the
+plot rather than the original values.
+\end{Value}
+\begin{Author}\relax
+Jim Lemon
+\end{Author}
+\begin{SeeAlso}\relax
+\samp{\LinkA{gap.barplot}{gap.barplot}},\samp{\LinkA{gap.plot}{gap.plot}}
+\end{SeeAlso}
+\begin{Examples}
+\begin{ExampleCode}
+ twovec<-list(vec1=c(rnorm(30),-6),vec2=c(sample(1:10,40,TRUE),20))
+ gap.boxplot(twovec,gap=list(top=c(12,18),bottom=c(-5,-3)),
+ main="Show outliers separately")
+ if(dev.interactive()) par(ask=TRUE)
+ gap.boxplot(twovec,gap=list(top=c(12,18),bottom=c(-5,-3)),range=0,
+ main="Include outliers in whiskers")
+ par(ask=FALSE)
+\end{ExampleCode}
+\end{Examples}
+

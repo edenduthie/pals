@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Turn values into colors.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for color.scale {plotrix}"><tr><td>color.scale {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Turn values into colors.</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Transform numeric values into colors.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ color.scale(x,redrange=c(0,1),greenrange=c(0,1),bluerange=c(0,1),
+  extremes=NA,na.color=NA)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+a numeric vector, matrix or data frame</td></tr>
+<tr valign="top"><td><code>redrange,greenrange,bluerange</code></td>
+<td>
+color ranges into which 
+to scale <span class="samp">x</span></td></tr>
+<tr valign="top"><td><code>extremes</code></td>
+<td>
+The colors for the extreme values of <span class="samp">x</span>.</td></tr>
+<tr valign="top"><td><code>na.color</code></td>
+<td>
+The color to use for NA values of <span class="samp">x</span>.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+<span class="samp">color.scale</span> calculates a sequence of colors by a linear
+transformation of the numeric values supplied into the ranges 
+for red, green and blue. If only one number is supplied for a
+color range, that color remains constant for all values of <span class="samp">x</span>.
+If more than two values are supplied, the <span class="samp">x</span> values will be
+split into equal ranges (one less than the number of colors) and 
+the transformation carried out on each range. Values for a color
+range must be between 0 and 1.
+</p>
+<p>
+If <span class="samp">extremes</span> is not NA, the ranges will be calculated from
+its values using <span class="samp">col2rgb</span>, even if ranges are also supplied.
+<span class="samp">extremes</span> allows the user to just pass the extreme color values
+in any format that <span class="samp">col2rgb</span> will accept.
+</p>
+<p>
+The user may not want the color scheme to be continuous across some
+critical point, often zero. In this case, color scale can be called
+separately for the values below and above zero. See the second example
+for <span class="samp">color2D.matplot</span>.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+A vector or matrix of hexadecimal color values.</p>
+
+<h3>Note</h3>
+
+<p>
+The function is useful for highlighting a numeric dimension or adding
+an extra "dimension" to a plot.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Jim Lemon
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<span class="samp"><a href="rescale.html">rescale</a></span>, <span class="samp"><a href="../../grDevices/html/col2rgb.html">col2rgb</a></span>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+ # go from green through yellow to red with no blue
+ x&lt;-rnorm(20)
+ y&lt;-rnorm(20)
+ # use y for the color scale
+ plot(x,y,col=color.scale(y,c(0,1,1),c(1,1,0),0),main="Color scale plot",
+  pch=16,cex=2)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

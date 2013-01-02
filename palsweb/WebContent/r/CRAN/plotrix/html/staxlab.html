@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Place staggered labels on an axis</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for staxlab {plotrix}"><tr><td>staxlab {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Place staggered labels on an axis</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Places labels on an axis in a regular staggered order
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ staxlab(side=1,at,labels,nlines=2,top.line=0.5,line.spacing=0.8,...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>side</code></td>
+<td>
+axis on which to place the labels, as in <span class="samp">axis</span></td></tr>
+<tr valign="top"><td><code>at</code></td>
+<td>
+where to place the labels in user units, as in <span class="samp">axis</span></td></tr>
+<tr valign="top"><td><code>labels</code></td>
+<td>
+text strings</td></tr>
+<tr valign="top"><td><code>nlines</code></td>
+<td>
+How many lines to use to stagger the labels.</td></tr>
+<tr valign="top"><td><code>top.line</code></td>
+<td>
+Distance from the axis to place the first line of text.</td></tr>
+<tr valign="top"><td><code>line.spacing</code></td>
+<td>
+Spacing between lines of text labels.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+Additional arguments to be passed to <span class="samp">mtext</span>.</td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+nil</p>
+
+<h3>Note</h3>
+
+<p>
+This function is mainly useful when either long axis labels or a large
+number of labels are to be placed without overlapping. It staggers the 
+labels along the axis specified. The user may wish to increase the space
+beneath the plot using <span class="samp">mar</span> before calling <span class="samp">staxlab</span>. It is
+probably only useful on the bottom or left side of the plot.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Jim Lemon
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<span class="samp"><a href="../../graphics/html/mtext.html">mtext</a></span>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+ plot(rnorm(12),axes=FALSE)
+ box()
+ months&lt;-c("January","February","March","April","May","June",
+  "July","August","September","October","November","December")
+ staxlab(1,1:12,months)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

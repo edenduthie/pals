@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Pyramid plot</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for pyramid.plot {plotrix}"><tr><td>pyramid.plot {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Pyramid plot</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Displays a pyramid (opposed horizontal bar) plot on the current
+graphics device.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ pyramid.plot(xy,xx,labels,top.labels=c("Male","Age","Female"),
+  main="",laxlab=NULL,raxlab=NULL,unit="%",xycol,xxcol,gap=1,
+  labelcex=1,mark.cat=NA,add=FALSE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>xy,xx</code></td>
+<td>
+Vectors of percentages (but see Details) both of which
+should total 100 if this is a population pyramid, and be of equal length.</td></tr>
+<tr valign="top"><td><code>labels</code></td>
+<td>
+Labels for the categories represented by each pair of
+bars. There should be a label for each xy or xx value, even if empty.</td></tr>
+<tr valign="top"><td><code>top.labels</code></td>
+<td>
+The two categories represented on the left and right
+sides of the plot and a heading for the labels up the center.</td></tr>
+<tr valign="top"><td><code>main</code></td>
+<td>
+Optional title for the plot.</td></tr>
+<tr valign="top"><td><code>laxlab</code></td>
+<td>
+Optional labels for the left x axis ticks.</td></tr>
+<tr valign="top"><td><code>raxlab</code></td>
+<td>
+Optional labels for the right x axis ticks.</td></tr>
+<tr valign="top"><td><code>unit</code></td>
+<td>
+The label for the units of the plot.</td></tr>
+<tr valign="top"><td><code>xycol,xxcol</code></td>
+<td>
+Color(s) for the left and right sets of bars. Both of
+these default to 1:length(labels).</td></tr>
+<tr valign="top"><td><code>gap</code></td>
+<td>
+One half of the space between the two sets of bars for the
+<span class="samp">labels</span> in user units.</td></tr>
+<tr valign="top"><td><code>labelcex</code></td>
+<td>
+Expansion for the category labels.</td></tr>
+<tr valign="top"><td><code>mark.cat</code></td>
+<td>
+If an integer equal to the index of one of the labels
+is passed, that label will have a rectangle drawn around it.</td></tr>
+<tr valign="top"><td><code>add</code></td>
+<td>
+Whether to add bars to an existing plot. Usually this
+involves overplotting a second set of bars, perhaps transparent.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+<span class="samp">pyramid.plot</span> is principally intended for population pyramids,
+although it can display other types of opposed bar charts with suitable
+modification of the arguments. If the user wants a different unit for
+the display, just change <span class="samp">unit</span> accordingly. The default gap of 
+two units is usually satisfactory for the four to six percent range 
+of most bars on population pyramids.
+</p>
+<p>
+If <span class="samp">xy</span> and <span class="samp">xx</span> are matrices or data frames, 
+<span class="samp">pyramid.plot</span> will produce opposed stacked bars with the first 
+columns innermost. In this mode, colors are limited to one per column. The 
+stacked bar mode will in general not work with the <span class="samp">add</span> method. Note 
+that the stacked bar mode can get very messy very quickly.
+</p>
+<p>
+The <span class="samp">add</span> argument allows one or more sets of bars to be plotted
+on an existing plot. If these are not transparent, any bar that is
+shorter than the bar that overplots it will disappear. Only some graphic
+devices (e.g. <span class="samp">pdf</span>) will handle transparency.
+</p>
+<p>
+In order to add bars, the function cannot restore the initial margin values
+or the new bars will not plot properly. To automatically restore the plot
+margins, call the function as in the example.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+The return value of <span class="samp">par("mar")</span> when the function was called.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Jim Lemon
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<span class="samp"><a href="../../graphics/html/rect.html">rect</a></span>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+ xy.pop&lt;-c(3.2,3.5,3.6,3.6,3.5,3.5,3.9,3.7,3.9,3.5,3.2,2.8,2.2,1.8,
+  1.5,1.3,0.7,0.4)
+ xx.pop&lt;-c(3.2,3.4,3.5,3.5,3.5,3.7,4,3.8,3.9,3.6,3.2,2.5,2,1.7,1.5,
+  1.3,1,0.8)
+ agelabels&lt;-c("0-4","5-9","10-14","15-19","20-24","25-29","30-34",
+  "35-39","40-44","45-49","50-54","55-59","60-64","65-69","70-74",
+  "75-79","80-44","85+")
+ xycol&lt;-color.gradient(c(0,0,0.5,1),c(0,0,0.5,1),c(1,1,0.5,1),18)
+ xxcol&lt;-color.gradient(c(1,1,0.5,1),c(0.5,0.5,0.5,1),c(0.5,0.5,0.5,1),18)
+ par(mar=pyramid.plot(xy.pop,xx.pop,labels=agelabels,
+  main="Australian population pyramid 2002",xycol=xycol,xxcol=xxcol))
+ # three column matrices
+ avtemp&lt;-c(seq(11,2,by=-1),rep(2:6,each=2),seq(11,2,by=-1))
+ malecook&lt;-matrix(avtemp+sample(-2:2,30,TRUE),ncol=3)
+ femalecook&lt;-matrix(avtemp+sample(-2:2,30,TRUE),ncol=3)
+ # use a background color
+ par(bg="#eedd55")
+ # group by age
+ agegrps&lt;-c("0-10","11-20","21-30","31-40","41-50","51-60",
+  "61-70","71-80","81-90","91+")
+ oldmar&lt;-pyramid.plot(malecook,femalecook,labels=agegrps,
+  unit="Bowls per month",xycol=c("#ff0000","#eeee88","#0000ff"),
+  xxcol=c("#ff0000","#eeee88","#0000ff"),
+  top.labels=c("Males","Age","Females"),gap=3)
+ # put a box around it
+ box()
+ # give it a title
+ mtext("Porridge temperature by age and sex of cook",3,2,cex=1.5)
+ # stick in a legend
+ legend(par("usr")[1],11,c("Too hot","Just right","Too cold"),
+  fill=c("#ff0000","#eeee88","#0000ff"))
+ # don't forget to restore the margins and background
+ par(mar=oldmar,bg="transparent")
+</pre>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

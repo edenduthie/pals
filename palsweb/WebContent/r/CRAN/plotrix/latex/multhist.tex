@@ -1,0 +1,48 @@
+\HeaderA{multhist}{Plot a multiple histogram, as a barplot}{multhist}
+\keyword{hplot}{multhist}
+\begin{Description}\relax
+Given a list, plots a side-by-side barplot containing the histograms
+of the elements
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+ multhist(x,beside=TRUE,freq=NULL,probability=!freq,plot.it=TRUE,...)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{x}] a list of numeric vectors
+\item[\code{beside}] plot histogram bars for groups side-by-side?
+\item[\code{freq}] logical; if 'TRUE', the histogram graphic is a representation
+of frequencies, the 'counts' component of the result; if
+'FALSE', probability densities, component 'density', are
+plotted (so that the histogram has a total area of one).
+Defaults to 'TRUE' if 'probability' is not specified
+(does not consider equidistant breaks as in \samp{\LinkA{hist}{hist}})
+\item[\code{probability}] an alias for '!freq', for S compatibility
+\item[\code{plot.it}] Whether or not to display the histogram.
+\item[\code{...}] additional arguments to \samp{\LinkA{hist}{hist}} or \samp{\LinkA{barplot}{barplot}}
+\end{ldescription}
+\end{Arguments}
+\begin{Value}
+the breaks and the values for the histograms.
+\end{Value}
+\begin{Note}\relax
+The 'inside' argument to \samp{\LinkA{barplot}{barplot}} (which is not currently
+implemented in barplot anyway) is deleted from the argument list. The
+default value of NULL for \samp{freq} is for consistency with \samp{hist}
+but is equivalent to TRUE.
+\end{Note}
+\begin{Author}\relax
+Ben Bolker
+\end{Author}
+\begin{SeeAlso}\relax
+\samp{\LinkA{hist}{hist}},\samp{\LinkA{barplot}{barplot}}
+\end{SeeAlso}
+\begin{Examples}
+\begin{ExampleCode}
+ l <- list(runif(10)*10,1:10,c(1,1,1,1,4,8))
+ multhist(l)
+\end{ExampleCode}
+\end{Examples}
+

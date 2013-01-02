@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Display a fan plot.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for fan.plot {plotrix}"><tr><td>fan.plot {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Display a fan plot.</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Displays numerical values as the arcs of overlapping sectors.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ fan.plot(x,edges=200,radius=1,col=NULL,align.at=NULL,max.span=NULL,
+  labels=NULL,labelpos=NULL,label.radius=1.2,align="left",shrink=0.02,
+  main="",ticks=NULL,include.sumx=FALSE,...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+Vector of numbers.</td></tr>
+<tr valign="top"><td><code>edges</code></td>
+<td>
+The number of edges with which to draw a circle.</td></tr>
+<tr valign="top"><td><code>radius</code></td>
+<td>
+The radius of the sectors.</td></tr>
+<tr valign="top"><td><code>col</code></td>
+<td>
+The colors with which to fill the sectors.</td></tr>
+<tr valign="top"><td><code>align.at</code></td>
+<td>
+Where to align the sectors (see Details).</td></tr>
+<tr valign="top"><td><code>max.span</code></td>
+<td>
+The angle of the maximal sector in radians. The default
+is to scale <span class="samp">x</span> so that it sums to 2*pi.</td></tr>
+<tr valign="top"><td><code>labels</code></td>
+<td>
+Labels placed around the sector arcs.</td></tr>
+<tr valign="top"><td><code>labelpos</code></td>
+<td>
+Optional circumferential positions for the labels.</td></tr>
+<tr valign="top"><td><code>label.radius</code></td>
+<td>
+How far away from the sectors the labels will
+be placed. May be a vector with a radius for each label.</td></tr>
+<tr valign="top"><td><code>align</code></td>
+<td>
+Position of the alignment of sectors (see Details).</td></tr>
+<tr valign="top"><td><code>shrink</code></td>
+<td>
+How much to shrink each successive sector in user units.</td></tr>
+<tr valign="top"><td><code>main</code></td>
+<td>
+Optional title for the plot.</td></tr>
+<tr valign="top"><td><code>ticks</code></td>
+<td>
+The number of ticks that would appear if the sectors were on
+a pie chart. Default is no ticks, TRUE gives the number of ticks equal to
+the integer sum of <span class="samp">x</span>, which is fairly sensible if 
+<span class="samp">x</span> is a vector of integers.</td></tr>
+<tr valign="top"><td><code>include.sumx</code></td>
+<td>
+Whether to include the sum of all <span class="samp">x</span> values
+as the largest sector.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+Additional arguments passed to <span class="samp">polygon</span>.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+The fan plot is a variant of the pie chart that places the sectors
+"on top" of each other from the largest to the smallest. By default,
+the largest sector is centered with its circumferential arc upwards,
+giving the plot the appearance of a folding fan. Passing a value for
+<span class="samp">align.at</span> will place the point of alignment at that angle in 
+radians. The sectors may be aligned at either the left or right edges
+or in the center. Note that <span class="samp">align</span> must be one of <span class="samp">left right</span>
+or <span class="samp">center</span>. Each successive sector is radially "shrunk" by a
+constant amount so that two equal sectors will both be visible.
+</p>
+<p>
+In cases where there are several segments with very small differences,
+the labels may be crowded. There is a simple routine in the function to
+spread out crowded labels, but it may not be sufficient for severe
+crowding. By capturing the return value and manually altering 
+the label positions, the crowded labels can be separated. This new
+vector of positions may then be passed as <span class="samp">labelpos</span>.
+</p>
+<p>
+The calculation of sectors tries to ensure that they are circular. Thus there
+will be white space if the plotting device dimensions are not proportional to
+the size of the plot. The user must adjust the dimensions of the plotting
+device to get the correct appearance.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+The circumferential positions of the labels in radians. These are
+returned in order of decreasing size of the values plotted.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Jim Lemon, Anupam Tyagi
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<span class="samp"><a href="floating.pie.html">floating.pie</a></span>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+ # IUCN counts of threatened species by geographical area
+ iucn.df&lt;-data.frame(area=c("Africa","Asia","Europe","N&amp;C America",
+  "S America","Oceania"),threatened=c(5994,7737,1987,4716,5097,2093))
+ fan.plot(iucn.df$threatened,
+  labels=paste(iucn.df$area,iucn.df$threatened,sep="-"),
+  main="Threatened species by geographical area",ticks=276)
+ # expand the plot to a semicircle
+ fan.plot(iucn.df$threatened,max.span=pi,
+  labels=paste(iucn.df$area,iucn.df$threatened,sep="-"),
+  main="Threatened species by geographical area",ticks=276)
+ # expand further to 3/4 of a circle
+ fan.plot(iucn.df$threatened,max.span=1.5*pi,
+  labels=paste(iucn.df$area,iucn.df$threatened,sep="-"),
+  main="Threatened species by geographical area",ticks=276)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

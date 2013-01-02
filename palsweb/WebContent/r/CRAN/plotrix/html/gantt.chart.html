@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Display a Gantt chart</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for gantt.chart {plotrix}"><tr><td>gantt.chart {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Display a Gantt chart</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Displays a Gantt chart with priority coloring
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ gantt.chart(x=NULL,format="%Y/%m/%d",xlim=NULL,taskcolors=NULL,
+  priority.legend=FALSE,vgridpos=NULL,vgridlab=NULL,vgrid.format="%Y/%m/%d",
+  half.height=0.25,hgrid=FALSE,main="",xlab="",cylindrical=FALSE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+a list of task labels, start/end times and task priorities
+as returned by <span class="samp">get.gantt.info</span>. If this is not present,
+<span class="samp"><a href="get.gantt.info.html">get.gantt.info</a></span> will be called.</td></tr>
+<tr valign="top"><td><code>format</code></td>
+<td>
+the format to be used in entering dates/times
+(see <span class="samp"><a href="../../base/html/strptime.html">strptime</a></span>).</td></tr>
+<tr valign="top"><td><code>xlim</code></td>
+<td>
+the horizontal limits of the plot.</td></tr>
+<tr valign="top"><td><code>taskcolors</code></td>
+<td>
+a vector of colors used to illustrate task priority.</td></tr>
+<tr valign="top"><td><code>priority.legend</code></td>
+<td>
+Whether to display a priority color legend.</td></tr>
+<tr valign="top"><td><code>vgridpos</code></td>
+<td>
+optional positions of the vertical grid lines.</td></tr>
+<tr valign="top"><td><code>vgridlab</code></td>
+<td>
+optional labels for the vertical grid lines.</td></tr>
+<tr valign="top"><td><code>vgrid.format</code></td>
+<td>
+format for the vertical grid labels.</td></tr>
+<tr valign="top"><td><code>half.height</code></td>
+<td>
+the proportion of the spacing between task bars that
+will be filled by the bar on each side - 0.5 will leave no space.</td></tr>
+<tr valign="top"><td><code>hgrid</code></td>
+<td>
+logical - whether to display grid lines between the bars.</td></tr>
+<tr valign="top"><td><code>main</code></td>
+<td>
+the title of the plot - note that this is actually displayed
+using <span class="samp">mtext</span>.</td></tr>
+<tr valign="top"><td><code>xlab</code></td>
+<td>
+horizontal axis label - usually suppressed.</td></tr>
+<tr valign="top"><td><code>cylindrical</code></td>
+<td>
+Whether to give the bars a cylindrical appearance.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+If task priority colors are not wanted, set <span class="samp">taskcolors</span> to a single
+value to suppress the coloring. If this is not done, <span class="samp">rainbow</span> will
+be called to generate a different color for each task.
+</p>
+<p>
+There can now be more than one time interval for each task. If there is,
+more than one bar will be displayed for each "task", which may not be a
+task at all, but intervals of some attribute for each entity.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+The list used to create the chart - see <span class="samp"><a href="get.gantt.info.html">get.gantt.info</a></span> for
+details. This can be saved and reused rather than manually entering the 
+information each time the chart is displayed.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Jim Lemon (original by Scott Waichler - features by Ulrike Gromping)
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<span class="samp"><a href="get.gantt.info.html">get.gantt.info</a></span>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+ Ymd.format&lt;-"%Y/%m/%d"
+ gantt.info&lt;-list(labels=
+  c("First task","Second task","Third task","Fourth task","Fifth task"),
+  starts=
+  as.POSIXct(strptime(
+  c("2004/01/01","2004/02/02","2004/03/03","2004/05/05","2004/09/09"),
+  format=Ymd.format)),
+  ends=
+  as.POSIXct(strptime(
+  c("2004/03/03","2004/05/05","2004/05/05","2004/08/08","2004/12/12"),
+  format=Ymd.format)),
+  priorities=c(1,2,3,4,5))
+ vgridpos&lt;-as.POSIXct(strptime(c("2004/01/01","2004/02/01","2004/03/01",
+  "2004/04/01","2004/05/01","2004/06/01","2004/07/01","2004/08/01",
+  "2004/09/01","2004/10/01","2004/11/01","2004/12/01"),format=Ymd.format))
+ vgridlab&lt;-
+  c("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec")
+ gantt.chart(gantt.info,main="Calendar date Gantt chart (2004)",
+  priority.legend=TRUE,vgridpos=vgridpos,vgridlab=vgridlab,hgrid=TRUE)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

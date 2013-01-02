@@ -1,0 +1,38 @@
+\HeaderA{get.segs}{Calculate the midpoints and limits for a centipede plot}{get.segs}
+\keyword{misc}{get.segs}
+\begin{Description}\relax
+Calculates midpoints and limits for a list or data frame for use with
+centipede.plot.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+ get.segs(x,mct="mean",lower.limit="std.error",upper.limit=lower.limit)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{x}] a list or data frame.
+\item[\code{mct}] The name of the function to calculate midpoints.
+\item[\code{lower.limit,upper.limit}] The names of the function(s) to calculate 
+lower and upper limits.
+\end{ldescription}
+\end{Arguments}
+\begin{Details}\relax
+\samp{get.segs} calls the functions whose names are passed to calculate
+midpoints and limits for each list element or data frame column. The
+user can define special functions for the central and dispersion measures
+if desired.
+\end{Details}
+\begin{Value}
+A matrix with four rows and as many columns as were in the object
+\samp{x}. The first row contains the midpoint values, the second and third
+the lower and upper limit values respectively and the fourth row the number
+of valid observations in the columns.
+\end{Value}
+\begin{Author}\relax
+Jim Lemon
+\end{Author}
+\begin{SeeAlso}\relax
+\samp{\LinkA{centipede.plot}{centipede.plot}}
+\end{SeeAlso}
+

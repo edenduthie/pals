@@ -1,0 +1,51 @@
+\HeaderA{arctext}{Display text on a circular arc.}{arctext}
+\keyword{misc}{arctext}
+\begin{Description}\relax
+\samp{arctext} displays a string along a circular arc, rotating each
+letter. This may not work on all devices, as not all graphic devices
+can rotate text to arbitrary angles. The output looks best on a 
+Postscript or similar device that can rotate text without distortion.
+Rotated text often looks very ragged on small bitmaps.
+
+If the user passes a value for
+\samp{start}, this will override any value passed to \samp{middle}.
+If the plot area is not square, see \samp{par(pty="s")}, the arc will
+be somewhat elliptical.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+ arctext(x,center=c(0,0),radius=1,start=NA,middle=pi/2,stretch=1,cex=1,...)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{x}] A character string.
+\item[\code{center}] The center of the circular arc in x/y user units.
+\item[\code{radius}] The radius of the arc in user units.
+\item[\code{start}] The starting position of the string in radians.
+\item[\code{middle}] The middle position of the string in radians.
+\item[\code{stretch}] How much to stretch the string for appearance.
+\item[\code{cex}] The character expansion factor.
+\item[\code{...}] additional arguments passed to \samp{text}.
+\end{ldescription}
+\end{Arguments}
+\begin{Value}
+nil
+\end{Value}
+\begin{Author}\relax
+Jim Lemon - Thanks to Suhas Parandekar for the idea.
+\end{Author}
+\begin{SeeAlso}\relax
+\samp{\LinkA{text}{text}}
+\end{SeeAlso}
+\begin{Examples}
+\begin{ExampleCode}
+ plot(0,xlim=c(1,5),ylim=c(1,5),main="Test of arctext",xlab="",ylab="",
+  type="n")
+ arctext("bendy like spaghetti",center=c(3,3),col="blue")
+ arctext("bendy like spaghetti",center=c(3,3),radius=1.5,start=pi,cex=2)
+ arctext("bendy like spaghetti",center=c(3,3),radius=0.5,
+  start=pi/2,stretch=1.2)
+\end{ExampleCode}
+\end{Examples}
+

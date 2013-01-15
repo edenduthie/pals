@@ -10,8 +10,8 @@ CheckError = function(errtext,errcode='U1:'){
 		# Additionally report command line call
 		calltext = paste(commandArgs(),collapse=' ')
 		alltext = paste(errtext,calltext)
-		# If error, write to std error
-		cat(alltext,' ^ \n',file=stderr()); stop(alltext,call. = FALSE)
+		# If error, stop
+		stop(alltext, call. = FALSE)
 	}
 }
 

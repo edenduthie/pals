@@ -34,6 +34,12 @@ public class AnalysisService
 	public static final String OUTPUT_TYPE_PDF = "pdf";
 	public static final String OUTPUT_TYPE_PNG = "png";
 	
+	/**
+	 * The code expects the error message to be appropriate
+	 * to persists (less than 255 characters and no unsafe
+	 * string in it).
+	 * @param analysis
+	 */
 	@Transactional(propagation=Propagation.REQUIRES_NEW)
     public void startAnalysisRun(Analysis analysis)
     {
@@ -41,29 +47,45 @@ public class AnalysisService
 		analysis.setStartTime(new Date());
 		analysis.setStatus(Analysis.STATUS_RUNNING);
 		dao.update(analysis);
+		String errMsg = null;
 		try {
 			generatePlot(analysis,OUTPUT_TYPE_PDF);
 			generatePlot(analysis,OUTPUT_TYPE_PNG);
 			generateThumbnail(analysis);
 			analysis.setStatus(Analysis.STATUS_COMPLETE);
 		} catch (AnalysisException e) {
-			e.printStackTrace();
-			log.error(e.getMessage());
+			//e.printStackTrace();
+			errMsg = e.getMessage();
+			//System.out.println(errMsg); // debug
+			//log.error(e);
 			analysis.setStatus(Analysis.STATUS_ERROR);
-			analysis.setErrorMessage("R script failure");
+			analysis.setErrorMessage(errMsg);
 		} catch (IOException e) {
-			e.printStackTrace();
-			log.error(e.getMessage());
+			//e.printStackTrace();
+			errMsg = e.getMessage();
+			//System.out.println(errMsg); // debug
+			//log.error(e);
 			analysis.setStatus(Analysis.STATUS_ERROR);
-			analysis.setErrorMessage("Failed to locate data");
+			analysis.setErrorMessage(errMsg);
 		} catch (InterruptedException e) {
-			e.printStackTrace();
-			log.error(e.getMessage());
+			//e.printStackTrace();
+			//System.out.println(errMsg); // debug
+			errMsg = e.getMessage();
+			log.error(e);
 			analysis.setStatus(Analysis.STATUS_ERROR);
 			analysis.setErrorMessage("Processing interrupted");
 		} 
 		analysis.setEndTime(new Date());
-		dao.update(analysis);
+		try
+		{
+			dao.update(analysis);
+		}
+		catch (Exception e)
+		{
+			System.out.println("########## JPA error ########");
+			e.printStackTrace();
+			System.out.println("#############################");
+		}
 		
 		// now run the benchmarks and don't complain if there is an error
 		try {
@@ -71,13 +93,13 @@ public class AnalysisService
 			generateBenchmark(analysis,OUTPUT_TYPE_PDF);
 		} catch (AnalysisException e) {
 			log.error(e);
-			e.printStackTrace();
+			//e.printStackTrace();
 		} catch (IOException e) {
 			log.error(e);
-			e.printStackTrace();
+			//e.printStackTrace();
 		} catch (InterruptedException e) {
 			log.error(e);
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
     }
     

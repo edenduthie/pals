@@ -11,5 +11,7 @@ public class PalsException extends Exception {
 	public PalsException(String message) {
 		super(message);
 	}
-
+	public PalsException(String message, Exception e) {
+		super(message, e);
+	}
 }

@@ -26,28 +26,28 @@
 
 <ul>
     <li><a href="javascript:void(0);" onclick="select('help-contact')">Contact</a></li>
-    <li><a href="javascript:void(0);" onclick="select('help-disclaimer')">Disclaimer</a></li>
-    <li><a href="javascript:void(0);" onclick="select('help-new')">What's New?</a></li>
+    <li><a href="javascript:void(0);" onclick="select('help-disclaimer')">Terms and Conditions</a></li>
     <li><a href="javascript:void(0);" onclick="select('help-suggestions')">Suggestions / Improvements</a></li>
-    <li><a href="javascript:void(0);" onclick="select('help-new-scripts')">Submitting new analysis scripts</a></li>
     <li><a href="<%=request.getContextPath()%>/Account/ListUsers.action">List of PALS users</a></li>
 </ul>
-<h3>Flux tower community:</h3>
+<ul>
+    <li><a href="javascript:void(0);" onclick="select('help-experiments')">What is a PALS Workspace?</a></li>
+    <li><a href="javascript:void(0);" onclick="select('help-benchmarking')">What is a PALS Benchmark?</a></li>
+</ul>
+<h3>Uploading model output</h3>
+<ul>
+    <li><a href="javascript:void(0);" onclick="select('help-lsm-format')">Model output file format</a></li>
+    <li><a href="javascript:void(0);" onclick="select('help-who-lsm')">Who has access to my data?</a></li>
+    <li><a href="javascript:void(0);" onclick="select('help-why-lsm')">Why use PALS with my LSM?</a></li>
+</ul>
+<h3>Uploading flux data:</h3>
 <ul>
     <li><a href="javascript:void(0);" onclick="select('help-why-contribute')">Why contribute my data?</a></li>
     <li><a href="javascript:void(0);" onclick="select('help-data-req')">Data requirements</a></li>
     <li><a href="javascript:void(0);" onclick="select('help-who-access')">Who has access to my data?</a></li>
 	<li><a href="javascript:void(0);" onclick="select('help-data-uploading-instructions')">Data uploading instructions</a></li>
 </ul>
-<h3>Modelling community</h3>
-<ul>
-    <li><a href="javascript:void(0);" onclick="select('help-why-lsm')">Why use PALS with my LSM?</a></li>
-    <li><a href="javascript:void(0);" onclick="select('help-who-lsm')">Who has access to my data?</a></li>
-</ul>
-<ul>
-    <li><a href="javascript:void(0);" onclick="select('help-experiments')">What is a PALS Workspace?</a></li>
-    <li><a href="javascript:void(0);" onclick="select('help-benchmarking')">What is a PALS Benchmark?</a></li>
-</ul>
+
 </div>
 <div id="help-contents">
 
@@ -55,9 +55,10 @@
 <h3>Contact</h3>
 <p>
 PALS is currently maintained at the <a href="http://www.ccrc.unsw.edu.au/">Climate Change Research Centre</a> at the University of New South Wales, Sydney, by <a href="http://web.science.unsw.edu.au/~gabrielabramowitz/homepage/Gab_Abramowitz_home_page.html">Gab Abramowitz</a> and <a href="http://www.gatorlogic.com">Eden Duthie</a>.
+Contact us at <a href="mailto:palshelp@gmail.com">palshelp@gmail.com</a>.
 </p>
 <p>
-Contact us at <a href="mailto:palshelp@gmail.com">palshelp@gmail.com</a>.
+Abramowitz, G. (2012) Towards a public, standardized, diagnostic benchmarking system for land surface models, <i>Geoscientific Model Development</i>, 5, 819-827, doi:10.5194/gmd-5-819-2012.
 </p>
 </div>
 
@@ -65,37 +66,30 @@ Contact us at <a href="mailto:palshelp@gmail.com">palshelp@gmail.com</a>.
 <div id="help-disclaimer" style="display:none;">
 <h2>Terms and Conditions</h2>
 
-<h3>Fair use policy</h3>
 <p>
-Inclusion of any type of data set in PALS in no way implies consent for its use beyond application in experiments for the PALS site itself - consent for any other use must be negotiated with data set owners. All observed and modelled datasets in PALS have an associated owner or chief investigator field displayed in their meta data. Consent or collaboration outside the PALS site is entirely at the discretion of the data owner. 
+Many data sets have been made available through the PALS site for use by users of the PALS site.  These data sets are only available for use within PALS unless otherwise agreed by the data set owner. The data set owner can be identified in the information pages for PALS Data Sets, Models and Model Outputs, usually accessed by clicking on the Data Set, Model or Model Output name where it is listed in PALS. Please also check these information pages for any additional data policies or licencing agreements associated with each data set that have been nominated by the data set owner, you are bound to adhere by them.
+</p>
+<p>
+In uploading your own data to the PALS site, you are able to prescribe the policies that govern it, and we encourage you to do so. Please add this information to the Data Set, Model or Model Ouput "Comments" fields when you create or upload them. You can supplement comments with ancillary files, usually uploadable in the same form. It is your responsibility to ensure that you have appropriate rights to grant such a licence (your  organisation/institution/employer may have policies governing this).
+</p>
+<p>
+It is the responsibility of individual users to ensure they adhere to any institutional guidelines by which they are bound regarding the dissemination of data, model code or experimental results.
 </p>
 <p>
 For information regarding the use of PALS scripts or graphs for publications, please email palshelp at gmail dot com. 
 </p>
-
-<h3>Disclaimer</h3>
 <p>
-While the administrators of PALS aim to make PALS as reliable and secure as possible, we take no responsibility whatsoever for any loss incurred as a result of the use of PALS, availability of the PALS site, faults in the structure or operation of PALS or inappropriate use of the PALS site by its users.
-</p>
-<p>
-It is the responsibility of individual users to ensure they adhere to any institutional guidelines by which they are bound regarding the dissemination of data, model code or experimental results.
+Finally, while the administrators of PALS aim to make PALS as reliable and secure as possible, we take no responsibility whatsoever for any loss incurred as a result of the use of PALS, availability of the PALS site, faults in the structure or operation of PALS or inappropriate use of the PALS site by its users.
 </p>
 </div>
 <div id="help-suggestions" style="display:none;">
 <h2>Improvements and suggestions</h2>
 
-<p>If you have suggestions about how PALS might be improved, please let us know. Please also bear in mind that we have very limited resources. In particular, if you would like to fund or personally build additional functionality for PALS we would like to try to facilitate it. </p>
-<p>All analysis scripts in PALS are written in R. If you would like copies of them send us an email. We ultimately want them be available as an R package on the CRAN.</p>
-</div>
-<div id="help-new-scripts" style="display:none;">
-<h2>Submitting analysis scripts to PALS</h2>
-<p>
-Suggestions for additional Analyses associated with any existing PALS Experiment (or indeed suggestions for new Experiments) are always welcome. The PALS R package and set of command line scripts are available by contacting us at <a href="mailto:palshelp@gmail.com">palshelp@gmail.com</a>. We will endeavour to include any submissions of additional Analyses in the format of the existing PALS R package.
-</p>
+<p>If you have suggestions about how PALS might be improved, please let us know. Please also bear in mind that we have very limited resources. In particular, if you would like to fund or personally build additional functionality for PALS we would love to try to facilitate it. </p>
+<p>All analysis scripts in PALS are currently written in R (although some may eventually be in Python as well). The entire PALS code base including these is avilable as an open source project on <a href="https://github.com/edenduthie/pals">GitHub</a>. If you would like to know more or just get a copy of the analysis scripts please send us an <a href="mailto:palshelp@gmail.com">email</a>. </p>
 </div>
 <div id="help-why-contribute" style="display:none;">
-<h2>
-Why would I contribute my flux data to PALS? 
+<h2>Why would I contribute my flux data to PALS? 
 </h2>
 <p>
 <strong>Free analysis</strong>. Each time you upload a version of your data set, PALS will run a set of analysis scripts on your data, producing a collection of graphs that you can view on PALS or download. This collection of analyses is expanding all the time, in fact we encourage you to submit additional types of analyses to run.
@@ -204,48 +198,13 @@ By default, all uploaded model outputs will have public access. While the access
 <p>
 We strongly encourage users to label runs at the highest level of availability to other users - 'public' access. This will maximise constructive discussion between users and ultimately the drive the development of models. Please avoid using the 'private' access label unless you are genuinely engaged in model development or have been informed of legal restraints on your participation.
 </p>
-
 </div>
 
-<div id="help-new" style="display:none;">
-<h2>
-What's New?
-</h2>
-<p>All the improvements, new features, and bug fixes:</p>
-<h3>15 September 2011</h3>
-<li>Changed 'Experiment' to 'Workspace'</li>
-<h3>30 August 2011</h3>
-<ul>
-<li>Click on column headings in the Data Set listing tables to sort the columns.</li>
-<li>Pagination on Data Set and Model Output listing tables</li>
-</ul>
-<h3>10 August 2011</h3>
-<ul>
-<li>Dynamic Plots are now available for both Data Sets and Model Outputs.</li>
-<li>You can upload ancillary files with an upload of a new Data Set version.</li>
-<li>When you add a new Vegetation Type it is not added to the list for others to use.</li>
-</ul>
-<h3>30 March 2011</h3>
-<ul>
-<li>Layout update of profile page</li>
-<li>Disabled the ability to delete a Model Output if there are no other public model outputs for the Data Set.</li>
-<li>Added explainations of Analysis Types for Model Output plots</li>
-<li>Added a description of Workspaces functionality to Help</li>
-</ul>
-<h3>28 March 2011</h3>
-<ul>
-<li>New fields added to the Workspaces table</li>
-<li>From the help menu you can access a list of all PALS users</li>
-<li>Minor layout changes</li>
-</ul>
-<h3>15 March 2011</h3>
-<ul>
-<li>Filters added to lists of <a href="<%=request.getContextPath()%>/User/ListPublicModelOutputs.action">Model Outputs</a></li>
-<li>Ancillary files added to Model Outputs and Models can now be added or removed after the initial listing.</li>
-<li>You can now reset your password, sending a temporary one to your email address.</li>
-<li>We now have the ability to re-run all analysis plots.</li>
-<li>Now there is a What's New page!</li>
-</ul>
+<div id="help-lsm-format" style="display:none;">
+<h2>Which model output format is PALS expecting?</h2>
+<p>
+Currently PALS uses <a href="http://www.lmd.jussieu.fr/~polcher/ALMA/convention_output_3.html">ALMA format netcdf</a>, although we will endeavor to ensure CF compliant netcdf is read in future. PALS is also currently expecting that model output will be at the same time step as the provided driving data, although this too will change as soon as distributed experiments are launched. 
+</p>
 </div>
 
 <div id="help-experiments" style="display:none">

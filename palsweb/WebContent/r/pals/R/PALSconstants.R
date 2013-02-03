@@ -1,6 +1,6 @@
 # PALSconstants.R
 #
-# Gab Abramowitz, UNSW, 2010 (palshelp at gmail dot com)
+# Gab Abramowitz, UNSW, 2012 (palshelp at gmail dot com)
 #
 zeroC = 273.15
 SprdMissingVal=-9999 # missing value in spreadsheet
@@ -89,7 +89,7 @@ QhNames = c('Qh','FSH') # FSH->CLM
 QleNames = c('Qle','FCEV') # NB: FCEV is only PART of Qle for CLM
 NEENames = c('NEE','FCO2') # FCO2->CLM
 GPPNames = c('GPP')
-RnetNames = c('Rnet')
+RnetNames = c('Rnet','SWnet') # if no Rnet but SWnet, LWnet will be searched for
 SWnetNames = c('SWnet')
 LWnetNames = c('LWnet')
 SoilMoistNames = c('SoilMoist')
@@ -115,10 +115,13 @@ QleAddition = c(0,0,0,0,0)
 QleUnits = list(name=QleUnitsName,multiplier=QleMultiplier,
 	addition=QleAddition)
 # Net Ecosystem Exchange of CO2:
-NEEUnitsName = c('umol/m2/s','mumol/m2/s','umol/m^2/s',
-	'umol/m2s','gC/m^2/s','gC/m2/s')
-NEEMultiplier = c(1,1,1,1,1/(1.201E-5),1/(1.201E-5))
-NEEAddition = c(0,0,0,0,0,0)
+NEEUnitsName = c('umol/m2/s','mumol/m2/s','umol/m^2/s','umol/m2s',
+	'gC/m^2/s','gC/m2/s','g/m2/s','g/m^2/s',
+	'kg CO2/m2/s','kgC/m2/s','kg/m2/s','kg/m^2/s')
+NEEMultiplier = c(1,1,1,1,
+	1/(1.201E-5),1/(1.201E-5),1/(1.201E-5),1/(1.201E-5),
+	1/(1.201E-8),1/(1.201E-8),1/(1.201E-8),1/(1.201E-8))
+NEEAddition = c(0,0,0,0,0,0,0,0,0,0,0,0)
 NEEUnits = list(name=NEEUnitsName,multiplier=NEEMultiplier,
 	addition=NEEAddition)
 # Gross Primary Productivity of CO2:

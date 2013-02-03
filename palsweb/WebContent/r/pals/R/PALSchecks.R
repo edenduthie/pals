@@ -1,6 +1,6 @@
 # PALSchecks.R
 #
-# Gab Abramowitz UNSW 2012 (palshelp at gmail dot com)
+# Gab Abramowitz UNSW 2013 (palshelp at gmail dot com)
 #
 # Finds variable value that is outside acceptable ranges.
 FindRangeViolation = function(varin,varrange){
@@ -14,30 +14,52 @@ FindRangeViolation = function(varin,varrange){
 	return(offendingValue) 
 }
 
-CheckTiming = function(timing1,timing2,benchmark_timing=FALSE){
+CheckTiming = function(modtiming,obstiming,benchmark_timing=FALSE){
 	# Simply checks whether model and obs (and maybe benchmark) 
 	# time step size and number of time steps are compatible.
-	if(timing1$tstepsize != timing2$tstepsize){
+	tstepsizemultiplier = 1
+	tstepredution = 0
+	tstatus='match'
+	tstepinday=86400/obstiming$tstepsize
+	if(modtiming$tstepsize != obstiming$tstepsize){
+		# if(modtiming$tstepsize == (obstiming$tstepsize*2)){
+				# tstepsizemultiplier = 2
+				# tstepinday=86400/modtiming$tstepsize
+				# tstatus='timestepsize'
+		# }
 		if(benchmark_timing){
-			CheckError(paste('B2: Time step size differs between',
-				'observed data set and benchmark time series:',
-				timing1$tstepsize, timing2$tstepsize))
+			CheckError(paste('B2: Time step size differs bw',
+				'obs and benchmark:',
+				modtiming$tstepsize, obstiming$tstepsize))
 		}else{
-			CheckError(paste('M1: Time step size differs between',
-				'observed data set and model output:',
-				timing1$tstepsize, timing2$tstepsize))
-		}
-	}else if(timing1$tsteps != timing2$tsteps){
-		if(benchmark_timing){
-			CheckError(paste('B2: Number of time steps differs between',
-				'observed data set and benchmark time series:',
-				timing1$tsteps, timing2$tsteps))
-		}else{
-			CheckError(paste('M1: Number of time steps differs between',
-				'observed data set and model output:',
-				timing1$tsteps, timing2$tsteps))
+			CheckError(paste('M1: Time step size differs bw',
+				'obs and model output:',
+				modtiming$tstepsize, obstiming$tstepsize))
 		}
 	}
+	if(modtiming$tsteps != obstiming$tsteps){
+		# If missing # tsteps is less than the number missing if the model were using
+		# a 360 day year for the same number of years:
+		# if((tstepsizemultiplier = 1) && 
+			# ((obstiming$tsteps-modtiming$tsteps)<(length(obstiming$daysperyear)*tstepinday*6))){
+			# tstepredution = obstiming$tsteps-modtiming$tsteps
+			# tstatus='timesteps'
+		# }else if((tstepsizemultiplier = 2) && 
+			# (((obstiming$tsteps/2)-modtiming$tsteps)<(length(obstiming$daysperyear)*tstepinday*6))){
+			# tstepredution = obstiming$tsteps/2)-modtiming$tsteps
+			# tstatus='timesteps'
+		# }
+		if(benchmark_timing){
+			CheckError(paste('B2: Number of time steps differs bw',
+				'obs and benchmark:',
+				modtiming$tsteps, obstiming$tsteps))
+		}else{
+			CheckError(paste('M1: Number of time steps differs bw',
+				'obs and model output:',
+				modtiming$tsteps, obstiming$tsteps))
+		}
+	}
+	#return(list(tstepsizemultiplier=tstepsizemultiplier,tstepredution=tstepredution,tstatus=tstatus))
 }
 
 CheckVersionCompatibility = function(filepath1,filepath2){

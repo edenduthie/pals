@@ -4,4 +4,6 @@
 #module add R
 export R_LIBS_USER=/root/workspace
 export LD_LIBRARY_PATH=/usr/local/lib
-R $@
+R --slave $@
+# Somehow only two command options work. The third is interpreted as a file name for some reason
+# R recommends to use: Rscript --vanilla --no-save --slave xyz.R arg1 arg2 arg3

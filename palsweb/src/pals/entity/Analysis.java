@@ -84,6 +84,8 @@ public class Analysis{
 		return errorMessage;
 	}
 	public void setErrorMessage(String errorMessage) {
+		int length = errorMessage.length();
+		if (length > 254) errorMessage = errorMessage.substring(0, 254);
 		this.errorMessage = errorMessage;
 	}
 	public long retrieveTimeTaken() {

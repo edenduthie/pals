@@ -164,9 +164,11 @@ GetTimingNcfile = function(fid){
 	intyear = Yeardays(syear,ndays)
 	# Create return list:
 	timing = list(tstepsize=tsize,exists=exists,tsteps=ntsteps,
-		syear=syear,smonth=smonth,sdoy=sdoy,whole=intyear$whole)
+		syear=syear,smonth=smonth,sdoy=sdoy,whole=intyear$whole,
+		daysperyear=intyear$daysperyear)
 	return(timing)
 }
+
 getMonthDays = function(leap=FALSE) {
 	# The days on which each month begins:
 	month_start=c()

@@ -71,6 +71,11 @@ GetModelOutput = function(varname,modelfile,units){
 		data2=get.var.ncdf(mfid,'FCTR') # read canopy transp
 		data3=get.var.ncdf(mfid,'FGEV') # read ground evap
 		data = data1 + data2 + data3
+	}else if((varname[1]=='Rnet') && (modelvar$name=='SWnet')){
+		# i.e. we're looking for Rnet but may only have SWnet and LWnet
+		data1=get.var.ncdf(mfid,'SWnet') 
+		data2=get.var.ncdf(mfid,'LWnet') 
+		data = data1 + data2
 	}else{ # otherwise just fetch variable data:
 		data=get.var.ncdf(mfid,modelvar$name) # read model output data
 	}

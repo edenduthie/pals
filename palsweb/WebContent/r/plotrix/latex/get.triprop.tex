@@ -1,0 +1,44 @@
+\HeaderA{get.triprop}{Enter three proportion data - usually soil textures.}{get.triprop}
+\keyword{misc}{get.triprop}
+\begin{Description}\relax
+\samp{get.triprop} allows the user to enter triplets of proportions
+or percentages of three components such as sand, silt and clay in soils.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+ get.triprop(use.percentages=FALSE,cnames=c("1st","2nd","3rd"))
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{use.percentages}] Logical - whether to treat the entries as
+percentages and scale to proportions.
+\item[\code{cnames}] column names for the resulting three column matrix.
+\end{ldescription}
+\end{Arguments}
+\begin{Details}\relax
+The three proportions of each row must sum to 100 or 1 within 1\% or
+the function will warn the operator.
+\end{Details}
+\begin{Value}
+A matrix of the components of one or more observations.
+\end{Value}
+\begin{Author}\relax
+Jim Lemon
+\end{Author}
+\begin{SeeAlso}\relax
+\samp{\LinkA{triax.plot}{triax.plot}}, \samp{\LinkA{soil.texture}{soil.texture}}
+\end{SeeAlso}
+\begin{Examples}
+\begin{ExampleCode}
+ if(dev.interactive()) {
+  # get some proportions
+  newsp<-get.triprop()
+  # show the triangle
+  triax.frame(main="Test triax.plot")
+  # now plot the observations
+  triax.points(newsp)
+ }
+\end{ExampleCode}
+\end{Examples}
+

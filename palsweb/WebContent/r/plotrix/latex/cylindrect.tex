@@ -1,0 +1,52 @@
+\HeaderA{cylindrect}{Display an apparent cylinder}{cylindrect}
+\keyword{misc}{cylindrect}
+\begin{Description}\relax
+Display rectangles shaded to appear like cylinders.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+ cylindrect(xleft,ybottom,xright,ytop,col,border=NA,gradient="x",nslices=50)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{xleft}] The position of the left side of the rectangle(s).
+\item[\code{ybottom}] The position of the bottom of the rectangle(s).
+\item[\code{xright}] The position of the right side of the rectangle(s).
+\item[\code{ytop}] The position of the top side of the rectangle(s).
+\item[\code{col}] The base color(s) of the rectangles.
+\item[\code{border}] Whether to draw a border and what color.
+\item[\code{gradient}] Whether to vary the shading horizontally ("x" - the default)
+or vertically (anything but "x").
+\item[\code{nslices}] The number of "slices" of color for shading.
+\end{ldescription}
+\end{Arguments}
+\begin{Details}\relax
+\samp{cylindrect} displays a rectangle filled with "slices" of color that
+simulate the appearance of a cylinder. The slices are calculated so that the 
+base color appears at the right or bottom edge of the rectangle, become
+progressively lighter to a "highlight" at two thirds of the width or height
+and then darken toward the base color again.
+
+The appearance is of a cylinder lit from above and to the left of the viewer.
+The position of the apparent light source is hard coded into the function.
+\end{Details}
+\begin{Value}
+The base color(s) of the rectangle(s).
+\end{Value}
+\begin{Author}\relax
+Jim Lemon
+\end{Author}
+\begin{SeeAlso}\relax
+\samp{\LinkA{gradient.rect}{gradient.rect}}
+\end{SeeAlso}
+\begin{Examples}
+\begin{ExampleCode}
+ plot(0,xlim=c(0,5),ylim=c(0,5),main="Examples of pseudocylindrical rectangles",
+  xlab="",ylab="",axes=FALSE,type="n")
+ cylindrect(0,0,1,5,"red")
+ cylindrect(rep(1,3),c(0,2,4),rep(4,3),c(1,3,5),"green",gradient="y")
+ cylindrect(4,0,5,5,"#8844aa")
+\end{ExampleCode}
+\end{Examples}
+

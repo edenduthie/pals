@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Soil texture triangle plot using UK conventions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for soil.texture.uk {plotrix}"><tr><td>soil.texture.uk {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Soil texture triangle plot using UK conventions</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Display a UK style soil texture triangle with optional grid, labels and
+soil texture points.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ soil.texture.uk(soiltexture = NULL, main = "",at = seq(0.1, 0.9, by = 0.1),
+  axis.labels = c("percent sand", "percent silt", "percent clay"),
+  tick.labels = list(l = seq(10, 90, by = 10), r = seq(10, 90, by = 10),
+  b = seq(10, 90, by = 10)), show.names = TRUE,
+  show.lines = TRUE, col.names = "gray", bg.names = par("bg"),
+  show.grid = FALSE, col.axis = "black", col.lines = "gray",
+  col.grid = "gray", lty.grid = 3, show.legend = FALSE, label.points = FALSE,
+  point.labels = NULL, col.symbols = "black", pch = par("pch"),
+  h1 = NA, h3 = NA, t1 = NA, t3 = NA, lwduk = 2, xpos = NA, ypos = NA,
+  snames = NA, cexuk = 1.1, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>soiltexture</code></td>
+<td>
+Matrix of soil textures where each row is a
+soil sample and three columns containing the percentages of the
+components sand, silt and clay in the range 0 to 100.</td></tr>
+<tr valign="top"><td><code>main</code></td>
+<td>
+The title of the soil texture plot. Defaults to nothing.</td></tr>
+<tr valign="top"><td><code>at</code></td>
+<td>
+Positions on the three axes where ticks will be drawn.</td></tr>
+<tr valign="top"><td><code>axis.labels</code></td>
+<td>
+Labels for the axes.</td></tr>
+<tr valign="top"><td><code>tick.labels</code></td>
+<td>
+The tick labels for the three axes.</td></tr>
+<tr valign="top"><td><code>show.names</code></td>
+<td>
+Logical - whether to show the names of different
+soil types within the soil triangle.</td></tr>
+<tr valign="top"><td><code>show.lines</code></td>
+<td>
+Logical - whether to show the boundaries of the
+different soil types within the soil triangle.</td></tr>
+<tr valign="top"><td><code>col.names</code></td>
+<td>
+Color of the soil names. Defaults to gray.</td></tr>
+<tr valign="top"><td><code>bg.names</code></td>
+<td>
+Color to use when drawing a blank patch for the names
+of soil types.</td></tr>
+<tr valign="top"><td><code>show.grid</code></td>
+<td>
+Logical - whether to show grid lines at each 10
+level of each soil component.</td></tr>
+<tr valign="top"><td><code>col.axis</code></td>
+<td>
+Color of the triangular axes, ticks and labels.</td></tr>
+<tr valign="top"><td><code>col.lines</code></td>
+<td>
+Color of the boundary lines. Defaults to gray.</td></tr>
+<tr valign="top"><td><code>col.grid</code></td>
+<td>
+Color of the grid lines. Defaults to gray.</td></tr>
+<tr valign="top"><td><code>lty.grid</code></td>
+<td>
+Type of line for the grid. Defaults to dashed.</td></tr>
+<tr valign="top"><td><code>show.legend</code></td>
+<td>
+Logical - whether to display a legend.</td></tr>
+<tr valign="top"><td><code>label.points</code></td>
+<td>
+Logical - whether to call
+<span class="samp"><a href="thigmophobe.labels.html">thigmophobe.labels</a></span> to label the points.</td></tr>
+<tr valign="top"><td><code>point.labels</code></td>
+<td>
+Optional labels for the points or legend.</td></tr>
+<tr valign="top"><td><code>col.symbols</code></td>
+<td>
+Color of the symbols representing each value.</td></tr>
+<tr valign="top"><td><code>pch</code></td>
+<td>
+Symbols to use in plotting values.</td></tr>
+<tr valign="top"><td><code>h1,h3,t1,t3</code></td>
+<td>
+Points used in drawing boundaries for soil types.</td></tr>
+<tr valign="top"><td><code>lwduk</code></td>
+<td>
+Line width for the boundaries</td></tr>
+<tr valign="top"><td><code>xpos,ypos</code></td>
+<td>
+Positions for the soil type labels.</td></tr>
+<tr valign="top"><td><code>snames</code></td>
+<td>
+Soil type labels.</td></tr>
+<tr valign="top"><td><code>cexuk</code></td>
+<td>
+Character expansion for the soil type labels.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+Additional arguments passed to <span class="samp"><a href="triax.points.html">triax.points</a></span>
+and then <span class="samp">points</span>.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+<span class="samp">soil.texture.uk</span> displays a triangular plot area on which soil
+textures defined as proportions of sand, silt and clay can be plotted.
+It is similar to the <span class="samp">soil.texture</span> function but uses the UK
+display conventions.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+If <span class="samp">soiltexture</span> was included, a list of the <span class="samp">x,y</span>
+positions of the soil types plotted. If not, nil.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Julian Stander
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<span class="samp"><a href="triax.plot.html">triax.plot</a></span>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+ soils.sw.percent&lt;-data.frame(
+  Sand=c(67,67,66,67,36,25,24,59,27,9,8,8,20,
+  45,50,56,34,29,39,41,94,98,97,93,96,99),
+  Silt=c(17,16,9,8,39,48,54,27,46,70,68,68,66,
+  34,30,24,48,53,46,48,2,2,2,4,1,1),
+  Clay=c(16,17,25,25,25,27,22,14,27,21,24,24,
+  14,21,20,20,18,18,15,11,4,0,1,3,3,0))
+ soils.sw.cols &lt;- c(1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3,
+  3, 3, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6)
+ soils.sw.names &lt;- c("Ardington","Astrop","Atrim",
+  "Banbury","Beacon","Beckfoot")
+ soil.texture.uk(soils.sw.percent,
+  main = "Ternary Diagram for Some Soils from South West England",
+  col.lines = "black", col.names = "black", show.grid = TRUE,
+  col.grid = "blue", lty.grid = 2,  pch = 16, cex = 1.0,
+  col.symbols = soils.sw.cols, h1 = NA, h3 = NA, t1 = NA,
+  t3 = NA , lwduk = 2, xpos = NA, ypos = NA,
+  snames = NA, cexuk = 1.1)
+ legend("topleft", legend = soils.sw.names, col = 1:max(soils.sw.cols),
+  pch = 16, cex = 1.1, title = "Location", bty = "n")
+</pre>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

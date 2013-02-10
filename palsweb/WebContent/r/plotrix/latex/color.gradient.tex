@@ -1,0 +1,42 @@
+\HeaderA{color.gradient}{Calculate an arbitrary sequence of colors.}{color.gradient}
+\keyword{misc}{color.gradient}
+\begin{Description}\relax
+\samp{color.gradient} is now just a call to \samp{color.scale} with a
+vector of equally spaced integers (1:nslices). The function is kept for
+backward compatibility.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+ color.gradient(reds,greens,blues,nslices=50)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{reds,greens,blues}] vectors of the values of the color components
+as 0 to 1.
+\item[\code{nslices}] The number of color "slices".
+\end{ldescription}
+\end{Arguments}
+\begin{Value}
+A vector of hexadecimal color values as used by \samp{col}.
+\end{Value}
+\begin{Note}\relax
+The function is mainly useful for defining a set of colors to represent
+a known number of gradations. Such a set can be used to assign a grade
+to a small number of values (e.g. points on a scatterplot - but see 
+\samp{color.scale} for large numbers) and display a color bar using
+\samp{gradient.rect} as a legend.
+\end{Note}
+\begin{Author}\relax
+Jim Lemon
+\end{Author}
+\begin{SeeAlso}\relax
+\samp{\LinkA{rescale}{rescale}},\samp{\LinkA{approx}{approx}},\samp{\LinkA{color.scale}{color.scale}}
+\end{SeeAlso}
+\begin{Examples}
+\begin{ExampleCode}
+ # try it with red and blue endpoints and green midpoints.
+ color.gradient(c(0,1),c(1,0.6,0.4,0.3,0),c(0.1,0.6))
+\end{ExampleCode}
+\end{Examples}
+

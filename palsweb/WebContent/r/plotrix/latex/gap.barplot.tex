@@ -1,0 +1,56 @@
+\HeaderA{gap.barplot}{Display a barplot with a gap (missing range) on one axis}{gap.barplot}
+\keyword{misc}{gap.barplot}
+\begin{Description}\relax
+Displays a barplot with a missing range.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+ gap.barplot(y,gap,xaxlab,xtics,yaxlab,ytics,ylim=NA,xlab=NULL,
+  ylab=NULL,horiz=FALSE,col,...)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{y}] data values
+\item[\code{gap}] the range of values to be left out
+\item[\code{xaxlab}] labels for the x axis ticks
+\item[\code{xtics}] position of the x axis ticks
+\item[\code{yaxlab}] labels for the y axis ticks
+\item[\code{ytics}] position of the y axis ticks
+\item[\code{ylim}] optional y limits for the plot
+\item[\code{xlab}] label for the x axis
+\item[\code{ylab}] label for the y axis
+\item[\code{horiz}] whether to have vertical or horizontal bars
+\item[\code{col}] color(s) in which to plot the values
+\item[\code{...}] arguments passed to \samp{barplot}.
+\end{ldescription}
+\end{Arguments}
+\begin{Details}\relax
+Displays a barplot omitting a range of values on the X or Y axis. Typically 
+used when there is a relatively large gap in the range of values 
+represented as bar heights. See \samp{\LinkA{axis.break}{axis.break}} for a brief 
+discussion of plotting on discontinuous coordinates.
+
+If the user does not ask for specific y limits, the function will calculate
+limits based on the range of the data values. If passing specific limits, 
+remember to subtract the gap from the upper limit.
+\end{Details}
+\begin{Value}
+The center positions of the bars.
+\end{Value}
+\begin{Author}\relax
+Jim Lemon
+\end{Author}
+\begin{SeeAlso}\relax
+\samp{\LinkA{gap.barplot}{gap.barplot}}
+\end{SeeAlso}
+\begin{Examples}
+\begin{ExampleCode}
+ twogrp<-c(rnorm(10)+4,rnorm(10)+20)
+ gap.barplot(twogrp,gap=c(8,16),xlab="Index",ytics=c(3,6,17,20),
+  ylab="Group values",main="Barplot with gap")
+ gap.barplot(twogrp,gap=c(8,16),xlab="Index",ytics=c(3,6,17,20),
+  ylab="Group values",horiz=TRUE,main="Horizontal barplot with gap")
+\end{ExampleCode}
+\end{Examples}
+

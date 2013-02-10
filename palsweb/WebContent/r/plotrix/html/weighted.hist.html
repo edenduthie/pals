@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Display a weighted histogram</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for weighted.hist {plotrix}"><tr><td>weighted.hist {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Display a weighted histogram</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Calculate the counts of the weighted values in specified bins and 
+optionally display either a frequency or density histogram.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ weighted.hist(x,w,breaks="Sturges",col=NULL,plot=TRUE,
+ freq=TRUE,ylim,ylab=NULL,...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+A vector of numeric values</td></tr>
+<tr valign="top"><td><code>w</code></td>
+<td>
+A vector of weights at least as long as x.</td></tr>
+<tr valign="top"><td><code>breaks</code></td>
+<td>
+The endpoints of the ranges into which to count the weighted
+values.</td></tr>
+<tr valign="top"><td><code>col</code></td>
+<td>
+An optional vector of colors for the bars of the histogram.</td></tr>
+<tr valign="top"><td><code>plot</code></td>
+<td>
+Whether to plot a histogram.</td></tr>
+<tr valign="top"><td><code>freq</code></td>
+<td>
+Whether to plot counts or densities.</td></tr>
+<tr valign="top"><td><code>ylim</code></td>
+<td>
+The limits of the plot ordinate.</td></tr>
+<tr valign="top"><td><code>ylab</code></td>
+<td>
+Label for the ordinate.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+Additional arguments passed to <span class="samp"><a href="../../graphics/html/barplot.html">barplot</a></span>.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+<span class="samp">weighted.hist</span> calculates the weighted counts of values falling 
+into the ranges specified by <span class="samp">breaks</span>. Instead of counting each 
+value as 1, it counts the corresponding value in <span class="samp">w</span> (the weight).
+</p>
+<p>
+<span class="samp">breaks</span> may be specified by a monotonically increasing vector 
+of numbers that are interpreted as the endpoints of the ranges, a 
+single number representing the number of ranges desired or the name 
+of the function to calculate the ranges (see <span class="samp"><a href="../../graphics/html/hist.html">hist</a></span>).
+If a vector of numbers is passed that does not include all values in 
+<span class="samp">x</span>, the user is warned. If the ranges are not equal, a warning 
+will be displayed if <span class="samp">freq</span> is TRUE or the heights of the bars 
+will be adjusted to display areas approximately equal to the counts 
+if <span class="samp">freq</span> is FALSE.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+A list containing:
+<br>
+breaks - The endpoints of the intervals
+<br>
+counts - The weighted counts
+<br>
+density - The weighted counts divided by their sum.
+<br>
+mids - The midpoints of the intervals and the bars displayed.
+<br>
+xname - the name of <span class="samp">x</span>.
+<br>
+equidist - Whether the intervals differ by less than the total range/1000.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Jim Lemon and Hadley Wickham
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<span class="samp"><a href="../../graphics/html/hist.html">hist</a></span>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+ testx&lt;-sample(1:10,300,TRUE)
+ testw&lt;-seq(1,4,by=0.01)
+ weighted.hist(testx,testw,breaks=1:10,main="Test weighted histogram")
+</pre>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

@@ -1,0 +1,53 @@
+\HeaderA{polar.plot}{Plot values on a circular grid of 0 to 360 degrees.}{polar.plot}
+\keyword{misc}{polar.plot}
+\begin{Description}\relax
+\samp{polar.plot} displays a plot of radial lines, symbols or a polygon 
+centered at the midpoint of the plot frame on a 0:360 circle.
+Positions are interpreted as beginning at the right and moving
+counterclockwise unless \samp{start} specifies another starting point or
+\samp{clockwise} is TRUE.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+ polar.plot(lengths,polar.pos=NULL,labels,label.pos=NULL,
+  start=0,clockwise=FALSE,rp.type="r",...)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{lengths}] numeric data vector. Magnitudes will be represented as
+the radial positions of symbols, line ends or polygon vertices.
+\item[\code{polar.pos}] numeric vector of positions on a 0:360 degree circle.
+These will be converted to radians when passed to \samp{radial.plot}.
+\item[\code{labels}] text labels to place on the periphery of the circle. This 
+defaults to labels every 20 degrees. For no labels, pass an empty string.
+\item[\code{label.pos}] positions of the peripheral labels in degrees
+\item[\code{start}] The position for zero degrees on the plot in degrees.
+\item[\code{clockwise}] Whether to increase angles clockwise rather than the
+default counterclockwise.
+\item[\code{rp.type}] Whether to plot radial lines, symbols or a polygon.
+\item[\code{...}] additional arguments passed to \samp{radial.plot} and
+then to \samp{plot}.
+\end{ldescription}
+\end{Arguments}
+\begin{Value}
+nil
+\end{Value}
+\begin{Author}\relax
+Jim Lemon
+\end{Author}
+\begin{SeeAlso}\relax
+\samp{\LinkA{radial.plot}{radial.plot}}
+\end{SeeAlso}
+\begin{Examples}
+\begin{ExampleCode}
+ testlen<-c(rnorm(36)*2+5)
+ testpos<-seq(0,350,by=10)
+ polar.plot(testlen,testpos,main="Test Polar Plot",lwd=3,line.col=4)
+ polar.plot(testlen,testpos,main="Test Clockwise Polar Plot",
+  start=90,clockwise=TRUE,lwd=3,line.col=4)
+ # reset the margins
+ par(mar=c(5,4,4,2))
+\end{ExampleCode}
+\end{Examples}
+

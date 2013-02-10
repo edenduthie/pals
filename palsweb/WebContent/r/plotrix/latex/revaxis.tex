@@ -1,0 +1,49 @@
+\HeaderA{revaxis}{Plot with axis direction(s) reversed.}{revaxis}
+\keyword{hplot}{revaxis}
+\begin{Description}\relax
+Reverses the sense of either or both the \samp{x} and \samp{y} axes.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+revaxis(x, y, xrev=FALSE, yrev=TRUE, xside=if (yrev) 3 else 1,
+       yside=if (xrev) 4 else 2, xlab=NULL, ylab=NULL, bty=NULL, ...)
+
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{x}] Vector of \samp{x}-coordinates of the data to be plotted. 
+\item[\code{y}] Vector of \samp{y}-coordinates of the data to be plotted. 
+\item[\code{xrev}] Logical scalar; should the sense of the \samp{x}-axis
+be reversed?
+\item[\code{yrev}] Logical scalar; should the sense of the \samp{y}-axis
+be reversed?
+\item[\code{xside}] The side of the plot on which the \samp{x}-axis labels
+should go.
+\item[\code{yside}] The side of the plot on which the \samp{y}-axis labels
+should go.
+\item[\code{xlab}] Character string for labelling the \samp{x}-axis. 
+\item[\code{ylab}] Character string for labelling the \samp{y}-axis. 
+\item[\code{bty}] Single letter indicating the type of box to be drawn
+around the plot. See \samp{\LinkA{par}{par}()} for the possible letters
+and their meaning.
+\item[\code{...}] Other arguments to be passed to plot.
+\end{ldescription}
+\end{Arguments}
+\begin{Value}
+nil
+\end{Value}
+\begin{Author}\relax
+Rolf Turner
+\end{Author}
+\begin{SeeAlso}\relax
+\samp{\LinkA{plot}{plot}}, \samp{\LinkA{box}{box}}, \samp{\LinkA{par}{par}}
+\end{SeeAlso}
+\begin{Examples}
+\begin{ExampleCode}
+x <- runif(20)
+y <- runif(20)
+revaxis(x,y,yside=4)
+\end{ExampleCode}
+\end{Examples}
+

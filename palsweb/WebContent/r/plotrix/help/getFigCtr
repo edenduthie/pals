@@ -1,0 +1,28 @@
+getFigCtr              package:plotrix              R Documentation
+
+_F_i_n_d _t_h_e _c_e_n_t_e_r _o_f _t_h_e _f_i_g_u_r_e _r_e_g_i_o_n.
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     Calculates the center of the figure region.
+
+_U_s_a_g_e:
+
+      getFigCtr()
+
+_D_e_t_a_i_l_s:
+
+     'getFigCtr' reads parameters about the current plot and calculates
+     the vertical and horizontal centers of the figure region. This is
+     typically useful for placing a centered title on plots where the
+     left and right margins are very different.
+
+_V_a_l_u_e:
+
+     A two element vector containing the coordinates of the center of
+     the figure region in user units.
+
+_A_u_t_h_o_r(_s):
+
+     Jim Lemon
+

@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Display an Australian wind rose legend.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for oz.windrose.legend {plotrix}"><tr><td>oz.windrose.legend {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Display an Australian wind rose legend.</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Displays a wind rose legend in the style used by the Australian Bureau 
+of Meteorology.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ oz.windrose.legend(speed.col=c("#dab286","#fe9a66","#ce6733","#986434"),
+  speed.width=c(0.2,0.4,0.6,0.8),legend.pos=27)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>speed.col</code></td>
+<td>
+Colors representing speed ranges.</td></tr>
+<tr valign="top"><td><code>speed.width</code></td>
+<td>
+Half widths of the bars representing speed ranges.</td></tr>
+<tr valign="top"><td><code>legend.pos</code></td>
+<td>
+The vertical position of the wind rose legend. The
+Australian Bureau of Meteorology displays the legend at the top of
+the plot</td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+nil</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Jim Lemon (thanks to Anna in the Sydney BoM office)
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<span class="samp"><a href="oz.windrose.html">oz.windrose</a></span>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+ plot(0,xlim=c(-20,20),ylim=c(-20,20),type="n",axes=FALSE,xlab="",ylab="")
+ par(xpd=TRUE)
+ oz.windrose.legend()
+ par(xpd=FALSE)
+</pre>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

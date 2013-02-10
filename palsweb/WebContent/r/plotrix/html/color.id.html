@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Identify closest match to a color</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for color.id {plotrix}"><tr><td>color.id {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Identify closest match to a color</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Given a color given as a hex string, find the closest match in the
+table of known (named) colors
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ color.id(col)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>col</code></td>
+<td>
+a color specified as a hex string</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+finds the color with the minimum squared distance in RGB space
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+the name of the closest match</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Ben Bolker
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<span class="samp"><a href="../../grDevices/html/col2rgb.html">col2rgb</a></span>,<span class="samp"><a href="../../RColorBrewer/html/ColorBrewer.html">colors</a></span>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+ color.id("#cc00cc")
+</pre>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

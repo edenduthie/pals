@@ -1,0 +1,36 @@
+\HeaderA{hexagon}{Draw a hexagon}{hexagon}
+\keyword{misc}{hexagon}
+\begin{Description}\relax
+Draws a hexagon on the current graphic device.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+ hexagon(x,y,unitcell=1,col=NA,border="black")
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{x,y}] x and y position of the bottom left corner of the square that
+would pack into the same space as the hexagon.
+\item[\code{unitcell}] The dimension of the side of the abovementioned square.
+\item[\code{col}] The color to fill the hexagon - default is no fill.
+\item[\code{border}] The color of the perimeter of the hexagon.
+\end{ldescription}
+\end{Arguments}
+\begin{Value}
+nil
+\end{Value}
+\begin{Note}\relax
+Draws a hexagon with the same center as a square that would pack into the
+same dimensions as the hexagon. That is, given a grid of squares with
+alternate rows shifted one half the length of the sides, the hexagons
+drawn would be close packed. Its use in the plotrix package is to provide
+an alternative unit cell for the \samp{color2D.matplot} function.
+\end{Note}
+\begin{Author}\relax
+Jim Lemon
+\end{Author}
+\begin{SeeAlso}\relax
+\samp{\LinkA{color2D.matplot}{color2D.matplot}}
+\end{SeeAlso}
+

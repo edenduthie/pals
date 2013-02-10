@@ -1,0 +1,89 @@
+\HeaderA{fan.plot}{Display a fan plot.}{fan.plot}
+\keyword{misc}{fan.plot}
+\begin{Description}\relax
+Displays numerical values as the arcs of overlapping sectors.
+\end{Description}
+\begin{Usage}
+\begin{verbatim}
+ fan.plot(x,edges=200,radius=1,col=NULL,align.at=NULL,max.span=NULL,
+  labels=NULL,labelpos=NULL,label.radius=1.2,align="left",shrink=0.02,
+  main="",ticks=NULL,include.sumx=FALSE,...)
+\end{verbatim}
+\end{Usage}
+\begin{Arguments}
+\begin{ldescription}
+\item[\code{x}] Vector of numbers.
+\item[\code{edges}] The number of edges with which to draw a circle.
+\item[\code{radius}] The radius of the sectors.
+\item[\code{col}] The colors with which to fill the sectors.
+\item[\code{align.at}] Where to align the sectors (see Details).
+\item[\code{max.span}] The angle of the maximal sector in radians. The default
+is to scale \samp{x} so that it sums to 2*pi.
+\item[\code{labels}] Labels placed around the sector arcs.
+\item[\code{labelpos}] Optional circumferential positions for the labels.
+\item[\code{label.radius}] How far away from the sectors the labels will
+be placed. May be a vector with a radius for each label.
+\item[\code{align}] Position of the alignment of sectors (see Details).
+\item[\code{shrink}] How much to shrink each successive sector in user units.
+\item[\code{main}] Optional title for the plot.
+\item[\code{ticks}] The number of ticks that would appear if the sectors were on
+a pie chart. Default is no ticks, TRUE gives the number of ticks equal to
+the integer sum of \samp{x}, which is fairly sensible if 
+\samp{x} is a vector of integers.
+\item[\code{include.sumx}] Whether to include the sum of all \samp{x} values
+as the largest sector.
+\item[\code{...}] Additional arguments passed to \samp{polygon}.
+\end{ldescription}
+\end{Arguments}
+\begin{Details}\relax
+The fan plot is a variant of the pie chart that places the sectors
+"on top" of each other from the largest to the smallest. By default,
+the largest sector is centered with its circumferential arc upwards,
+giving the plot the appearance of a folding fan. Passing a value for
+\samp{align.at} will place the point of alignment at that angle in 
+radians. The sectors may be aligned at either the left or right edges
+or in the center. Note that \samp{align} must be one of \samp{left right}
+or \samp{center}. Each successive sector is radially "shrunk" by a
+constant amount so that two equal sectors will both be visible.
+
+In cases where there are several segments with very small differences,
+the labels may be crowded. There is a simple routine in the function to
+spread out crowded labels, but it may not be sufficient for severe
+crowding. By capturing the return value and manually altering 
+the label positions, the crowded labels can be separated. This new
+vector of positions may then be passed as \samp{labelpos}.
+
+The calculation of sectors tries to ensure that they are circular. Thus there
+will be white space if the plotting device dimensions are not proportional to
+the size of the plot. The user must adjust the dimensions of the plotting
+device to get the correct appearance.
+\end{Details}
+\begin{Value}
+The circumferential positions of the labels in radians. These are
+returned in order of decreasing size of the values plotted.
+\end{Value}
+\begin{Author}\relax
+Jim Lemon, Anupam Tyagi
+\end{Author}
+\begin{SeeAlso}\relax
+\samp{\LinkA{floating.pie}{floating.pie}}
+\end{SeeAlso}
+\begin{Examples}
+\begin{ExampleCode}
+ # IUCN counts of threatened species by geographical area
+ iucn.df<-data.frame(area=c("Africa","Asia","Europe","N&C America",
+  "S America","Oceania"),threatened=c(5994,7737,1987,4716,5097,2093))
+ fan.plot(iucn.df$threatened,
+  labels=paste(iucn.df$area,iucn.df$threatened,sep="-"),
+  main="Threatened species by geographical area",ticks=276)
+ # expand the plot to a semicircle
+ fan.plot(iucn.df$threatened,max.span=pi,
+  labels=paste(iucn.df$area,iucn.df$threatened,sep="-"),
+  main="Threatened species by geographical area",ticks=276)
+ # expand further to 3/4 of a circle
+ fan.plot(iucn.df$threatened,max.span=1.5*pi,
+  labels=paste(iucn.df$area,iucn.df$threatened,sep="-"),
+  main="Threatened species by geographical area",ticks=276)
+\end{ExampleCode}
+\end{Examples}
+

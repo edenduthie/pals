@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Find an empty space on a plot.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for emptyspace {plotrix}"><tr><td>emptyspace {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Find an empty space on a plot.</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Try to find the largest empty rectangle on a plot.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ emptyspace(x,y=NA,bars=FALSE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x,y</code></td>
+<td>
+x and y positions of the points or centers and heights
+of the bars</td></tr>
+<tr valign="top"><td><code>bars</code></td>
+<td>
+Whether to add x and y points to represent the bars if the
+plot is a barplot.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+<span class="samp">emptyspace</span> divides the area defined by <span class="samp">par("usr")</span>
+into smaller and smaller rectangles until at least one rectangle has no
+points defined by <span class="samp">x</span> and <span class="samp">y</span> within it. It then tries to find
+the largest such rectangle if more than one exists and calculates its
+center. If the plot is very crowded, the resulting rectangle may be very
+small.
+</p>
+<p>
+<span class="samp">emptyspace</span> will accept a list of at least two matrices as if it
+was returned from <span class="samp">brkdn.plot</span>, calculate the positions of the
+ends of the dispersion bars and then try to find an empty rectangle.
+It will also accept a list of x-y coordinates, looking for the first
+element to have the name <span class="samp">x</span>, and set <span class="samp">y</span> to the second element.
+</p>
+<p>
+Note that if there are any NAs in <span class="samp">x</span> or <span class="samp">y</span>, emptyspace will fail.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+The <span class="samp">x</span> and <span class="samp">y</span> coordinates of the center of the rectangle
+found.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Jim Lemon
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+ x&lt;-rnorm(10)
+ y&lt;-rnorm(10)
+ plot(x,y,main="Find the empty space",xlab="X",ylab="Y")
+ es&lt;-emptyspace(x,y)
+ boxed.labels(es,labels="Here is the\nempty space")
+</pre>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Place labels on a pie chart</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../../R.css">
+</head><body>
+
+<table width="100%" summary="page for pie.labels {plotrix}"><tr><td>pie.labels {plotrix}</td><td align="right">R Documentation</td></tr></table>
+<h2>Place labels on a pie chart</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Places labels on a pie chart
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ pie.labels(x,y,angles,labels,radius=1,bg="white",border=TRUE,...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x,y</code></td>
+<td>
+x and y position of the center of the pie chart</td></tr>
+<tr valign="top"><td><code>angles</code></td>
+<td>
+A numeric vector representing angles in radians. This is
+the return value of <span class="samp">floating.pie</span>.</td></tr>
+<tr valign="top"><td><code>labels</code></td>
+<td>
+Text strings to label each sector.</td></tr>
+<tr valign="top"><td><code>radius</code></td>
+<td>
+The radius at which to place the labels in user units. The
+default is 1.</td></tr>
+<tr valign="top"><td><code>bg</code></td>
+<td>
+The color of the rectangles on which the labels are displayed.</td></tr>
+<tr valign="top"><td><code>border</code></td>
+<td>
+Whether to draw borders around the rectangles.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+Arguments passed to <span class="samp">boxed.labels</span>.</td></tr>
+</table>
+
+<h3>Value</h3>
+
+<p>
+nil</p>
+
+<h3>Note</h3>
+
+<p>
+Remember that <span class="samp">x</span> and <span class="samp">y</span> specify the center of the pie chart and
+that the label positions are specified by angles and radii from that 
+center.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Jim Lemon
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<span class="samp"><a href="floating.pie.html">floating.pie</a></span>, <span class="samp"><a href="boxed.labels.html">boxed.labels</a></span>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+ pieval&lt;-c(2,4,6,8)
+ plot(1:5,type="n",axes=FALSE)
+ box()
+ bisect.angles&lt;-floating.pie(3,3,pieval)
+ pie.labels(3,3,bisect.angles,c("two","four","six","eight"))
+</pre>
+
+
+
+<hr><div align="center">[Package <em>plotrix</em> version 2.7 <a href="00Index.html">Index</a>]</div>
+
+</body></html>

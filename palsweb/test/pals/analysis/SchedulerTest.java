@@ -31,8 +31,9 @@ import ucar.nc2.NetcdfFile;
 public class SchedulerTest extends BaseTest
 {
 	private static final int WAIT_TIME = 1000*3;
+	private static final String SEP = File.separator;
 	
-	String preloadDevelFilename = System.getProperty("user.dir") + "\\scripts\\mysql\\preload_devel.sql";
+	String preloadDevelFilename = System.getProperty("user.dir")+SEP+"scripts"+SEP+"mysql"+SEP+"preload_devel.sql";
 	
 	@Autowired
 	DataSource dataSource;
@@ -43,7 +44,7 @@ public class SchedulerTest extends BaseTest
     @Autowired
     DAO dao;
     
-	String filename ="testdata/flux1.nc";
+	String filename ="testdata"+SEP+"flux1.nc";
 	ModelOutput entity;
 	File testFile;
 	String path;
@@ -59,7 +60,7 @@ public class SchedulerTest extends BaseTest
     public void setUpFullAnalysis() throws IOException
     {		
 		// set the path to the application data to come from the test data directory
-		Configuration.getInstance().PATH_TO_APP_DATA = System.getProperty("user.dir") + "\\" + "testdata";
+		Configuration.getInstance().PATH_TO_APP_DATA = System.getProperty("user.dir") + SEP + "testdata";
 		
     	dataSetVersion = TestEntityFactory.dataSetVersion();
     	dataSetVersion.getDataSet().getCountry().setId(null);

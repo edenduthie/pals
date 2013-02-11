@@ -1,2 +1,5 @@
 pals/.meteor/local
 pals/.meteor/local/*
+.metadata
+palsweb/.metadata
+palsweb/build

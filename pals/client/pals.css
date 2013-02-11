@@ -1,8 +1,151 @@
-.content-width {
-    width: 95%;
-    margin: 0 auto;
+* {
+    overflow: auto;
+    font-family: Lucida Grande, sans-serif;
 }
 
-h1 {
-    font-family: "Helvetica","Verdana","Arial";
+html, body 
+{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+.wrapper 
+{
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+.content 
+{
+    display: table-row;
+    height: 100%;
+}
+
+.header 
+{
+    background-color: #222222;
+    height: 50px;
+    padding: 0 10px;
+}
+
+.footer
+{
+    background-color: #222222;
+    height: 50px;
+    padding: 0 10px;
+}
+
+h1.logo 
+{
+    margin: 0;
+    padding: 4px 25px 0 0;
+    color: white;
+    font-weight: normal;
+    font-size: 38px;
+}
+
+.header blue-header-block,
+.header h1.logo,
+.header .right-header-block .divider,
+.header .right-header-block a,
+.header .right-header-block .divider,
+.header .right-header-block .header-text,
+.header .right-header-block .forgot-your-password,
+.footer .right-footer-block .divider,
+.footer .right-footer-block .footer-text
+{
+    float: left;
+}
+
+.blue-header-block 
+{
+    background-color: #0080FF;
+    height: 100%;
+    width: 78px;
+}
+
+.blue-header-block:hover
+{
+    background-color: #006DD9
+}
+
+.blue-header-block a
+{
+    display: block;
+    padding: 15px 20px;
+    font-size: 14px;
+    color: white;
+    text-decoration: none;
+}
+
+.header .divider,
+.footer .divider
+{
+    height: 50px;
+    background-image: url(/images/hor-divider.gif);
+    background-repeat: repeat-y;
+    width: 3px;
+}
+
+.header .right-header-block,
+.footer .right-footer-block
+{
+    float: right;
+
+}
+
+.header .right-header-block a.login-link,
+.header .right-header-block a.forgot-your-password
+{
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    margin: 15px 5px 0 30px;
+    display: block;
+}
+
+.header .right-header-block a.login-link:hover,
+.header .right-header-block a.forgot-your-password:hover
+{
+    color: #0080FF;
+}
+
+.header .right-header-block .header-text
+{
+    color: #999999;
+    font-size: 14px;
+    margin: 15px 10px 0 0;
+}
+
+.button
+{
+    color: white;
+    background-color: #0080FF;
+    padding: 4px 15px 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+}
+
+.button:hover
+{
+    background-color: #006DD9
+}
+
+.header .right-header-block .button
+{
+    margin: 10px 40px 0 0;
+}
+
+.footer .right-footer-block .footer-text
+{
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    margin: 15px 5px 0 30px;
+    display: block;
+}
+
+.blue {
+    color: #0080FF;
 }

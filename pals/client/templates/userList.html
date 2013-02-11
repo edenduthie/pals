@@ -1,0 +1,12 @@
+<template name="userList">
+    <table>
+        <tr>
+            <th>username</th>
+        </tr>
+        {{#each users}}
+            <tr>
+                <td>{{username}}</td>
+            </tr>
+        {{/each}}
+    </table>
+</template>

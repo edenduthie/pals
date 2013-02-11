@@ -1,6 +1,7 @@
 contentSelector = '#main-content';
 
 if (Meteor.isClient) {
+
 }
 
 if (Meteor.isServer) {

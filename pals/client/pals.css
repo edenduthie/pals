@@ -53,7 +53,8 @@ h1.logo
 .header .right-header-block .header-text,
 .header .right-header-block .forgot-your-password,
 .footer .right-footer-block .divider,
-.footer .right-footer-block .footer-text
+.footer .right-footer-block .footer-text,
+.footer .right-footer-block .user
 {
     float: left;
 }
@@ -147,6 +148,22 @@ h1.logo
     display: block;
 }
 
+.footer .right-footer-block a.user
+{
+    height: 16px;
+    width: 14px;
+    background-image: url(/images/user.gif);
+    background-repeat: no-repeat;
+    margin: 15px 20px 0 0;
+    display: block;
+    text-decoration: none;
+}
+
+.footer .right-footer-block a.user:hover
+{
+    background-image: url(/images/user-hover.gif);
+}
+
 .blue {
     color: #0080FF;
 }
@@ -196,4 +213,19 @@ h1.logo
 
 .welcome-text a:hover {
     color: #006DD9;
+}
+
+.tooltip {
+    background-color:#000;
+    border:1px solid #fff;
+    padding:10px 15px;
+    width:200px;
+    display:none;
+    color:#fff;
+    text-align:left;
+    font-size:12px;
+ 
+    /* outline radius for mozilla/firefox only */
+    -moz-box-shadow:0 0 10px #000;
+    -webkit-box-shadow:0 0 10px #000;
 }

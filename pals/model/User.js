@@ -8,24 +8,31 @@ User.factory = function(formData) {
     return user;
 }
 
-User.prototype.create = function() {
+User.prototype.create = function(callback) {
     var me = this;
-    me.user = Accounts.createUser({
-        username : me.formData.username,
-        email : me.formData.email,
-        password : me.formData.password,
-        profile : {
-            name : me.formData.name,
-            institution : me.formData.institution
-        }
-    });
+    var error = me.validate();
+    if( error ) callback(error);
+    try
+    {
+        me.user = Accounts.createUser({
+            username : me.formData.username,
+            email : me.formData.email,
+            password : me.formData.password,
+            profile : {
+                name : me.formData.name,
+                institution : me.formData.institution
+            }
+        },callback);
+    }
+    catch(err)
+    {
+        callback(err.toString());
+    }
 }
 
 User.prototype.validate = function() {
     var me = this;
-    var error = new Array();
-    if( !me.username || me.username.length <= 0 ) error['username'] = 'Username is required';
-    if( Object.size(error) > 0 ) return error;
+    if( !me.formData.username || me.formData.username.length <= 0 ) return 'Username is required';
 }
 
 

@@ -7,6 +7,9 @@ Template.header.events = {
     },
     'click .logo': function () {
         $(contentSelector).html(Template.welcome());
+    },
+    'click a.error-close': function () {
+        $('#error').hide();
     }
 };
 

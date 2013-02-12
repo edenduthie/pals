@@ -52,6 +52,7 @@ h1.logo
 .header .right-header-block .divider,
 .header .right-header-block .header-text,
 .header .right-header-block .forgot-your-password,
+.header #error,
 .footer .right-footer-block .divider,
 .footer .right-footer-block .footer-text,
 .footer .right-footer-block .user
@@ -64,6 +65,7 @@ h1.logo
     background-color: #0080FF;
     height: 100%;
     width: 78px;
+    float: left;
 }
 
 .blue-header-block:hover
@@ -228,4 +230,37 @@ h1.logo
     /* outline radius for mozilla/firefox only */
     -moz-box-shadow:0 0 10px #000;
     -webkit-box-shadow:0 0 10px #000;
+}
+
+#error {
+    color: white;
+    background-color: #0080FF;
+    margin: 10px 0 0 30px;
+    padding: 0 0 5px 10px;
+    border-radius: 5px;
+    display: none;
+}
+
+#error div,
+#error a  {
+    float: left;
+}
+
+a.error-close {
+    width: 13px;
+    height: 14px;
+    background-image: url(/images/cross.gif);
+    background-repeat: no-repeat;
+    text-decoration: none;
+    display: block;
+    overflow: auto;
+    margin: 2px 2px 0 20px;
+}
+
+a.error-close:hover {
+    background-image: url(/images/cross-hover.gif);
+}
+
+#error .error-content {
+    padding-top: 5px;
 }

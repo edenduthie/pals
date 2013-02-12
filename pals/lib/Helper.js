@@ -7,14 +7,13 @@ getFormData = function(form) {
     return data;
 }
 
-setFormError = function(form,error) {
-//    for( var key in error ) {
-//        var input = form.find('input[name="'+key+'"]');
-//        input.css('border-color','red');
-//        input.attr('title',error[key]);
-//        console.log(key + ': ' + error[key]);
-//    }
-    form.validator().data("validator").invalidate(error);
+setError = function(message) {
+    $('#error .error-content').html(message);
+    $('#error').show();
+}
+
+clearError = function() {
+    $('#error').hide();
 }
 
 Object.size = function(object) {

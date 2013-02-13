@@ -1,13 +1,16 @@
 <template name="palsSignUp">
     <div class="sign-up">
         <div id="sign-up-form" class="sign-up-text">
-            <div class="input-row"><label>Name</label><input type="text" name="name"></div>
-            <div class="input-row"><label>Institution</label><input type="text" name="institution"></div>
-            <div class="input-row"><label>Username</label><input type="text" name="username" title="The username you will use to log into pals"></div>
-            <div class="input-row"><label>Password</label><input type="text" name="password"></div>
-            <div class="input-row"><label>Confirm Password</label><input type="text" name="confirm-password"></div>
-            <div class="input-row"><label>Email</label><input type="text" name="email"></div>
-            <div class="input-row"><a class="sign-up-button" href="javascript:void(0)">Sign Up</a></div>
+            <p>
+                New to PALS? <span class="grey-text">Sign up</span>
+            </p>
+            <div class="input-row"><input type="text" name="name" required="required" placeholder="Full Name"></div>
+            <div class="input-row"><input type="text" name="institution" required="required" placeholder="Institution"></div>
+            <div class="input-row"><input type="text" name="username" title="The username you will use to log into pals" required="required" placeholder="Username"></div>
+            <div class="input-row"><input type="password" name="password" required="required" placeholder="Password"></div>
+            <div class="input-row"><input type="password" name="confirmPassword" required="required" placeholder="Confirm Password"></div>
+            <div class="input-row"><input type="email" name="email" required="required" placeholder="Email"></div>
+            <div class="input-row"><a class="sign-up-button button" href="javascript:void(0)">Sign Up</a></div>
         </div>
     </div>
 </template>

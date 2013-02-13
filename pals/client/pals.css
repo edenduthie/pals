@@ -8,6 +8,7 @@ html, body
     height: 100%;
     margin: 0;
     padding: 0;
+    overflow: visible;
 }
 .wrapper 
 {
@@ -129,6 +130,7 @@ h1.logo
     border-radius: 5px;
     cursor: pointer;
     display: block;
+    text-decoration: none;
 }
 
 .button:hover
@@ -170,7 +172,8 @@ h1.logo
     color: #0080FF;
 }
 
-.welcome {
+.welcome,
+.sign-up {
     background-image: url(/images/banner.jpg);
     background-size: cover;
     height: 1500px;
@@ -263,4 +266,44 @@ a.error-close:hover {
 
 #error .error-content {
     padding-top: 5px;
+}
+
+.sign-up .sign-up-text {
+    border: 1px solid #999999;
+    border-radius: 5px;
+    background-color: white;
+/*    opacity: 0.90;
+    filter:alpha(opacity=90);*/
+    width: 263px;
+    margin: 30px auto;
+    padding: 0 0 20px 20px;
+}
+
+.sign-up .sign-up-text input {
+    width: 225px;
+    height: 30px;
+    line-height: 30px;
+    margin-bottom: 15px;
+    padding-left: 3px;
+}
+
+p {
+    color: #212121;
+}
+
+.grey-text {
+    color: #525261;
+}
+
+.sign-up-button {
+    width: 58px;
+    margin-left: 75px;
+}
+
+.error {
+    font-size: 12px;
+    padding: 10px 15px;
+    background-color: yellow;
+    color: #212121;
+    opacity: 0.8;
 }

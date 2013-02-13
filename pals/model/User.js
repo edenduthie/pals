@@ -12,27 +12,30 @@ User.prototype.create = function(callback) {
     var me = this;
     var error = me.validate();
     if( error ) callback(error);
-    try
+    else
     {
-        me.user = Accounts.createUser({
-            username : me.formData.username,
-            email : me.formData.email,
-            password : me.formData.password,
-            profile : {
-                name : me.formData.name,
-                institution : me.formData.institution
-            }
-        },callback);
-    }
-    catch(err)
-    {
-        callback(err.toString());
+        try
+        {
+            me.user = Accounts.createUser({
+                username : me.formData.username,
+                email : me.formData.email,
+                password : me.formData.password,
+                profile : {
+                    name : me.formData.name,
+                    institution : me.formData.institution
+                }
+            },callback);
+        }
+        catch(err)
+        {
+            callback(err.toString());
+        }
     }
 }
 
 User.prototype.validate = function() {
     var me = this;
-    if( !me.formData.username || me.formData.username.length <= 0 ) return 'Username is required';
+    if( me.formData.password != me.formData.confirmPassword ) return 'passwords do not match';
 }
 
 

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<!--
+  - Sample namespace-based configuration
+  -
+  - $Id: applicationContext-security.xml 3019 2008-05-01 17:51:48Z luke_t $
+  -->
+ 
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+ 
+	<global-method-security secured-annotations="enabled">
+	</global-method-security>
+ 
+    <http use-expressions="true">
+        <intercept-url pattern="/secure/extreme/**" access="hasRole('ROLE_SUPERVISOR')"/>
+        <intercept-url pattern="/secure/**" access="isAuthenticated()" requires-channel="https" />
+        <!-- Disable web URI authorization, as we're using <global-method-security> and have @Secured the services layer instead
+        <intercept-url pattern="/listAccounts.html" access="isRememberMe()" />
+        <intercept-url pattern="/post.html" access="hasRole('ROLE_TELLER')" />
+        -->
+        <form-login login-page="/login" />
+        <intercept-url pattern="/**" access="permitAll"/>
+        
+        <logout />
+        <remember-me data-source-ref="dataSource"/>
+<!--
+    Uncomment to enable X509 client authentication support
+        <x509 />
+-->
+        <!-- Uncomment to limit the number of sessions a user can have -->
+        <session-management invalid-session-url="/login">
+            <concurrency-control max-sessions="1" error-if-maximum-exceeded="true" />
+        </session-management>
+
+    </http>
+ 
+    <authentication-manager alias="authenticationManager">
+	    <authentication-provider user-service-ref='palsUserDetailsService'>
+	        <password-encoder hash="md5"/>
+        </authentication-provider>
+    </authentication-manager>
+</beans:beans>

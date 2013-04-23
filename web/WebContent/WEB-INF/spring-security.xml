@@ -22,7 +22,9 @@
         <intercept-url pattern="/listAccounts.html" access="isRememberMe()" />
         <intercept-url pattern="/post.html" access="hasRole('ROLE_TELLER')" />
         -->
-        <form-login login-page="/login" />
+        <form-login login-page="/" />
+        <intercept-url pattern="/j_spring_security_check" access="permitAll"/>
+        
         <intercept-url pattern="/**" access="permitAll"/>
         
         <logout />
@@ -32,7 +34,7 @@
         <x509 />
 -->
         <!-- Uncomment to limit the number of sessions a user can have -->
-        <session-management invalid-session-url="/login">
+        <session-management invalid-session-url="/">
             <concurrency-control max-sessions="1" error-if-maximum-exceeded="true" />
         </session-management>
 

@@ -1,0 +1,6 @@
+<form name="signupForm">
+    <input type="email" required="true" ng-model="signupUser.email">
+    <input type="password" required="true" ng-model="signupUser.password">
+    <input type="password" required="true" ng-model="signupUser.repeatPassword">
+    <button ng-click="signup()" href="javascript:void(0)" ng-disabled="signupForm.$invalid || isUnchanged(signupUser)">Login</button>
+</form>

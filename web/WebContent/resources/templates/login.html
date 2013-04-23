@@ -1,0 +1,5 @@
+<form name="loginForm">
+    <input type="email" required="true" ng-model="loginUser.email">
+    <input type="password" required="true" ng-model="loginUser.password">
+    <button ng-click="login()" href="javascript:void(0)" ng-disabled="loginForm.$invalid || isUnchanged(loginUser)">Login</button>
+</form>

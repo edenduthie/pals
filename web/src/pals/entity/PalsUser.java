@@ -8,12 +8,14 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
-public class PalsUser implements UserDetails
+public class PalsUser extends ComparableBean implements UserDetails
 {
 	private static final long serialVersionUID = -7709595936431626340L;
 	
@@ -27,6 +29,8 @@ public class PalsUser implements UserDetails
 	private Boolean locked = false;
 	private Boolean credentialsExpired = false;
 	private Boolean enabled = true;
+	@OneToOne(fetch=FetchType.EAGER)
+	private Address homeAddress;
 	private String ip;
 	private Long signupTime;
 	
@@ -120,6 +124,12 @@ public class PalsUser implements UserDetails
 	{
 		if( authorities == null ) authorities = new ArrayList<PalsGrantedAuthority>();
 		authorities.add(roleUser);
+	}
+	public Address getHomeAddress() {
+		return homeAddress;
+	}
+	public void setHomeAddress(Address homeAddress) {
+		this.homeAddress = homeAddress;
 	}
 	
 	public boolean hasRole(String role)

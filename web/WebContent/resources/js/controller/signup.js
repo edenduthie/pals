@@ -2,6 +2,8 @@ function SignupCtrl($scope,$http,sharedService) {
 	
 	$scope.signupUser = {};
 	
+	$scope.error = false;
+	
 	$scope.signup = function() {
 		console.log('logging in');
 		
@@ -16,7 +18,8 @@ function SignupCtrl($scope,$http,sharedService) {
 	$scope.signupSuccess = function(data, status, headers, config) {
 		if( !data.success )
 		{
-			alert(data.message);
+			$scope.errorMessage = data.message;
+			$scope.error = true;
 		}
 		else
 		{

@@ -1,6 +1,10 @@
-<form name="signupForm">
-    <input type="email" required="true" ng-model="signupUser.email">
-    <input type="password" required="true" ng-model="signupUser.password">
-    <input type="password" required="true" ng-model="signupUser.repeatPassword">
-    <button ng-click="signup()" href="javascript:void(0)" ng-disabled="signupForm.$invalid || isUnchanged(signupUser)">Login</button>
-</form>
+<div class="text-content">
+	<form name="signupForm" class="login-form">
+	    <h1>Sign Up or <a href="#!/login">Log In</a></h1>
+	    <div class="error" ng-show="error" ng-click="error=false">{{errorMessage}}</div>
+	    <div class="form-item"><label>email</label><input type="email" required="true" ng-model="signupUser.email"></div>
+	    <div class="form-item"><label>password</label><input type="password" required="true" ng-model="signupUser.password"></div>
+	    <div class="form-item"><label>repeat password</label><input type="password" required="true" ng-model="signupUser.repeatPassword"></div>
+	    <button class="grey" ng-click="signup()" href="javascript:void(0)" ng-disabled="signupForm.$invalid || isUnchanged(signupUser)">Sign Up</button>
+	</form>
+</div>

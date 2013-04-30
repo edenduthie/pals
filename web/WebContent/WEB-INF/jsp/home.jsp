@@ -20,6 +20,16 @@
 <link rel="icon" type="image/png" href="<%=request.getContextPath()%>/resources/images/favicon.png"/>
 </head>
 <body ng-controller="BaseCtrl">
-<div ng-view></div>
+
+<nav class="main-menu">
+    <ul>
+        <li><a href="#!/home">Home</a></li>
+        <li ng-show="!user.success"><a href="#!/login">Log In</a></li>
+        <li ng-show="user.success"><a href="{{baseUrl}}/j_spring_security_logout">Log Out</a></li>
+    </ul>
+</nav>
+<div class="main">
+    <div ng-view></div>
+</div>
 </body>
 </html>

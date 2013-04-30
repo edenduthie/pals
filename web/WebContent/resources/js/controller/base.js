@@ -4,6 +4,8 @@ function BaseCtrl($scope,$http,sharedService)
 	
     $scope.currentPage = '#!/home';
     
+    $scope.baseUrl = baseUrl;
+    
     $scope.$on('handleBroadcast', function() {
         $scope.user = sharedService.item;
         console.log($scope.user);

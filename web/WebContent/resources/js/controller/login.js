@@ -2,6 +2,8 @@ function LoginCtrl($scope,$http,sharedService) {
 	
 	$scope.loginUser = {};
 	
+	$scope.error = false;
+	
 	$scope.login = function() {
 		console.log('logging in');
 		
@@ -16,7 +18,8 @@ function LoginCtrl($scope,$http,sharedService) {
 	$scope.loginSuccess = function(data, status, headers, config) {
 		if( !data.success )
 		{
-			alert(data.message);
+			$scope.errorMessage = "Invalid username/password, please try again.";
+			$scope.error = true;
 		}
 		else
 		{

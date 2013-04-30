@@ -1,5 +1,9 @@
-<form name="loginForm">
-    <input type="email" required="true" ng-model="loginUser.email">
-    <input type="password" required="true" ng-model="loginUser.password">
-    <button ng-click="login()" href="javascript:void(0)" ng-disabled="loginForm.$invalid || isUnchanged(loginUser)">Login</button>
-</form>
+<div class="text-content">
+	<form name="loginForm" class="login-form">
+	    <h1>Log In or <a href="#!/signup">Sign Up</a></h1>
+	    <div class="error" ng-show="error" ng-click="error=false">{{errorMessage}}</div>
+	    <div class="form-item"><label>email</label><input type="email" required="true" ng-model="loginUser.email" /></div>
+	    <div class="form-item"><label>password</label><input type="password" required="true" ng-model="loginUser.password" /></div>
+	    <button class="grey" ng-click="login()" href="javascript:void(0)" ng-disabled="loginForm.$invalid || isUnchanged(loginUser)">Login</button>
+	</form>
+</div>

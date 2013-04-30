@@ -1,0 +1,160 @@
+body {
+	border: none;
+	margin: 0;
+	padding: 0;
+	font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+	color: #444444;
+}
+
+.main-menu {
+	width: 200px;
+	position: fixed;
+	height: 100%;
+	background: none repeat scroll 0 0 #334455;
+}
+
+.main-menu ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.main-menu li {
+    background: none repeat scroll 0 0 #223344;
+    border-bottom: 1px solid rgba(0, 20, 50, 0.1);
+    box-shadow: 0 1px 0 rgba(100, 150, 200, 0.2), 0 -1px 0 rgba(10, 20, 30, 0.3);
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    height: 35px;
+    line-height: 35px;
+    margin: 0 0 1px;
+    position: relative;
+    text-indent: 20px;
+    text-rendering: optimizelegibility;
+    text-shadow: -1px -1px 0 rgba(0, 20, 50, 0.5);
+}
+
+.main-menu li a {
+    background: none repeat scroll 0 0 #334455;
+    box-shadow: 0 1px 0 #1F3042, 0 -1px 0 #3D546C;
+    color: #EAEEFF;
+    display: block;
+    position: relative;
+    transition: background 0.3s ease-in-out 0s, box-shadow 0.3s ease-in-out 0s, color 0.3s ease-in-out 0s;
+}
+
+.main-menu li a:hover {
+	background: none repeat scroll 0 0 #223344;
+	box-shadow: 0 1px #1F3042 0 -1px 0 #2E4155;
+	color: #FFFFFF;
+}
+
+.main {
+	box-shadow: 0 -4px 4px rgba(0, 0, 0, 0.2);
+    left: 200px;
+    min-height: 100%;
+    min-width: 560px;
+    position: absolute;
+    right: 200px;
+    top: 0;
+    transition: right 0.3s ease-in-out 0s;
+}
+
+.text-content {
+	margin: 0 40px 40px 40px;
+}
+
+h1 {
+    color: #556677;
+    font-size: 36px;
+    font-weight: 300;
+    margin: 15px 0 0 0;
+    
+}
+
+h2 {
+    font-size: 26px;
+    font-weight: 300;
+    margin: 10px 0 0 0;
+}
+
+a {
+	color: #447799;
+	text-decoration: none;
+}
+
+input {
+	border: 1px solid #BABABB;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) inset, 0 1px 0 #FFFFFF;
+    color: #888888;
+    font: 16px sans-serif;
+    height: 35px;
+    margin-bottom: 20px;
+    padding: 0 4px;
+    width: 500px;
+}
+
+input.ng-invalid.ng-dirty {
+  background-color: #F27490;
+  color: #333333;
+}
+
+input.ng-valid.ng-dirty {
+  background-color: #78FA89;
+}
+
+button {
+	border: none;
+	font-size: 16px;
+	cursor: pointer;
+	border-radius: 5px;
+	font-weight: bold;
+	padding: 5px 15px;
+}
+
+button.grey {
+	background-color: #333333;
+	color: white;
+}
+
+button.grey:hover {
+	background-color: #78FA89;
+}
+
+button:disabled {
+	background-color: #e8e7e5;
+	color: #666666;
+}
+
+button:disabled:hover {
+	background-color: #e8e7e5;
+	color: #666666;
+	cursor: default;
+}
+
+.form-item {
+	margin: 10px 0; 
+}
+
+.form-item label {
+	display: block;
+	padding-bottom: 5px;
+	font-weight: bold;
+	color: #666666;
+}
+
+form button {
+	margin-top: 10px;
+}
+
+.error {
+	cursor: pointer;
+	color: red;
+	margin-bottom: 15px;
+}
+
+.login-form h1 {
+	margin-bottom: 30px;
+}

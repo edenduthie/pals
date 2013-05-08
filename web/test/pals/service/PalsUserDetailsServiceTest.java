@@ -8,18 +8,13 @@ import org.testng.annotations.Test;
 
 import pals.BaseTest;
 import pals.Generator;
-import pals.database.AddressDAO;
 import pals.database.PalsUserDAO;
-import pals.entity.Address;
 import pals.entity.PalsUser;
-import pals.exception.InvalidInputException;
-import pals.service.PalsUserDetailsService;
 
 public class PalsUserDetailsServiceTest extends BaseTest
 {
     @Autowired PalsUserDetailsService palsUserDetailsService;
     @Autowired PalsUserDAO palsUserDAO;
-    @Autowired AddressDAO addressDAO;
     
     @Test
     public void loadUserByUsername()

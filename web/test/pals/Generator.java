@@ -3,10 +3,8 @@ package pals;
 import java.util.Calendar;
 
 import pals.dto.SignupRequest;
-import pals.entity.Address;
 import pals.entity.PalsGrantedAuthority;
 import pals.entity.PalsUser;
-import pals.entity.Suburb;
 
 public class Generator 
 {
@@ -31,31 +29,7 @@ public class Generator
 		auth.setAuthority(PalsGrantedAuthority.ROLE_USER);
 		return auth;
 	}
-
-	public static Address address() 
-	{
-		Address address = new Address();
-		address.setFirstName("Eden");
-		address.setLastName("Duthie");
-		address.setCompany("Gator Logic");
-		address.setLat("37.1922");
-		address.setLon("127.02392");
-		address.setPhone("0438045662");
-		address.setPostcode("3101");
-		address.setState("VIC");
-		address.setStreet("Marshall Avenue");
-		address.setStreetNumber("32");
-		address.setSuburb("Kew");
-		address.setUnit(null);
-		return address;
-	}
-
-	public static Suburb suburb() 
-	{
-		Suburb suburb = new Suburb("KEW");
-		return suburb;
-	}
-
+	
 	public static SignupRequest signupRequest() 
 	{
 		SignupRequest request = new SignupRequest();

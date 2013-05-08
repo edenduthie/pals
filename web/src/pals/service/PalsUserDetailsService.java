@@ -6,17 +6,13 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import pals.database.AddressDAO;
 import pals.database.PalsUserDAO;
-import pals.entity.Address;
 import pals.entity.PalsUser;
-import pals.exception.InvalidInputException;
 
 @Service(value="palsUserDetailsService")
 public class PalsUserDetailsService implements UserDetailsService
 {
 	@Autowired PalsUserDAO palsUserDAO;
-	@Autowired AddressDAO addressDAO;
 
 	@Override
 	public UserDetails loadUserByUsername(String username)

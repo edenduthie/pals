@@ -9,14 +9,11 @@ import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import pals.database.AddressDAO;
+import pals.database.FileDAO;
 import pals.database.PalsGrantedAuthorityDAO;
 import pals.database.PalsUserDAO;
-import pals.database.FileDAO;
 import pals.database.PhotoDataDAO;
-import pals.database.SuburbDAO;
 import pals.entity.PalsGrantedAuthority;
-import pals.entity.Suburb;
 import pals.exception.InvalidInputException;
 import pals.service.AccountService;
 import pals.service.FileService;
@@ -29,32 +26,7 @@ public class GenerateData extends BaseTest
     @Autowired FileService photoService;
     @Autowired AccountService accountService;
     @Autowired PalsGrantedAuthorityDAO palsGrantedAuthorityDAO;
-    @Autowired SuburbDAO suburbDAO;
-    @Autowired AddressDAO addressDAO;
 
-    
-    public void createSuburbs()
-    {
-    	try
-    	{
-    	    BufferedReader fileReader = new BufferedReader(new FileReader(new File("data/suburbs.csv")));
-    	    String line = fileReader.readLine();
-    	    while( line != null )
-    	    {
-    	    	Suburb suburb = new Suburb(line.trim());
-    	    	suburbDAO.put(suburb);
-    	    	line = fileReader.readLine();
-    	    }
-    	}
-    	catch( FileNotFoundException e )
-    	{
-    		e.printStackTrace();
-    	} 
-    	catch (IOException e) 
-    	{
-			e.printStackTrace();
-		}
-    }
     
     
     

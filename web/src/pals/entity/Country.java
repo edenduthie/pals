@@ -5,26 +5,22 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class PhotoData 
+public class Country 
 {
 	@Id @GeneratedValue
-	private Integer 		id;
+	private Integer id;
+	private String name;
 	
-	byte[] picture;
-
 	public Integer getId() {
 		return id;
 	}
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-	public byte[] getPicture() {
-		return picture;
+	public String getName() {
+		return name;
 	}
-
-	public void setPicture(byte[] picture) {
-		this.picture = picture;
+	public void setName(String name) {
+		this.name = name;
 	}
 }

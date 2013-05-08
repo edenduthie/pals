@@ -1,6 +1,7 @@
 package pals.security;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,6 +96,23 @@ public class AjaxLoginController
 		Authentication auth = authenticationManager.authenticate(token);
 		SecurityContextHolder.getContext().setAuthentication(auth);
 		repository.saveContext(SecurityContextHolder.getContext(), request, response);
-		rememberMeServices.loginSuccess(request, response, auth);
+		rememberMeServices.loginSuccess(new RememberMeWrapper(request), response, auth);
+	}
+	
+	public class RememberMeWrapper extends HttpServletRequestWrapper
+	{
+
+		public RememberMeWrapper(HttpServletRequest request)
+		{
+			super(request);
+		}
+		
+		@Override
+		public String getParameter(String key)
+		{
+			if( key.equals("_spring_security_remember_me") ) return "true";
+			else return super.getParameter(key);
+		}
+		
 	}
 }

@@ -5,35 +5,35 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pals.entity.PhotoData;
+import pals.entity.FileData;
 
 @Service
 public class PhotoDataDAO 
 {
 	@Autowired Database db;
 	
-    public void put(PhotoData photoData)
+    public void put(FileData photoData)
     {
     	db.persist(photoData);
     }
     
-    public PhotoData get(Integer id)
+    public FileData get(Integer id)
     {
-    	return (PhotoData) db.getNoNull(PhotoData.class.getName(), "id", id);
+    	return (FileData) db.getNoNull(FileData.class.getName(), "id", id);
     }
     
-    public void update(PhotoData photoData)
+    public void update(FileData photoData)
     {
     	db.update(photoData);
     }
     
     public void deleteAll()
     {
-    	db.deleteAll(PhotoData.class);
+    	db.deleteAll(FileData.class);
     }
 
-	public List<PhotoData> getAll() 
+	public List<FileData> getAll() 
 	{
-		return db.getAll(PhotoData.class.getName());
+		return db.getAll(FileData.class.getName());
 	}
 }

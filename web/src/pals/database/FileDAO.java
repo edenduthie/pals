@@ -7,50 +7,50 @@ import javax.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pals.entity.Photo;
+import pals.entity.PalsFile;
 
 @Service
-public class PhotoDAO 
+public class FileDAO 
 {
 	@Autowired Database db;
 	
-    public void put(Photo photo)
+    public void put(PalsFile photo)
     {
     	db.persist(photo);
     }
     
-    public Photo get(Integer id)
+    public PalsFile get(Integer id)
     {
-    	return (Photo) db.getNoNull(Photo.class.getName(), "id", id);
+    	return (PalsFile) db.getNoNull(PalsFile.class.getName(), "id", id);
     }
     
-    public Photo getWithData(Integer id)
+    public PalsFile getWithData(Integer id)
     {
-    	String queryString = "from Photo p left join fetch p.data where p.id=:id";
+    	String queryString = "from PalsFile p left join fetch p.data where p.id=:id";
     	Query query = db.getEntityManager().createQuery(queryString);
     	query.setParameter("id",id);
-    	List<Photo> results = query.getResultList();
+    	List<PalsFile> results = query.getResultList();
     	if( results.size() > 0 ) return results.get(0);
     	else return null;
     }
     
-    public void update(Photo photo)
+    public void update(PalsFile photo)
     {
     	db.update(photo);
     }
     
     public void deleteAll()
     {
-    	db.deleteAll(Photo.class);
+    	db.deleteAll(PalsFile.class);
     }
 
-	public List<Photo> getAll() 
+	public List<PalsFile> getAll() 
 	{
-		return db.getAll(Photo.class.getName());
+		return db.getAll(PalsFile.class.getName());
 	}
 
 	public void delete(Integer id) 
 	{
-		db.delete(Photo.class.getName(), "id", id);
+		db.delete(PalsFile.class.getName(), "id", id);
 	}
 }

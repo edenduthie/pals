@@ -29,8 +29,6 @@ public class PalsUser extends ComparableBean implements UserDetails
 	private Boolean locked = false;
 	private Boolean credentialsExpired = false;
 	private Boolean enabled = true;
-	@OneToOne(fetch=FetchType.EAGER)
-	private Address homeAddress;
 	private String ip;
 	private Long signupTime;
 	
@@ -124,12 +122,6 @@ public class PalsUser extends ComparableBean implements UserDetails
 	{
 		if( authorities == null ) authorities = new ArrayList<PalsGrantedAuthority>();
 		authorities.add(roleUser);
-	}
-	public Address getHomeAddress() {
-		return homeAddress;
-	}
-	public void setHomeAddress(Address homeAddress) {
-		this.homeAddress = homeAddress;
 	}
 	
 	public boolean hasRole(String role)

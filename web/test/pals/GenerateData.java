@@ -12,21 +12,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import pals.database.AddressDAO;
 import pals.database.PalsGrantedAuthorityDAO;
 import pals.database.PalsUserDAO;
-import pals.database.PhotoDAO;
+import pals.database.FileDAO;
 import pals.database.PhotoDataDAO;
 import pals.database.SuburbDAO;
 import pals.entity.PalsGrantedAuthority;
 import pals.entity.Suburb;
 import pals.exception.InvalidInputException;
 import pals.service.AccountService;
-import pals.service.PhotoService;
+import pals.service.FileService;
 
 public class GenerateData extends BaseTest
 {
     @Autowired PalsUserDAO palsUserDAO;
-    @Autowired PhotoDAO photoDAO;
+    @Autowired FileDAO photoDAO;
     @Autowired PhotoDataDAO photoDataDAO;
-    @Autowired PhotoService photoService;
+    @Autowired FileService photoService;
     @Autowired AccountService accountService;
     @Autowired PalsGrantedAuthorityDAO palsGrantedAuthorityDAO;
     @Autowired SuburbDAO suburbDAO;

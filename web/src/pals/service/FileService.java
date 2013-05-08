@@ -15,25 +15,25 @@ import javax.imageio.ImageIO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pals.database.PhotoDAO;
-import pals.entity.Photo;
+import pals.database.FileDAO;
+import pals.entity.PalsFile;
 
 @Service
-public class PhotoService
+public class FileService
 {
-    @Autowired PhotoDAO photoDAO;
+    @Autowired FileDAO photoDAO;
     int BUFFER = 1024;
     
-    public Photo load(InputStream in) throws IOException
+    public PalsFile load(InputStream in) throws IOException
     {
-    	Photo photo = create(in);
+    	PalsFile photo = create(in);
     	photoDAO.put(photo);
     	return photo;
     }
     
-    public Photo create(InputStream in) throws IOException
+    public PalsFile create(InputStream in) throws IOException
     {
-    	Photo photo = new Photo();
+    	PalsFile photo = new PalsFile();
     	List<Byte> byteArray = new ArrayList<Byte>();
     	byte[] buffer = new byte[BUFFER];
     	while( in.read(buffer,0,BUFFER) != -1 )
@@ -50,7 +50,7 @@ public class PhotoService
     	return photo;
     }
     
-    public void resize(Photo photo, Integer width, Integer height, String type) throws IOException
+    public void resize(PalsFile photo, Integer width, Integer height, String type) throws IOException
     {
     	BufferedImage bi = ImageIO.read(photo.retrieveInputStream());
     	Double originalRatio = new Double(bi.getHeight()) / new Double(bi.getWidth());

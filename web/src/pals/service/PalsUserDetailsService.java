@@ -26,25 +26,6 @@ public class PalsUserDetailsService implements UserDetailsService
 		if( user == null ) throw new UsernameNotFoundException("No user was found with the email: " + username);
 		else return user;
 	}
-	
-	public PalsUser createOrUpdateAddress(PalsUser user, Address newAddress) throws InvalidInputException
-	{
-        newAddress.validate();
-        user.setName(newAddress.getFirstName() + " " + newAddress.getLastName());
-        Address currentAddress = user.getHomeAddress();
-        if( currentAddress != null )
-        {
-        	currentAddress.update(newAddress);
-        	addressDAO.update(currentAddress);
-        }
-        else
-        {
-        	addressDAO.put(newAddress);
-        	user.setHomeAddress(newAddress);
-        }
-        palsUserDAO.update(user);
-        return user;
-	}
 
 	public Object get(Integer id) 
 	{

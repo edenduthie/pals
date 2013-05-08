@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Photo
+public class PalsFile
 {
 	public static final String JPG = "jpg";
 	public static final String PNG = "png";
@@ -20,21 +20,21 @@ public class Photo
 	private Integer 		id;
 	
     @OneToOne(fetch=FetchType.LAZY,cascade={CascadeType.ALL})
-    PhotoData data;
+    FileData data;
     
-    public Photo() {}
+    public PalsFile() {}
     
-    public Photo(byte[] photoDataBytes, Integer id)
+    public PalsFile(byte[] photoDataBytes, Integer id)
     {
     	this.id = id;
-    	PhotoData photoData = new PhotoData();
+    	FileData photoData = new FileData();
     	photoData.setPicture(photoDataBytes);
     	this.data = photoData;
     }
     
-    public Photo clone()
+    public PalsFile clone()
     {
-    	Photo photo = new Photo();
+    	PalsFile photo = new PalsFile();
     	photo.setName(name);
     	photo.setType(type);
     	photo.setPicture(getPicture().clone());
@@ -61,7 +61,7 @@ public class Photo
 	}
 
 	public void setPicture(byte[] picture) {
-		this.data = new PhotoData();
+		this.data = new FileData();
 		this.data.setPicture(picture);
 	}
 	
@@ -86,11 +86,11 @@ public class Photo
 		this.name = name;
 	}
 
-	public PhotoData getData() {
+	public FileData getData() {
 		return data;
 	}
 
-	public void setData(PhotoData data) {
+	public void setData(FileData data) {
 		this.data = data;
 	}
 }

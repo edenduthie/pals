@@ -1,7 +1,5 @@
 package pals.database;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,25 +7,23 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import pals.BaseTest;
-import pals.database.PhotoDAO;
-import pals.database.PhotoDataDAO;
-import pals.entity.Photo;
-import pals.entity.PhotoData;
+import pals.entity.PalsFile;
+import pals.entity.FileData;
 
-public class PhotoDAOTest extends BaseTest
+public class FileDAOTest extends BaseTest
 {
-    @Autowired PhotoDAO photoDAO;
+    @Autowired FileDAO photoDAO;
     @Autowired PhotoDataDAO photoDataDAO;
     
     @Test
     public void testGetWithData() throws IOException
     {
-    	Photo photo = new Photo();
-    	photo.setData(new PhotoData());
+    	PalsFile photo = new PalsFile();
+    	photo.setData(new FileData());
     	photoDAO.put(photo);
     	Assert.assertNotNull(photo.getData().getId());
     	
-    	Photo result = photoDAO.getWithData(photo.getId());
+    	PalsFile result = photoDAO.getWithData(photo.getId());
     	Assert.assertEquals(result.getData().getId(),photo.getData().getId());
     	
         photoDAO.deleteAll();

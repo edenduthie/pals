@@ -1,6 +1,5 @@
 package pals.entity;
 
-import java.io.File;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -8,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -15,6 +15,9 @@ import javax.persistence.OneToOne;
 @Entity
 public class ModelOutput 
 {
+	public static final String PUBLIC_STATUS = "public";
+	public static final String PRIVATE_STATUS = "private";
+	
 	@Id @GeneratedValue
 	private Integer id;
 	private String name;
@@ -28,6 +31,9 @@ public class ModelOutput
 	private Boolean allowPublicDownloads;
 	@OneToMany(cascade=CascadeType.ALL) private Set<PalsFile> ancillaryFiles;
 	@ManyToOne private Model model;
+	@ManyToOne private PalsUser owner;
+	private String status;
+	@ManyToMany private Set<Workspace> workspaces;
 	
 	public Model getModel() {
 		return model;
@@ -100,5 +106,23 @@ public class ModelOutput
 	}
 	public void setExperiment(Experiment experiment) {
 		this.experiment = experiment;
+	}
+	public PalsUser getOwner() {
+		return owner;
+	}
+	public void setOwner(PalsUser owner) {
+		this.owner = owner;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public Set<Workspace> getWorkspaces() {
+		return workspaces;
+	}
+	public void setWorkspaces(Set<Workspace> workspaces) {
+		this.workspaces = workspaces;
 	}
 }

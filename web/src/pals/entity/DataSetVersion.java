@@ -10,12 +10,16 @@ import javax.persistence.OneToOne;
 @Entity
 public class DataSetVersion 
 {
+	public static final String PUBLIC_STATUS = "public";
+	public static final String PRIVATE_STATUS = "private";
+	
 	@Id @GeneratedValue
 	private Integer id;
 	private String name;
 	private @ManyToOne DataSet dataSet;
 	@OneToOne(cascade=CascadeType.ALL) private PalsFile file;
 	private Long createdTime;
+	private String status;
 	
 	public Integer getId() {
 		return id;
@@ -46,5 +50,11 @@ public class DataSetVersion
 	}
 	public void setCreatedTime(Long createdTime) {
 		this.createdTime = createdTime;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
 	}
 }

@@ -2,6 +2,7 @@ package pals.entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,7 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 import org.springframework.security.core.userdetails.UserDetails;
@@ -31,6 +32,9 @@ public class PalsUser extends ComparableBean implements UserDetails
 	private Boolean enabled = true;
 	private String ip;
 	private Long signupTime;
+	@OneToMany(mappedBy="owner") private Set<Workspace> workspaces;
+	@ManyToMany(mappedBy="guests") private Set<Workspace> guestWorkspaces;
+	@ManyToOne private Workspace currentWorkspace;
 	
 	@ManyToMany(fetch=FetchType.EAGER)
 	List<PalsGrantedAuthority> authorities = new ArrayList<PalsGrantedAuthority>();
@@ -152,5 +156,23 @@ public class PalsUser extends ComparableBean implements UserDetails
 	}
 	public void setSignupTime(Long signupTime) {
 		this.signupTime = signupTime;
+	}
+	public Set<Workspace> getWorkspaces() {
+		return workspaces;
+	}
+	public void setWorkspaces(Set<Workspace> workspaces) {
+		this.workspaces = workspaces;
+	}
+	public Set<Workspace> getGuestWorkspaces() {
+		return guestWorkspaces;
+	}
+	public void setGuestWorkspaces(Set<Workspace> guestWorkspaces) {
+		this.guestWorkspaces = guestWorkspaces;
+	}
+	public Workspace getCurrentWorkspace() {
+		return currentWorkspace;
+	}
+	public void setCurrentWorkspace(Workspace currentWorkspace) {
+		this.currentWorkspace = currentWorkspace;
 	}
 }

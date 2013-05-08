@@ -13,6 +13,9 @@ import javax.persistence.OneToMany;
 @Entity
 public class Experiment 
 {
+	public static final String PUBLIC_STATUS = "public";
+	public static final String PRIVATE_STATUS = "private";
+	
 	@Id @GeneratedValue
 	private Integer id;
 	private String name;
@@ -25,6 +28,9 @@ public class Experiment
 	private @ManyToMany Set<DataSet> drivingDataSets;
 	private @ManyToMany Set<DataSet> inputDataSets;
 	private String timeStepSize;
+	@ManyToOne private PalsUser owner;
+	private String status;
+	@ManyToMany private Set<Workspace> workspaces;
 	
 	public String getSpatialLevel() {
 		return spatialLevel;
@@ -99,5 +105,23 @@ public class Experiment
 	}
 	public void setCountry(Country country) {
 		this.country = country;
+	}
+	public PalsUser getOwner() {
+		return owner;
+	}
+	public void setOwner(PalsUser owner) {
+		this.owner = owner;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public Set<Workspace> getWorkspaces() {
+		return workspaces;
+	}
+	public void setWorkspaces(Set<Workspace> workspaces) {
+		this.workspaces = workspaces;
 	}
 }

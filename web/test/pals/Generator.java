@@ -5,6 +5,7 @@ import java.util.Calendar;
 import pals.dto.SignupRequest;
 import pals.entity.PalsGrantedAuthority;
 import pals.entity.PalsUser;
+import pals.entity.Workspace;
 
 public class Generator 
 {
@@ -37,5 +38,13 @@ public class Generator
 		request.setPassword("password");
 		request.setRepeatPassword("password");
 		return request;
+	}
+
+	public static Workspace workspace() 
+	{
+		Workspace workspace = new Workspace();
+		workspace.setName("name");
+		workspace.setName("workspace");
+		return workspace;
 	}
 }

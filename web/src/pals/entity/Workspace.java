@@ -9,6 +9,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.springframework.beans.BeanUtils;
+
+import pals.dto.WorkspaceDTO;
+
 @Entity
 public class Workspace 
 {
@@ -24,7 +28,14 @@ public class Workspace
 	@ManyToMany(mappedBy="workspaces") Set<ModelOutput> modelOutputs;
 	@ManyToMany(mappedBy="workspaces") Set<Experiment> experiments;
 	
+	public Workspace() {}
 	
+	
+	public Workspace(WorkspaceDTO currentWorkspace) 
+	{
+		String[] skip = {"ownser","guests","currentUsers","dataSets","modelOutputs","experiments"};
+		BeanUtils.copyProperties(currentWorkspace, this, skip);
+	}
 	public Integer getId() {
 		return id;
 	}

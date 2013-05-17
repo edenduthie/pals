@@ -13,7 +13,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import pals.dto.PalsUserDTO;
 
 @Entity
 public class PalsUser extends ComparableBean implements UserDetails
@@ -38,6 +41,15 @@ public class PalsUser extends ComparableBean implements UserDetails
 	
 	@ManyToMany(fetch=FetchType.EAGER)
 	List<PalsGrantedAuthority> authorities = new ArrayList<PalsGrantedAuthority>();
+	
+	public PalsUser() {}
+	
+	public PalsUser(PalsUserDTO dto)
+	{
+		String[] skip = {"password","currentWorkspace","workspaces","guestWorkspaces"};
+		BeanUtils.copyProperties(dto, this, skip);
+		if( dto.getCurrentWorkspace() != null ) setCurrentWorkspace(new Workspace(dto.getCurrentWorkspace()));
+	}
 	
 	@Override
 	public String getPassword() {

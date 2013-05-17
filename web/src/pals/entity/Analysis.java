@@ -15,7 +15,7 @@ public class Analysis
 	private Integer id;
 	@ManyToOne private AnalysisType analysisType;
 	@ManyToOne private ModelOutput modelOutput;
-	@ManyToOne private DataSet dataSet;
+	@ManyToOne private Experiment experiment;
 	@ManyToMany private Set<PalsFile> results;
 	
 	public Set<PalsFile> getResults() {
@@ -42,10 +42,10 @@ public class Analysis
 	public void setModelOutput(ModelOutput modelOutput) {
 		this.modelOutput = modelOutput;
 	}
-	public DataSet getDataSet() {
-		return dataSet;
+	public Experiment getExperiment() {
+		return experiment;
 	}
-	public void setDataSet(DataSet dataSet) {
-		this.dataSet = dataSet;
+	public void setExperiment(Experiment experiment) {
+		this.experiment = experiment;
 	}
 }

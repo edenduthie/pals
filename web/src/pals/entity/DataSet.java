@@ -20,8 +20,6 @@ public class DataSet
 	@Id @GeneratedValue
 	private Integer id;
 	private String name;
-	@OneToMany(mappedBy="dataSet") private Set<DataSetVersion> dataSetVersions;
-	@OneToMany(mappedBy="dataSet") private Set<Analysis> analyses;
 	private Long startTime;
 	private Long endTime;
 	private String dataType;
@@ -125,18 +123,6 @@ public class DataSet
 	}
 	public void setComments(String comments) {
 		this.comments = comments;
-	}
-	public Set<Analysis> getAnalyses() {
-		return analyses;
-	}
-	public void setAnalyses(Set<Analysis> analyses) {
-		this.analyses = analyses;
-	}
-	public Set<DataSetVersion> getDataSetVersions() {
-		return dataSetVersions;
-	}
-	public void setDataSetVersions(Set<DataSetVersion> dataSetVersions) {
-		this.dataSetVersions = dataSetVersions;
 	}
 	public Integer getId() {
 		return id;
